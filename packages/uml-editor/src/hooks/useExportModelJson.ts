@@ -1,12 +1,12 @@
 import { message } from "antd";
 import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { MetaContent } from "../meta";
 import { saveFile } from "./helper/saveFile";
 import { useGetMeta } from "./useGetMeta";
+import { MetaContent } from "../interfaces";
+import { useTranslate } from "@rxdrag/react-locales";
 
 export function useExportModelJson(metaId: string) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const getMeta = useGetMeta(metaId)
   const doExport = useCallback(() => {
 

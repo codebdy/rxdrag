@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { ID } from "shared";
 import {
   classesState,
   relationsState,
@@ -8,6 +7,7 @@ import {
   x6NodesState,
 } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
+import { ID } from "@rxdrag/shared";
 
 export function useDeleteClass(metaId: ID) {
   const setEntites = useSetRecoilState(classesState(metaId));

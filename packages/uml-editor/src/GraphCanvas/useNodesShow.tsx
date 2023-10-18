@@ -12,7 +12,7 @@ import { useGetDiagramNode } from "../hooks/useGetDiagramNode";
 import { useGetNode } from "../hooks/useGetNode";
 import { ClassNodeData } from "./ClassView/ClassNodeData";
 import { useGetPackage } from "../hooks/useGetPackage";
-import { useSelectedDiagramPackageUuid } from "../hooks/useSelectedDiagramPackageUuid";
+import { useSelectedDiagramPackageId } from "../hooks/useSelectedDiagramPackageId";
 import { useToken } from "antd/es/theme/internal";
 import { ID } from "@rxdrag/shared";
 
@@ -32,7 +32,7 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
 
   const getPackage = useGetPackage(metaId);
 
-  const selectedDiagramUuid = useSelectedDiagramPackageUuid(metaId);
+  const selectedDiagramUuid = useSelectedDiagramPackageId(metaId);
 
   useEffect(() => {
     nodes?.forEach((node) => {

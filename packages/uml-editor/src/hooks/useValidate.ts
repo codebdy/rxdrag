@@ -1,11 +1,11 @@
 import { message } from "antd";
 import _ from "lodash";
 import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
 import { classesState } from "../recoil/atoms";
 import { useGetClassAssociations } from "./useGetClassAssociations";
+import { useTranslate } from "@rxdrag/react-locales";
+import { ID } from "@rxdrag/shared";
 
 function hasDuplicates(array: string[]) {
   return _.some(array, function (elt: any, index: number) {
@@ -16,7 +16,7 @@ function hasDuplicates(array: string[]) {
 export function useValidate(metaId: ID) {
   const classes = useRecoilValue(classesState(metaId));
   const getClassAssociations = useGetClassAssociations(metaId);
-  const { t } = useTranslation();
+  const t = useTranslate();
   const validate = useCallback(() => {
     //检查属性名重复
     for (const cls of classes) {

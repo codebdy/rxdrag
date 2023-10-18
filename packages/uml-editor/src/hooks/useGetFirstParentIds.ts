@@ -1,12 +1,12 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
-import { RelationType } from "../meta/RelationMeta";
 import { relationsState } from "../recoil/atoms";
+import { ID } from "@rxdrag/shared";
+import { RelationType } from "@rxdrag/uml-schema";
 
-export function useGetFirstParentUuids(metaId: ID) {
+export function useGetFirstParentIds(metaId: ID) {
   const relations = useRecoilValue(relationsState(metaId));
-  const getParentUuid = useCallback(
+  const getParentId = useCallback(
     (uuid: string) => {
       const uuids: string[] = [];
       for(const relation of relations){
@@ -20,5 +20,5 @@ export function useGetFirstParentUuids(metaId: ID) {
     [relations]
   );
 
-  return getParentUuid;
+  return getParentId;
 }

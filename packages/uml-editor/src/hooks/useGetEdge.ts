@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
 import { x6EdgesState } from "../recoil/atoms";
+import { ID } from "@rxdrag/shared";
 
 export function useGetEdge(metaId: ID) {
   const edges = useRecoilValue(x6EdgesState(metaId));

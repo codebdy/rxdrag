@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
 import { relationsState } from "../recoil/atoms";
+import { ID } from "@rxdrag/shared";
 
 export function useGetRelation(metaId: ID) {
   const relations = useRecoilValue(relationsState(metaId));

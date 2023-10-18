@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
 import { relationsState } from "../recoil/atoms";
+import { ID } from "@rxdrag/shared";
 
 export function useRelation(uuid: string, metaId: ID) {
   const relations = useRecoilValue(relationsState(metaId));

@@ -1,7 +1,7 @@
 import { Node } from "@antv/x6";
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { useGetAllParentUuids } from "../hooks/useGetAllParentUuids";
+import { useGetAllParentIds } from "../hooks/useGetAllParentIds";
 import { useGetClass } from "../hooks/useGetClass";
 import { drawingLineState, relationsState } from "../recoil/atoms";
 import { ID } from "@rxdrag/shared";
@@ -11,7 +11,7 @@ export function useCheckCanLinkTo(metaId: ID) {
   const drawingLine = useRecoilValue(drawingLineState(metaId));
   const relations = useRecoilValue(relationsState(metaId));
   const getClass = useGetClass(metaId);
-  const getParentUuids = useGetAllParentUuids(metaId);
+  const getParentUuids = useGetAllParentIds(metaId);
   const checkCanLinkTo = useCallback(
     (node: Node) => {
       if (!drawingLine) {

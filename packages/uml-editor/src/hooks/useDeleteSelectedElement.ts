@@ -7,7 +7,7 @@ import { useDeleteClass } from "./useDeleteClass";
 import { useDeleteRelation } from "./useDeleteRelation";
 import { useClass } from "./useClass";
 import { useRelation } from "./useRelation";
-import { ID } from "shared";
+import { ID } from "@rxdrag/shared";
 
 /**
  * 本方法不需要备份状态

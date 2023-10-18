@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { ID } from "shared";
 import { selectedUmlDiagramState, x6NodesState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
+import { ID } from "@rxdrag/shared";
 
 export function useHideClassFromDiagram(metaId: ID) {
   const selectedDiagramUuid = useRecoilValue(selectedUmlDiagramState(metaId))

@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useSetRecoilState } from "recoil";
-import { ID } from "shared";
 import { relationsState, x6EdgesState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
+import { ID } from "@rxdrag/shared";
 
 export function useDeleteRelation(metaId: ID) {
   const setRelation = useSetRecoilState(relationsState(metaId));

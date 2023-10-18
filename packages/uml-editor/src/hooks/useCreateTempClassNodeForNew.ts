@@ -1,15 +1,15 @@
 import { useCallback } from "react";
 import { useCreateNewClass } from "./useCreateNewClass";
 import { NODE_INIT_SIZE } from "../GraphCanvas/nodeInitSize";
-import { StereoType } from "../meta/ClassMeta";
-import { ID } from "shared";
-import { useSelectedDiagramPackageUuid } from "./useSelectedDiagramPackageUuid";
+import { useSelectedDiagramPackageId } from "./useSelectedDiagramPackageId";
 import { useRecoilValue } from "recoil";
-import { themeModeState } from "recoil/atoms";
 import { useToken } from "antd/es/theme/internal";
+import { ID } from "@rxdrag/shared";
+import { StereoType } from "@rxdrag/uml-schema";
+import { themeModeState } from "../recoil/atoms";
 
 export function useCreateTempClassNodeForNew(metaId: ID) {
-  const packageUuid = useSelectedDiagramPackageUuid(metaId)
+  const packageUuid = useSelectedDiagramPackageId(metaId)
   const creatNewClassMeta = useCreateNewClass(metaId);
   const themeMode = useRecoilValue(themeModeState);
   const [, token] = useToken();

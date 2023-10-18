@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
 import { relationsState, selectedElementState } from "../recoil/atoms";
+import { ID } from "@rxdrag/shared";
 
 export function useSelectedRelation(metaId: ID) {
   const selectedElement = useRecoilValue(selectedElementState(metaId));

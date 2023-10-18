@@ -1,7 +1,7 @@
 import { memo } from "react"
 import { TypeSelect } from "../../TypeSelect";
 import { TypeUuidSelect } from "../../TypeUuidSelect";
-import { Type } from "UmlEditor/meta";
+import { Type } from "@rxdrag/uml-schema";
 
 export const ArgTypeInput = memo((
   props: {

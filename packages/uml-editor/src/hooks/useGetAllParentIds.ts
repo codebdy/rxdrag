@@ -1,9 +1,9 @@
 import { useCallback } from "react";
-import { ID } from "shared";
-import { useGetFirstParentUuids } from "./useGetFirstParentUuids";
+import { useGetFirstParentIds } from "./useGetFirstParentIds";
+import { ID } from "@rxdrag/shared";
 
-export function useGetAllParentUuids(metaId: ID) {
-  const getFirstParentId = useGetFirstParentUuids(metaId);
+export function useGetAllParentIds(metaId: ID) {
+  const getFirstParentId = useGetFirstParentIds(metaId);
 
   const getParentUuids = useCallback(
     (uuid: string) => {

@@ -1,7 +1,8 @@
 import { useCallback } from "react";
-import { ID } from "shared";
-import { Type, Types } from "../meta/Type";
 import { useGetClass } from "./useGetClass";
+import { ID } from "@rxdrag/shared";
+import { Type, Types } from "@rxdrag/uml-schema";
+
 
 export function useGetTypeLabel(metaId: ID) {
   const getClass = useGetClass(metaId);

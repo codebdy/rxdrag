@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
 import { classesState } from "../recoil/atoms";
 import { useChangeClass } from "./useChangeClass";
+import { ID } from "@rxdrag/shared";
 
 export function useDeleteAttribute(metaId: ID) {
   const changeClass = useChangeClass(metaId);

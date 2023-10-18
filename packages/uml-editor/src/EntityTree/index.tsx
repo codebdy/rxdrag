@@ -52,7 +52,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
   const diagrams = useRecoilValue(diagramsState(metaId));
   const classes = useRecoilValue(classesState(metaId));
   const isDiagram = useIsDiagram(metaId);
-  const parseRelationUuid = useParseRelationUuid(metaId);
+  const parseRelationUuid = useParseRelationUuid();
   const [selectedDiagramId, setSelecteDiagramId] = useRecoilState(selectedUmlDiagramState(metaId));
   const [selectedElement, setSelectedElement] = useRecoilState(selectedElementState(metaId));
   const getSourceRelations = useGetSourceRelations(metaId);

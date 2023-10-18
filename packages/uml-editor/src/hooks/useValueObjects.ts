@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
-import { StereoType } from "../meta/ClassMeta";
 import { classesState } from "../recoil/atoms";
+import { ID } from "@rxdrag/shared";
+import { StereoType } from "@rxdrag/uml-schema";
 
 export function useValueObjects(metaId: ID) {
   const classes = useRecoilValue(classesState(metaId));

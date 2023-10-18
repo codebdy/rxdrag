@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useSetRecoilState } from "recoil";
-import { ID } from "shared";
 import { diagramsState, x6EdgesState, x6NodesState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
+import { ID } from "@rxdrag/shared";
 
 export function useDeleteDiagram(metaId: ID) {
   const setDiagrams = useSetRecoilState(diagramsState(metaId));

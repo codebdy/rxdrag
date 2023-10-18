@@ -1,13 +1,13 @@
 import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
 import { useRecoilValue } from "recoil";
-import { createUuid, ID } from "shared";
-import { PackageMeta } from "../meta/PackageMeta";
 import { packagesState } from './../recoil/atoms';
+import { useTranslate } from "@rxdrag/react-locales";
+import { ID, createId } from "@rxdrag/shared";
+import { PackageMeta } from "@rxdrag/uml-schema";
 
 export function useCreateNewPackage(metaId: ID) {
   const packages = useRecoilValue(packagesState(metaId));
-  const { t } = useTranslation();
+  const t = useTranslate();
   const getNewPackageName = useCallback(() => {
     const prefix = t("UmlEditor.NewPackage");
     let index = 1;
@@ -22,7 +22,7 @@ export function useCreateNewPackage(metaId: ID) {
   const createNewPackage = useCallback(
     () => {
       const newPackage: PackageMeta = {
-        uuid: createUuid(),
+        uuid: createId(),
         name: getNewPackageName(),
       };
       return newPackage;

@@ -1,8 +1,8 @@
-import { ID } from "shared";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 import { useCallback } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { packagesState } from './../recoil/atoms';
+import { ID } from "@rxdrag/shared";
 
 /**
  * 并没有删除包下面的元素，保存数据时需要过滤一下

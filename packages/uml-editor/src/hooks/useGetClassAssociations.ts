@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
-import { RelationMeta, RelationType } from "../meta/RelationMeta";
 import { relationsState } from "../recoil/atoms";
+import { ID } from "@rxdrag/shared";
+import { RelationMeta, RelationType } from "@rxdrag/uml-schema";
 
 export interface Association {
   name: string;
