@@ -36,7 +36,7 @@ const ProjectTitle = styled.span`
 `
 
 export enum TopNavType {
-  ui = "ui",
+  ui = "ui-designer",
   model = "model",
   extends = "extends",
   api = "api",
@@ -106,6 +106,7 @@ export const Toolbar = memo((
       icon: <SvgIcon>
         {modelIcon}
       </SvgIcon>,
+      onClick: () => navigate(TopNavType.model)
     },
     {
       label: '服务扩展',
@@ -114,16 +115,19 @@ export const Toolbar = memo((
         {extendsIcon}
       </SvgIcon>
       ,
+      onClick: () => navigate(TopNavType.extends)
     },
     {
       label: '接口',
       key: TopNavType.api,
       icon: <ApiOutlined />,
+      onClick: () => navigate(TopNavType.api)
     },
     {
       label: '工作流',
       key: TopNavType.workflow,
       icon: <NodeIndexOutlined />,
+      onClick: () => navigate(TopNavType.workflow)
     },
     {
       label: '插件',
@@ -131,13 +135,15 @@ export const Toolbar = memo((
       icon: <SvgIcon>
         {pluginIcon}
       </SvgIcon>,
+      onClick: () => navigate(TopNavType.plugins)
     },
     {
       label: '设置',
       key: TopNavType.setttings,
       icon: <SettingOutlined />,
+      onClick: () => navigate(TopNavType.setttings)
     },
-  ], [t]);
+  ], [handleDeviceChange, navigate, t]);
 
 
   return (
