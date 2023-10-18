@@ -57,10 +57,9 @@ export const Toolbar = memo((
   const [current, setCurrent] = useState<string>();
   const params = useParams()
 
-  const onClick: MenuProps['onClick'] = (e) => {
-    console.log('click ', e);
+  const onClick: MenuProps['onClick'] = useCallback((e: { key: string }) => {
     setCurrent(e.key);
-  };
+  }, []);
 
   const app = useApp()
   const t = useAppTranslate()
