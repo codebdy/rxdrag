@@ -64,6 +64,9 @@ export const Toolbar = memo((
   const t = useAppTranslate()
   const { device } = useParams();
   const navigate = useNavigate()
+  const handleDeviceChange = useCallback((value: string) => {
+    navigate("ui-designer/" + value)
+  }, [navigate])
 
   const items: MenuProps['items'] = useMemo(() => [
     {
@@ -74,22 +77,26 @@ export const Toolbar = memo((
         {
           label: t(DeviceType.admin),
           key: DeviceType.admin,
-          icon: <DesktopOutlined />
+          icon: <DesktopOutlined />,
+          onClick: () => handleDeviceChange(DeviceType.admin),
         },
         {
           label: t(DeviceType.h5),
           key: DeviceType.h5,
           icon: <SvgIcon>{h5Icon}</SvgIcon>,
+          onClick: () => handleDeviceChange(DeviceType.h5),
         },
         {
           label: t(DeviceType.website),
           key: DeviceType.website,
-          icon: <SvgIcon>{websiteIcon}</SvgIcon>
+          icon: <SvgIcon>{websiteIcon}</SvgIcon>,
+          onClick: () => handleDeviceChange(DeviceType.website),
         },
         {
           label: t(DeviceType.largeScreen),
           key: DeviceType.largeScreen,
-          icon: <SvgIcon>{largeScreenIcon}</SvgIcon>
+          icon: <SvgIcon>{largeScreenIcon}</SvgIcon>,
+          onClick: () => handleDeviceChange(DeviceType.largeScreen),
         },
       ],
     },
@@ -132,9 +139,7 @@ export const Toolbar = memo((
     },
   ], [t]);
 
-  const handleDeviceChange = useCallback((value: string) => {
-    navigate("ui-designer/" + value)
-  }, [navigate])
+
   return (
     <ToolbarShell className="zoomable-toobar">
       <Space>
