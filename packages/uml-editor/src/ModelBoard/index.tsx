@@ -9,7 +9,6 @@ const Container = styled.div`
   display: flex;
   flex-flow: row;
   height: calc(100vh - 48px);
-  background-color: ${props => props.theme.token?.colorBgBase};
   .model-tree-shell{
     display: flex;
     flex-flow: column;
@@ -19,25 +18,12 @@ const Container = styled.div`
     height: 100%;
     overflow: auto;
   }
-  .property-box-area{
-    display: flex;
-    height: 100%;
-    flex-flow: column;
-    width: 300px;
-    background-color:${props => props.theme.token?.colorBgBase};
-    .property-box{
-      flex:1;
-      display: flex;
-      flex-flow: column;
-      height: 0;
-      overflow: auto;
-      width: 100%;
-      .property-pannel{
-        padding: 8px 16px;
-      }
-    }
-  }
 
+  box-sizing: border-box;
+`
+
+const LeftColumn = styled(ResizableColumn)`
+  border: solid 1px;
 `
 
 export const ModelBoard = memo((
@@ -54,11 +40,11 @@ export const ModelBoard = memo((
   return (
     <Container className="appx-model-board">
       {
-        modelList && <ResizableColumn minWidth={50} maxWidth={500} width={listWidth}>
+        modelList && <LeftColumn minWidth={50} maxWidth={500} width={listWidth}>
           <div className="model-tree-shell">
             {modelList}
           </div>
-        </ResizableColumn>
+        </LeftColumn>
       }
 
       <ModelContent toolbox={toolbox} toolbar={toolbar} propertyBox={propertyBox}>

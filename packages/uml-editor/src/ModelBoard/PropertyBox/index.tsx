@@ -5,8 +5,18 @@ import ToolbarTitle from "./ToolbarTitle";
 import styled from "styled-components";
 
 const Container = styled.div`
+  flex:1;
+  display: flex;
+  flex-flow: column;
+  height: 0;
+  overflow: auto;
+  width: 100%;
+  .property-pannel{
+    padding: 8px 16px;
+  }
   color: ${props => props.theme.token?.colorText};
   border-left: solid 1px ${props => props.theme.token?.colorBorder};
+  box-sizing: border-box;
 `
 export const PropertyBox = memo((
   props: {

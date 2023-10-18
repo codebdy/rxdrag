@@ -23,7 +23,6 @@ const ToolbarShell = styled.div`
   box-shadow: ${floatShadow};
   z-index: 1;
   background-color: ${props => props.theme.token?.colorBgBase};
-  border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
 `
 
 const TopMenu = styled(Menu)`
@@ -56,6 +55,7 @@ export const Toolbar = memo((
 ) => {
   const { themeMode, onThemeModeChange } = props;
   const [current, setCurrent] = useState<string>();
+  const params = useParams()
 
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
@@ -154,7 +154,7 @@ export const Toolbar = memo((
         <Logo mini />
         <TopMenu
           onClick={onClick}
-          selectedKeys={[device || current || ""]}
+          selectedKeys={[device || current || params?.["*"] || ""]}
           mode="horizontal"
           items={items}
         />

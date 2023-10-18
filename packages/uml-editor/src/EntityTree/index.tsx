@@ -31,6 +31,8 @@ const Container = styled.div`
   flex: 1;
   display: flex;
   flex-flow: column;
+  border: solid 1px  ${props => props.theme.token?.colorBorder};
+  border-left: 0;
   overflow: auto;
   .ant-tree-node-content-wrapper{
     display: flex;
@@ -43,6 +45,7 @@ const Container = styled.div`
 const StyledDirectoryTree = styled(DirectoryTree)`
   padding-top: 16px;
   flex: 1;
+  background-color: transparent;
 `
 
 export const EntityTree = memo((props: { graph?: Graph }) => {

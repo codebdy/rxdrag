@@ -34,7 +34,6 @@ export const AppDesigner = memo(() => {
     >
       <LocalesContext.Provider value={localesManger}>
         <ThemeRoot mode={themeMode}>
-
           <Container className={classNames("zoomable-editor", themeMode)}>
             <Toolbar
               themeMode={themeMode}

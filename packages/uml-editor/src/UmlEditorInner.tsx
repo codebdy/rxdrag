@@ -12,6 +12,7 @@ import styled from "styled-components";
 import { useParesMeta } from "./hooks/useParesMeta";
 import { MetaContent } from "./interfaces";
 import { ModelBoard } from "./ModelBoard";
+import { GlobalToken } from "antd";
 
 const MapContianer = styled.div`
   position: absolute;
@@ -35,6 +36,8 @@ export type UmlEditorProps = {
   actions?: React.ReactNode,
   metaContent: MetaContent | undefined,
   metaId: string | undefined,
+  themeMode?: "dark" | "light",
+  token?: GlobalToken,
 }
 
 export const UmlEditorInner = memo((
