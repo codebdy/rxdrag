@@ -26,7 +26,7 @@ export const PropertyPanel = memo(() => {
   const relation = useRelation(selectedElement || "", metaId);
 
   return (
-    <PropertyBox title={t("UmlEditor.Properties")} >
+    <PropertyBox title={t("Properties")} >
       {selectedEntity && <ClassPanel cls={selectedEntity} />}
       {attribute && attributeCls && (
         <AttributePanel attribute={attribute} cls={attributeCls} />

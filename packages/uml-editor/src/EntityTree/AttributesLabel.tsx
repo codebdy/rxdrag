@@ -34,7 +34,7 @@ const AttributesLabel = memo((
         </Button>
       }
     >
-      {t("UmlEditor.Atrributes")}
+      {t("Atrributes")}
     </TreeNodeLabel>
   )
 })

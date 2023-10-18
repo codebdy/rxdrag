@@ -13,6 +13,7 @@ import { useParesMeta } from "./hooks/useParesMeta";
 import { MetaContent } from "./interfaces";
 import { ModelBoard } from "./ModelBoard";
 import { GlobalToken } from "antd";
+import { ILocales } from "@rxdrag/locales";
 
 const MapContianer = styled.div`
   position: absolute;
@@ -37,7 +38,9 @@ export type UmlEditorProps = {
   metaContent: MetaContent | undefined,
   metaId: string | undefined,
   themeMode?: "dark" | "light",
+  lang?: string,
   token?: GlobalToken,
+  locales?: ILocales
 }
 
 export const UmlEditorInner = memo((

@@ -61,7 +61,7 @@ const ClassActions = memo((
           items: [
             {
               icon: <PlusOutlined />,
-              label: t("UmlEditor.AddAttribute"),
+              label: t("AddAttribute"),
               key: 'addAttribute',
               disabled: cls.stereoType === StereoType.Service,
             },

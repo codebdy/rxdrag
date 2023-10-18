@@ -9,7 +9,7 @@ export function useCreateNewPackage(metaId: ID) {
   const packages = useRecoilValue(packagesState(metaId));
   const t = useTranslate();
   const getNewPackageName = useCallback(() => {
-    const prefix = t("UmlEditor.NewPackage");
+    const prefix = t("NewPackage");
     let index = 1;
     // eslint-disable-next-line no-loop-func
     while (packages.find((pkg) => pkg.name === (prefix + index))) {

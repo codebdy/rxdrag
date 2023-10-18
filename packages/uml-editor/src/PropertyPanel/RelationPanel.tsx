@@ -46,7 +46,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
           <div style={{
             width: "100%",
             padding: "8px",
-          }}>{t("UmlEditor.Inherit")}</div>
+          }}>{t("Inherit")}</div>
           : <Form
             name="relationForm"
             form={form}
@@ -62,10 +62,10 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
               items={[
                 {
                   key: "1",
-                  label: source?.name + t("UmlEditor.Side"),
+                  label: source?.name + t("Side"),
                   children: <>
                     <Form.Item
-                      label={t("UmlEditor.Multiplicity")}
+                      label={t("Multiplicity")}
                       name="sourceMutiplicity"
                     >
                       <Select>
@@ -85,7 +85,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
                       relation.relationType !== RelationType.ONE_WAY_COMBINATION &&
                       <>
                         <Form.Item
-                          label={t("UmlEditor.RoleName")}
+                          label={t("RoleName")}
                           name="roleOfSource"
                         >
                           <Input />
@@ -97,7 +97,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
                           <Input />
                         </Form.Item>
                         <Form.Item
-                          label={t("UmlEditor.Description")}
+                          label={t("Description")}
                           name="descriptionOnSource"
                         >
                           <Input.TextArea />
@@ -108,10 +108,10 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
                 },
                 {
                   key: "2",
-                  label: target?.name + t("UmlEditor.Side"),
+                  label: target?.name + t("Side"),
                   children: <>
                     <Form.Item
-                      label={t("UmlEditor.Multiplicity")}
+                      label={t("Multiplicity")}
                       name="targetMultiplicity"
                     >
                       <Select>
@@ -120,7 +120,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      label={t("UmlEditor.RoleName")}
+                      label={t("RoleName")}
                       name="roleOfTarget"
                     >
                       <Input />
@@ -132,7 +132,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
                       <Input />
                     </Form.Item>
                     <Form.Item
-                      label={t("UmlEditor.Description")}
+                      label={t("Description")}
                       name="descriptionOnTarget"
                     >
                       <Input.TextArea />
@@ -141,17 +141,17 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
                 },
                 {
                   key: "3",
-                  label: t("UmlEditor.Other"),
+                  label: t("Other"),
                   children: <>
                     <Form.Item
-                      label={t("UmlEditor.Type")}
+                      label={t("Type")}
                       name="relationType"
                     >
                       <Select>
-                        <Option value={RelationType.TWO_WAY_ASSOCIATION}> {t("UmlEditor.Association")}</Option>
-                        <Option value={RelationType.TWO_WAY_AGGREGATION}> {t("UmlEditor.Aggregation")}</Option>
-                        <Option value={RelationType.TWO_WAY_COMBINATION}> {t("UmlEditor.Combination")}</Option>
-                        <Option value={RelationType.ONE_WAY_ASSOCIATION}> {t("UmlEditor.OneWanAssociation")}</Option>
+                        <Option value={RelationType.TWO_WAY_ASSOCIATION}> {t("Association")}</Option>
+                        <Option value={RelationType.TWO_WAY_AGGREGATION}> {t("Aggregation")}</Option>
+                        <Option value={RelationType.TWO_WAY_COMBINATION}> {t("Combination")}</Option>
+                        <Option value={RelationType.ONE_WAY_ASSOCIATION}> {t("OneWanAssociation")}</Option>
                       </Select>
                     </Form.Item>
                     <Form.Item

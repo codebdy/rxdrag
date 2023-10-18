@@ -62,7 +62,7 @@ export const AttributePanel = (props: {
         onValuesChange={handleChange}
       >
         <Form.Item
-          label={t("UmlEditor.Name")}
+          label={t("Name")}
           name="name"
           validateStatus={nameError ? "error" : undefined}
           help={nameError}
@@ -86,28 +86,28 @@ export const AttributePanel = (props: {
               !isId &&
               <>
                 <Form.Item
-                  label={t("UmlEditor.Nullable")}
+                  label={t("Nullable")}
                   valuePropName="checked"
                   name="nullable"
                 >
                   <Switch />
                 </Form.Item>
                 <Form.Item
-                  label={t("UmlEditor.Unique")}
+                  label={t("Unique")}
                   valuePropName="checked"
                   name="unique"
                 >
                   <Switch />
                 </Form.Item>
                 <Form.Item
-                  label={t("UmlEditor.Index")}
+                  label={t("Index")}
                   valuePropName="checked"
                   name="index"
                 >
                   <Switch />
                 </Form.Item>
                 <Form.Item
-                  label={t("UmlEditor.HiddenField")}
+                  label={t("HiddenField")}
                   valuePropName="checked"
                   name="hidden"
                 >
@@ -118,7 +118,7 @@ export const AttributePanel = (props: {
             {
               attribute.type === Types.Uuid &&
               <Form.Item
-                label={t("UmlEditor.AutoGenerate")}
+                label={t("AutoGenerate")}
                 valuePropName="checked"
                 name="autoGenerate"
               >
@@ -128,7 +128,7 @@ export const AttributePanel = (props: {
             {
               attribute.type === Types.Int &&
               <Form.Item
-                label={t("UmlEditor.AutoIncrement")}
+                label={t("AutoIncrement")}
                 valuePropName="checked"
                 name="autoIncrement"
               >
@@ -139,21 +139,21 @@ export const AttributePanel = (props: {
               attribute.type === Types.Date &&
               <>
                 <Form.Item
-                  label={t("UmlEditor.CreateDate")}
+                  label={t("CreateDate")}
                   valuePropName="checked"
                   name="createDate"
                 >
                   <Switch />
                 </Form.Item>
                 <Form.Item
-                  label={t("UmlEditor.UpdateDate")}
+                  label={t("UpdateDate")}
                   valuePropName="checked"
                   name="updateDate"
                 >
                   <Switch />
                 </Form.Item>
                 <Form.Item
-                  label={t("UmlEditor.DeleteDate")}
+                  label={t("DeleteDate")}
                   valuePropName="checked"
                   name="deleteDate"
                 >
@@ -165,7 +165,7 @@ export const AttributePanel = (props: {
               !isId &&
               <>
                 <Form.Item
-                  label={t("UmlEditor.DefaultValue")}
+                  label={t("DefaultValue")}
                   name="default"
                 >
                   <Input />
@@ -182,7 +182,7 @@ export const AttributePanel = (props: {
           </>
         )}
         <Form.Item
-          label={t("UmlEditor.Description")}
+          label={t("Description")}
           name="description"
         >
           <Input.TextArea />

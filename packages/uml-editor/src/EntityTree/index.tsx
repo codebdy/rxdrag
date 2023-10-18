@@ -130,7 +130,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
       )
     }
     return {
-      title: t("UmlEditor.Relationships"),
+      title: t("Relationships"),
       key: cls.uuid + "relations",
       children: children,
     }
@@ -175,16 +175,16 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     const valueObjects = classes.filter(cls => cls.stereoType === StereoType.ValueObject && cls.packageUuid === pkg.uuid)
 
     if (abstracts.length > 0) {
-      packageChildren.push(getClassCategoryNode(t("UmlEditor.AbstractClass"), pkg.uuid + "abstracts", abstracts))
+      packageChildren.push(getClassCategoryNode(t("AbstractClass"), pkg.uuid + "abstracts", abstracts))
     }
     if (entities.length > 0) {
-      packageChildren.push(getClassCategoryNode(t("UmlEditor.EntityClass"), pkg.uuid + "entities", entities))
+      packageChildren.push(getClassCategoryNode(t("EntityClass"), pkg.uuid + "entities", entities))
     }
     if (enums.length > 0) {
-      packageChildren.push(getClassCategoryNode(t("UmlEditor.EnumClass"), pkg.uuid + "enums", enums))
+      packageChildren.push(getClassCategoryNode(t("EnumClass"), pkg.uuid + "enums", enums))
     }
     if (valueObjects.length > 0) {
-      packageChildren.push(getClassCategoryNode(t("UmlEditor.ValueClass"), pkg.uuid + "valueObjects", valueObjects))
+      packageChildren.push(getClassCategoryNode(t("ValueClass"), pkg.uuid + "valueObjects", valueObjects))
     }
 
     for (const diagram of diagrams.filter(diagram => diagram.packageUuid === pkg.uuid)) {
@@ -218,7 +218,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
       </SvgIcon>,
       title:
         <TreeNodeLabel fixedAction action={<ModelRootAction />}>
-          <div>{t("UmlEditor.DomainModel")}</div>
+          <div>{t("DomainModel")}</div>
         </TreeNodeLabel>,
       key: "0",
       children: getModelPackageNodes()

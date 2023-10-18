@@ -47,7 +47,7 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
         onValuesChange={handleChange}
       >
         <Form.Item
-          label={t("UmlEditor.Name")}
+          label={t("Name")}
           name="name"
           validateStatus={nameError ? "error" : undefined}
           help={nameError}
@@ -61,7 +61,7 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
           <Input />
         </Form.Item>
         <Form.Item
-          label={t("UmlEditor.Package")}
+          label={t("Package")}
           name="packageUuid"
         >
           <Select >
@@ -80,14 +80,14 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
             <Form.Item
               name="root"
               valuePropName="checked"
-              label={t("UmlEditor.RootNode")}
+              label={t("RootNode")}
             >
               <Switch disabled={cls.stereoType === StereoType.Service} />
             </Form.Item>
           )
         }
         <Form.Item
-          label={t("UmlEditor.Description")}
+          label={t("Description")}
           name="description"
         >
           <Input.TextArea />
@@ -96,7 +96,7 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
           cls.stereoType === StereoType.Entity &&
           <>
             <Form.Item
-              label={t("UmlEditor.InnerId")}
+              label={t("InnerId")}
               name="innerId"
             >
               <Input disabled />

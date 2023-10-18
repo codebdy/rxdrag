@@ -127,64 +127,64 @@ export const Toolbox = memo((props: { graph?: Graph }) => {
         items={[
           {
             key: "1",
-            label: t("UmlEditor.Class"),
+            label: t("Class"),
             children: <>
               <ToolItem onMouseDown={startDragFn(StereoType.Entity)}>
                 <ClassRect oneBorder={false} />
-                {t("UmlEditor.EntityClass")}
+                {t("EntityClass")}
               </ToolItem>
               <ToolItem onMouseDown={startDragFn(StereoType.Abstract)}>
                 <ClassRect stereoChar="A" oneBorder={false} />
-                {t("UmlEditor.AbstractClass")}
+                {t("AbstractClass")}
               </ToolItem>
               <ToolItem onMouseDown={startDragFn(StereoType.Enum)}>
                 <ClassRect stereoChar="E" oneBorder={true} />
-                {t("UmlEditor.EnumClass")}
+                {t("EnumClass")}
               </ToolItem>
               <ToolItem onMouseDown={startDragFn(StereoType.ValueObject)}>
                 <ClassRect stereoChar="V" oneBorder={true} />
-                {t("UmlEditor.ValueClass")}
+                {t("ValueClass")}
               </ToolItem>
               <ToolItem
                 selected={pressedLineType === RelationType.INHERIT}
                 onClick={handleRelationClick(RelationType.INHERIT)}
               >
                 {svgInherit}
-                {t("UmlEditor.Inherit")}
+                {t("Inherit")}
               </ToolItem>
             </>
           },
           {
             key: "2",
-            label: t("UmlEditor.Relationships"),
+            label: t("Relationships"),
             children: <>
               <ToolItem
                 selected={pressedLineType === RelationType.TWO_WAY_ASSOCIATION}
                 onClick={handleRelationClick(RelationType.TWO_WAY_ASSOCIATION)}
               >
                 {svgTwoWayAssociation}
-                {t("UmlEditor.Association")}
+                {t("Association")}
               </ToolItem>
               <ToolItem
                 selected={pressedLineType === RelationType.TWO_WAY_AGGREGATION}
                 onClick={handleRelationClick(RelationType.TWO_WAY_AGGREGATION)}
               >
                 {svgTwoWayAggregation}
-                {t("UmlEditor.Aggregation")}
+                {t("Aggregation")}
               </ToolItem>
               <ToolItem
                 selected={pressedLineType === RelationType.TWO_WAY_COMBINATION}
                 onClick={handleRelationClick(RelationType.TWO_WAY_COMBINATION)}
               >
                 {svgTwoWayCombination}
-                {t("UmlEditor.Combination")}
+                {t("Combination")}
               </ToolItem>
               <ToolItem
                 selected={pressedLineType === RelationType.ONE_WAY_ASSOCIATION}
                 onClick={handleRelationClick(RelationType.ONE_WAY_ASSOCIATION)}
               >
                 {svgOneWayAssociation}
-                {t("UmlEditor.OneWanAssociation")}
+                {t("OneWanAssociation")}
               </ToolItem>
             </>
           }

@@ -81,7 +81,7 @@ const PackageAction = memo((
             items: [
               {
                 icon: <FileAddOutlined />,
-                label: t("UmlEditor.AddDiagram"),
+                label: t("AddDiagram"),
                 key: '0',
                 onClick: e => {
                   e.domEvent.stopPropagation();
@@ -90,12 +90,12 @@ const PackageAction = memo((
               },
               {
                 icon: <PlusSquareOutlined />,
-                label: t("UmlEditor.AddClass"),
+                label: t("AddClass"),
                 key: '1',
                 onClick: e => e.domEvent.stopPropagation(),
                 children: [
                   {
-                    label: t("UmlEditor.AddEntity"),
+                    label: t("AddEntity"),
                     key: '1-1',
                     onClick: e => {
                       e.domEvent.stopPropagation();
@@ -103,7 +103,7 @@ const PackageAction = memo((
                     },
                   },
                   {
-                    label: t("UmlEditor.AddAbstract"),
+                    label: t("AddAbstract"),
                     key: '1-2',
                     onClick: e => {
                       e.domEvent.stopPropagation();
@@ -111,7 +111,7 @@ const PackageAction = memo((
                     },
                   },
                   {
-                    label: t("UmlEditor.AddEnum"),
+                    label: t("AddEnum"),
                     key: '3',
                     onClick: e => {
                       e.domEvent.stopPropagation();
@@ -119,7 +119,7 @@ const PackageAction = memo((
                     },
                   },
                   {
-                    label: t("UmlEditor.AddValueObject"),
+                    label: t("AddValueObject"),
                     key: '4',
                     onClick: e => {
                       e.domEvent.stopPropagation();
@@ -127,7 +127,7 @@ const PackageAction = memo((
                     },
                   },
                   // {
-                  //   label: t("UmlEditor.AddThirdParty"),
+                  //   label: t("AddThirdParty"),
                   //   key: '5',
                   //   onClick: e => {
                   //     e.domEvent.stopPropagation();
@@ -135,7 +135,7 @@ const PackageAction = memo((
                   //   },
                   // },
                   // {
-                  //   label: t("UmlEditor.AddService"),
+                  //   label: t("AddService"),
                   //   key: '6',
                   //   onClick: e => {
                   //     e.domEvent.stopPropagation();

@@ -8,7 +8,7 @@ export function useCreateNewDiagram(metaId: ID) {
   const  t  = useTranslate();
 
   const getNewDiagramName = useCallback(() => {
-    const prefix = t("UmlEditor.NewDiagram");
+    const prefix = t("NewDiagram");
     let index = 1;
     while (getDiagramByName(prefix + index)) {
       index++;

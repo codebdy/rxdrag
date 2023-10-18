@@ -25,7 +25,7 @@ export function useValidate(metaId: ID) {
         ...(getClassAssociations(cls.uuid)?.map((aso) => aso.name) || [])
       );
       if (hasDuplicates(names.filter((name) => !!name))) {
-        message.error(t("UmlEditor.duplicated-property-error"));
+        message.error(t("duplicated-property-error"));
         return false;
       }
     }

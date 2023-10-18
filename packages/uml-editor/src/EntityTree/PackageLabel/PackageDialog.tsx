@@ -27,7 +27,7 @@ export const PackageDialog = memo((
 
   return (
     <Modal
-      title={t("UmlEditor.PackageInfo")}
+      title={t("PackageInfo")}
       open={open}
       cancelText={t("Cancel")}
       okText={t("Confirm")}
