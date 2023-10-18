@@ -32,7 +32,7 @@ const PublishButton = memo(() => {
       icon={<SyncOutlined />}
     //onClick={handlePublish}
     >
-      发布
+      {t("Publish")}
     </Button>
   )
 });

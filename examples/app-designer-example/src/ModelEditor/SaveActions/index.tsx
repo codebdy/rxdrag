@@ -19,7 +19,7 @@ const SaveActions = memo((props: {
   const app = useApp();
   const [changed, setChanged] = useChangedState();
   const getMeta = useGetMeta(metaId);
-  const t = useTranslate();
+  const  t  = useTranslate();
   const [saveApp, { loading: appSaving, }] = useSaveApp({
     onComplete() {
       message.success(t("OperateSuccess"));
@@ -59,10 +59,10 @@ const SaveActions = memo((props: {
         loading={appSaving}
         onClick={handleSave}
       >
-        保存
+        {t("Save")}
       </Button>
       <PublishButton />
-      <Operate meta={meta} />
+      <Operate meta ={meta} />
     </Space>
   )
 })
