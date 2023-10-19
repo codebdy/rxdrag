@@ -132,12 +132,12 @@ export const ArgsInput = memo((
   return (
     <>
       <Button block onClick={showModal}>
-        {t("UmlEditor.ConfigArgs")}
+        {t("ConfigArgs")}
       </Button>
       <Modal
         className="args-input-modal"
         forceRender
-        title={t("UmlEditor.ConfigArgs")}
+        title={t("ConfigArgs")}
         width={700}
         open={open}
         onOk={handleOk}

@@ -30,37 +30,37 @@ export const TypeSelect = memo((
       <Option value={Types.String}>String</Option>
       <Option value={Types.Date}>Date</Option>
       <Option value={Types.Uuid}>UUID</Option>
-      <Option value={Types.Enum}>{t("UmlEditor.Enum")}</Option>
+      <Option value={Types.Enum}>{t("Enum")}</Option>
       <Option value={Types.JSON}>JSON</Option>
-      <Option value={Types.ValueObject}>{t("UmlEditor.ValueClass")}</Option>
+      <Option value={Types.ValueObject}>{t("ValueClass")}</Option>
       {
         !noEntity &&
-        <Option value={Types.Entity}>{t("UmlEditor.Entity")}</Option>
+        <Option value={Types.Entity}>{t("Entity")}</Option>
       }
       <Option value={Types.File}>{t("File")}</Option>
       <Option value={Types.Password}>{t("Password")}</Option>
-      <Option value={Types.IDArray}>ID {t("UmlEditor.Array")}</Option>
-      <Option value={Types.IntArray}>Int {t("UmlEditor.Array")}</Option>
-      <Option value={Types.FloatArray}>Float {t("UmlEditor.Array")}</Option>
-      <Option value={Types.StringArray}>String {t("UmlEditor.Array")}</Option>
-      <Option value={Types.DateArray}>Date {t("UmlEditor.Array")}</Option>
+      <Option value={Types.IDArray}>ID {t("Array")}</Option>
+      <Option value={Types.IntArray}>Int {t("Array")}</Option>
+      <Option value={Types.FloatArray}>Float {t("Array")}</Option>
+      <Option value={Types.StringArray}>String {t("Array")}</Option>
+      <Option value={Types.DateArray}>Date {t("Array")}</Option>
       <Option value={Types.EnumArray}>
-        {t("UmlEditor.Enum")}
-        {t("UmlEditor.Array")}
+        {t("Enum")}
+        {t("Array")}
       </Option>
       <Option value={Types.JSONArray}>
         {"JSON"}
-        {t("UmlEditor.Array")}
+        {t("Array")}
       </Option>
       <Option value={Types.ValueObjectArray}>
-        {t("UmlEditor.ValueClass")}
-        {t("UmlEditor.Array")}
+        {t("ValueClass")}
+        {t("Array")}
       </Option>
       {
         !noEntity &&
         <Option value={Types.EntityArray}>
-          {t("UmlEditor.Entity")}
-          {t("UmlEditor.Array")}
+          {t("Entity")}
+          {t("Array")}
         </Option>
       }
     </Select>

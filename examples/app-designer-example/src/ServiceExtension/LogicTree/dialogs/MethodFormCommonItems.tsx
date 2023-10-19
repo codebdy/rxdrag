@@ -17,7 +17,7 @@ export const MethodFormCommonItems = memo((
   return (
     <>
       <Form.Item
-        label={t("UmlEditor.Name")}
+        label={t("Name")}
         name="name"
         validateStatus={nameError ? "error" : undefined}
         help={nameError}
@@ -26,7 +26,7 @@ export const MethodFormCommonItems = memo((
       </Form.Item>
 
       <Form.Item
-        label={t("UmlEditor.OperateType")}
+        label={t("OperateType")}
         name="operateType"
       >
         <Radio.Group
@@ -35,11 +35,11 @@ export const MethodFormCommonItems = memo((
           options={[
             {
               value: ExtensionType.Query,
-              label: t("UmlEditor.Query"),
+              label: t("Query"),
             },
             {
               value: ExtensionType.Mutation,
-              label: t("UmlEditor.Mutation"),
+              label: t("Mutation"),
             },
 
           ]}
@@ -50,7 +50,7 @@ export const MethodFormCommonItems = memo((
         <>
           <MethodTypeInput method={method} />
           <Form.Item
-            label={t("UmlEditor.Arguments")}
+            label={t("Arguments")}
             name="args"
           >
             <ArgsInput />

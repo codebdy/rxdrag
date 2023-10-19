@@ -34,17 +34,17 @@ export const TypeUuidSelect = memo((
   const [title, classes] = useMemo(() => {
     if (type === Types.Enum ||
       type === Types.EnumArray) {
-      return [t("UmlEditor.EnumClass"), enums]
+      return [t("EnumClass"), enums]
     }
 
     if (type === Types.ValueObject ||
       type === Types.ValueObjectArray) {
-      return [t("UmlEditor.ValueClass"), valueObjects]
+      return [t("ValueClass"), valueObjects]
     }
 
     if (type === Types.Entity ||
       type === Types.EntityArray) {
-      return [t("UmlEditor.EntityClass"), entities]
+      return [t("EntityClass"), entities]
     }
 
     return []

@@ -18,7 +18,7 @@ export const MethodTypeInput = memo(
     return (
       <>
         <Form.Item
-          label={t("UmlEditor.ReturnType")}
+          label={t("ReturnType")}
           name="type"
         >
           <TypeSelect></TypeSelect>
