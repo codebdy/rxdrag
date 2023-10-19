@@ -8,7 +8,7 @@ export const NameDialog = memo((
     open?: boolean,
     name?: string,
     onClose: () => void,
-    onConfirm: (name?: string) => void,
+    onConfirm: (name: string) => void,
     saving?: boolean,
   }
 ) => {

@@ -1,19 +1,18 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Button } from "antd";
-import React, { memo, useCallback } from "react"
-import { IExtendsionScript } from "../../../interfaces/extension";
+import { Button, Popconfirm } from "antd";
+import { memo } from "react"
+import { useTranslate } from "@rxdrag/react-locales";
 
 export const CodeAction = memo((
   props: {
-    code: IExtendsionScript,
+    removing?: boolean,
+    onConfirmOpenChange?: (open: boolean) => void,
+    onRemove?: () => void
+    onEdit?: () => void
   }
 ) => {
-  const { code } = props;
-
-
-  // const handleDelete = useCallback(() => {
-  //   deleteCodes(code.uuid)
-  // }, [deleteCodes, code.uuid]);
+  const { removing, onEdit, onRemove, onConfirmOpenChange } = props;
+  const t = useTranslate()
 
   return (
     <>
@@ -21,19 +20,27 @@ export const CodeAction = memo((
         type="text"
         shape='circle'
         size='small'
-      //onClick={handleDelete}
+        icon={<EditOutlined />}
+        onClick={onEdit}
       >
-        <EditOutlined />
       </Button>
-      <Button
-        type="text"
-        shape='circle'
-        size='small'
-        //onClick={handleDelete}
-        style={{ color: "inherit" }}
+      <Popconfirm
+        title={t("DeleteConfirm")}
+        description={t("DeleteConfirmDescription")}
+        onOpenChange={onConfirmOpenChange}
+        onConfirm={onRemove}
+        okText={t("Yes")}
+        cancelText={t("No")}
       >
-        <DeleteOutlined />
-      </Button>
+        <Button
+          type="text"
+          shape='circle'
+          size='small'
+          loading={removing}
+          icon={<DeleteOutlined />}
+        >
+        </Button>
+      </Popconfirm>
     </>
   )
 })

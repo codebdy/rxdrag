@@ -37,6 +37,7 @@ export const appDesignerLocales: ILocales = {
     No: "否",
     EditScript: "编辑脚本",
     EditLogicFlow: "编辑编排",
+    EditCode: "修改通用代码",
     appDesigner: {
       website: "门户",
       h5: "移动端",
@@ -80,6 +81,7 @@ export const appDesignerLocales: ILocales = {
     No: "No",
     EditScript: "EditScript",
     EditLogicFlow: "EditLogicFlow",
+    EditCode: "EditCode",
     appDesigner: {
       website: "Website",
       h5: "Mobile H5",

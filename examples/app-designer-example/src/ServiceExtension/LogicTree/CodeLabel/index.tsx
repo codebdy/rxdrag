@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { memo } from "react";
 import { CodeAction } from "./CodeAction";
 import { IExtendsionScript } from "../../../interfaces/extension";
 import { TreeNodeLabel } from "@rxdrag/uml-editor";
+import { useRemoveExtensionScript } from "../../../hooks/useRemoveExtensionScript";
+import { useSaveExtensionScript } from "../../../hooks/useSaveExtensionScript";
+import { NameDialog } from "../dialogs/NameDialog";
+import { useTranslate } from "@rxdrag/react-locales";
 
 export const CodeLabel = memo((
   props: {
@@ -10,20 +14,60 @@ export const CodeLabel = memo((
   }
 ) => {
   const { codeMeta } = props;
-  const [name, setName] = useState(codeMeta.name);
+  const [openEdit, setOpenEdit] = useState<boolean>()
+  const [confirmOpen, setConfirmOpen] = useState<boolean>()
 
-  useEffect(() => {
-    setName(codeMeta.name)
-  }, [codeMeta])
+  const t = useTranslate()
 
+  const [remove, { loading: removing }] = useRemoveExtensionScript()
+  const [save, { loading: saving }] = useSaveExtensionScript(
+    {
+      onComplete: () => {
+        setOpenEdit(false)
+      }
+    }
+  )
+
+
+  const handleRemove = useCallback(() => {
+    remove(codeMeta.id)
+  }, [remove, codeMeta.id])
+
+  const handleEditClose = useCallback(() => {
+    setOpenEdit(false)
+  }, [])
+
+  const handleEditConfirm = useCallback((name: string) => {
+    save({ ...codeMeta, name })
+  }, [save, codeMeta])
+
+  const handleEdit = useCallback(() => {
+    setOpenEdit(true)
+  }, [])
 
   return (
-    <TreeNodeLabel
-      action={
-        <CodeAction code={codeMeta} />
-      }
-    >
-      <div>{name}</div>
-    </TreeNodeLabel>
+    <>
+      <TreeNodeLabel
+        fixedAction={confirmOpen || removing}
+        action={
+          <CodeAction
+            onConfirmOpenChange={setConfirmOpen}
+            onRemove={handleRemove}
+            removing={removing}
+            onEdit={handleEdit}
+          />
+        }
+      >
+        <div>{codeMeta.name}</div>
+      </TreeNodeLabel>
+      {openEdit && <NameDialog
+        name={codeMeta.name}
+        saving={saving}
+        open={openEdit}
+        title={t("EditCode")}
+        onClose={handleEditClose}
+        onConfirm={handleEditConfirm}
+      />}
+    </>
   )
 })

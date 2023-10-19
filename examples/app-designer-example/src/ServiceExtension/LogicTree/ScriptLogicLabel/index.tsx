@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { memo } from "react";
 import { ScriptLogicAction } from "./ScriptLogicAction";
 import { IExtendsionScript } from "../../../interfaces/extension";
@@ -15,7 +15,6 @@ export const ScriptLogicLabel = memo((
 ) => {
   const { scriptMeta } = props;
   const [openEdit, setOpenEdit] = useState<boolean>()
-  const [name, setName] = useState(scriptMeta.name);
   const [confirmOpen, setConfirmOpen] = useState<boolean>()
   const t = useTranslate()
 
@@ -27,10 +26,6 @@ export const ScriptLogicLabel = memo((
       }
     }
   )
-
-  useEffect(() => {
-    setName(scriptMeta.name)
-  }, [scriptMeta])
 
 
   const handleRemove = useCallback(() => {
@@ -62,7 +57,7 @@ export const ScriptLogicLabel = memo((
           />
         }
       >
-        <div>{name}</div>
+        <div>{scriptMeta.name}</div>
       </TreeNodeLabel>
       {openEdit && <ScriptDialog
         script={scriptMeta}
