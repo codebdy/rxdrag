@@ -2,6 +2,10 @@ import { ILocales } from "@rxdrag/locales";
 
 export const appDesignerLocales: ILocales = {
   "zh-CN": {
+    Name: "名称",
+    Cancel: "取消",
+    Confirm: "确认",
+    Required: "必须输入",
     LogicScripts: "脚本扩展",
     GraphLogics: "编排扩展",
     AddQuery: "添加查询",
@@ -16,6 +20,10 @@ export const appDesignerLocales: ILocales = {
     }
   },
   'en-US': {
+    Name: "Name",
+    Cancel: "Cancel",
+    Confirm: "Confirm",
+    Required: "Required",
     LogicScripts: "Script Extensions",
     GraphLogics: "LogicFlow Extensions",
     AddQuery: "Add Query",
