@@ -31,7 +31,6 @@ export const LogicEditor = memo((
       style={{ display: id ? undefined : "none" }}
       materialCategories={backendActivityMaterialCategories}
       value={inputValue}
-      toolbox={false}
       toolbar={<Toolbar
         title={
           <>
