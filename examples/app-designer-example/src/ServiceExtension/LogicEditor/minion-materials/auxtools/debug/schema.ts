@@ -10,15 +10,12 @@ export const debugSchema: INodeSchema = {
       props: {
         label: "$tip",
       },
+      "x-field": {
+        name: "config.tip",
+      },
       children: [
         {
           componentName: "Input",
-          "x-field": {
-            name: "config.tip",
-            params: {
-              withBind: true,
-            }
-          },
         }
       ]
     },    
@@ -27,16 +24,12 @@ export const debugSchema: INodeSchema = {
       props: {
         label: "$close",
       },
+      "x-field": {
+        name: `config.closed`,
+      },
       children: [
         {
           componentName: "Switch",
-          "x-field": {
-            name: `config.closed`,
-            params: {
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
         }
       ]
     },

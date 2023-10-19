@@ -3,15 +3,12 @@ export const labelSchema = {
   props: {
     label: "$label",
   },
+  "x-field": {
+    name: "label",
+  },
   children: [
     {
       componentName: "Input",
-      "x-field": {
-        name: "label",
-        params: {
-          withBind: true,
-        }
-      },
     }
   ]
 }

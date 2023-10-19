@@ -18,6 +18,7 @@ import { fxFlowMaterial } from "./LogicEditor/minion-materials/fxFlow"
 import _ from "lodash"
 import { appDesignerLocales } from "../locales"
 import { LogicEditor } from "./LogicEditor"
+import { Fieldy } from "@rxdrag/react-fieldy"
 
 const Container = styled.div`
   flex: 1;
@@ -64,30 +65,32 @@ export const ServiceExtension = memo(() => {
   }, [])
 
   return (
-    <LogicFlowEditorAntd5Scope
-      themMode={themMode}
-      token={token}
-      materials={materials}
-      locales={locales}
-      logicFlowContext={logicFlowContextParam}
-    >
-      <MetaContext.Provider value={meta?.publishedContent}>
-        <Container>
-          <LeftColumn minWidth={50} maxWidth={500} width={260}>
-            <div className="model-tree-shell">
-              <LogicTree
-                flows={flows}
-                selectedScript={selectedScript}
-                selectedLogicFlow={selectedLogicFlow}
-                onSelectLogicFlow={setSelectedLogicFlow}
-                onSelectScript={setSelectedScript}
-              />
-            </div>
-          </LeftColumn>
-          <ScriptEditor id={selectedScript} />
-          <LogicEditor id={selectedLogicFlow} />
-        </Container>
-      </MetaContext.Provider>
-    </LogicFlowEditorAntd5Scope>
+    <Fieldy>
+      <LogicFlowEditorAntd5Scope
+        themMode={themMode}
+        token={token}
+        materials={materials}
+        locales={locales}
+        logicFlowContext={logicFlowContextParam}
+      >
+        <MetaContext.Provider value={meta?.publishedContent}>
+          <Container>
+            <LeftColumn minWidth={50} maxWidth={500} width={260}>
+              <div className="model-tree-shell">
+                <LogicTree
+                  flows={flows}
+                  selectedScript={selectedScript}
+                  selectedLogicFlow={selectedLogicFlow}
+                  onSelectLogicFlow={setSelectedLogicFlow}
+                  onSelectScript={setSelectedScript}
+                />
+              </div>
+            </LeftColumn>
+            <ScriptEditor id={selectedScript} />
+            <LogicEditor id={selectedLogicFlow} />
+          </Container>
+        </MetaContext.Provider>
+      </LogicFlowEditorAntd5Scope>
+    </Fieldy>
   )
 })
