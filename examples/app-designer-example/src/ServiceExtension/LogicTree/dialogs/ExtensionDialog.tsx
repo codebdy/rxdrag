@@ -46,6 +46,7 @@ export const ExtensionDialog = memo((
       onOk={handleConfirm}
       okButtonProps={{ loading: saving }}
       centered
+      forceRender
       wrapProps={
         {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any

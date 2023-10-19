@@ -41,6 +41,7 @@ export const NameDialog = memo((
       onOk={handleConfirm}
       okButtonProps={{ loading: saving }}
       centered
+      forceRender
       wrapProps={
         {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -51,7 +52,6 @@ export const NameDialog = memo((
       }
     >
       <Form
-        name="editName"
         labelWrap
         initialValues={{ name }}
         labelCol={{ span: 5 }}

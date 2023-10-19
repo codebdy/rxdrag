@@ -1,12 +1,14 @@
 import { LogicMetaEditorAntd5Inner } from "@rxdrag/logicflow-editor-antd5"
-import { memo, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
 import { backendActivityMaterialCategories } from "./minion-materials"
-import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
+import { ILogicMetas, useChangeFlag } from "@rxdrag/minions-logicflow-editor"
 import { ID } from "@rxdrag/shared"
 import { useQueryExtensionLogicFlow } from "../../hooks/useQueryExtensionLogicFlow"
 import { Button } from "antd"
 import { Toolbar } from "./Toolbar"
+import { useTranslate } from "@rxdrag/react-locales"
+import { useSaveExtensionLogicFlow } from "../../hooks/useSaveExtensionLogicFlow"
 
 const SaveButton = styled(Button)`
   margin-left: 32px;
@@ -24,8 +26,30 @@ export const LogicEditor = memo((
 ) => {
   const { id } = props;
   const [inputValue, setInputValue] = useState<ILogicMetas>(emptyValue)
+  const { changeFlag, setChangeFlag } = useChangeFlag()
+
+  const t = useTranslate()
+  const [save, { loading: saving }] = useSaveExtensionLogicFlow({
+    onComplete: () => {
+      setChangeFlag(0)
+    }
+  })
+
   const { flow } = useQueryExtensionLogicFlow(id || "")
-  console.log("===>flow", flow, id)
+
+  useEffect(() => {
+    setInputValue(flow?.logicMetas || emptyValue)
+  }, [flow?.logicMetas])
+
+  const handleSave = useCallback(() => {
+    if (flow) {
+      save({
+        ...flow,
+        logicMetas: inputValue
+      })
+    }
+  }, [flow, inputValue, save])
+
   return (
     <LogicMetaEditorAntd5Inner
       style={{ display: id ? undefined : "none" }}
@@ -40,10 +64,10 @@ export const LogicEditor = memo((
       >
         <SaveButton
           type="primary"
-        //disabled={!changeFlag}
-        //loading={saving}
-        //onClick={handleSave}
-        >保存</SaveButton>
+          disabled={!changeFlag}
+          loading={saving}
+          onClick={handleSave}
+        >{t("Save")}</SaveButton>
       </Toolbar>}
 
       onChange={setInputValue}
