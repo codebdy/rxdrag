@@ -1,27 +1,31 @@
 import { useTranslate } from "@rxdrag/react-locales";
 import { Form, Input, Modal } from "antd"
 import { memo, useCallback, useEffect } from "react"
+import { IExtendsionScript } from "../../../interfaces/extension";
 
-export const NameDialog = memo((
+export const ScriptDialog = memo((
   props: {
     title?: string,
     open?: boolean,
-    name?: string,
+    script?: IExtendsionScript,
     onClose: () => void,
-    onConfirm: (name?: string) => void,
+    onConfirm: (script: IExtendsionScript) => void,
     saving?: boolean,
   }
 ) => {
-  const { title, open, name, onClose, onConfirm, saving } = props;
-  const [form] = Form.useForm<{ name: string }>();
+  const { title, open, script, onClose, onConfirm, saving } = props;
+  const [form] = Form.useForm<IExtendsionScript>();
   useEffect(() => {
-    form.setFieldsValue({ name })
-  }, [form, name])
+    if (script) {
+      form.setFieldsValue(script)
+    }
+
+  }, [form, script])
   const t = useTranslate();
 
   const handleConfirm = useCallback(() => {
     form.validateFields().then(changeValues => {
-      onConfirm(changeValues?.name)
+      onConfirm(changeValues)
       form.resetFields()
     })
   }, [form, onConfirm])
@@ -51,9 +55,9 @@ export const NameDialog = memo((
       }
     >
       <Form
-        name="editName"
+        name="editScript"
         labelWrap
-        initialValues={{ name }}
+        initialValues={script || { title: "", description: "" }}
         labelCol={{ span: 5 }}
         wrapperCol={{ span: 16 }}
         form={form}

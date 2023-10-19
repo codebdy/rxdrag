@@ -5,17 +5,21 @@ import React, { memo, useCallback, useState } from "react"
 import { NameDialog } from "./dialogs/NameDialog";
 import { useSaveExtensionScript } from "../../hooks/useSaveExtensionScript";
 import { createId } from "@rxdrag/shared";
-import { ExtensionType } from "../../interfaces/extension";
+import { ExtensionType, IExtendsionScript } from "../../interfaces/extension";
+import { ScriptDialog } from "./dialogs/ScriptDialog";
 
 export const ScriptLogicRootAction = memo(() => {
-  const [codeOpen, setCodeOpen] = useState<boolean>()
+  const [codeOpen, setCodeOpen] = useState<boolean>();
+  const [dialogTitle, setDialogTitle] = useState("")
+  const [tempScript, setTempScript] = useState<IExtendsionScript>()
   const handleNoneAction = useCallback((e: React.MouseEvent) => {
     e.stopPropagation()
   }, [])
 
-  const [addCode, { loading: codeSaving }] = useSaveExtensionScript({
+  const [saveCode, { loading: codeSaving }] = useSaveExtensionScript({
     onComplete: () => {
       setCodeOpen(false)
+      setTempScript(undefined)
     }
   })
 
@@ -27,13 +31,44 @@ export const ScriptLogicRootAction = memo(() => {
 
   const handleAddCodeConfirm = useCallback((name?: string) => {
     if (name) {
-      addCode({
+      saveCode({
         id: createId(),
         name,
         operateType: ExtensionType.SubMethod
       })
     }
-  }, [addCode])
+  }, [saveCode])
+
+  const handleAddQuery = useCallback(() => {
+    setDialogTitle(t("AddQuery"))
+    setTempScript({
+      id: createId(),
+      name: "",
+      operateType: ExtensionType.Query
+    })
+  }, [t])
+
+  const handleAddMutation = useCallback(() => {
+    setDialogTitle(t("AddMutation"))
+    setTempScript({
+      id: createId(),
+      name: "",
+      operateType: ExtensionType.Mutation
+    })
+  }, [t])
+
+  const handleScriptClose = useCallback(() => {
+    setTempScript(undefined)
+  }, [])
+
+  const handleConfirmScript = useCallback((script: IExtendsionScript) => {
+    saveCode({
+      ...tempScript,
+      ...script
+    })
+    setTempScript(undefined)
+  }, [saveCode, tempScript])
+
 
   return (
     <>
@@ -42,16 +77,12 @@ export const ScriptLogicRootAction = memo(() => {
           {
             label: t("AddQuery"),
             key: 'addQueryScript',
-            onClick: e => {
-              //createScriptLogic(MethodOperateType.Query);
-            },
+            onClick: handleAddQuery,
           },
           {
             label: t("AddMutation"),
             key: 'addMutationScript',
-            onClick: e => {
-              //createScriptLogic(MethodOperateType.Mutation);
-            },
+            onClick: handleAddMutation,
           },
           {
             label: t("AddCode"),
@@ -69,6 +100,14 @@ export const ScriptLogicRootAction = memo(() => {
         open={codeOpen}
         onClose={handleAddCodeClose}
         onConfirm={handleAddCodeConfirm}
+        saving={codeSaving}
+      />
+      <ScriptDialog
+        open={!!tempScript}
+        title={dialogTitle}
+        script={tempScript}
+        onClose={handleScriptClose}
+        onConfirm={handleConfirmScript}
         saving={codeSaving}
       />
     </>
