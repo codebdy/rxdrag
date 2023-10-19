@@ -1,7 +1,8 @@
 import { useTranslate } from "@rxdrag/react-locales";
-import { Form, Input, Modal } from "antd"
+import { Form, Modal } from "antd"
 import { memo, useCallback, useEffect } from "react"
 import { IExtendsionScript } from "../../../interfaces/extension";
+import { MethodFormCommonItems } from "./MethodFormCommonItems";
 
 export const ScriptDialog = memo((
   props: {
@@ -63,13 +64,9 @@ export const ScriptDialog = memo((
         form={form}
         autoComplete="off"
       >
-        <Form.Item
-          label={t("Name")}
-          name="name"
-          rules={[{ required: true, message: t("Required") }]}
-        >
-          <Input />
-        </Form.Item>
+        {
+          script && <MethodFormCommonItems method={script} />
+        }
       </Form>
     </Modal>
   )

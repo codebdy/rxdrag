@@ -2,6 +2,8 @@ import { ResizableColumn } from "@rxdrag/react-shared"
 import { memo } from "react"
 import styled from "styled-components"
 import { LogicTree } from "./LogicTree"
+import { MetaContext } from "./contexts"
+import { useQueryAppMeta } from "../hooks/useQueryAppMeta"
 
 const Container = styled.div`
   flex: 1;
@@ -25,13 +27,16 @@ const LeftColumn = styled(ResizableColumn)`
 `
 
 export const ServiceExtension = memo(() => {
+  const { meta } = useQueryAppMeta("app1")
   return (
-    <Container>
-      <LeftColumn minWidth={50} maxWidth={500} width={260}>
-        <div className="model-tree-shell">
-          <LogicTree />
-        </div>
-      </LeftColumn>
-    </Container>
+    <MetaContext.Provider value={meta?.publishedContent}>
+      <Container>
+        <LeftColumn minWidth={50} maxWidth={500} width={260}>
+          <div className="model-tree-shell">
+            <LogicTree />
+          </div>
+        </LeftColumn>
+      </Container>
+    </MetaContext.Provider>
   )
 })
