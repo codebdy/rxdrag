@@ -6,7 +6,7 @@ import { useQueryAppExtensionScripts } from "../../../hooks/useQueryAppExtension
 import { OperateType, IExtendsionScript } from "../../../interfaces/extension";
 import { CodeLabel } from "../CodeLabel";
 import { ScriptLogicLabel } from "../ScriptLogicLabel";
-import { ExtentionType } from "../types";
+import { ExtensionType } from "../types";
 
 export function useGetScriptNodes() {
   const t = useTranslate();
@@ -18,7 +18,7 @@ export function useGetScriptNodes() {
       key: codeMeta.id,
       isLeaf: true,
       icon: <FileOutlined />,
-      type: ExtentionType.script,
+      type: ExtensionType.script,
     }
   }, [])
 
@@ -28,7 +28,7 @@ export function useGetScriptNodes() {
       key: scriptMeta.id,
       isLeaf: true,
       icon: <FunctionOutlined />,
-      type: ExtentionType.script,
+      type: ExtensionType.script,
     }
   }, [])
   const getCodeNodes = useCallback((key: string) => {

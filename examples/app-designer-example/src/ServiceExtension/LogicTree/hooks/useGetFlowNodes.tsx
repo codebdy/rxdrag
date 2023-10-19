@@ -5,7 +5,7 @@ import { useTranslate } from "@rxdrag/react-locales";
 import { LogicFlowLabel } from "../LogicFlowLabel";
 import { OperateType, IExtensionLogicFlow } from "../../../interfaces/extension";
 import { useQueryAppExtensionLogicFlows } from "../../../hooks/useQueryAppExtensionLogicFlows";
-import { ExtentionType } from "../types";
+import { ExtensionType } from "../types";
 import { SubFlowLabel } from "../SubFlowLabel";
 
 export function useGetFlowNodes() {
@@ -17,7 +17,7 @@ export function useGetFlowNodes() {
       key: codeMeta.id,
       isLeaf: true,
       icon: <FunctionOutlined />,
-      type: ExtentionType.script,
+      type: ExtensionType.logicflow,
     }
   }, [])
 
@@ -27,7 +27,7 @@ export function useGetFlowNodes() {
       key: graphMeta.id,
       isLeaf: true,
       icon: <FunctionOutlined />,
-      type: ExtentionType.logicflow
+      type: ExtensionType.logicflow
     }
   }, [])
 

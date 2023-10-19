@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { memo, useCallback, useMemo, useState, } from "react";
 import { Tree } from "antd";
-import { DataNode } from "antd/es/tree";
+import { DataNode, EventDataNode } from "antd/es/tree";
 import styled from "styled-components";
 import { CodeOutlined } from "@ant-design/icons";
 import { SvgIcon } from "@rxdrag/react-antd-shell";
@@ -13,6 +13,7 @@ import { ID } from "@rxdrag/shared";
 import { logicflowIcon } from "@rxdrag/react-shared";
 import { useGetFlowNodes } from "./hooks/useGetFlowNodes";
 import { useGetScriptNodes } from "./hooks/useGetScriptNodes";
+import { ExtensionType } from "./types";
 const { DirectoryTree } = Tree;
 
 const Container = styled.div`
@@ -35,7 +36,8 @@ const StyledDirectoryTree = styled(DirectoryTree)`
 `
 
 export const LogicTree = memo(() => {
-  const [selected, setSelected] = useState<ID>();
+  const [selectedLogicFlow, setSelectedLogicFlow] = useState<ID>();
+  const [selectedScript, setSelectedScript] = useState<ID>();
 
   const t = useTranslate();
 
@@ -74,10 +76,13 @@ export const LogicTree = memo(() => {
     ]
   }, [getMetaLogicNodes, getScriptLogicNodes, t]);
 
-  const handleSelect = useCallback((keys: any[], info: any) => {
-    console.log("===>info", info)
-    for (const id of keys) {
-      setSelected(id)
+  const handleSelect = useCallback((keys: any[], info: { node: EventDataNode<any | DataNode> }) => {
+    if (info?.node?.type === ExtensionType.script) {
+      setSelectedScript(info?.node?.key)
+      setSelectedLogicFlow(undefined)
+    } else if (info?.node?.type === ExtensionType.logicflow) {
+      setSelectedLogicFlow(info?.node?.key)
+      setSelectedScript(undefined)
     }
   }, [])
 
@@ -85,7 +90,7 @@ export const LogicTree = memo(() => {
     <Container>
       <StyledDirectoryTree
         defaultExpandedKeys={["0"]}
-        selectedKeys={[selected || ""]}
+        selectedKeys={[selectedLogicFlow || selectedScript || ""]}
         onSelect={handleSelect}
         treeData={treeData}
       />
