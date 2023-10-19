@@ -39,8 +39,7 @@ export const GraphLogicRootAction = memo(() => {
         },
       ]
     }} trigger={['click']}>
-      <Button shape='circle' type="text" size='small' onClick={handleNoneAction}>
-        <MoreOutlined />
+      <Button shape='circle' type="text" size='small' onClick={handleNoneAction} icon={<MoreOutlined />}>
       </Button>
     </Dropdown>
   )

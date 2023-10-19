@@ -22,9 +22,8 @@ export const LogicFlowAction = memo((
       shape='circle'
       size='small'
       //onClick={handleDelete}
-      style={{ color: "inherit" }}
+      icon = {<DeleteOutlined />}
     >
-      <DeleteOutlined />
     </Button>
   )
 })

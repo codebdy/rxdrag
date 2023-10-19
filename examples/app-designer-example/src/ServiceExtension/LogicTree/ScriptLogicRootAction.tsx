@@ -69,9 +69,7 @@ export const ScriptLogicRootAction = memo(() => {
       ...tempScript,
       ...script,
     })
-    setTempScript(undefined)
   }, [saveCode, tempScript])
-
 
   return (
     <>
@@ -94,8 +92,13 @@ export const ScriptLogicRootAction = memo(() => {
           },
         ]
       }} trigger={['click']}>
-        <Button shape='circle' type="text" size='small' onClick={handleNoneAction}>
-          <MoreOutlined />
+        <Button
+          shape='circle'
+          type="text"
+          size='small'
+          onClick={handleNoneAction}
+          icon={<MoreOutlined />}
+        >
         </Button>
       </Dropdown>
       <NameDialog

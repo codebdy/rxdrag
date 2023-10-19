@@ -31,6 +31,10 @@ export const appDesignerLocales: ILocales = {
     AddCode: "添加代码",
     SubFlows: "子编排",
     Codes: "通用脚本",
+    DeleteConfirm: "删除确认",
+    DeleteConfirmDescription: "删除后将不可恢复，您确定要删除吗？",
+    Yes: "是",
+    No: "否",
     appDesigner: {
       website: "门户",
       h5: "移动端",
@@ -68,6 +72,10 @@ export const appDesignerLocales: ILocales = {
     AddCode: "Add Code",
     SubFlows: "Sub flows",
     Codes: "Codes",
+    DeleteConfirm: "Delete Confirm",
+    DeleteConfirmDescription: "Are you sure to delete?",
+    Yes: "Yes",
+    No: "No",
     appDesigner: {
       website: "Website",
       h5: "Mobile H5",

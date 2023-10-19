@@ -1,30 +1,46 @@
-import { DeleteOutlined } from "@ant-design/icons";
-import { Button } from "antd";
-import React, { memo, useCallback } from "react"
-import { IExtensionLogicFlow } from "../../../interfaces/extension";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Button, Popconfirm } from "antd";
+import { memo } from "react"
+import { useTranslate } from "@rxdrag/react-locales";
 
 export const ScriptLogicAction = memo((
   props: {
-    scriptLogic: IExtensionLogicFlow,
+    removing?: boolean,
+    onConfirmOpenChange?: (open: boolean) => void,
+    onRemove?: () => void
+    onEdit?: () => void
   }
 ) => {
-  const { scriptLogic } = props;
-  // const metaId = useMetaId();
-  // const deleteOrches = useDeleteScriptLogic(metaId)
-
-  // const handleDelete = useCallback(() => {
-  //   deleteOrches(scriptLogic.uuid)
-  // }, [deleteOrches, scriptLogic.uuid]);
+  const { removing, onEdit, onRemove, onConfirmOpenChange } = props;
+  const t = useTranslate()
 
   return (
-    <Button
-      type="text"
-      shape='circle'
-      size='small'
-      //onClick={handleDelete}
-      style={{ color: "inherit" }}
-    >
-      <DeleteOutlined />
-    </Button>
+    <>
+      <Button
+        type="text"
+        shape='circle'
+        size='small'
+        onClick={onEdit}
+        icon = {<EditOutlined />}
+      >        
+      </Button>
+      <Popconfirm
+        title={t("DeleteConfirm")}
+        description={t("DeleteConfirmDescription")}
+        onOpenChange={onConfirmOpenChange}
+        onConfirm={onRemove}
+        okText={t("Yes")}
+        cancelText={t("No")}
+      >
+        <Button
+          type="text"
+          shape='circle'
+          size='small'
+          loading={removing}
+          icon = {<DeleteOutlined />}
+        >          
+        </Button>
+      </Popconfirm>
+    </>
   )
 })

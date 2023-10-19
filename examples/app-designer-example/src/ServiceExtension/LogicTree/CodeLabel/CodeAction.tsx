@@ -1,4 +1,4 @@
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import React, { memo, useCallback } from "react"
 import { IExtendsionScript } from "../../../interfaces/extension";
@@ -16,14 +16,24 @@ export const CodeAction = memo((
   // }, [deleteCodes, code.uuid]);
 
   return (
-    <Button
-      type="text"
-      shape='circle'
-      size='small'
+    <>
+      <Button
+        type="text"
+        shape='circle'
+        size='small'
       //onClick={handleDelete}
-      style={{ color: "inherit" }}
-    >
-      <DeleteOutlined />
-    </Button>
+      >
+        <EditOutlined />
+      </Button>
+      <Button
+        type="text"
+        shape='circle'
+        size='small'
+        //onClick={handleDelete}
+        style={{ color: "inherit" }}
+      >
+        <DeleteOutlined />
+      </Button>
+    </>
   )
 })
