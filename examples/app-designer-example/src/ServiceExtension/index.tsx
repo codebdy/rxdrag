@@ -1,9 +1,11 @@
 import { ResizableColumn } from "@rxdrag/react-shared"
-import { memo } from "react"
+import { memo, useState } from "react"
 import styled from "styled-components"
 import { LogicTree } from "./LogicTree"
 import { MetaContext } from "./contexts"
 import { useQueryAppMeta } from "../hooks/useQueryAppMeta"
+import { ScriptEditor } from "./ScriptEditor"
+import { ID } from "@rxdrag/shared"
 
 const Container = styled.div`
   flex: 1;
@@ -28,15 +30,25 @@ const LeftColumn = styled(ResizableColumn)`
 `
 
 export const ServiceExtension = memo(() => {
+  const [selectedLogicFlow, setSelectedLogicFlow] = useState<ID>();
+  const [selectedScript, setSelectedScript] = useState<ID>();
+
   const { meta } = useQueryAppMeta("app1")
+
   return (
     <MetaContext.Provider value={meta?.publishedContent}>
       <Container>
         <LeftColumn minWidth={50} maxWidth={500} width={260}>
           <div className="model-tree-shell">
-            <LogicTree />
+            <LogicTree
+              selectedScript={selectedScript}
+              selectedLogicFlow={selectedLogicFlow}
+              onSelectLogicFlow={setSelectedLogicFlow}
+              onSelectScript={setSelectedScript}
+            />
           </div>
         </LeftColumn>
+        <ScriptEditor id={selectedScript} />
       </Container>
     </MetaContext.Provider>
   )

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { memo, useCallback, useMemo, useState, } from "react";
+import { memo, useCallback, useMemo, } from "react";
 import { Tree } from "antd";
 import { DataNode, EventDataNode } from "antd/es/tree";
 import styled from "styled-components";
@@ -35,10 +35,15 @@ const StyledDirectoryTree = styled(DirectoryTree)`
   background-color: transparent;
 `
 
-export const LogicTree = memo(() => {
-  const [selectedLogicFlow, setSelectedLogicFlow] = useState<ID>();
-  const [selectedScript, setSelectedScript] = useState<ID>();
-
+export const LogicTree = memo((
+  props: {
+    selectedLogicFlow?: ID,
+    selectedScript?: ID,
+    onSelectLogicFlow?: (selectedLogicFlow?: ID) => void,
+    onSelectScript?: (selectedScript?: ID) => void,
+  }
+) => {
+  const { selectedLogicFlow, selectedScript, onSelectLogicFlow, onSelectScript } = props;
   const t = useTranslate();
 
   const getScriptLogicNodes = useGetScriptNodes()
@@ -78,13 +83,13 @@ export const LogicTree = memo(() => {
 
   const handleSelect = useCallback((keys: any[], info: { node: EventDataNode<any | DataNode> }) => {
     if (info?.node?.type === ExtensionType.script) {
-      setSelectedScript(info?.node?.key)
-      setSelectedLogicFlow(undefined)
+      onSelectScript?.(info?.node?.key)
+      onSelectLogicFlow?.(undefined)
     } else if (info?.node?.type === ExtensionType.logicflow) {
-      setSelectedLogicFlow(info?.node?.key)
-      setSelectedScript(undefined)
+      onSelectLogicFlow?.(info?.node?.key)
+      onSelectScript?.(undefined)
     }
-  }, [])
+  }, [onSelectLogicFlow, onSelectScript])
 
   return (
     <Container>
