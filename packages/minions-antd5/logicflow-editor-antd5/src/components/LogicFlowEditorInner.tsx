@@ -33,6 +33,7 @@ const OperateArea = styled.div`
 const RightArea = styled(ResizableColumn)`
   width: 280px;
   border-left: ${props => props.theme.token?.colorBorderSecondary}  solid 1px;
+  background-color: ${props => props.theme.token?.colorBgBase};
   display: flex;
   flex-flow: column;
 `

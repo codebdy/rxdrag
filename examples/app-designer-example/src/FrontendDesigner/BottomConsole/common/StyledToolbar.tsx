@@ -6,4 +6,6 @@ export const StyledToolbar = styled.div`
   height: 40px;
   align-items: center;
   width: 100%;
+  border-bottom: solid 1px ${props => props.theme?.token?.colorBorderSecondary};
+  box-sizing: border-box;
 `;
