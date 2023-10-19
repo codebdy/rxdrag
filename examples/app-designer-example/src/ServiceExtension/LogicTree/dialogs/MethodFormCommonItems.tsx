@@ -20,7 +20,7 @@ export const MethodFormCommonItems = memo((
         label={t("Name")}
         name="name"
         validateStatus={nameError ? "error" : undefined}
-        help={nameError}
+        rules={[{ required: true, message: t("Required") }]}
       >
         <Input />
       </Form.Item>
