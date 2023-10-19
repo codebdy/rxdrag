@@ -1,6 +1,3 @@
-import { useMetaId } from "UmlEditor/hooks/useMetaId";
-import { useSelectedGraphLogic } from "UmlEditor/hooks/useSelectedGraphLogic";
-import { useSubLogicFlows } from "UmlEditor/hooks/useSubLogicFlows";
 import { Select } from "antd";
 import { memo, useCallback } from "react"
 

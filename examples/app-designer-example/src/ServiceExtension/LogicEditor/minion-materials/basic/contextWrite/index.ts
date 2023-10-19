@@ -1,9 +1,9 @@
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { contextWriteSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { contextWriteIcon } from "../../icons";
 import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "../../consts";
-import { IRxDragActivityMaterial } from "../../interfaces";
+import { IRxDragActivityMaterial } from "@rxdrag/minions-react-materials";
 
 export interface IContextVariableConfig {
   name?: string,
@@ -16,19 +16,19 @@ export const contextWriteMaterial: IRxDragActivityMaterial<IContextVariableConfi
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_INPUT_NAME,
         label: "input",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: "value",
         label: "$value",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_OUTPUT_NAME,
         label: "",
       },

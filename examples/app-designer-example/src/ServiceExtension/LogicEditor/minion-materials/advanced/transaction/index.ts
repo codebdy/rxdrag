@@ -1,8 +1,8 @@
 import { NodeType } from "@rxdrag/minions-schema";
-import { IRxDragActivityMaterial } from "../../interfaces";
 import { transactionIcon } from "../../icons";
 import { transactionSchema } from "./schema";
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
+import { IRxDragActivityMaterial } from "@rxdrag/minions-react-materials";
 
 export const transactionMaterial: IRxDragActivityMaterial = {
   icon: transactionIcon,
@@ -11,19 +11,19 @@ export const transactionMaterial: IRxDragActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "input",
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "finished",
         label: "$finished",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: "rollback",
         label: "$rollback",
       },

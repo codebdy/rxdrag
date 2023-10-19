@@ -5,7 +5,7 @@ import ProcessForm from "./ProcessForm";
 import { useShowError } from "hooks/useShowError";
 import { useTranslation } from "react-i18next";
 import { IPageCategory } from "model";
-import { createUuid } from "shared";
+import { createId } from "shared";
 import { useUpsertProcess } from "../hooks/useUpsertProcess";
 
 const empertyBpmn = `
@@ -46,7 +46,7 @@ const ProcessModal = memo((
 
   const handleConfirm = useCallback(() => {
     form.validateFields().then((values: any) => {
-      const uuid = createUuid();
+      const uuid = createId();
       const xml = empertyBpmn.replace("$processId", "Process_" + uuid)
       if (values.categoryUuid) {
         upsert({ name: values.name, uuid, xml, categoryUuid: values.categoryUuid });

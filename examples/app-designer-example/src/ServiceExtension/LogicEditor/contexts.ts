@@ -1,5 +1,5 @@
-import { MethodMeta } from "UmlEditor/meta";
+import { IExtensionLogicFlow } from "../../interfaces/extension";
 
 export interface ILogicFlowContext {
-  subLogicFlows: MethodMeta[]
+  subLogicFlows: IExtensionLogicFlow[]
 }
