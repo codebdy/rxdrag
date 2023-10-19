@@ -51,5 +51,5 @@ export interface IExtensionLogicFlow extends IExtension{
 }
 
 export interface IExtendsionScript extends IExtension{
-  logicScript?: string;
+  code?: string;
 }
