@@ -1,8 +1,7 @@
-import { Form, FormInstance } from "antd";
-import { MultiLangInput } from "components/MultiLangInput";
+import { useTranslate } from "@rxdrag/react-locales";
+import { Form, FormInstance, Input } from "antd";
 import React, { useCallback } from "react";
 import { memo } from "react";
-import { useTranslation } from "react-i18next";
 
 const CategoryForm = memo((
   props: {
@@ -11,7 +10,7 @@ const CategoryForm = memo((
   }
 ) => {
   const { name, form } = props;
-  const { t } = useTranslation();
+  const t = useTranslate();
   const handleKeyUp = useCallback((event: React.KeyboardEvent<HTMLElement>) => {
     event.stopPropagation();
   }, [])
@@ -31,7 +30,7 @@ const CategoryForm = memo((
         name="name"
         rules={[{ required: true, message: t("Required") }]}
       >
-        <MultiLangInput title={t("AppBpmn.CagegoryName")} />
+        <Input  />
       </Form.Item>
     </Form>
   )

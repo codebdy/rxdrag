@@ -1,10 +1,7 @@
 import { MoreOutlined, FileAddOutlined, EditOutlined, DeleteOutlined, LoadingOutlined } from "@ant-design/icons";
+import { useTranslate } from "@rxdrag/react-locales";
 import { Dropdown, Button } from "antd";
 import React, { memo, useCallback } from "react"
-import { useShowError } from "hooks/useShowError";
-import { useTranslation } from "react-i18next";
-import { ID } from "shared";
-import { useDeleteCategory } from "../hooks/useDeleteCategory";
 
 const CategoryActions = memo((
   props: {
@@ -15,16 +12,14 @@ const CategoryActions = memo((
   }
 ) => {
   const { id, onVisibleChange, onEdit, onAddPage } = props;
-  const { t } = useTranslation();
+  const  t  = useTranslate();
 
-  const [remove, { loading, error }] = useDeleteCategory({
+  const [remove, { loading }] = useDeleteCategory({
     onCompleted: () => {
       onVisibleChange(false);
     }
   });
-
-  useShowError(error);
-
+ 
   const handleAdd = useCallback(() => {
     onVisibleChange(false);
     onAddPage()

@@ -37,7 +37,9 @@
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "antd": "^5.9.2",
+    "bpmn-js": "^10.0.0",
     "classnames": "^2.3.2",
+    "diagram-js-minimap": "^3.0.0",
     "styled-components": "^5.3.9",
     "recoil": "^0.7.4"
   }

@@ -29,7 +29,6 @@ import zeebeExtension from './resources/zeebe.json';
 import { DeplayButton } from "./ToolbarActions/DeplayButton";
 import { XmlEditor } from "./XmlEditor";
 import { useQueryProcesses } from "./hooks/useQueryProcesses";
-import ProcessList from "./ProcessList";
 import { useQueryCagegories } from "./hooks/useQueryCagegories";
 
 export const AppBpmn = memo((props) => {
