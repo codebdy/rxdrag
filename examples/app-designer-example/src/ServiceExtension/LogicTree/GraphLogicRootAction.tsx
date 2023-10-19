@@ -17,22 +17,22 @@ export const GraphLogicRootAction = memo(() => {
     <Dropdown menu={{
       items: [
         {
-          label: t("UmlEditor.AddQueryGraph"),
-          key: 'query',
+          label: t("AddQuery"),
+          key: 'addLogicQuery',
           onClick: e => {
             //addGraphLogic(MethodOperateType.Query);
           },
         },
         {
-          label: t("UmlEditor.AddMutationGraph"),
-          key: 'mutation',
+          label: t("AddMutation"),
+          key: 'addLogicMutation',
           onClick: e => {
             //addGraphLogic(MethodOperateType.Mutation);
           },
         },
         {
-          label: t("UmlEditor.AddSubLogic"),
-          key: 'submethod',
+          label: t("AddSubLogic"),
+          key: 'addSubLogic',
           onClick: e => {
             //addGraphLogic(MethodOperateType.SubMethod);
           },

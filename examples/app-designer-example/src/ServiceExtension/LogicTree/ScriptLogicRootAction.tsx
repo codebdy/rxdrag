@@ -14,24 +14,24 @@ export const ScriptLogicRootAction = memo(() => {
     <Dropdown menu={{
       items: [
         {
-          label: t("UmlEditor.AddCode"),
-          key: '11',
-          onClick: e => {
-            //createCode();
-          },
-        },
-        {
-          label: t("UmlEditor.AddQueryScript"),
-          key: '12',
+          label: t("AddQuery"),
+          key: 'addQueryScript',
           onClick: e => {
             //createScriptLogic(MethodOperateType.Query);
           },
         },
         {
-          label: t("UmlEditor.AddMutationScript"),
-          key: '13',
+          label: t("AddMutation"),
+          key: 'addMutationScript',
           onClick: e => {
             //createScriptLogic(MethodOperateType.Mutation);
+          },
+        },
+        {
+          label: t("AddCode"),
+          key: 'addCode',
+          onClick: e => {
+            //createCode();
           },
         },
       ]
