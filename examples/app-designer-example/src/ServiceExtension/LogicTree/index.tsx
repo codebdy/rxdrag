@@ -5,7 +5,7 @@ import { DataNode } from "antd/es/tree";
 import styled from "styled-components";
 import { CodeOutlined } from "@ant-design/icons";
 import { SvgIcon } from "@rxdrag/react-antd-shell";
-import { GraphLogicRootAction } from "./GraphLogicRootAction";
+import { LogicFlowRootAction } from "./LogicFlowRootAction";
 import { ScriptLogicRootAction } from "./ScriptLogicRootAction";
 import { TreeNodeLabel } from "@rxdrag/uml-editor/";
 import { useTranslate } from "@rxdrag/react-locales";
@@ -59,7 +59,7 @@ export const LogicTree = memo(() => {
         {logicflowIcon}
       </SvgIcon>,
       title:
-        <TreeNodeLabel fixedAction action={<GraphLogicRootAction />}>
+        <TreeNodeLabel fixedAction action={<LogicFlowRootAction />}>
           <div>{t("GraphLogics")}</div>
         </TreeNodeLabel>,
       key: "2",

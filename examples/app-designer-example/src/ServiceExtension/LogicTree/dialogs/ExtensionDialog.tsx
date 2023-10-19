@@ -1,27 +1,27 @@
 import { useTranslate } from "@rxdrag/react-locales";
 import { Form, Modal } from "antd"
 import { memo, useCallback, useEffect } from "react"
-import { IExtendsionScript } from "../../../interfaces/extension";
+import { IExtension } from "../../../interfaces/extension";
 import { MethodFormCommonItems } from "./MethodFormCommonItems";
 
-export const ScriptDialog = memo((
+export const ExtensionDialog = memo((
   props: {
     title?: string,
     open?: boolean,
-    script?: IExtendsionScript,
+    extension?: IExtension,
     onClose: () => void,
-    onConfirm: (script: IExtendsionScript) => void,
+    onConfirm: (extension: IExtension) => void,
     saving?: boolean,
   }
 ) => {
-  const { title, open, script, onClose, onConfirm, saving } = props;
-  const [form] = Form.useForm<IExtendsionScript>();
+  const { title, open, extension, onClose, onConfirm, saving } = props;
+  const [form] = Form.useForm<IExtension>();
   useEffect(() => {
-    if (script) {
-      form.setFieldsValue(script)
+    if (extension) {
+      form.setFieldsValue(extension)
     }
 
-  }, [form, script])
+  }, [form, extension])
   const t = useTranslate();
 
   const handleConfirm = useCallback(() => {
@@ -58,14 +58,14 @@ export const ScriptDialog = memo((
       <Form
         name="editScript"
         labelWrap
-        initialValues={script || { title: "", description: "" }}
+        initialValues={extension || { title: "", description: "" }}
         labelCol={{ span: 5 }}
         wrapperCol={{ span: 16 }}
         form={form}
         autoComplete="off"
       >
         {
-          script && <MethodFormCommonItems method={script} />
+          extension && <MethodFormCommonItems method={extension} />
         }
       </Form>
     </Modal>

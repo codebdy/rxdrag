@@ -30,7 +30,7 @@ export const appDesignerLocales: ILocales = {
     AddSubLogic: "添加子编排",
     AddCode: "添加代码",
     SubFlows: "子编排",
-    Codes: "通用脚本",
+    Codes: "公共代码",
     DeleteConfirm: "删除确认",
     DeleteConfirmDescription: "删除后将不可恢复，您确定要删除吗？",
     Yes: "是",
@@ -38,6 +38,7 @@ export const appDesignerLocales: ILocales = {
     EditScript: "编辑脚本",
     EditLogicFlow: "编辑编排",
     EditCode: "修改通用代码",
+    AddSubFlow: "添加子编排",
     appDesigner: {
       website: "门户",
       h5: "移动端",
@@ -82,6 +83,7 @@ export const appDesignerLocales: ILocales = {
     EditScript: "EditScript",
     EditLogicFlow: "EditLogicFlow",
     EditCode: "EditCode",
+    AddSubFlow: "Add SubFlow",
     appDesigner: {
       website: "Website",
       h5: "Mobile H5",

@@ -49,6 +49,9 @@ export function useGetFlowNodes() {
     const mutationNodes = getMutationNodes(t("Mutation"), "graph-mutations");
     const subNodes = getSubNodes(t("SubFlows"), "graph-subs");
 
+    if (subNodes?.children?.length) {
+      logicChildren.push(subNodes)
+    }
     if (queryNodes?.children?.length) {
       logicChildren.push(queryNodes)
     }
@@ -57,9 +60,6 @@ export function useGetFlowNodes() {
       logicChildren.push(mutationNodes)
     }
 
-    if (subNodes?.children?.length) {
-      logicChildren.push(subNodes)
-    }
     return logicChildren
   }, [getQueryNodes, t, getMutationNodes, getSubNodes]);
 

@@ -4,7 +4,7 @@ import { ScriptLogicAction } from "./ScriptLogicAction";
 import { IExtendsionScript } from "../../../interfaces/extension";
 import { TreeNodeLabel } from "@rxdrag/uml-editor";
 import { useRemoveExtensionScript } from "../../../hooks/useRemoveExtensionScript";
-import { ScriptDialog } from "../dialogs/ScriptDialog";
+import { ExtensionDialog } from "../dialogs/ExtensionDialog";
 import { useTranslate } from "@rxdrag/react-locales";
 import { useSaveExtensionScript } from "../../../hooks/useSaveExtensionScript";
 
@@ -59,8 +59,8 @@ export const ScriptLogicLabel = memo((
       >
         <div>{scriptMeta.name}</div>
       </TreeNodeLabel>
-      {openEdit && <ScriptDialog
-        script={scriptMeta}
+      {openEdit && <ExtensionDialog
+        extension={scriptMeta}
         saving={saving}
         open={openEdit}
         title={t("EditScript")}

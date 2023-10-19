@@ -2,21 +2,21 @@ import { MoreOutlined } from "@ant-design/icons";
 import { useTranslate } from "@rxdrag/react-locales";
 import { Dropdown, Button } from "antd";
 import React, { memo, useCallback, useState } from "react"
-import { NameDialog } from "./dialogs/NameDialog";
-import { useSaveExtensionScript } from "../../hooks/useSaveExtensionScript";
+import { ExtensionType, IExtensionLogicFlow } from "../../interfaces/extension";
+import { useSaveExtensionLogicFlow } from "../../hooks/useSaveExtensionLogicFlow";
 import { createId } from "@rxdrag/shared";
-import { ExtensionType, IExtendsionScript } from "../../interfaces/extension";
+import { NameDialog } from "./dialogs/NameDialog";
 import { ExtensionDialog } from "./dialogs/ExtensionDialog";
 
-export const ScriptLogicRootAction = memo(() => {
+export const LogicFlowRootAction = memo(() => {
   const [codeOpen, setCodeOpen] = useState<boolean>();
   const [dialogTitle, setDialogTitle] = useState("")
-  const [tempScript, setTempScript] = useState<IExtendsionScript>()
+  const [tempScript, setTempScript] = useState<IExtensionLogicFlow>()
   const handleNoneAction = useCallback((e: React.MouseEvent) => {
     e.stopPropagation()
   }, [])
 
-  const [saveCode, { loading: codeSaving }] = useSaveExtensionScript({
+  const [saveCode, { loading: codeSaving }] = useSaveExtensionLogicFlow({
     onComplete: () => {
       setCodeOpen(false)
       setTempScript(undefined)
@@ -64,12 +64,13 @@ export const ScriptLogicRootAction = memo(() => {
     setTempScript(undefined)
   }, [])
 
-  const handleConfirmScript = useCallback((script: IExtendsionScript) => {
+  const handleConfirmScript = useCallback((script: IExtensionLogicFlow) => {
     saveCode({
       ...tempScript,
       ...script,
     })
   }, [saveCode, tempScript])
+
 
   return (
     <>
@@ -77,32 +78,26 @@ export const ScriptLogicRootAction = memo(() => {
         items: [
           {
             label: t("AddQuery"),
-            key: 'addQueryScript',
+            key: 'addLogicQuery',
             onClick: handleAddQuery,
           },
           {
             label: t("AddMutation"),
-            key: 'addMutationScript',
+            key: 'addLogicMutation',
             onClick: handleAddMutation,
           },
           {
-            label: t("AddCode"),
-            key: 'addCode',
+            label: t("AddSubLogic"),
+            key: 'addSubLogic',
             onClick: () => setCodeOpen(true),
           },
         ]
       }} trigger={['click']}>
-        <Button
-          shape='circle'
-          type="text"
-          size='small'
-          onClick={handleNoneAction}
-          icon={<MoreOutlined />}
-        >
+        <Button shape='circle' type="text" size='small' onClick={handleNoneAction} icon={<MoreOutlined />}>
         </Button>
       </Dropdown>
       <NameDialog
-        title={t("AddCode")}
+        title={t("AddSubFlow")}
         open={codeOpen}
         onClose={handleAddCodeClose}
         onConfirm={handleAddCodeConfirm}

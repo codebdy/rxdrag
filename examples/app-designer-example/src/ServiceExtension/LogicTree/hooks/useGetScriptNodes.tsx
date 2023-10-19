@@ -57,7 +57,7 @@ export function useGetScriptNodes() {
     const codeNodes = getCodeNodes("script-codes");
     const queryNodes = getQueryNodes(t("Query"), "script-querys");
     const mutationNodes = getMutationNodes(t("Mutation"), "scriptmutations");
-
+    
     if (codeNodes.children?.length) {
       scriptChildren.push(codeNodes)
     }
@@ -68,7 +68,6 @@ export function useGetScriptNodes() {
     if (mutationNodes?.children?.length) {
       scriptChildren.push(mutationNodes)
     }
-
 
     return scriptChildren
   }, [getCodeNodes, getQueryNodes, t, getMutationNodes]);
