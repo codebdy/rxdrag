@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { CSSProperties, useCallback, useState } from "react";
 import { memo } from "react"
 import styled from "styled-components";
 import { ResizableColumn, ILogicMetas, FlowToolbar, FlowCanvas, FlowPropertyBox, FlowToolbox } from "@rxdrag/minions-logicflow-editor";
@@ -45,12 +45,14 @@ export type LogicFlowEditorInnerProps = {
   toolbar?: React.ReactNode,
   propertyBox?: React.ReactNode,
   children?: React.ReactNode,
+  style?: CSSProperties,
+  className?: string,
 }
 
 export const LogicFlowEditorInner = memo((
   props: LogicFlowEditorInnerProps
 ) => {
-  const { value, onChange, toolbox, toolbar, propertyBox, children } = props
+  const { value, onChange, toolbox, toolbar, propertyBox, children, ...rest } = props
   const [collapsed, setCollpased] = useState<boolean>()
 
   const handleToggle = useCallback(() => {
@@ -58,7 +60,7 @@ export const LogicFlowEditorInner = memo((
   }, [])
 
   return (
-    <EditorShell>
+    <EditorShell {...rest}>
       <CenterArea>
         {
           toolbar &&

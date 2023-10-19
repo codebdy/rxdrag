@@ -14,6 +14,7 @@ import { logicflowIcon } from "@rxdrag/react-shared";
 import { useGetFlowNodes } from "./hooks/useGetFlowNodes";
 import { useGetScriptNodes } from "./hooks/useGetScriptNodes";
 import { ExtensionType } from "./types";
+import { IExtensionLogicFlow } from "../../interfaces/extension";
 const { DirectoryTree } = Tree;
 
 const Container = styled.div`
@@ -41,13 +42,14 @@ export const LogicTree = memo((
     selectedScript?: ID,
     onSelectLogicFlow?: (selectedLogicFlow?: ID) => void,
     onSelectScript?: (selectedScript?: ID) => void,
+    flows?: IExtensionLogicFlow[]
   }
 ) => {
-  const { selectedLogicFlow, selectedScript, onSelectLogicFlow, onSelectScript } = props;
+  const { selectedLogicFlow, selectedScript, onSelectLogicFlow, onSelectScript, flows } = props;
   const t = useTranslate();
 
   const getScriptLogicNodes = useGetScriptNodes()
-  const getMetaLogicNodes = useGetFlowNodes()
+  const getMetaLogicNodes = useGetFlowNodes(flows)
 
 
   const treeData: DataNode[] = useMemo(() => {

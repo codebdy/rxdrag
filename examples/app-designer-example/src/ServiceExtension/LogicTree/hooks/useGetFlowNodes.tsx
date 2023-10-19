@@ -4,13 +4,12 @@ import { FunctionOutlined } from "@ant-design/icons";
 import { useTranslate } from "@rxdrag/react-locales";
 import { LogicFlowLabel } from "../LogicFlowLabel";
 import { OperateType, IExtensionLogicFlow } from "../../../interfaces/extension";
-import { useQueryAppExtensionLogicFlows } from "../../../hooks/useQueryAppExtensionLogicFlows";
 import { ExtensionType } from "../types";
 import { SubFlowLabel } from "../SubFlowLabel";
 
-export function useGetFlowNodes() {
+export function useGetFlowNodes(flows?: IExtensionLogicFlow[]) {
   const t = useTranslate();
-  const { flows } = useQueryAppExtensionLogicFlows("app1")
+
   const getSubNode = useCallback((codeMeta: IExtensionLogicFlow) => {
     return {
       title: <SubFlowLabel codeMeta={codeMeta} />,

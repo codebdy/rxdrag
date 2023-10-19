@@ -56,7 +56,6 @@ export const ExtensionDialog = memo((
       }
     >
       <Form
-        name="editScript"
         labelWrap
         initialValues={extension || { title: "", description: "" }}
         labelCol={{ span: 5 }}

@@ -6,8 +6,8 @@ import { useTranslate } from "@rxdrag/react-locales"
 import { useQueryExtensionScript } from "../../hooks/useQueryExtensionScript"
 import { ID } from "@rxdrag/shared"
 import MonacoEditor from '@monaco-editor/react'
-import { useAppThemeMode } from "../../contexts"
 import { useSaveExtensionScript } from "../../hooks/useSaveExtensionScript"
+import { useAppThemeMode } from "../../hooks/useAppThemeMode"
 
 const Container = styled.div`
   flex: 1;

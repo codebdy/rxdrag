@@ -1,4 +1,4 @@
-export const activityMaterialLocales = {
+export const backendActivityMaterialLocales = {
   "zh-CN": {
     name: "名称",
     basicAcitivites: "基础元件",
@@ -69,7 +69,7 @@ export const activityMaterialLocales = {
     componentControl: "组件控制",
     component: "组件",
     customizedLoop: "自定义循环",
-    subLogicFlow: "子编排",
+    fxFlow: "子编排",
     transaction: "事务",
     oneOutput: "单次输出",
     finished: "结束",
@@ -155,7 +155,7 @@ export const activityMaterialLocales = {
     componentControl: "Component Control",
     component: "Component",
     customizedLoop: "Customized Loop",
-    subLogicFlow: "Sub LogicFlow",
+    fxFlow: "Sub LogicFlow",
     transaction: "Transaction",
     oneOutput: "One output",
     finished: "Finished",
