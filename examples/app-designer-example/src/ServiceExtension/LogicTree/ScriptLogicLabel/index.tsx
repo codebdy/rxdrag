@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { memo } from "react";
-import { ScriptLogicAction } from "./ScriptLogicAction";
+import { ExtensionAction } from "../ExtensionAction";
 import { IExtendsionScript } from "../../../interfaces/extension";
 import { TreeNodeLabel } from "@rxdrag/uml-editor";
 import { useRemoveExtensionScript } from "../../../hooks/useRemoveExtensionScript";
@@ -49,7 +49,7 @@ export const ScriptLogicLabel = memo((
       <TreeNodeLabel
         fixedAction={confirmOpen || removing}
         action={
-          <ScriptLogicAction
+          <ExtensionAction
             onConfirmOpenChange={setConfirmOpen}
             onRemove={handleRemove}
             removing={removing}

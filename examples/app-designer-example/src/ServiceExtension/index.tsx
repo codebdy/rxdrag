@@ -9,6 +9,7 @@ const Container = styled.div`
   flex: 1;
   display: flex;
   flex-flow: row;
+  height: 0;
   .model-tree-shell{
     flex:1;
     display: flex;
@@ -16,7 +17,7 @@ const Container = styled.div`
     background-color: ${props => props.theme.token?.colorBgBase};
     border: solid 1px ${props => props.theme.token?.colorBorder};
     border-left: 0;
-    height: 100%;
+    height: 0;
     overflow: auto;
   }
 
