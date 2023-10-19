@@ -35,8 +35,9 @@ export const appDesignerLocales: ILocales = {
     DeleteConfirmDescription: "删除后将不可恢复，您确定要删除吗？",
     Yes: "是",
     No: "否",
-    EditScript: "编辑脚本",
-    EditLogicFlow: "编辑编排",
+    EditScript: "修改脚本",
+    EditLogicFlow: "修改编排",
+    EditSubFlow: "修改子编排",
     EditCode: "修改通用代码",
     AddSubFlow: "添加子编排",
     appDesigner: {
@@ -82,6 +83,7 @@ export const appDesignerLocales: ILocales = {
     No: "No",
     EditScript: "EditScript",
     EditLogicFlow: "EditLogicFlow",
+    EditSubFlow: "Edit Sub flow",
     EditCode: "EditCode",
     AddSubFlow: "Add SubFlow",
     appDesigner: {

@@ -3,18 +3,31 @@ import { useCallback } from "react";
 import { FunctionOutlined } from "@ant-design/icons";
 import { useTranslate } from "@rxdrag/react-locales";
 import { LogicFlowLabel } from "../LogicFlowLabel";
-import { ExtensionType, IExtensionLogicFlow } from "../../../interfaces/extension";
+import { OperateType, IExtensionLogicFlow } from "../../../interfaces/extension";
 import { useQueryAppExtensionLogicFlows } from "../../../hooks/useQueryAppExtensionLogicFlows";
+import { ExtentionType } from "../types";
+import { SubFlowLabel } from "../SubFlowLabel";
 
 export function useGetFlowNodes() {
   const t = useTranslate();
   const { flows } = useQueryAppExtensionLogicFlows("app1")
-  const getGraphLogicNode = useCallback((graphMeta: IExtensionLogicFlow) => {
+  const getSubNode = useCallback((codeMeta: IExtensionLogicFlow) => {
+    return {
+      title: <SubFlowLabel codeMeta={codeMeta} />,
+      key: codeMeta.id,
+      isLeaf: true,
+      icon: <FunctionOutlined />,
+      type: ExtentionType.script,
+    }
+  }, [])
+
+  const getLogicFlowNode = useCallback((graphMeta: IExtensionLogicFlow) => {
     return {
       title: <LogicFlowLabel flowMeta={graphMeta} />,
       key: graphMeta.id,
       isLeaf: true,
-      icon: <FunctionOutlined />
+      icon: <FunctionOutlined />,
+      type: ExtentionType.logicflow
     }
   }, [])
 
@@ -23,27 +36,30 @@ export function useGetFlowNodes() {
     return {
       title: title,
       key: key,
-      children: flows?.filter(orches => orches.operateType === ExtensionType.Query).map(orchestration => getGraphLogicNode(orchestration))
+      selectable: false,
+      children: flows?.filter(orches => orches.operateType === OperateType.Query).map(orchestration => getLogicFlowNode(orchestration))
     }
-  }, [getGraphLogicNode, flows])
+  }, [getLogicFlowNode, flows])
 
   const getMutationNodes = useCallback((title: string, key: string) => {
     return {
       title: title,
       key: key,
-      children: flows?.filter(orches => orches.operateType === ExtensionType.Mutation).map(orchestration => getGraphLogicNode(orchestration))
+      selectable: false,
+      children: flows?.filter(orches => orches.operateType === OperateType.Mutation).map(orchestration => getLogicFlowNode(orchestration))
     }
-  }, [getGraphLogicNode, flows])
+  }, [getLogicFlowNode, flows])
 
   const getSubNodes = useCallback((title: string, key: string) => {
     return {
       title: title,
       key: key,
-      children: flows?.filter(orches => orches.operateType === ExtensionType.SubMethod).map(orchestration => getGraphLogicNode(orchestration))
+      selectable: false,
+      children: flows?.filter(orches => orches.operateType === OperateType.SubMethod).map(orchestration => getSubNode(orchestration))
     }
-  }, [getGraphLogicNode, flows])
+  }, [flows, getSubNode])
 
-  const getScriptNodes = useCallback(() => {
+  const getLogicFLowNodes = useCallback(() => {
     const logicChildren: DataNode[] = []
     const queryNodes = getQueryNodes(t("Query"), "graph-querys");
     const mutationNodes = getMutationNodes(t("Mutation"), "graph-mutations");
@@ -63,5 +79,5 @@ export function useGetFlowNodes() {
     return logicChildren
   }, [getQueryNodes, t, getMutationNodes, getSubNodes]);
 
-  return getScriptNodes
+  return getLogicFLowNodes
 }

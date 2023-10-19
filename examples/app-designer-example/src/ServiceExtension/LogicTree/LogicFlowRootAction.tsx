@@ -2,7 +2,7 @@ import { MoreOutlined } from "@ant-design/icons";
 import { useTranslate } from "@rxdrag/react-locales";
 import { Dropdown, Button } from "antd";
 import React, { memo, useCallback, useState } from "react"
-import { ExtensionType, IExtensionLogicFlow } from "../../interfaces/extension";
+import { OperateType, IExtensionLogicFlow } from "../../interfaces/extension";
 import { useSaveExtensionLogicFlow } from "../../hooks/useSaveExtensionLogicFlow";
 import { createId } from "@rxdrag/shared";
 import { NameDialog } from "./dialogs/NameDialog";
@@ -34,7 +34,7 @@ export const LogicFlowRootAction = memo(() => {
       saveCode({
         id: createId(),
         name,
-        operateType: ExtensionType.SubMethod,
+        operateType: OperateType.SubMethod,
         belongsTo: { id: "app1" }
       })
     }
@@ -45,7 +45,7 @@ export const LogicFlowRootAction = memo(() => {
     setTempScript({
       id: createId(),
       name: "",
-      operateType: ExtensionType.Query,
+      operateType: OperateType.Query,
       belongsTo: { id: "app1" }
     })
   }, [t])
@@ -55,7 +55,7 @@ export const LogicFlowRootAction = memo(() => {
     setTempScript({
       id: createId(),
       name: "",
-      operateType: ExtensionType.Mutation,
+      operateType: OperateType.Mutation,
       belongsTo: { id: "app1" }
     })
   }, [t])

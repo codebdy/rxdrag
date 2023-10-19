@@ -3,7 +3,7 @@ import { Button, Popconfirm } from "antd";
 import { memo } from "react"
 import { useTranslate } from "@rxdrag/react-locales";
 
-export const CodeAction = memo((
+export const SubLogicAction = memo((
   props: {
     removing?: boolean,
     onConfirmOpenChange?: (open: boolean) => void,

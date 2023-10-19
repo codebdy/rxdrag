@@ -2,7 +2,7 @@ import { Form, Input, Radio } from "antd";
 import { memo } from "react"
 import { ArgsInput } from "./ArgsInput";
 import { MethodTypeInput } from "./MethodTypeInput";
-import { ExtensionType, IExtension } from "../../../interfaces/extension";
+import { OperateType, IExtension } from "../../../interfaces/extension";
 import { useTranslate } from "@rxdrag/react-locales";
 
 export const MethodFormCommonItems = memo((
@@ -31,14 +31,14 @@ export const MethodFormCommonItems = memo((
       >
         <Radio.Group
           optionType="button"
-          disabled={method.operateType === ExtensionType.SubMethod}
+          disabled={method.operateType === OperateType.SubMethod}
           options={[
             {
-              value: ExtensionType.Query,
+              value: OperateType.Query,
               label: t("Query"),
             },
             {
-              value: ExtensionType.Mutation,
+              value: OperateType.Mutation,
               label: t("Mutation"),
             },
 
@@ -46,7 +46,7 @@ export const MethodFormCommonItems = memo((
         />
       </Form.Item>
       {
-        method.operateType !== ExtensionType.SubMethod &&
+        method.operateType !== OperateType.SubMethod &&
         <>
           <MethodTypeInput method={method} />
           <Form.Item

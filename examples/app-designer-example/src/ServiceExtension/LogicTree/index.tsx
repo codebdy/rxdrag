@@ -35,8 +35,7 @@ const StyledDirectoryTree = styled(DirectoryTree)`
 `
 
 export const LogicTree = memo(() => {
-  const [selectedScriptId, setSelectedScriptId] = useState<ID>();
-  const [selectedGraphLogicId, setSelectGraphLogicId] = useState<ID>();
+  const [selected, setSelected] = useState<ID>();
 
   const t = useTranslate();
 
@@ -51,7 +50,8 @@ export const LogicTree = memo(() => {
         <TreeNodeLabel fixedAction action={<ScriptLogicRootAction />}>
           <div>{t("LogicScripts")}</div>
         </TreeNodeLabel>,
-      key: "1",
+      key: "scripts",
+      selectable: false,
       children: getScriptLogicNodes()
     }
     const graphLogicsNode: DataNode = {
@@ -62,7 +62,8 @@ export const LogicTree = memo(() => {
         <TreeNodeLabel fixedAction action={<LogicFlowRootAction />}>
           <div>{t("GraphLogics")}</div>
         </TreeNodeLabel>,
-      key: "2",
+      key: "logicflows",
+      selectable: false,
       children: getMetaLogicNodes()
     }
 
@@ -73,9 +74,10 @@ export const LogicTree = memo(() => {
     ]
   }, [getMetaLogicNodes, getScriptLogicNodes, t]);
 
-  const handleSelect = useCallback((keys: any[]) => {
+  const handleSelect = useCallback((keys: any[], info: any) => {
+    console.log("===>info", info)
     for (const id of keys) {
-      //
+      setSelected(id)
     }
   }, [])
 
@@ -83,7 +85,7 @@ export const LogicTree = memo(() => {
     <Container>
       <StyledDirectoryTree
         defaultExpandedKeys={["0"]}
-        selectedKeys={[selectedScriptId || selectedGraphLogicId] as any}
+        selectedKeys={[selected || ""]}
         onSelect={handleSelect}
         treeData={treeData}
       />

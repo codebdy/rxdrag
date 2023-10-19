@@ -1,16 +1,16 @@
 import React, { useCallback, useState } from "react";
 import { memo } from "react";
 import { SubLogicAction } from "../SubLogicAction";
-import { IExtendsionScript } from "../../../interfaces/extension";
+import { IExtension } from "../../../interfaces/extension";
 import { TreeNodeLabel } from "@rxdrag/uml-editor";
-import { useRemoveExtensionScript } from "../../../hooks/useRemoveExtensionScript";
-import { useSaveExtensionScript } from "../../../hooks/useSaveExtensionScript";
 import { NameDialog } from "../dialogs/NameDialog";
 import { useTranslate } from "@rxdrag/react-locales";
+import { useRemoveExtensionLogicFlow } from "../../../hooks/useRemoveExtensionLogicFlow";
+import { useSaveExtensionLogicFlow } from "../../../hooks/useSaveExtensionLogicFlow";
 
-export const CodeLabel = memo((
+export const SubFlowLabel = memo((
   props: {
-    codeMeta: IExtendsionScript
+    codeMeta: IExtension
   }
 ) => {
   const { codeMeta } = props;
@@ -19,8 +19,8 @@ export const CodeLabel = memo((
 
   const t = useTranslate()
 
-  const [remove, { loading: removing }] = useRemoveExtensionScript()
-  const [save, { loading: saving }] = useSaveExtensionScript(
+  const [remove, { loading: removing }] = useRemoveExtensionLogicFlow()
+  const [save, { loading: saving }] = useSaveExtensionLogicFlow(
     {
       onComplete: () => {
         setOpenEdit(false)
@@ -64,7 +64,7 @@ export const CodeLabel = memo((
         name={codeMeta.name}
         saving={saving}
         open={openEdit}
-        title={t("EditCode")}
+        title={t("EditSubFlow")}
         onClose={handleEditClose}
         onConfirm={handleEditConfirm}
       />}

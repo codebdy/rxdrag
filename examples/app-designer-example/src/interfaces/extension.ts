@@ -11,7 +11,7 @@ export interface ArgMeta {
   index?: number;
 }
 
-export enum ExtensionType {
+export enum OperateType {
   Query = "query",
   Mutation = "mutation",
   SubMethod = "subMethod"
@@ -41,7 +41,7 @@ export interface IExtension {
 
   args?: ArgMeta[];
 
-  operateType: ExtensionType;
+  operateType: OperateType;
 
   belongsTo?: IApp;
 }

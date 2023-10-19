@@ -3,20 +3,22 @@ import { useCallback, useMemo } from "react";
 import { FileOutlined, FunctionOutlined } from "@ant-design/icons";
 import { useTranslate } from "@rxdrag/react-locales";
 import { useQueryAppExtensionScripts } from "../../../hooks/useQueryAppExtensionScripts";
-import { ExtensionType, IExtendsionScript } from "../../../interfaces/extension";
+import { OperateType, IExtendsionScript } from "../../../interfaces/extension";
 import { CodeLabel } from "../CodeLabel";
 import { ScriptLogicLabel } from "../ScriptLogicLabel";
+import { ExtentionType } from "../types";
 
 export function useGetScriptNodes() {
   const t = useTranslate();
   const { scripts } = useQueryAppExtensionScripts("app1")
-  const codeMetas = useMemo(() => scripts?.filter(sc => sc.operateType === ExtensionType.SubMethod), [scripts])
+  const codeMetas = useMemo(() => scripts?.filter(sc => sc.operateType === OperateType.SubMethod), [scripts])
   const getCodeNode = useCallback((codeMeta: IExtendsionScript) => {
     return {
       title: <CodeLabel codeMeta={codeMeta} />,
       key: codeMeta.id,
       isLeaf: true,
-      icon: <FileOutlined />
+      icon: <FileOutlined />,
+      type: ExtentionType.script,
     }
   }, [])
 
@@ -25,13 +27,15 @@ export function useGetScriptNodes() {
       title: <ScriptLogicLabel scriptMeta={scriptMeta} />,
       key: scriptMeta.id,
       isLeaf: true,
-      icon: <FunctionOutlined />
+      icon: <FunctionOutlined />,
+      type: ExtentionType.script,
     }
   }, [])
   const getCodeNodes = useCallback((key: string) => {
     return {
       title: t("Codes"),
       key: key,
+      selectable: false,
       children: codeMetas?.map(code => getCodeNode(code))
     }
   }, [codeMetas, getCodeNode, t])
@@ -40,7 +44,8 @@ export function useGetScriptNodes() {
     return {
       title: title,
       key: key,
-      children: scripts?.filter(orches => orches.operateType === ExtensionType.Query).map(orchestration => getScriptLogicNode(orchestration))
+      selectable: false,
+      children: scripts?.filter(orches => orches.operateType === OperateType.Query).map(orchestration => getScriptLogicNode(orchestration))
     }
   }, [getScriptLogicNode, scripts])
 
@@ -48,7 +53,8 @@ export function useGetScriptNodes() {
     return {
       title: title,
       key: key,
-      children: scripts?.filter(orches => orches.operateType === ExtensionType.Mutation).map(orchestration => getScriptLogicNode(orchestration))
+      selectable: false,
+      children: scripts?.filter(orches => orches.operateType === OperateType.Mutation).map(orchestration => getScriptLogicNode(orchestration))
     }
   }, [getScriptLogicNode, scripts])
 
@@ -57,7 +63,7 @@ export function useGetScriptNodes() {
     const codeNodes = getCodeNodes("script-codes");
     const queryNodes = getQueryNodes(t("Query"), "script-querys");
     const mutationNodes = getMutationNodes(t("Mutation"), "scriptmutations");
-    
+
     if (codeNodes.children?.length) {
       scriptChildren.push(codeNodes)
     }

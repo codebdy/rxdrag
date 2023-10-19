@@ -5,7 +5,7 @@ import React, { memo, useCallback, useState } from "react"
 import { NameDialog } from "./dialogs/NameDialog";
 import { useSaveExtensionScript } from "../../hooks/useSaveExtensionScript";
 import { createId } from "@rxdrag/shared";
-import { ExtensionType, IExtendsionScript } from "../../interfaces/extension";
+import { OperateType, IExtendsionScript } from "../../interfaces/extension";
 import { ExtensionDialog } from "./dialogs/ExtensionDialog";
 
 export const ScriptLogicRootAction = memo(() => {
@@ -34,7 +34,7 @@ export const ScriptLogicRootAction = memo(() => {
       saveCode({
         id: createId(),
         name,
-        operateType: ExtensionType.SubMethod,
+        operateType: OperateType.SubMethod,
         belongsTo: { id: "app1" }
       })
     }
@@ -45,7 +45,7 @@ export const ScriptLogicRootAction = memo(() => {
     setTempScript({
       id: createId(),
       name: "",
-      operateType: ExtensionType.Query,
+      operateType: OperateType.Query,
       belongsTo: { id: "app1" }
     })
   }, [t])
@@ -55,7 +55,7 @@ export const ScriptLogicRootAction = memo(() => {
     setTempScript({
       id: createId(),
       name: "",
-      operateType: ExtensionType.Mutation,
+      operateType: OperateType.Mutation,
       belongsTo: { id: "app1" }
     })
   }, [t])
