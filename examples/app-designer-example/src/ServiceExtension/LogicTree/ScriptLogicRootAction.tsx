@@ -3,6 +3,9 @@ import { useTranslate } from "@rxdrag/react-locales";
 import { Dropdown, Button } from "antd";
 import React, { memo, useCallback, useState } from "react"
 import { NameDialog } from "./dialogs/NameDialog";
+import { useSaveExtensionScript } from "../../hooks/useSaveExtensionScript";
+import { createId } from "@rxdrag/shared";
+import { ExtensionType } from "../../interfaces/extension";
 
 export const ScriptLogicRootAction = memo(() => {
   const [codeOpen, setCodeOpen] = useState<boolean>()
@@ -10,15 +13,27 @@ export const ScriptLogicRootAction = memo(() => {
     e.stopPropagation()
   }, [])
 
+  const [addCode, { loading: codeSaving }] = useSaveExtensionScript({
+    onComplete: () => {
+      setCodeOpen(false)
+    }
+  })
+
   const t = useTranslate()
 
   const handleAddCodeClose = useCallback(() => {
     setCodeOpen(false)
   }, [])
 
-  const handleAddCodeConfirm = useCallback(() => {
-    setCodeOpen(false)
-  }, [])
+  const handleAddCodeConfirm = useCallback((name?: string) => {
+    if (name) {
+      addCode({
+        id: createId(),
+        name,
+        operateType: ExtensionType.SubMethod
+      })
+    }
+  }, [addCode])
 
   return (
     <>
@@ -54,6 +69,7 @@ export const ScriptLogicRootAction = memo(() => {
         open={codeOpen}
         onClose={handleAddCodeClose}
         onConfirm={handleAddCodeConfirm}
+        saving={codeSaving}
       />
     </>
   )

@@ -3,7 +3,7 @@ import { Type } from "@rxdrag/uml-schema";
 import { IApp } from "./app";
 
 export interface ArgMeta {
-  uuid: string;
+  id: string;
   name: string;
   label?: string;
   type: Type;
@@ -32,14 +32,14 @@ export interface IExtension {
   /**
    * 字段类型
    */
-  type: Type;
+  type?: Type;
 
   /**
    * 类型id
    */
   typeId?: string;
 
-  args: ArgMeta[];
+  args?: ArgMeta[];
 
   operateType: ExtensionType;
 
