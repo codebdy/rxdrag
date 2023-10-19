@@ -48,11 +48,11 @@ export const Operate = memo((
         items: [
           {
             key: OperateEnum.exportJson,
-            label: t("Designer.ExportJson"),
+            label: t("ExportJson"),
           },
           {
             key: OperateEnum.importJson,
-            label: t("Designer.ImportJson"),
+            label: t("ImportJson"),
           },
         ]
       }} trigger={["click"]}>
