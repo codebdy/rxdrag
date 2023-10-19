@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { memo } from "react";
-import { ScriptLogicAction } from "./ScriptLogicAction";
+import { CodeAction } from "./CodeAction";
 import { IExtendsionScript } from "../../../interfaces/extension";
 import { TreeNodeLabel } from "@rxdrag/uml-editor";
 
-export const ScriptLogicLabel = memo((
+export const CodeLabel = memo((
   props: {
-    scriptMeta: IExtendsionScript
+    codeMeta: IExtendsionScript
   }
 ) => {
-  const { scriptMeta } = props;
-  const [name, setName] = useState(scriptMeta.name);
+  const { codeMeta } = props;
+  const [name, setName] = useState(codeMeta.name);
 
   useEffect(() => {
-    setName(scriptMeta.name)
-  }, [scriptMeta])
+    setName(codeMeta.name)
+  }, [codeMeta])
 
 
   return (
     <TreeNodeLabel
       action={
-        <ScriptLogicAction scriptLogic={scriptMeta} />
+        <CodeAction code={codeMeta} />
       }
     >
       <div>{name}</div>

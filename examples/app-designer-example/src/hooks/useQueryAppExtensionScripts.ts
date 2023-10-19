@@ -35,5 +35,5 @@ export function useQueryAppExtensionScripts(appId: ID) {
     }
   }, [handleDataEvent])
 
-  return { meta: scripts, loading }
+  return { scripts, loading }
 }

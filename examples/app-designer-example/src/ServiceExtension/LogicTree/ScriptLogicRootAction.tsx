@@ -34,7 +34,8 @@ export const ScriptLogicRootAction = memo(() => {
       saveCode({
         id: createId(),
         name,
-        operateType: ExtensionType.SubMethod
+        operateType: ExtensionType.SubMethod,
+        belongsTo: { id: "app1" }
       })
     }
   }, [saveCode])
@@ -44,7 +45,8 @@ export const ScriptLogicRootAction = memo(() => {
     setTempScript({
       id: createId(),
       name: "",
-      operateType: ExtensionType.Query
+      operateType: ExtensionType.Query,
+      belongsTo: { id: "app1" }
     })
   }, [t])
 
@@ -53,7 +55,8 @@ export const ScriptLogicRootAction = memo(() => {
     setTempScript({
       id: createId(),
       name: "",
-      operateType: ExtensionType.Mutation
+      operateType: ExtensionType.Mutation,
+      belongsTo: { id: "app1" }
     })
   }, [t])
 
@@ -64,7 +67,7 @@ export const ScriptLogicRootAction = memo(() => {
   const handleConfirmScript = useCallback((script: IExtendsionScript) => {
     saveCode({
       ...tempScript,
-      ...script
+      ...script,
     })
     setTempScript(undefined)
   }, [saveCode, tempScript])

@@ -1,20 +1,19 @@
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import React, { memo, useCallback } from "react"
-import { IExtensionLogicFlow } from "../../../interfaces/extension";
+import { IExtendsionScript } from "../../../interfaces/extension";
 
-export const ScriptLogicAction = memo((
+export const CodeAction = memo((
   props: {
-    scriptLogic: IExtensionLogicFlow,
+    code: IExtendsionScript,
   }
 ) => {
-  const { scriptLogic } = props;
-  // const metaId = useMetaId();
-  // const deleteOrches = useDeleteScriptLogic(metaId)
+  const { code } = props;
+
 
   // const handleDelete = useCallback(() => {
-  //   deleteOrches(scriptLogic.uuid)
-  // }, [deleteOrches, scriptLogic.uuid]);
+  //   deleteCodes(code.uuid)
+  // }, [deleteCodes, code.uuid]);
 
   return (
     <Button

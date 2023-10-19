@@ -22,7 +22,7 @@ import { controllerActivities, arrayActivities, variableActivities, activityMate
 import { useAppFrontend } from "../../../hooks/useAppFrontend"
 import { useQueryFlows } from "../../../hooks/useQueryFlows"
 import { LogicType, FxScope } from "../../../interfaces/flow"
-import { variableIcon } from "@rxdrag/react-shared"
+import { logicflowIcon, variableIcon } from "@rxdrag/react-shared"
 
 const Content = styled.div`
   flex: 1;
@@ -143,7 +143,7 @@ export const FlowDesigner = memo(() => {
                   : (selectedFlow ? "link" : "text")
               }
               className={selectedFlow ? "intermediate" : undefined}
-              icon={<NodeIndexOutlined />}
+              icon={logicflowIcon}
               onClick={handleToggleFlows}
             />
           </Tooltip>

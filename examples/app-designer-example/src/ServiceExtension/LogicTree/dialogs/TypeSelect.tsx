@@ -17,7 +17,7 @@ export const TypeSelect = memo((
   const { value, disabled, onChange, noEntity, style } = props
   const t = useTranslate();
 
-  const handleChange = useCallback((value: any) => {
+  const handleChange = useCallback((value: Type) => {
     onChange && onChange(value)
   }, [onChange])
 

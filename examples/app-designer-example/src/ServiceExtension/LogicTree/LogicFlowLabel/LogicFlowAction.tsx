@@ -3,18 +3,18 @@ import { Button } from "antd";
 import React, { memo, useCallback } from "react"
 import { IExtensionLogicFlow } from "../../../interfaces/extension";
 
-export const ScriptLogicAction = memo((
+export const LogicFlowAction = memo((
   props: {
-    scriptLogic: IExtensionLogicFlow,
+    flowMeta: IExtensionLogicFlow,
   }
 ) => {
-  const { scriptLogic } = props;
+  const { flowMeta } = props;
   // const metaId = useMetaId();
-  // const deleteOrches = useDeleteScriptLogic(metaId)
+  // const deleteOrches = useDeleteGraphLogic(metaId)
 
   // const handleDelete = useCallback(() => {
-  //   deleteOrches(scriptLogic.uuid)
-  // }, [deleteOrches, scriptLogic.uuid]);
+  //   deleteOrches(flowMeta.uuid)
+  // }, [deleteOrches, flowMeta.uuid]);
 
   return (
     <Button

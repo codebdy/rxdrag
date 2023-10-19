@@ -29,6 +29,8 @@ export const appDesignerLocales: ILocales = {
     AddMutation: "添加更改",
     AddSubLogic: "添加子编排",
     AddCode: "添加代码",
+    SubFlows: "子编排",
+    Codes: "通用脚本",
     appDesigner: {
       website: "门户",
       h5: "移动端",
@@ -64,6 +66,8 @@ export const appDesignerLocales: ILocales = {
     AddMutation: "Add Mutation",
     AddSubLogic: "Add Sub Logic",
     AddCode: "Add Code",
+    SubFlows: "Sub flows",
+    Codes: "Codes",
     appDesigner: {
       website: "Website",
       h5: "Mobile H5",
