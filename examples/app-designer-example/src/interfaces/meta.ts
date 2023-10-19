@@ -1,5 +1,6 @@
 import { ID } from "@rxdrag/shared"
 import { MetaContent } from "@rxdrag/uml-editor"
+import { IApp } from "./app"
 
 export interface IMeta {
   id: ID
@@ -9,6 +10,7 @@ export interface IMeta {
   publishedAt?: Date
   updatedAt?: Date
   createdAt?: Date
+  app?: IApp,
 }
 
 export interface IMetaInput {

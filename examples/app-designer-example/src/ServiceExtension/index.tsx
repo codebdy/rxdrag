@@ -1,17 +1,19 @@
 import { ResizableColumn } from "@rxdrag/react-shared"
 import { memo } from "react"
 import styled from "styled-components"
+import { LogicTree } from "./LogicTree"
 
 const Container = styled.div`
   flex: 1;
   display: flex;
   flex-flow: row;
   .model-tree-shell{
+    flex:1;
     display: flex;
     flex-flow: column;
     background-color: ${props => props.theme.token?.colorBgBase};
-    border-right: solid 1px ${props => props.theme.token?.colorBorder};
-    width: 100%;
+    border: solid 1px ${props => props.theme.token?.colorBorder};
+    border-left: 0;
     height: 100%;
     overflow: auto;
   }
@@ -27,7 +29,7 @@ export const ServiceExtension = memo(() => {
     <Container>
       <LeftColumn minWidth={50} maxWidth={500} width={260}>
         <div className="model-tree-shell">
-          ddd
+          <LogicTree />
         </div>
       </LeftColumn>
     </Container>

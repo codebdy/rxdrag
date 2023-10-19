@@ -16,7 +16,7 @@ const Label = styled.div`
   }
 `
 
-const TreeNodeLabel = memo((
+export const TreeNodeLabel = memo((
   props: {
     action?: React.ReactNode,
     children?: React.ReactNode,
