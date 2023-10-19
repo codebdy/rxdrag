@@ -7,7 +7,7 @@ const Container = styled.div`
   height: 48px;
   background-color: ${props => props.theme.token?.colorBgBase};
   align-items: center;
-  border: solid 1px  ${props => props.theme.token?.colorBorder};
+  border: solid 1px  ${props => props.theme.token?.colorBorderSecondary};
   border-left: 0;
   border-right: 0;
   box-sizing: border-box;

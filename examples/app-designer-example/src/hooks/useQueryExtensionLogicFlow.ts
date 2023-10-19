@@ -13,7 +13,7 @@ export function useQueryExtensionLogicFlow(id: ID) {
   const fillData = useCallback(() => {
     setLoading(true)
     setTimeout(() => {
-      setFlow(allLogicflowExtension.find(flow => flow?.belongsTo?.id === id))
+      setFlow(allLogicflowExtension.find(flow => flow?.id === id))
       setLoading(false)
     }, 300)
   }, [id])

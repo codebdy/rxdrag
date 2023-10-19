@@ -29,7 +29,7 @@ const Container = styled.div`
     display: flex;
     flex-flow: column;
     background-color: ${props => props.theme.token?.colorBgBase};
-    border: solid 1px ${props => props.theme.token?.colorBorder};
+    border: solid 1px ${props => props.theme.token?.colorBorderSecondary};
     border-left: 0;
     height: 0;
     overflow: auto;

@@ -31,7 +31,7 @@ const Container = styled.div`
   flex: 1;
   display: flex;
   flex-flow: column;
-  border: solid 1px  ${props => props.theme.token?.colorBorder};
+  border: solid 1px  ${props => props.theme.token?.colorBorderSecondary};
   border-left: 0;
   overflow: auto;
   .ant-tree-node-content-wrapper{

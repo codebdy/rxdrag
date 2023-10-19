@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: space-between;
   height: 48px;
   background-color: ${props => props.theme?.token?.colorBgBase};
-  border: solid 1px ${props => props.theme?.token?.colorBorder};
+  border: solid 1px ${props => props.theme?.token?.colorBorderSecondary};
   border-right: 0;
   border-left: 0;
   padding: 0 8px;

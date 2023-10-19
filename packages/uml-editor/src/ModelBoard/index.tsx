@@ -13,7 +13,7 @@ const Container = styled.div`
     display: flex;
     flex-flow: column;
     background-color: ${props => props.theme.token?.colorBgBase};
-    border-right: solid 1px ${props => props.theme.token?.colorBorder};
+    border-right: solid 1px ${props => props.theme.token?.colorBorderSecondary};
     width: 100%;
     height: 100%;
     overflow: auto;

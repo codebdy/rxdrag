@@ -1,8 +1,31 @@
 import { memo } from "react"
 import { Divider, Space } from "antd"
 import { FlowRemoveButton, FlowUdredoButtons } from "@rxdrag/logicflow-editor-antd5"
-import { StyledToolbar } from "./StyledToolbar";
-import { ToolbarTitle } from "./ToolbarTitle";
+import styled from "styled-components";
+
+export const StyledToolbar = styled.div`
+  display: flex;
+  padding: 0 8px;
+  height: 48px;
+  align-items: center;
+  width: 100%;
+  background-color: ${props => props.theme.token?.colorBgBase};
+  border-top: solid 1px ${props => props.theme.token?.colorBorderSecondary};
+  border-bottom: ${props => props.theme.token?.colorBorderSecondary} solid 1px;
+  box-sizing: border-box;
+`;
+
+
+export const ToolbarTitle = styled.div`
+  flex:1;
+  display: flex;
+  align-items: center;
+  color: ${props => props.theme?.token?.colorTextSecondary};
+  .text{
+    margin-left: 4px;
+  }
+`;
+
 
 export const Toolbar = memo((
   props: {

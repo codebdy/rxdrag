@@ -22,7 +22,7 @@ import { useTranslate } from "@rxdrag/react-locales";
 const Container = styled.div`
   display: flex;
   flex-flow: column;
-  border-right: solid 1px ${props => props.theme.token?.colorBorder};
+  border-right: solid 1px ${props => props.theme.token?.colorBorderSecondary};
   width: 100px;
   align-items: center;
   overflow-y: auto;

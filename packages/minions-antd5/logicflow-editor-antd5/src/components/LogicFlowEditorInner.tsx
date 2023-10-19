@@ -1,9 +1,8 @@
 import React, { CSSProperties, useCallback, useState } from "react";
 import { memo } from "react"
 import styled from "styled-components";
-import { ResizableColumn, ILogicMetas, FlowToolbar, FlowCanvas, FlowPropertyBox, FlowToolbox } from "@rxdrag/minions-logicflow-editor";
+import { ResizableColumn, ILogicMetas, FlowCanvas, FlowPropertyBox, FlowToolbox } from "@rxdrag/minions-logicflow-editor";
 import { ToggleButton } from "./ToggleButton";
-
 
 const EditorShell = styled.div`
   display: flex;
@@ -63,10 +62,7 @@ export const LogicFlowEditorInner = memo((
     <EditorShell {...rest}>
       <CenterArea>
         {
-          toolbar &&
-          <FlowToolbar>
-            {toolbar}
-          </FlowToolbar>
+          toolbar
         }
         <OperateArea>
           {

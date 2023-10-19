@@ -25,7 +25,7 @@ export const LogicEditor = memo((
   const { id } = props;
   const [inputValue, setInputValue] = useState<ILogicMetas>(emptyValue)
   const { flow } = useQueryExtensionLogicFlow(id || "")
-
+  console.log("===>flow", flow, id)
   return (
     <LogicMetaEditorAntd5Inner
       style={{ display: id ? undefined : "none" }}

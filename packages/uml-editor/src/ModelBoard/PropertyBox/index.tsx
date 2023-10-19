@@ -15,7 +15,7 @@ const Container = styled.div`
     padding: 8px 16px;
   }
   color: ${props => props.theme.token?.colorText};
-  border-left: solid 1px ${props => props.theme.token?.colorBorder};
+  border-left: solid 1px ${props => props.theme.token?.colorBorderSecondary};
   box-sizing: border-box;
 `
 export const PropertyBox = memo((
