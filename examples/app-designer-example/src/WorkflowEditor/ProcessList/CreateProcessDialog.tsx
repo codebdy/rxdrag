@@ -35,7 +35,7 @@ const CreateProcessDialog = memo((
         }
         onClick={showModal}
       >
-        {t("AppBpmn.NewPorcess")}
+        {t("NewPorcess")}
       </Button>
       <ProcessModal categories={categories} isModalVisible={isModalVisible} onClose={handleClose} />
     </>

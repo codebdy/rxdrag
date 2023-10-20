@@ -31,7 +31,7 @@ const CreateCategoryDialog = memo(() => {
 
   const handleConfirm = useCallback(() => {
     form.validateFields().then((values: IProcessCategory) => {
-      create({ name: values.name, id: createId() })
+      create({ name: values.name, id: createId(), app: { id: "app1" } })
     });
   }, [create, form]);
 
@@ -47,10 +47,10 @@ const CreateCategoryDialog = memo(() => {
         }
         onClick={showModal}
       >
-        {t("AppBpmn.NewCategory")}
+        {t("NewCategory")}
       </Button>
       <Modal
-        title={t("AppBpmn.NewCategory")}
+        title={t("NewCategory")}
         open={isModalVisible}
         width={400}
         cancelText={t("Cancel")}

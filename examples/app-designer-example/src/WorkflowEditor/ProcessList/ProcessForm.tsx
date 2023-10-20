@@ -37,7 +37,7 @@ const ProcessForm = memo((props: {
       </Form.Item>
 
       <Form.Item
-        label={t("AppBpmn.SelectCategory")}
+        label={t("SelectCategory")}
         name="categoryId"
       >
         <Select>

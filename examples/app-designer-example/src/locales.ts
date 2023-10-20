@@ -6,6 +6,8 @@ export const appDesignerLocales: ILocales = {
     Add: "添加",
     Name: "名称",
     Save: "保存",
+    Edit: "编辑",
+    Delete: "删除",
     Description: "描述",
     OperateType: "操作类型",
     Query: "查询",
@@ -46,13 +48,21 @@ export const appDesignerLocales: ILocales = {
       h5: "移动端",
       admin: "管理端",
       largeScreen: "大屏",
-    }
+    },
+    NewProcess: "新建工作流",
+    CagegoryName: "分类名称",
+    NewCategory: "新建分类",
+    NewPorcess: "新建流程",
+    SelectCategory: "选择分类",
+    AddProcess: "添加流程"
   },
   'en-US': {
     Type: "Type",
     Add: "Add",
     Name: "Name",
     Save: "Save",
+    Edit: "Edit",
+    Delete: "Delete",
     Description: "Description",
     OperateType: "Operate Type",
     Query: "Query",
@@ -93,6 +103,12 @@ export const appDesignerLocales: ILocales = {
       h5: "Mobile H5",
       admin: "Admin",
       largeScreen: "Large screen",
-    }
+    },
+    NewProcess: "New Process",
+    CagegoryName: "Cagegory Name",
+    NewCategory: "New Category",
+    NewPorcess: "New Porcess",
+    SelectCategory: "Select Category",
+    AddProcess: "Add Process"
   }
 }

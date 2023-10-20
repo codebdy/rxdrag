@@ -21,6 +21,7 @@ const ProcessListShell = styled.div`
   flex-flow: column;
   padding: 16px;
   border: solid 1px ${props => props.theme?.token?.colorBorderSecondary};
+  background-color: ${props => props.theme?.token?.colorBgBase};
   border-left: 0;
   .process-list-action{
     padding: 0 0px;
@@ -33,7 +34,17 @@ const ProcessListShell = styled.div`
     flex: 1;
     overflow: auto;
     margin-top: 16px;
+    .ant-tree{
+      background-color: transparent;
+    }
+    .ant-tree-node-content-wrapper{
+      display: flex;
+      .ant-tree-title{
+        flex:1;
+      }
+    }
   }
+
 `
 
 const ProcessList = memo((

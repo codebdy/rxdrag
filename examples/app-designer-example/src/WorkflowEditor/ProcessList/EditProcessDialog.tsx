@@ -28,9 +28,9 @@ const EditProccessDialog = memo((
   const handleConfirm = useCallback(() => {
     form.validateFields().then((newProcess: IProcess) => {
       if (newProcess.categoryId) {
-        upsert({ ...process, name: newProcess.name, categoryId: newProcess.id });
+        upsert({ ...process, name: newProcess.name, categoryId: newProcess.id, app: { id: "app1" } });
       } else {
-        upsert({ ...process, name: newProcess.name, categoryId: "" });
+        upsert({ ...process, name: newProcess.name, categoryId: "", app: { id: "app1" } });
       }
     });
   }, [form, process, upsert]);

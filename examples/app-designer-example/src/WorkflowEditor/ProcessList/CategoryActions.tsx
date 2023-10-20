@@ -42,7 +42,7 @@ const CategoryActions = memo((
         items: [
           {
             icon: <FileAddOutlined />,
-            label: t("AppBpmn.NewProcess"),
+            label: t("NewProcess"),
             key: '0',
             onClick: (e => {
               e.domEvent.stopPropagation();

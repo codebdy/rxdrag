@@ -18,7 +18,6 @@ const CategoryForm = memo((
 
   return (
     <Form
-      name="eidtCategory"
       labelCol={{ span: 6 }}
       wrapperCol={{ span: 16 }}
       form={form}
@@ -27,7 +26,7 @@ const CategoryForm = memo((
       onKeyUp={handleKeyUp}
     >
       <Form.Item
-        label={t("AppBpmn.CagegoryName")}
+        label={t("CagegoryName")}
         name="name"
         rules={[{ required: true, message: t("Required") }]}
       >

@@ -62,7 +62,7 @@ const ProcessModal = memo((
 
   return (
     <Modal
-      title={t("AppBpmn.AddProcess")}
+      title={t("AddProcess")}
       open={isModalVisible}
       cancelText={t("Cancel")}
       okText={t("Confirm")}
