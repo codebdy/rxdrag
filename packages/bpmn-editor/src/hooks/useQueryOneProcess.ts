@@ -12,7 +12,7 @@ query ($id:ID!){
     id
     name
     uuid
-    categoryUuid
+    categoryId
     xml
   }
 }

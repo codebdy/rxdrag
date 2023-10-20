@@ -1,7 +1,8 @@
 import { ResizableColumn } from "@rxdrag/react-shared"
-import { memo } from "react"
+import { memo, useState } from "react"
 import styled from "styled-components"
 import ProcessList from "./ProcessList"
+import { ID } from "@rxdrag/shared"
 
 const Container = styled.div`
   flex: 1;
@@ -12,9 +13,13 @@ const Container = styled.div`
 `
 
 export const WorkflowEditor = memo(() => {
+  const [selected, setSelected] = useState<ID>()
   return (<Container>
     <ResizableColumn minWidth={50} maxWidth={500} width={260}>
-      <ProcessList />
+      <ProcessList
+        selected={selected}
+        onSelectChange={setSelected}
+      />
     </ResizableColumn>
   </Container>)
 })

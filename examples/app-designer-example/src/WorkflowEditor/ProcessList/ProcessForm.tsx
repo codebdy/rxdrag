@@ -23,7 +23,7 @@ const ProcessForm = memo((props: {
       labelCol={{ span: 5 }}
       wrapperCol={{ span: 16 }}
       form={form}
-      initialValues={{ name: process?.name || "", categoryUuid: process?.categoryId || categoryId || "" }}
+      initialValues={{ name: process?.name || "", categoryId: process?.categoryId || categoryId || "" }}
       autoComplete="off"
       onKeyUp={handleKeyUp}
     >

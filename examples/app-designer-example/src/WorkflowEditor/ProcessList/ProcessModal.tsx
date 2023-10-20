@@ -59,7 +59,6 @@ const ProcessModal = memo((
     onClose()
   }, [form, onClose]);
 
-
   return (
     <Modal
       title={t("AddProcess")}

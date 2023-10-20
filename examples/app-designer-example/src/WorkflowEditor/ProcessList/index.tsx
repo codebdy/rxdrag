@@ -63,6 +63,7 @@ const ProcessList = memo((
       dataNodes.push({
         title: <CategoryLabel categories={categories || []} category={category} />,
         key: category.id,
+        selectable: false,
         children: getCategoryProcesses(category.id)?.map((process) => {
           return {
             title: process && <ProcessLabel process={process} categories={categories || []} />,
@@ -73,10 +74,10 @@ const ProcessList = memo((
       })
     }
 
-    for (const page of processsWithoutCategory) {
+    for (const process of processsWithoutCategory) {
       dataNodes.push({
-        title: page && <ProcessLabel process={page} categories={categories || []} />,
-        key: page.id,
+        title: process && <ProcessLabel process={process} categories={categories || []} />,
+        key: process.id,
         isLeaf: true,
       })
     }
