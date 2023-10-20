@@ -3,25 +3,23 @@ import { IApp, IAppInput } from "./app";
 
 export interface IProcessCategory {
   id: ID;
-  uuid: string;
   name?: string;
   app?: IApp;
 }
 
 export interface IProcessCategoryInput {
   id?: ID;
-  uuid?: string;
   name?: string;
   app?: { sync: IAppInput };
 }
 
 export interface IProcess {
   id: ID;
-  uuid: string;
   name?: string;
-  categoryUuid?: string;
+  categoryId?: string;
   xml?: string,
   instances?: IProcessInstance[];
+  app?: IApp;
 }
 
 export interface IProcessInstance {
@@ -32,9 +30,8 @@ export interface IProcessInstance {
 
 export interface IProcessInput {
   id?: ID;
-  uuid?: string;
   name?: string;
-  categoryUuid?: string;
+  categoryId?: string;
   xml?: string,
   app?: { sync: IAppInput }
 }

@@ -6,5 +6,7 @@ export enum Entities {
   Script = "Script",
   ExtensionScript = "ExtensionScript",
   ExtensionLogicFlow = "ExtensionLogicFlow",
-  Meta = "Meta"
+  Meta = "Meta",
+  Process = "Process",
+  ProcessCategory = "ProcessCategory"
 }

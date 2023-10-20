@@ -1,81 +1,94 @@
 import { Tree } from 'antd';
 import React, { memo, useCallback } from 'react';
-import "./index.less"
 import CreateCategoryDialog from './CreateCategoryDialog';
 import CreateProcessDialog from './CreateProcessDialog';
-import { useRecoilState } from 'recoil';
 import CategoryLabel from './CategoryLabel';
 import ProcessLabel from './ProcessLabel';
-import { useCategories } from '../hooks/useCategories';
-import { useGetProcess } from '../hooks/useGetProcess';
-import { selectedBpmnProcessIdState } from '../recoil/atoms';
-import { useProcessesWithoutCategory } from '../hooks/useProcessesWithoutCategory';
-import { useGetCategoryProcesses } from '../hooks/useGetCategoryProcesses';
-import { useDesignerParams } from 'plugin-sdk';
 import { DataNode } from 'antd/es/tree';
+import { ID } from '@rxdrag/shared';
+import styled from 'styled-components';
+import { useQueryAppProcessCategories } from '../../hooks/useQueryAppProcessCategories';
+import { useQueryAppProcesses } from '../../hooks/useQueryAppProcesses';
+import { useProcessesWithoutCategory } from './hooks/useProcessesWithoutCategory';
+import { useGetCategoryProcesses } from './hooks/useGetCategoryProcesses';
 
 const { DirectoryTree } = Tree;
 
+const ProcessListShell = styled.div`
+  display: flex;
+  flex:1;
+  height: 100%;
+  flex-flow: column;
+  padding: 16px;
+  .process-list-action{
+    padding: 0 0px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .process-list-tree{
+    flex: 1;
+    overflow: auto;
+    margin-top: 16px;
+  }
+`
+
 const ProcessList = memo((
   props: {
+    selected?: ID,
+    onSelectChange?: (selected?: ID) => void
   }
 ) => {
-  const categories = useCategories();
-  const { app } = useDesignerParams()
-
-  const getProcess = useGetProcess();
-
-  // const getPageCategory = useGetPageCategory();
-  const [selectedProcessId, setSelectedProcessId] = useRecoilState(selectedBpmnProcessIdState(app?.id));
-  const pagesWithoutCategory = useProcessesWithoutCategory();
-  const getCategoryProcesses = useGetCategoryProcesses();
+  const { selected, onSelectChange } = props;
+  const { categories } = useQueryAppProcessCategories("app1");
+  const { processes } = useQueryAppProcesses("app1")
+  const processsWithoutCategory = useProcessesWithoutCategory(categories, processes);
+  const getCategoryProcesses = useGetCategoryProcesses(processes);
 
   const getTreeData = useCallback(() => {
     const dataNodes: DataNode[] = []
-    for (const category of categories) {
+    for (const category of categories || []) {
       dataNodes.push({
-        title: <CategoryLabel categories={categories} category={category} />,
+        title: <CategoryLabel categories={categories || []} category={category} />,
         key: category.id,
-        children: getCategoryProcesses(category.uuid)?.map((page) => {
+        children: getCategoryProcesses(category.id)?.map((process) => {
           return {
-            title: page && <ProcessLabel process={page} categories={categories} />,
-            key: page.id,
+            title: process && <ProcessLabel process={process} categories={categories || []} />,
+            key: process.id,
             isLeaf: true,
           }
         })
       })
     }
 
-    for (const page of pagesWithoutCategory) {
+    for (const page of processsWithoutCategory) {
       dataNodes.push({
-        title: page && <ProcessLabel process={page} categories={categories} />,
+        title: page && <ProcessLabel process={page} categories={categories || []} />,
         key: page.id,
         isLeaf: true,
       })
     }
     return dataNodes
-  }, [categories, getCategoryProcesses, pagesWithoutCategory])
+  }, [categories, getCategoryProcesses, processsWithoutCategory])
 
-  const onSelect = (selectedKeys: any) => {
-    const page = getProcess(selectedKeys?.[0]);
-    if (page?.id) {
-      setSelectedProcessId(page?.id);
-    }
+  const onSelect = (selectedKeys: React.Key[]) => {
+    onSelectChange?.(selectedKeys?.[0] as string);
   };
 
   return (
-    <div className='process-list-shell'>
+    <ProcessListShell className='process-list-shell'>
       <div className="process-list-action">
         <CreateCategoryDialog />
-        <CreateProcessDialog categories={categories} />
+        <CreateProcessDialog categories={categories || []} />
       </div>
       <DirectoryTree
         className='process-list-tree'
-        selectedKeys={[selectedProcessId] as any}
+        selectedKeys={[selected || ""]}
         onSelect={onSelect}
         treeData={getTreeData()}
       />
-    </div>
+    </ProcessListShell>
   );
 });
 

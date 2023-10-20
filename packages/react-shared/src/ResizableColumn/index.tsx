@@ -1,7 +1,6 @@
 import React, { CSSProperties, memo, useCallback, useEffect, useRef, useState } from "react";
-import { isNumber } from "lodash";
-
 import "./style.less";
+import { isNum } from "@rxdrag/shared";
 export const PRIMARY_COLOR = "#5d78ff";
 const handlerWidth = 5;
 
@@ -49,7 +48,7 @@ export const ResizableColumn = memo(
 
     const handleMouseMove = useCallback(
       (event: MouseEvent) => {
-        if (draging && isNumber(oldWidth)) {
+        if (draging && isNum(oldWidth)) {
           const newWidth = right
             ? (oldWidth as number) - (event.clientX - firstX)
             : (oldWidth as number) + (event.clientX - firstX);
