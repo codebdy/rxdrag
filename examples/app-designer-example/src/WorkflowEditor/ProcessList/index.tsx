@@ -20,6 +20,8 @@ const ProcessListShell = styled.div`
   height: 100%;
   flex-flow: column;
   padding: 16px;
+  border: solid 1px ${props => props.theme?.token?.colorBorderSecondary};
+  border-left: 0;
   .process-list-action{
     padding: 0 0px;
     display: flex;
