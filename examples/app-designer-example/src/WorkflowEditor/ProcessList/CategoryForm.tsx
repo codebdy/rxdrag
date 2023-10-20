@@ -2,11 +2,12 @@ import { useTranslate } from "@rxdrag/react-locales";
 import { Form, FormInstance, Input } from "antd";
 import React, { useCallback } from "react";
 import { memo } from "react";
+import { IProcessCategory } from "../../interfaces/process";
 
 const CategoryForm = memo((
   props: {
     name?: string,
-    form: FormInstance<any>
+    form: FormInstance<IProcessCategory>
   }
 ) => {
   const { name, form } = props;

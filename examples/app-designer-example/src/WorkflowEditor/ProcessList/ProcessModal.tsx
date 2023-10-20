@@ -26,13 +26,13 @@ const empertyBpmn = `
 
 const ProcessModal = memo((
   props: {
-    categoryUuid?: string,
+    categoryId?: string,
     categories: IPageCategory[],
     isModalVisible: boolean,
     onClose: () => void,
   }
 ) => {
-  const { categoryUuid, categories, isModalVisible, onClose } = props;
+  const { categoryId, categories, isModalVisible, onClose } = props;
   const [form] = Form.useForm();
   const { t } = useTranslation();
   const [upsert, { loading, error }] = useUpsertProcess({
@@ -72,7 +72,7 @@ const ProcessModal = memo((
       onOk={handleConfirm}
       confirmLoading={loading}
     >
-      <ProcessForm categoryUuid={categoryUuid} categories={categories} form={form} />
+      <ProcessForm categoryUuid={categoryId} categories={categories} form={form} />
     </Modal>
   )
 })

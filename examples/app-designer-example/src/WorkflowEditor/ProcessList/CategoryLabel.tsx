@@ -1,10 +1,10 @@
-import TreeNodeLabel from "common/TreeNodeLabel"
 import React, { useCallback, useState } from "react"
 import CategoryActions from "./CategoryActions"
 import EditCategoryDialog from "./EditCategoryDialog"
 import ProcessModal from "./ProcessModal"
-import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
-import { IProcessCategory } from "model"
+import { TreeNodeLabel } from "@rxdrag/uml-editor"
+import { IProcessCategory } from "../../interfaces/process"
+
 
 const CategoryLabel = (
   props: {
@@ -16,9 +16,8 @@ const CategoryLabel = (
   const [visible, setVisible] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [pageModalOpen, setPageModalOpen] = useState(false);
-  const p = useParseLangMessage();
 
-  const handleVisableChange = useCallback((visible: any) => {
+  const handleVisableChange = useCallback((visible: boolean) => {
     setVisible(visible)
   }, []);
 
@@ -51,7 +50,7 @@ const CategoryLabel = (
         />
       }
     >
-      {p(category.name)}
+      {category.name}
       <div
         onClick={e => e.stopPropagation()}
       >
@@ -62,7 +61,7 @@ const CategoryLabel = (
         />
         <ProcessModal
           categories={categories}
-          categoryUuid={category?.uuid}
+          categoryId={category?.id}
           isModalVisible={pageModalOpen}
           onClose={handleClosePageModal}
         />

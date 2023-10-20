@@ -2,6 +2,8 @@ import { MoreOutlined, FileAddOutlined, EditOutlined, DeleteOutlined, LoadingOut
 import { useTranslate } from "@rxdrag/react-locales";
 import { Dropdown, Button } from "antd";
 import React, { memo, useCallback } from "react"
+import { useRemoveProcessCategory } from "../../hooks/useRemoveProcessCategory";
+import { ID } from "@rxdrag/shared";
 
 const CategoryActions = memo((
   props: {
@@ -14,8 +16,8 @@ const CategoryActions = memo((
   const { id, onVisibleChange, onEdit, onAddPage } = props;
   const  t  = useTranslate();
 
-  const [remove, { loading }] = useDeleteCategory({
-    onCompleted: () => {
+  const [remove, { loading }] = useRemoveProcessCategory({
+    onComplete: () => {
       onVisibleChange(false);
     }
   });

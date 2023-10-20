@@ -1,26 +1,24 @@
 import { Button, Modal } from "antd";
-import SvgIcon from "common/SvgIcon";
 import { useCallback, useState } from "react";
 import { memo } from "react";
-import { useShowError } from "hooks/useShowError";
 import CategoryForm from "./CategoryForm";
-import { useTranslation } from "react-i18next";
-import { createId } from "shared";
-import { useUpsertCategory } from "../hooks/useUpsertCategory";
 import { useForm } from "antd/es/form/Form";
+import { useTranslate } from "@rxdrag/react-locales";
+import { SvgIcon } from "@rxdrag/react-shared";
+import { useSaveProcessCategory } from "../../hooks/useSaveProcessCategory";
+import { IProcessCategory } from "../../interfaces/process";
+import { createId } from "@rxdrag/shared";
 
 const CreateCategoryDialog = memo(() => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = useForm()
-  const { t } = useTranslation();
-  const [create, { loading, error }] = useUpsertCategory({
-    onCompleted: () => {
+  const t = useTranslate();
+  const [create, { loading }] = useSaveProcessCategory({
+    onComplete: () => {
       form.resetFields();
       setIsModalVisible(false);
     }
   });
-
-  useShowError(error);
 
   const showModal = useCallback(() => {
     setIsModalVisible(true);
@@ -31,9 +29,9 @@ const CreateCategoryDialog = memo(() => {
     setIsModalVisible(false);
   }, [form]);
 
-  const handleConfirm = useCallback((values: any) => {
-    form.validateFields().then((values: any) => {
-      create({ name: values.name, uuid: createId() })
+  const handleConfirm = useCallback(() => {
+    form.validateFields().then((values: IProcessCategory) => {
+      create({ name: values.name, id: createId() })
     });
   }, [create, form]);
 

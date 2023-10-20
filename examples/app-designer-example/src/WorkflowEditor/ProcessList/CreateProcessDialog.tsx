@@ -1,19 +1,19 @@
 import { Button } from "antd";
-import SvgIcon from "common/SvgIcon";
 import React, { useCallback, useState } from "react";
 import { memo } from "react";
 import ProcessModal from "./ProcessModal";
-import { useTranslation } from "react-i18next";
-import { IPageCategory } from "model";
+import { IProcessCategory } from "../../interfaces/process";
+import { useTranslate } from "@rxdrag/react-locales";
+import { SvgIcon } from "@rxdrag/react-shared";
 
 const CreateProcessDialog = memo((
   props: {
-    categories: IPageCategory[]
+    categories: IProcessCategory[]
   }
 ) => {
   const { categories } = props;
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { t } = useTranslation();
+  const t = useTranslate();
   const showModal = useCallback(() => {
     setIsModalVisible(true);
   }, []);
