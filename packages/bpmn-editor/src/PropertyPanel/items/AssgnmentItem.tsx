@@ -1,8 +1,8 @@
+import { useTranslate } from "@rxdrag/react-locales";
 import { Form, Input } from "antd";
-import { useTranslation } from "react-i18next";
 
 export const AssgnmentItem = (props: { element: any, modeler: any }) => {
-  const { t } = useTranslation()
+  const t = useTranslate();
   return (
     <>
       <Form.Item

@@ -1,22 +1,50 @@
 import { Collapse, Empty, Form } from "antd"
 import React, { useCallback, useEffect } from "react"
 import { memo } from "react"
-import { useTranslation } from "react-i18next"
 import { useAssignment } from "../hooks/useAssignment"
 import { useElementView } from "./elements"
 import { DocumentItem } from "./items/DocumentItem"
 import { IdItem } from "./items/IdItem"
 import { NameItem } from "./items/NameItem"
-import "./style.less"
+import { useTranslate } from "@rxdrag/react-locales"
+import styled from "styled-components";
 
 const { Panel } = Collapse;
+
+const Container = styled.div`
+  padding: 0;
+  .ant-collapse-content-box{
+    padding: 8px 16px;
+    .ant-form-item{
+      margin-bottom: 8px;
+    }
+  }
+
+  .element-summary{
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    .element-icon{
+      display: flex;
+      align-items: center;
+    }
+    .element-text{
+      padding-left: 8px;
+      line-height: 14px;
+      font-size: 12px;
+      .element-type{
+        font-weight: bold;
+      }
+    }
+  }
+`
 
 export const PropertyPanel = memo((props: {
   element?: any,
   modeler?: any,
 }) => {
   const { element, modeler } = props;
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [form] = Form.useForm();
   const elementView = useElementView(element, modeler);
   const [assignment, updateAssignment] = useAssignment(element, modeler);
@@ -29,7 +57,7 @@ export const PropertyPanel = memo((props: {
   }, [element?.businessObject, assignment, form])
   console.log("Element的 businessObject", element?.businessObject)
 
-  const handleValueChange = useCallback((changedValue:any) => {
+  const handleValueChange = useCallback((changedValue: any) => {
     const modeling = modeler.get('modeling');
     if (changedValue?.name) {
       //modeling.updateLabel(element, changedValue.name);
@@ -48,7 +76,7 @@ export const PropertyPanel = memo((props: {
   }, [modeler, element, updateAssignment])
 
   return (
-    <div className="property-pannel-form" key={element?.id}>
+    <Container className="property-pannel-form" key={element?.id}>
       <Form
         name="taskform"
         labelCol={{ span: 8 }}
@@ -105,6 +133,6 @@ export const PropertyPanel = memo((props: {
         }
 
       </Form>
-    </div>
+    </Container>
   )
 })

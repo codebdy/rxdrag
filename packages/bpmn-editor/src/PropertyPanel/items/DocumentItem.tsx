@@ -1,10 +1,9 @@
+import { useTranslate } from "@rxdrag/react-locales";
 import { Form, Input } from "antd";
 import React from "react";
-import { useTranslation } from "react-i18next";
-//import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
 
 export const DocumentItem = () => {
-  const { t } = useTranslation()
+  const t = useTranslate();
   return (
     <Form.Item
       label={t("AppBpmn.ElementDocumentation")}

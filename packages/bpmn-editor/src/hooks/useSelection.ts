@@ -6,7 +6,8 @@ export function useSelection(modeler?: any) {
 
   useEffect(() => {
     const canvas = modeler?.get('canvas')
-    setElement(canvas?.getRootElement())
+    console.log("===>canvas", canvas)
+    //setElement(canvas?.getRootElement())
   }, [modeler])
 
   const handleSelectionsChanged = useCallback((e: any) => {

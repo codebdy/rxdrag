@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
 import { IElement } from "./IElement";
+import { useTranslate } from "@rxdrag/react-locales";
 
 export function useCollaboration(element: any, modeler: any): IElement {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const iElement: IElement = useMemo(() => {
     return {
       type: t("AppBpmn.Collaboration"),

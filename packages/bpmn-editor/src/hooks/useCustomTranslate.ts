@@ -1,8 +1,8 @@
+import { useTranslate } from "@rxdrag/react-locales";
 import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
 
 export function useCustomTranslate() {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const translate = useCallback((template: any, replacements: any) => {
     console.log("翻译遗漏追踪", t("AppBpmn." + template))

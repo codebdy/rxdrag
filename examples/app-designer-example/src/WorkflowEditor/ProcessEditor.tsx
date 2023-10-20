@@ -6,6 +6,7 @@ import { useQueryProcess } from "../hooks/useQueryProcess"
 import { useTranslate } from "@rxdrag/react-locales"
 import { Button } from "antd"
 import { useSaveProcess } from "../hooks/useSaveProcess"
+import { BpmnEditor } from "@rxdrag/bpmn-editor"
 
 const Container = styled.div`
   flex: 1;
@@ -47,6 +48,7 @@ export const ProcessEditor = memo((
           }
         </Button>
       </Toolbar>
+      <BpmnEditor />
     </Container>
   )
 })
