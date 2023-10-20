@@ -1,11 +1,9 @@
 import { MoreOutlined, EditOutlined, DeleteOutlined, LoadingOutlined } from "@ant-design/icons";
+import { useTranslate } from "@rxdrag/react-locales";
 import { Dropdown, Button } from "antd";
 import React, { memo, useCallback } from "react"
-import { ID } from "shared";
-import { IProcess } from "model";
-import { useShowError } from "hooks/useShowError";
-import { useTranslation } from "react-i18next";
-import { useDeleteProcess } from "../hooks/useDeleteProcess";
+import { useRemoveProcess } from "../../hooks/useRemoveProcess";
+import { ID } from "@rxdrag/shared";
 
 const ProcessActions = memo((
   props: {
@@ -15,14 +13,12 @@ const ProcessActions = memo((
   }
 ) => {
   const { pageId, onVisibleChange, onEdit } = props;
-  const { t } = useTranslation();
-  const [remove, { loading, error }] = useDeleteProcess({
-    onCompleted: (data: IProcess) => {
+  const t = useTranslate();
+  const [remove, { loading, }] = useRemoveProcess({
+    onComplete: () => {
       onVisibleChange(false);
     }
   });
-
-  useShowError(error);
 
   const handleEdit = useCallback(() => {
     onEdit();
@@ -68,7 +64,6 @@ const ProcessActions = memo((
             <LoadingOutlined />
             : <MoreOutlined color="inherit" />
         }
-
       </Button>
     </Dropdown>
   )

@@ -2,11 +2,10 @@ import { Form, Modal } from "antd";
 import { useCallback } from "react";
 import { memo } from "react";
 import ProcessForm from "./ProcessForm";
-import { useShowError } from "hooks/useShowError";
-import { useTranslation } from "react-i18next";
-import { IPageCategory } from "model";
-import { createId } from "shared";
-import { useUpsertProcess } from "../hooks/useUpsertProcess";
+import { IProcess, IProcessCategory } from "../../interfaces/process";
+import { useTranslate } from "@rxdrag/react-locales";
+import { useSaveProcess } from "../../hooks/useSaveProcess";
+import { createId } from "@rxdrag/shared";
 
 const empertyBpmn = `
 <?xml version="1.0" encoding="UTF-8"?>
@@ -27,31 +26,30 @@ const empertyBpmn = `
 const ProcessModal = memo((
   props: {
     categoryId?: string,
-    categories: IPageCategory[],
+    categories: IProcessCategory[],
     isModalVisible: boolean,
     onClose: () => void,
   }
 ) => {
   const { categoryId, categories, isModalVisible, onClose } = props;
   const [form] = Form.useForm();
-  const { t } = useTranslation();
-  const [upsert, { loading, error }] = useUpsertProcess({
-    onCompleted: () => {
+  const  t  = useTranslate();
+  const [upsert, { loading }] = useSaveProcess({
+    onComplete: () => {
       form.resetFields();
       onClose();
     }
   });
 
-  useShowError(error);
 
   const handleConfirm = useCallback(() => {
-    form.validateFields().then((values: any) => {
-      const uuid = createId();
-      const xml = empertyBpmn.replace("$processId", "Process_" + uuid)
-      if (values.categoryUuid) {
-        upsert({ name: values.name, uuid, xml, categoryUuid: values.categoryUuid });
+    form.validateFields().then((values: IProcess) => {
+      const id = createId();
+      const xml = empertyBpmn.replace("$processId", "Process_" + id)
+      if (values.categoryId) {
+        upsert({ name: values.name, id, xml, categoryId: values.categoryId });
       } else {
-        upsert({ name: values.name, uuid, xml });
+        upsert({ name: values.name, id, xml });
       }
     });
   }, [upsert, form]);
@@ -72,7 +70,7 @@ const ProcessModal = memo((
       onOk={handleConfirm}
       confirmLoading={loading}
     >
-      <ProcessForm categoryUuid={categoryId} categories={categories} form={form} />
+      <ProcessForm categoryId={categoryId} categories={categories} form={form} />
     </Modal>
   )
 })

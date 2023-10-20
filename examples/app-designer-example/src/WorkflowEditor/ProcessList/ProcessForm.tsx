@@ -1,21 +1,18 @@
-import { FormInstance, Form, Select } from "antd";
+import { FormInstance, Form, Select, Input } from "antd";
 import React, { useCallback } from "react";
 import { memo } from "react";
-import { IPageInput, IProcess, IProcessCategory } from "model";
-import { useTranslation } from "react-i18next";
-import { MultiLangInput } from "components/MultiLangInput";
-import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
+import { IProcess, IProcessCategory, IProcessInput } from "../../interfaces/process";
+import { useTranslate } from "@rxdrag/react-locales";
 const { Option } = Select;
 
 const ProcessForm = memo((props: {
-  categoryUuid?: string,
+  categoryId?: string,
   process?: IProcess,
   categories: IProcessCategory[],
-  form: FormInstance<IPageInput>
+  form: FormInstance<IProcessInput>
 }) => {
-  const { categoryUuid, process, categories, form } = props;
-  const { t } = useTranslation();
-  const p = useParseLangMessage();
+  const { categoryId, process, categories, form } = props;
+  const t = useTranslate();
 
   const handleKeyUp = useCallback((event: React.KeyboardEvent<HTMLElement>) => {
     event.stopPropagation();
@@ -27,7 +24,7 @@ const ProcessForm = memo((props: {
       labelCol={{ span: 5 }}
       wrapperCol={{ span: 16 }}
       form={form}
-      initialValues={{ name: process?.name || "", categoryUuid: process?.categoryUuid || categoryUuid || "" }}
+      initialValues={{ name: process?.name || "", categoryUuid: process?.categoryId || categoryId || "" }}
       autoComplete="off"
       onKeyUp={handleKeyUp}
     >
@@ -36,20 +33,20 @@ const ProcessForm = memo((props: {
         name="name"
         rules={[{ required: true, message: t("Required") }]}
       >
-        <MultiLangInput title={t("Name")} />
+        <Input />
       </Form.Item>
 
       <Form.Item
         label={t("AppBpmn.SelectCategory")}
-        name="categoryUuid"
+        name="categoryId"
       >
         <Select>
           <Option value=""><em>None</em></Option>
           {
             categories.map((category) => {
               return (
-                <Option key={category.uuid} value={category.uuid}>
-                  {p(category.name)}
+                <Option key={category.id} value={category.id}>
+                  {category.name}
                 </Option>
               )
             })
