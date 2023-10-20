@@ -2,10 +2,9 @@ import { Form, Modal } from "antd";
 import React, { useCallback } from "react";
 import { memo } from "react";
 import ProcessForm from "./ProcessForm";
-import { IProcess, IProcessCategory } from "model";
-import { useShowError } from "hooks/useShowError";
-import { useTranslation } from "react-i18next";
-import { useUpsertProcess } from "../hooks/useUpsertProcess";
+import { IProcess, IProcessCategory } from "../../interfaces/process";
+import { useSaveProcess } from "../../hooks/useSaveProcess";
+import { useTranslate } from "@rxdrag/react-locales";
 
 const EditProccessDialog = memo((
   props: {
@@ -17,21 +16,21 @@ const EditProccessDialog = memo((
 ) => {
   const { process, categories, isModalVisible, onClose } = props;
   const [form] = Form.useForm()
-  const [upsert, { loading, error }] = useUpsertProcess({
-    onCompleted: () => {
+  const [upsert, { loading }] = useSaveProcess({
+    onComplete: () => {
       form.resetFields();
       onClose();
     }
   });
-  const { t } = useTranslation();
-  useShowError(error);
+  const t = useTranslate();
+
 
   const handleConfirm = useCallback(() => {
-    form.validateFields().then((values: any) => {
-      if (values.categoryUuid) {
-        upsert({ ...process as any, name: values.title, categoryUuid: values.categoryUuid });
+    form.validateFields().then((newProcess: IProcess) => {
+      if (newProcess.categoryId) {
+        upsert({ ...process, name: newProcess.name, categoryId: newProcess.id });
       } else {
-        upsert({ ...process as any, name: values.title, categoryUuid: "" });
+        upsert({ ...process, name: newProcess.name, categoryId: "" });
       }
     });
   }, [form, process, upsert]);
@@ -47,7 +46,7 @@ const EditProccessDialog = memo((
       onOk={handleConfirm}
       confirmLoading={loading}
     >
-      <ProcessForm process={process} categories={categories as any} form={form} />
+      <ProcessForm process={process} categories={categories || []} form={form} />
     </Modal>
   )
 })

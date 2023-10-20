@@ -1,11 +1,10 @@
+import { useTranslate } from "@rxdrag/react-locales";
 import { Form, Modal } from "antd";
 import React, { useCallback } from "react";
 import { memo } from "react";
-import { useShowError } from "hooks/useShowError";
+import { IProcessCategory } from "../../interfaces/process";
 import CategoryForm from "./CategoryForm";
-import { useTranslation } from "react-i18next";
-import { IProcessCategory } from "model";
-import { useUpsertCategory } from "../hooks/useUpsertCategory";
+import { useSaveProcessCategory } from "../../hooks/useSaveProcessCategory";
 
 const EditCategoryDialog = memo((
   props: {
@@ -15,19 +14,17 @@ const EditCategoryDialog = memo((
   }
 ) => {
   const { category, isModalVisible, onClose } = props;
-  const { t } = useTranslation();
+  const  t  = useTranslate();
 
   const [form] = Form.useForm()
-  const [update, { loading, error }] = useUpsertCategory({
-    onCompleted: () => {
+  const [update, { loading }] = useSaveProcessCategory({
+    onComplete: () => {
       form.resetFields();
       onClose();
     }
   });
 
-  useShowError(error);
-
-  const handleConfirm = useCallback((values: any) => {
+  const handleConfirm = useCallback(() => {
     form.validateFields().then((values) => {
       update({ id: category.id, name: values.name })
     });
