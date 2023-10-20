@@ -5,7 +5,7 @@ export function useProcessesWithoutCategory(categories?:IProcessCategory[], proc
   const processessWithoutCategory = useMemo(() => {
     const pcs = [];
     for (const process of processes || []) {
-      if (categories?.find(category => category.id === process.categoryId)) {
+      if (!categories?.find(category => category.id === process.categoryId)) {
         pcs.push(process)
       }
     }
