@@ -20,7 +20,6 @@ const ProcessForm = memo((props: {
 
   return (
     <Form
-      name="editPage"
       labelCol={{ span: 5 }}
       wrapperCol={{ span: 16 }}
       form={form}

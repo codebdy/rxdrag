@@ -34,9 +34,7 @@ const ProcessListShell = styled.div`
     flex: 1;
     overflow: auto;
     margin-top: 16px;
-    .ant-tree{
-      background-color: transparent;
-    }
+    background-color: transparent;
     .ant-tree-node-content-wrapper{
       display: flex;
       .ant-tree-title{

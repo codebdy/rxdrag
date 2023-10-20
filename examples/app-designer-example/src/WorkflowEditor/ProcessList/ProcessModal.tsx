@@ -33,7 +33,7 @@ const ProcessModal = memo((
 ) => {
   const { categoryId, categories, isModalVisible, onClose } = props;
   const [form] = Form.useForm();
-  const  t  = useTranslate();
+  const t = useTranslate();
   const [upsert, { loading }] = useSaveProcess({
     onComplete: () => {
       form.resetFields();
@@ -47,9 +47,9 @@ const ProcessModal = memo((
       const id = createId();
       const xml = empertyBpmn.replace("$processId", "Process_" + id)
       if (values.categoryId) {
-        upsert({ name: values.name, id, xml, categoryId: values.categoryId });
+        upsert({ name: values.name, id, xml, categoryId: values.categoryId, app: { id: "app1" } });
       } else {
-        upsert({ name: values.name, id, xml });
+        upsert({ name: values.name, id, xml, app: { id: "app1" } });
       }
     });
   }, [upsert, form]);
