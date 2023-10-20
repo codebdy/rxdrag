@@ -5,8 +5,7 @@ import { useImportAppJson } from '../hooks/useImportAppJson';
 import { useExportAppJson } from '../hooks/useExportAppJson';
 import { useTranslate } from '@rxdrag/react-locales';
 import { useApp } from '../../hooks/useApp';
-import { useMetaId } from '@rxdrag/uml-editor/src/hooks/useMetaId';
-import { useGetMeta } from '@rxdrag/uml-editor';
+import { useGetMeta, useMetaId } from '@rxdrag/uml-editor';
 import { IMeta } from '../../interfaces/meta';
 
 enum OperateEnum {

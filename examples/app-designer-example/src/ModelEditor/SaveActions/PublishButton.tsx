@@ -1,7 +1,6 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useTranslate } from '@rxdrag/react-locales';
-import { useChanged } from '@rxdrag/uml-editor';
-import { useMetaId } from '@rxdrag/uml-editor/src/hooks/useMetaId';
+import { useChanged, useMetaId } from '@rxdrag/uml-editor';
 import { Button, message } from 'antd';
 import React, { memo, useCallback } from 'react';
 
