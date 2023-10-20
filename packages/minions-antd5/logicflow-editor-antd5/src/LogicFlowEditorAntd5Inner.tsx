@@ -1,4 +1,4 @@
-import { ReactNode, memo } from "react"
+import { CSSProperties, ReactNode, memo } from "react"
 import { Toolbox, PropertyBox, FlowToolbar } from "./components"
 import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
 import { ActivityMaterialCategory, ILogicFlowDefine } from "@rxdrag/minions-schema"
@@ -15,12 +15,14 @@ export type LogicFlowEditorAntd5InnerProps = {
   fxFlowMetas?: ILogicFlowDefine[],
   toolbar?: false | React.ReactNode,
   toolbox?: React.ReactNode | false,
+  style?: CSSProperties,
+  className?: string,
 }
 
 export const LogicMetaEditorAntd5Inner = memo((
   props: LogicFlowEditorAntd5InnerProps
 ) => {
-  const { value, onChange, materialCategories, setters, toolbar, toolbox } = props
+  const { value, onChange, materialCategories, setters, toolbar, toolbox, ...rest } = props
   return (
     <LogicFlowEditorInner
       value={value}
@@ -28,6 +30,7 @@ export const LogicMetaEditorAntd5Inner = memo((
       toolbar={toolbar === undefined ? <FlowToolbar /> : toolbar}
       toolbox={toolbox !== false && (toolbox || <Toolbox materialCategories={materialCategories} />)}
       propertyBox={<PropertyBox setters={setters} />}
+      {...rest}
     >
       <MiniToolbar />
     </LogicFlowEditorInner>

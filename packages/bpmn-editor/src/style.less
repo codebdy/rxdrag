@@ -1,0 +1,66 @@
+.react-bpmn-diagram-container, .bpmn-xml-editor{
+  height: calc(100vh - 112px);
+}
+
+.bmpm-content,
+.bmpm-content > div {
+  width: 100%;
+  height: calc(100vh - 112px);
+  position: relative;
+  .toggle{
+    display: none;
+  }
+  .djs-minimap{
+    top: auto;
+    right: auto;
+    left: 20px;
+    bottom: 20px;
+    .map{
+      width: 220px;
+      height: 120px;
+    }
+  }
+}
+
+.bmpm-content > .message {
+  text-align: center;
+  display: table;
+
+  font-size: 16px;
+  color: #111;
+}
+
+.bmpm-content > .message .note {
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}
+
+.bmpm-content .error .details {
+  max-width: 500px;
+  font-size: 12px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.bmpm-content .error pre {
+  border: solid 1px #CCC;
+  background: #EEE;
+  padding: 10px;
+}
+
+.bmpm-content:not(.with-error) .error,
+.bmpm-content.with-error .intro,
+.bmpm-content.with-diagram .intro {
+  display: none;
+}
+
+
+.bmpm-content .canvas,
+.bmpm-content.with-error .canvas {
+  visibility: hidden;
+}
+
+.bmpm-content.with-diagram .canvas {
+  visibility: visible;
+}

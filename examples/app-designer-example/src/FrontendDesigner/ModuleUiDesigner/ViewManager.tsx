@@ -165,7 +165,7 @@ export const ViewManager = memo(() => {
   const [views, setViews] = useState<IViewSchema[]>()
   const module = useModule()
   const [saveModule, { loading }] = useSaveModule({
-    onComplate: () => {
+    onComplete: () => {
       setOpen(false)
     }
   })

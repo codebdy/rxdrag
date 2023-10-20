@@ -4,11 +4,13 @@ import classNames from "classnames"
 import { withContainerLayout } from "../../hocs";
 import { DisplayProps, DisplayType } from "../types";
 
-const FormLayoutImpl = memo(forwardRef<HTMLDivElement, FormLayoutParams & DisplayProps & {
+export type FomrLayoutProps = FormLayoutParams & DisplayProps & {
   className?: string,
   children?: React.ReactNode,
   style?: CSSProperties,
-}>((props, ref) => {
+}
+
+const FormLayoutImpl = memo(forwardRef<HTMLDivElement, FomrLayoutProps>((props, ref) => {
   const { children,
     colon,
     disabled,
@@ -58,4 +60,4 @@ const FormLayoutImpl = memo(forwardRef<HTMLDivElement, FormLayoutParams & Displa
   )
 }))
 
-export const FormLayout = withContainerLayout(FormLayoutImpl)
+export const FormLayout = withContainerLayout<FomrLayoutProps>(FormLayoutImpl)

@@ -15,7 +15,7 @@ export const VariableLabel = memo((props: {
   const module = useModule()
 
   const [saveModule, { loading }] = useSaveModule({
-    onComplate: () => {
+    onComplete: () => {
       setOpen(false)
     }
   })

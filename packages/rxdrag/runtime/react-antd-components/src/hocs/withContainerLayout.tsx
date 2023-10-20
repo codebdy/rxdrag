@@ -18,9 +18,9 @@ export interface IContainerLayoutProps {
 
 const step = 8
 
-export function withContainerLayout(WrappedComponent: ReactComponent) {
+export function withContainerLayout<T = unknown>(WrappedComponent: ReactComponent) {
 
-  return memo(forwardRef<HTMLElement, IContainerLayoutProps & { style?: CSSProperties, children?: React.ReactNode }>((props, ref) => {
+  return memo(forwardRef<HTMLElement, T & IContainerLayoutProps & { style?: CSSProperties, children?: React.ReactNode }>((props, ref) => {
     const { p, m, style, ...rest } = props
     const { pl, pt, pr, pb, } = p || {}
     const { ml, mt, mr, mb, } = m || {}

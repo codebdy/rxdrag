@@ -2,7 +2,7 @@ export interface INodeMeta<
   Field = unknown,
   NodeController = unknown
 > {
-  //特殊类型节点通过这个字段区别，比如Fragment，FreedomGroup
+  //组件名称
   componentName: string;
   props?: Record<string, unknown>;
   'x-field'?: Field;

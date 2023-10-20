@@ -1,4 +1,3 @@
-import { Input, InputNumber, Radio, Select, Slider } from "antd"
 import React, { Fragment, memo, useCallback, useMemo } from "react"
 import styled from "styled-components"
 import { PortsInput } from "./PortsInput"
@@ -10,7 +9,8 @@ import { INodeSchema } from "@rxdrag/schema"
 import { IReactComponents } from "@rxdrag/react-shared"
 import { ComponentRender } from "@rxdrag/react-runner"
 import { FormValue } from "@rxdrag/fieldy"
-import { FormItem, FormLayout, Switch } from "@rxdrag/react-antd-components"
+import { FormItem, FormLayout, Radio, Slider, Switch } from "@rxdrag/react-antd-components"
+import { Input, InputNumber, Select } from "antd"
 
 const EmptyContainer = styled.div`
   display: flex;

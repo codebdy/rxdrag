@@ -9,28 +9,26 @@ const StyledButton = styled(Button)`
   box-sizing: border-box;
   border-left: solid 3px transparent;
   border-right: solid 3px transparent;
-  &.intermediate{
+  &.selected{
     border-left-color: ${props => props.theme?.token?.colorPrimary};
   }
 `
 
 export const NavButton = memo((props: ButtonProps & {
   title?: string,
-  intermediate?: boolean,
+  //intermediate?: boolean,
   selected?: boolean,
 }) => {
-  const { title, intermediate, selected, className, ...rest } = props
+  const { title, selected, className, ...rest } = props
   const newType = useMemo(() => {
     if (selected) {
-      return "primary"
-    } else if (intermediate) {
       return "link"
     }
     return "text"
-  }, [intermediate, selected])
+  }, [selected])
   return (
     <Tooltip title={title} placement="right">
-      <StyledButton className={classNames(className, { intermediate })} block type={newType} {...rest} />
+      <StyledButton className={classNames(className, { selected })} block type={newType} {...rest} />
     </Tooltip>
   )
 })

@@ -5,7 +5,16 @@
     {
       "componentName": "Form",
       "props": {
-        "colon": false
+        "colon": false,
+        "wrapperCol": {
+          "span": 5
+        },
+        "labelCol": {
+          "span": 3
+        },
+        "m": {
+          "mt": 2
+        }
       },
       "x-controller": {
         "id": "LlRDj22u",
@@ -13,7 +22,78 @@
         "enable": true
       },
       "slots": {},
-      "children": []
+      "children": [
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "姓名"
+          },
+          "locked": false,
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "登录名"
+          },
+          "locked": false,
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "",
+            "labelCol": {},
+            "wrapperCol": {
+              "push": 3
+            }
+          },
+          "locked": false,
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Space",
+              "props": {},
+              "selfRender": true,
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "default",
+                    "title": "重置"
+                  },
+                  "slots": {},
+                  "children": []
+                },
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "primary",
+                    "title": "查询"
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "componentName": "Table",
@@ -23,7 +103,40 @@
         "name": "用户列表",
         "enable": true
       },
-      "slots": {},
+      "slots": {
+        "header": {
+          "componentName": "Header",
+          "props": {
+            "style": {
+              "display": "flex",
+              "justifyContent": "flex-end"
+            }
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "新建"
+              },
+              "slots": {
+                "icon": {
+                  "componentName": "IconView",
+                  "props": {
+                    "icon": {
+                      "iconKey": "PlusOutlined"
+                    }
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              },
+              "children": []
+            }
+          ]
+        }
+      },
       "children": [
         {
           "componentName": "TableColumn",
@@ -36,7 +149,23 @@
         {
           "componentName": "TableColumn",
           "props": {
-            "title": "名称"
+            "title": "姓名"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "角色"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "状态"
           },
           "slots": {},
           "children": []

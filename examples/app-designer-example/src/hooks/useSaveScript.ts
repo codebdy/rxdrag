@@ -5,7 +5,7 @@ import { IScript } from "../interfaces/flow";
 import { allScripts } from "../data/logic";
 
 export function useSaveScript(options?: {
-  onComplate?: () => void
+  onComplete?: () => void
 }): [(script: IScript) => void, { loading?: boolean, script?: IScript }] {
   const [script, setScript] = useState<IScript>()
   const [loading, setLoading] = useState<boolean>()
@@ -29,7 +29,7 @@ export function useSaveScript(options?: {
       setLoading(false)
       setScript(script)
       console.log("===>allScripts", allScripts)
-      options?.onComplate?.()
+      options?.onComplete?.()
     }, 300)
 
   }, [options])

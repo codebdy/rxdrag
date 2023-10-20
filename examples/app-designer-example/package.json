@@ -22,6 +22,7 @@
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
+    "@types/lodash": "^4.14.191",
     "eslint": "^7.32.0",
     "example-common": "workspace:*",
     "react": "^18.2.0",
@@ -35,6 +36,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
     "@monaco-editor/react": "^4.6.0",
+    "@graphiql/toolkit": "^0.6.0",
     "@rxdrag/core": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
@@ -57,11 +59,17 @@
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@rxdrag/uml-editor": "workspace:*",
+    "@rxdrag/uml-schema": "workspace:*",
+    "@rxdrag/bpmn-editor": "workspace:*",
     "antd": "^5.9.2",
     "classnames": "^2.3.2",
+    "lodash": "^4.17.21",
     "react-icons": "^4.7.1",
     "react-monaco-editor": "^0.54.0",
     "react-router-dom": "^6.9.0",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "graphiql": "^1.10.0",
+    "graphql": "^16.5.0"
   }
 }

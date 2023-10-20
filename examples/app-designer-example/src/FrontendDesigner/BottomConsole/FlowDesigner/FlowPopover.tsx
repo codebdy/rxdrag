@@ -22,7 +22,7 @@ export const FlowPopover = memo((
   const [form] = Form.useForm()
 
   const [save, { loading }] = useSaveFlow({
-    onComplate: () => {
+    onComplete: () => {
       onOpenChange?.(false)
     }
   })

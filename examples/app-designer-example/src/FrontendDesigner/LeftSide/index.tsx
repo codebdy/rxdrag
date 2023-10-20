@@ -85,7 +85,7 @@ export const LeftSide = memo(() => {
       <NavButton
         title="模块"
         icon={<SnippetsOutlined />}
-        intermediate={modulesSelected && !openModules}
+        //intermediate={modulesSelected && !openModules}
         selected={openModules && modulesSelected}
         onClick={handleModulesClick}
       />
@@ -100,7 +100,7 @@ export const LeftSide = memo(() => {
         icon={<SvgIcon>
           {menuIcon}
         </SvgIcon>}
-        intermediate={navsSelected && !openNavs}
+        //intermediate={navsSelected && !openNavs}
         selected={openNavs && navsSelected}
         onClick={handleMenuClick}
       />

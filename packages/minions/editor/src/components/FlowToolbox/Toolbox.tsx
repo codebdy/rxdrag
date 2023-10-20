@@ -8,4 +8,5 @@ export const FlowToolbox = styled(ResizableColumn)`
   height: 100%;
   display: flex;
   flex-flow: column;
+  background-color: ${props => props.theme.token?.colorBgBase};
 `
