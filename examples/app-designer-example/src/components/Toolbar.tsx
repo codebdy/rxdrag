@@ -21,7 +21,7 @@ export const Toolbar = memo((
 ) => {
   const { children } = props;
   return (
-    <Container className="script-toolbar">
+    <Container className="editor-toolbar">
       {children}
     </Container>
   )

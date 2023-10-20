@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
-import { Toolbar } from "./Toolbar"
+import { Toolbar } from "../../components/Toolbar"
 import { Button } from "antd"
 import { useTranslate } from "@rxdrag/react-locales"
 import { useQueryExtensionScript } from "../../hooks/useQueryExtensionScript"

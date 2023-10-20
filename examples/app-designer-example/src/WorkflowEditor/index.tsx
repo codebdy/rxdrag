@@ -3,6 +3,7 @@ import { memo, useState } from "react"
 import styled from "styled-components"
 import ProcessList from "./ProcessList"
 import { ID } from "@rxdrag/shared"
+import { ProcessEditor } from "./ProcessEditor"
 
 const Container = styled.div`
   flex: 1;
@@ -21,5 +22,6 @@ export const WorkflowEditor = memo(() => {
         onSelectChange={setSelected}
       />
     </ResizableColumn>
+    <ProcessEditor id={selected} />
   </Container>)
 })
