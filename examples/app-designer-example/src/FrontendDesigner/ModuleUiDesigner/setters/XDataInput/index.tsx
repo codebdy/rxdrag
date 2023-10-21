@@ -29,7 +29,7 @@ export const XDataInput = memo((
 
   return (
     <>
-      <Form.Item label={t("name")}>
+      <Form.Item label={t("entity")}>
         <Input
           value={value?.name}
           onChange={handleNameChange}

@@ -1,9 +1,9 @@
 import { memo, useCallback } from "react"
 import { YupRulesInput } from "../YupRulesInput"
-import { FieldType, IFieldMeta, IValidateSchema } from "@rxdrag/fieldy";
 import { Form, Input } from "antd";
 import { ValueInput } from "../ValueInput";
 import { useSettersTranslate } from "@rxdrag/react-core";
+import { IFieldMeta, FieldType, IValidateSchema } from "@rxdrag/fieldy";
 
 export const XDataInput = memo((
   props: {
