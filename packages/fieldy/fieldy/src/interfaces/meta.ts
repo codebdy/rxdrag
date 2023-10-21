@@ -1,4 +1,4 @@
-export type FieldType = 'object' | 'array' | 'normal';
+export type FieldType = 'object' | 'array' | 'normal' | 'form';
 
 export interface IValidateSchema {
   //boolean，为了简化其它地方解析，required目前不携带message
@@ -7,7 +7,7 @@ export interface IValidateSchema {
 
 //字段元数据
 export interface IFieldMeta<ValidateRules extends IValidateSchema = IValidateSchema> {
-  //类型：对象、数组、常规
+  //类型：对象、数组、常规、表单
   type?: FieldType;
   //数组行数据是数字
   name?: string | number;
