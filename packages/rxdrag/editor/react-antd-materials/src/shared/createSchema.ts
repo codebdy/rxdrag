@@ -39,7 +39,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
   }];
 
 
-  const fieldTab = field?.hasField ? [
+  const fieldTab = field?.fieldType ? [
     {
       componentName: "TabPanel",
       props: {

@@ -19,7 +19,7 @@ const options: SchemaOptions = {
     },
   ],
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 export const radioSchema: INodeSchema = createSchema(options)

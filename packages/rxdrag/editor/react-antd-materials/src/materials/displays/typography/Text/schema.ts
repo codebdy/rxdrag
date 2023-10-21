@@ -14,7 +14,7 @@ const options: SchemaOptions = {
     ...typographySchema,
   ],
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 

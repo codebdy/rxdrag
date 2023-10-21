@@ -86,7 +86,7 @@ const options: SchemaOptions = {
     ...fieldDisplaySchema,
   ],
   field: {
-    hasField: true,
+    fieldType: "normal",
     hasRules: true,
   },
 }

@@ -42,7 +42,7 @@ const options: SchemaOptions = {
   propSchemas:inputPros,
   slotSchemas:inputSlots,
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 export const inputSchema: INodeSchema = createSchema(options)
@@ -58,7 +58,7 @@ const textareaOptions: SchemaOptions = {
   },
   ],
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 export const textAreaSchema: INodeSchema = createSchema(textareaOptions)

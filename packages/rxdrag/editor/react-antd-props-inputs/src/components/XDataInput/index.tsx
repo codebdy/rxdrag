@@ -1,6 +1,6 @@
 import { memo, useCallback } from "react"
 import { YupRulesInput } from "../YupRulesInput"
-import { IFieldMeta, IValidateSchema } from "@rxdrag/fieldy";
+import { FieldType, IFieldMeta, IValidateSchema } from "@rxdrag/fieldy";
 import { Form, Input } from "antd";
 import { ValueInput } from "../ValueInput";
 import { useSettersTranslate } from "@rxdrag/react-core";
@@ -10,22 +10,23 @@ export const XDataInput = memo((
     value?: IFieldMeta,
     onChange?: (value?: IFieldMeta) => void,
     hasRules?: boolean,
+    fieldType?: FieldType,
   }
 ) => {
-  const { value, onChange, hasRules } = props;
+  const { value, onChange, hasRules, fieldType } = props;
   const t = useSettersTranslate()
 
   const handleNameChange = useCallback((e?: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.({ ...value, name: e?.target.value })
-  }, [onChange, value])
+    onChange?.({ type:fieldType, ...value, name: e?.target.value })
+  }, [fieldType, onChange, value])
 
   const handleDefaultValueChange = useCallback((defaultValue?: unknown) => {
-    onChange?.({ ...value, defaultValue })
-  }, [onChange, value])
+    onChange?.({type:fieldType, ...value, defaultValue })
+  }, [fieldType, onChange, value])
 
   const handleRulesChange = useCallback((rules?: IValidateSchema) => {
-    onChange?.({ ...value, validateRules: rules })
-  }, [onChange, value])
+    onChange?.({ type:fieldType, ...value, validateRules: rules })
+  }, [fieldType, onChange, value])
 
   return (
     <>
