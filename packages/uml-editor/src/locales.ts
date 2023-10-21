@@ -110,6 +110,7 @@ export const umlEditorLocales: ILocales = {
     "Hidden": "隐藏",
     "Label": "标签",
     "Length": "长度",
+    Validation: "校验",
   },
   'en-US': {
     "Confirm": "Confirm",
@@ -170,5 +171,6 @@ export const umlEditorLocales: ILocales = {
     "Hidden": "Hidden",
     "Label": "Label",
     "Length": "Length",
+    Validation: "Validation"
   }
 }

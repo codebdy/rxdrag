@@ -52,10 +52,6 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
         backgroundColor: token.colorBgBase,
         textColor: token.colorText,
         t,
-        //selectedId: selectedElement,
-        //pressedLineType: pressedLineType,
-        //drawingLine: drawingLine,
-        //themeMode: themeMode,
       };
       if (grahpNode) {
         //Update by diff
@@ -78,18 +74,6 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
           ...node,
           shape: "class-node",
           data,
-          // component: (
-          //   <ClassView
-          //     onAttributeSelect={handleAttributeSelect}
-          //     onAttributeDelete={handleAttributeDelete}
-          //     onAttributeCreate={handleAttributeCreate}
-          //     onMethodSelect={handleMethodSelect}
-          //     onMethodDelete={handleMothodDelete}
-          //     onMethodCreate={handleMethodCreate}
-          //     onDelete={handelDeleteClass}
-          //     onHide={handleHideClass}
-          //   />
-          // ),
         });
       }
     });
@@ -103,5 +87,5 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
         graph?.removeNode(node.id);
       }
     });
-  }, [getClass, getDiagramNode, getNode, getPackage, graph, nodes, selectedDiagram, selectedDiagramUuid, themeMode, token.colorBgBase, token.colorText]);
+  }, [getClass, getDiagramNode, getNode, getPackage, graph, nodes, selectedDiagram, selectedDiagramUuid, t, themeMode, token.colorBgBase, token.colorText]);
 }

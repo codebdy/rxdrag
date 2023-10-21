@@ -1,6 +1,6 @@
 import { Type } from "./Type";
 
-export interface AttributeMeta {
+export interface AttributeMeta<ValidateSchema = unknown> {
   /**
    * 唯一标识
    */
@@ -75,17 +75,20 @@ export interface AttributeMeta {
   typeUuid?: string;
 
   readonly?: boolean;
-  
+
   description?: string;
 
   /**
    * 渲染图形元素用的label，其他地方毫无用处
    */
-  typeLabel:string;
+  typeLabel: string;
 
   system?: boolean;
 
   autoIncrement?: boolean;
 
   autoGenerate?: boolean;
+
+  //字段校验规则
+  valitateSchema?: ValidateSchema;
 }
