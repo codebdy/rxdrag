@@ -40,6 +40,7 @@
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/fieldy-yup-validation": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/locales": "workspace:*",
