@@ -134,7 +134,10 @@ export const formOptions: SchemaOptions = {
     },
     ...containerSchema,
     ...fieldDisplaySchema,
-  ]
+  ],
+  field: {
+    fieldType: "form",
+  },
 }
 
 export const formSchema: INodeSchema = createSchema(formOptions)

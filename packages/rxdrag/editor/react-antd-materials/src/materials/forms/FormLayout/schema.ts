@@ -3,4 +3,9 @@ import { createSchema } from "../../../shared";
 import { formOptions } from "../Form/schema";
 
 
-export const formLayoutSchema: INodeSchema = createSchema(formOptions)
+export const formLayoutSchema: INodeSchema = createSchema({
+  ...formOptions,
+  field: {
+    fieldType: "object",
+  },
+})
