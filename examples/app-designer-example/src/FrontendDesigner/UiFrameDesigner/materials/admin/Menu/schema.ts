@@ -5,7 +5,7 @@ export const schemaOptions: SchemaOptions = {
   propSchemas: [
     {
       componentName: "MenuSelect",
-      "x-field": {
+      "x-data": {
         name: "menuId",
         label: "$navigation",
       },

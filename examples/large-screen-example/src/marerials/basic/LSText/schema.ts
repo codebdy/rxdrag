@@ -5,7 +5,7 @@ const scehmaOptions: SchemaOptions = {
   propSchemas: [
     {
       componentName: "TextArea",
-      "x-field": {
+      "x-data": {
         name: "value",
         label: "$content",
       },

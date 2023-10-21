@@ -5,7 +5,7 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "title",
         label: "$title",
       }
@@ -30,21 +30,21 @@ const options: SchemaOptions = {
         ],
         defaultValue: "left",
       },
-      "x-field": {
+      "x-data": {
         name: "align",
         label: "$align",
       }
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "ellipsis",
         label: "$ellipsis",
       }
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "fixed",
         label: "$fixed",
       }
@@ -79,14 +79,14 @@ const options: SchemaOptions = {
           },
         ],
       },
-      "x-field": {
+      "x-data": {
         name: "responsive",
         label: "$responsiveBreakpoints",
       }
     },
     {
       componentName: "InputNumber",
-      "x-field": {
+      "x-data": {
         name: "width",
         label: "$width",
       }

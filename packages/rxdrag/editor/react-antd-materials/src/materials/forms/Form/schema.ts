@@ -6,7 +6,7 @@ export const formOptions: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "colon",
         label: "$colon",
       },
@@ -16,7 +16,7 @@ export const formOptions: SchemaOptions = {
     },
     {
       componentName: "Select",
-      "x-field": {
+      "x-data": {
         name: "layout",
         label: "$layout",
       },
@@ -39,7 +39,7 @@ export const formOptions: SchemaOptions = {
       }
     },
     // {
-    //   "x-field": {
+    //   "x-data": {
     //     name: "disabled",
     //     label: "$disabled",
     //   },
@@ -47,7 +47,7 @@ export const formOptions: SchemaOptions = {
     // },
     {
       componentName: "Radio.Group",
-      "x-field": {
+      "x-data": {
         name: "labelAlign",
         label: "$labelAlign",
       },
@@ -68,13 +68,13 @@ export const formOptions: SchemaOptions = {
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "labelWrap",
         label: "$labelWrap",
       },
     },
     {
-      "x-field": {
+      "x-data": {
         name: "labelCol",
       },
       componentName: "ColInput",
@@ -91,7 +91,7 @@ export const formOptions: SchemaOptions = {
       }
     },
     {
-      "x-field": {
+      "x-data": {
         name: "wrapperCol",
       },
       componentName: "ColInput",
@@ -109,7 +109,7 @@ export const formOptions: SchemaOptions = {
     },
     {
       componentName: "Radio.Group",
-      "x-field": {
+      "x-data": {
         name: "size",
         label: "$size",
       },

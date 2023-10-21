@@ -4,21 +4,21 @@ import { INodeSchema } from "@rxdrag/schema";
 export const menuSchema: INodeSchema = {
   componentName: "Tabs",
   props: {},
-  "x-field": {
+  "x-data": {
     type: "object",
     name: "props",
   },
   children: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "title",
         label: "$title",
       },
     },
     {
       componentName: "Select",
-      "x-field": {
+      "x-data": {
         name: "type",
         label: "$type",
       },
@@ -53,7 +53,7 @@ export const menuSchema: INodeSchema = {
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "disabled",
         label: "$disabled",
       },

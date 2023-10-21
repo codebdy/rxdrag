@@ -12,7 +12,7 @@ export function useGetListNodes() {
   const getReactionableSchemas = useCallback((node: ITreeNode<IFieldMeta, IControllerMeta>) => {
     const nodes: ListNode[] = []
     let activeNodes = nodes
-    if (node.meta["x-controller"]?.enable && (node.meta["x-field"])?.type === "array") {
+    if (node.meta["x-controller"]?.enable && (node.meta["x-data"])?.type === "array") {
       const rNode: ListNode = {
         node: node,
         children: []

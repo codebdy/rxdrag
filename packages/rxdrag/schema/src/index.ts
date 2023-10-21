@@ -1,11 +1,11 @@
 export interface INodeMeta<
-  Field = unknown,
+  ModelData = unknown,
   NodeController = unknown
 > {
   //组件名称
   componentName: string;
   props?: Record<string, unknown>;
-  'x-field'?: Field;
+  'x-data'?: ModelData;
   //节点控制器，逻辑编排用
   'x-controller'?: NodeController;
   //锁定子控件

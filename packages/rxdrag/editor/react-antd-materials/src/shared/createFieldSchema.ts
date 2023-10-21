@@ -5,16 +5,16 @@ export function createFieldSchema(field: FieldOptions) {
   const fieldDefineFields = [
     {
       componentName: "NameInput",
-      "x-field": {
-        name: "x-field.name",
+      "x-data": {
+        name: "x-data.name",
         label: "$fieldName",
         //defaultValue: "",
       },
     },
     {
       componentName: "ValueInput",
-      "x-field": {
-        name: "x-field.defaultValue",
+      "x-data": {
+        name: "x-data.defaultValue",
         label: "$defaultValue",
       },
     },
@@ -23,8 +23,8 @@ export function createFieldSchema(field: FieldOptions) {
     ...attachFormItem(fieldDefineFields) || [],
     ...field.hasRules ? [{
       componentName: "YupRulesInput",
-      "x-field": {
-        name: "x-field.validateRules",
+      "x-data": {
+        name: "x-data.validateRules",
       },
     }] : []
   ]

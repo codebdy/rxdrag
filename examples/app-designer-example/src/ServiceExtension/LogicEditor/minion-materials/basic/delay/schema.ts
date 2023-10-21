@@ -13,7 +13,7 @@ export const delaySchema: INodeSchema = {
       children: [
         {
           componentName: "InputNumber",
-          "x-field": {
+          "x-data": {
             name: `config.time`,
             params: {
               withBind: true,

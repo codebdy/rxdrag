@@ -13,7 +13,7 @@ export const infoMessageSchema: INodeSchema = {
       children: [
         {
           componentName: "Select",
-          "x-field": {
+          "x-data": {
             name: "config.type"
           },
           props: {
@@ -51,7 +51,7 @@ export const infoMessageSchema: INodeSchema = {
       children: [
         {
           componentName: "InputNumber",
-          "x-field": {
+          "x-data": {
             name: "config.duration"
           },
 

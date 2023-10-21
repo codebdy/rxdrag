@@ -3,7 +3,7 @@ export const labelSchema = {
   props:{
     label: "$label",
   },
-  "x-field": {
+  "x-data": {
     name: "label",
   },
   children: [
@@ -18,7 +18,7 @@ export const nameSchema = {
   props:{
     label: "$name",
   },
-  "x-field": {
+  "x-data": {
     name: "name",
   },
   children: [

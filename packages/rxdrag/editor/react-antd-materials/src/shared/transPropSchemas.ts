@@ -14,23 +14,23 @@ export function transPropSchemas(schemas: INodeSchema<IFieldMeta, IControllerMet
   return schemas.map(propSchema => ({
     componentName: "PropLayout",
     props: {
-      label: propSchema["x-field"]?.label,
+      label: propSchema["x-data"]?.label,
     },
     slots: {
       expressionSetter: {
         componentName: "ExpressionInput",
-        "x-field": {
-          name: "exprs." + propSchema["x-field"]?.name,
+        "x-data": {
+          name: "exprs." + propSchema["x-data"]?.name,
         },
       }
     },
     children: [
       {
         ...propSchema,
-        "x-field": {
-          name: "props." + propSchema["x-field"]?.name,
-          defaultValue: propSchema["x-field"]?.defaultValue,
-          label: propSchema["x-field"]?.label,
+        "x-data": {
+          name: "props." + propSchema["x-data"]?.name,
+          defaultValue: propSchema["x-data"]?.defaultValue,
+          label: propSchema["x-data"]?.label,
         },
       }
     ]

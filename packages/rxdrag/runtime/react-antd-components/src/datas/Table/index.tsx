@@ -87,7 +87,7 @@ export const Table = memo((
         },
         onCell: (record: unknown) => ({
           record,
-          fieldMeta: child["x-field"],
+          fieldMeta: child["x-data"],
         }),
       }
     })

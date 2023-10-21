@@ -26,7 +26,7 @@
       "children": [
         {
           "componentName": "ArrayPanel",
-          "x-field": {
+          "x-data": {
             "type": "array",
             "name": "container"
           },

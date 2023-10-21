@@ -37,7 +37,7 @@ export const ComponentView = memo((
         ),
         node,
       ),
-      node?.["x-field"],
+      node?.["x-data"],
     )
   }, [com, node]);
 
@@ -56,7 +56,7 @@ export const ComponentView = memo((
   return (
     node &&
     <ComponentSchemaContext.Provider value={node}>
-      <ComponentField fieldMeta={node?.["x-field"]}>
+      <ComponentField fieldMeta={node?.["x-data"]}>
         {
           Component &&
           (

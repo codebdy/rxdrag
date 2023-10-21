@@ -32,7 +32,7 @@ export function withExprs(WrappedComponent: ReactComponent, node: IComponentRend
   }
 
   return (props: { value?: unknown }) => {
-    const exprProps = useExprProps(effectiveExprs, node["x-field"])
+    const exprProps = useExprProps(effectiveExprs, node["x-data"])
 
     const newProps = useMemo(() => {
       return { ...props, ...exprProps }

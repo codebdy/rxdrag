@@ -5,7 +5,7 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "GutterInput",
-      "x-field": {
+      "x-data": {
         name: "gutter",
         label: "$gutter",
       },

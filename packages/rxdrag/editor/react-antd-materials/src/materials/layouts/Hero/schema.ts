@@ -5,7 +5,7 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Radio.Group",
-      "x-field": {
+      "x-data": {
         name: "themeMode",
         label: "$themeMode",
       },

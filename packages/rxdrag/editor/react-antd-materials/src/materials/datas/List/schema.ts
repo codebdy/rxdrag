@@ -5,7 +5,7 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "bordered",
         label: "$bordered",
       }
@@ -30,7 +30,7 @@ const options: SchemaOptions = {
         ],
         defaultValue: "middle",
       },
-      "x-field": {
+      "x-data": {
         name: "size",
         label: "$size",
       }

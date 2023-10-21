@@ -13,7 +13,7 @@ export const mockSchema: INodeSchema = {
       children: [
         {
           componentName: "Switch",
-          "x-field": {
+          "x-data": {
             name: `config.isError`
           },
         }
@@ -27,7 +27,7 @@ export const mockSchema: INodeSchema = {
       children: [
         {
           componentName: "InputNumber",
-          "x-field": {
+          "x-data": {
             name: "config.duration"
           },
         }

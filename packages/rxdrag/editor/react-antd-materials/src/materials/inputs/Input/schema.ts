@@ -6,14 +6,14 @@ const inputPros = [
   ...inputBaseSchemas,
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "showCount",
       label: "$showCount",
     },
   },
   {
     componentName: "InputNumber",
-    "x-field": {
+    "x-data": {
       name: "maxLength",
       label: "$maxLength",
     },
@@ -51,7 +51,7 @@ const textareaOptions: SchemaOptions = {
   propSchemas: [...inputPros,
   {
     componentName: "InputNumber",
-    "x-field": {
+    "x-data": {
       name: "rows",
       label: "$rows",
     },

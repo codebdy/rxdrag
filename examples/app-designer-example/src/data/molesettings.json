@@ -77,7 +77,7 @@
             "label": "地鼠数量"
           },
           "locked": false,
-          "x-field": {
+          "x-data": {
             "name": "count"
           },
           "slots": {},
@@ -95,7 +95,7 @@
             "label": "时间间隔"
           },
           "locked": false,
-          "x-field": {
+          "x-data": {
             "name": "interval"
           },
           "slots": {},

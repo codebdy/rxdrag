@@ -18,7 +18,7 @@ export const fieldDisplaySchema = [
       ],
       allowClear: true,
     },
-    "x-field": {
+    "x-data": {
       name: "display",
       label: "$display",
     }
@@ -46,7 +46,7 @@ export const fieldDisplaySchema = [
       ],
       allowClear: true,
     },
-    "x-field": {
+    "x-data": {
       name: "pattern",
       label: "$patternType",
     }

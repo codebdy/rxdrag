@@ -5,7 +5,7 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "InputNumber",
-      "x-field": {
+      "x-data": {
         label: "$staticCount",
         name: "dataSource",
       }

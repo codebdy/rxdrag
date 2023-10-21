@@ -13,7 +13,7 @@ export const postDataSchema: INodeSchema = {
       children: [
         {
           componentName: "Input",
-          "x-field": {
+          "x-data": {
             name: "config.rootUrl",
           },
         }
@@ -27,7 +27,7 @@ export const postDataSchema: INodeSchema = {
       children: [
         {
           componentName: "Input",
-          "x-field": {
+          "x-data": {
             name: "config.entityName",
           },
         }
@@ -41,7 +41,7 @@ export const postDataSchema: INodeSchema = {
       children: [
         {
           componentName: "Input",
-          "x-field": {
+          "x-data": {
             name: "config.dataPath",
           },
         }

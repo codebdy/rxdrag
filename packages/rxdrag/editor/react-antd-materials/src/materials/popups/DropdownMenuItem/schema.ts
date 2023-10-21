@@ -5,21 +5,21 @@ const options: SchemaOptions = {
   propSchemas:[
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "title",
         label: "$title",
       },
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "disabled",
         label: "$disabled",
       },
     },
     {
       componentName: "IconInput",
-      "x-field": {
+      "x-data": {
         name: "icon",
         label: "$icon",
       },

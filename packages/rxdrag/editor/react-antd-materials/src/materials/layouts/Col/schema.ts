@@ -5,7 +5,7 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "InputNumber",
-      "x-field": {
+      "x-data": {
         name: "span",
         label: "$span",
       },

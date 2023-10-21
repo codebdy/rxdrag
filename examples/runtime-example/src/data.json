@@ -628,7 +628,7 @@
                           "props": {
                             "style": {}
                           },
-                          "x-field": {
+                          "x-data": {
                             "params": {}
                           },
                           "x-controller": {
@@ -885,7 +885,7 @@
                                         "value": "Title",
                                         "style": {}
                                       },
-                                      "x-field": {
+                                      "x-data": {
                                         "name": "title"
                                       },
                                       "slots": {},
@@ -897,7 +897,7 @@
                                         "value": "Description",
                                         "style": {}
                                       },
-                                      "x-field": {
+                                      "x-data": {
                                         "name": "description"
                                       },
                                       "slots": {},
@@ -1172,7 +1172,7 @@
                                   "props": {
                                     "value": "Link"
                                   },
-                                  "x-field": {
+                                  "x-data": {
                                     "name": "name"
                                   },
                                   "slots": {},
@@ -1185,7 +1185,7 @@
                               "props": {
                                 "title": "标签"
                               },
-                              "x-field": {
+                              "x-data": {
                                 "params": {},
                                 "type": "array",
                                 "name": "tags"

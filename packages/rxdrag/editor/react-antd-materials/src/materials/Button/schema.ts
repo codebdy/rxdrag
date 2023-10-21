@@ -5,7 +5,7 @@ const scehmaOptions: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         label: "$title",
         name: "title",
       }
@@ -40,7 +40,7 @@ const scehmaOptions: SchemaOptions = {
           },
         ]
       },
-      "x-field": {
+      "x-data": {
         label: "$type",
         name: "type",
         defaultValue: "primary",
@@ -48,28 +48,28 @@ const scehmaOptions: SchemaOptions = {
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         label: "$disabled",
         name: "disabled",
       }
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         label: "$block",
         name: "block",
       }
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         label: "$danger",
         name: "danger",
       }
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         label: "$ghost",
         name: "ghost",
       }
@@ -95,7 +95,7 @@ const scehmaOptions: SchemaOptions = {
         ],
         defaultValue: "default",
       },
-      "x-field": {
+      "x-data": {
         label: "$shape",
         name: "shape",
       }
@@ -121,7 +121,7 @@ const scehmaOptions: SchemaOptions = {
         ],
         defaultValue: "middle",
       },
-      "x-field": {
+      "x-data": {
         label: "$size",
         name: "size",
       }

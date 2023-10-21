@@ -22,7 +22,7 @@ export const ArrayPanelMaterial: IMaterial = {
     elements: [
       {
         componentName: name,
-        "x-field": {
+        "x-data": {
           type: "array",
         }
       }

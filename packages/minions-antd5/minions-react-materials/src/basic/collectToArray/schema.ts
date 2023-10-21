@@ -13,7 +13,7 @@ export const collectToArray: INodeSchema = {
       children: [
         {
           componentName: "PortsInput",
-          "x-field": {
+          "x-data": {
             name: "inPorts",
           },
           props: {
