@@ -17,15 +17,15 @@ export const XDataInput = memo((
   const t = useSettersTranslate()
 
   const handleNameChange = useCallback((e?: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.({ type:fieldType, ...value, name: e?.target.value })
+    onChange?.({ type: fieldType, ...value, name: e?.target.value })
   }, [fieldType, onChange, value])
 
   const handleDefaultValueChange = useCallback((defaultValue?: unknown) => {
-    onChange?.({type:fieldType, ...value, defaultValue })
+    onChange?.({ type: fieldType, ...value, defaultValue })
   }, [fieldType, onChange, value])
 
   const handleRulesChange = useCallback((rules?: IValidateSchema) => {
-    onChange?.({ type:fieldType, ...value, validateRules: rules })
+    onChange?.({ type: fieldType, ...value, validateRules: rules })
   }, [fieldType, onChange, value])
 
   return (
@@ -36,12 +36,15 @@ export const XDataInput = memo((
           onChange={handleNameChange}
         />
       </Form.Item>
-      <Form.Item label={t("defaultValue")}      >
-        <ValueInput
-          value={value?.defaultValue}
-          onChange={handleDefaultValueChange}
-        />
-      </Form.Item>
+      {
+        fieldType === "normal" && <Form.Item label={t("defaultValue")}      >
+          <ValueInput
+            value={value?.defaultValue}
+            onChange={handleDefaultValueChange}
+          />
+        </Form.Item>
+      }
+
       {
         hasRules && <YupRulesInput
           value={value?.validateRules}

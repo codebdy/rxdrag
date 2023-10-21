@@ -14,7 +14,6 @@ const options: SchemaOptions = {
 
   field: {
     fieldType: "array",
-    hasRules: true,
   },
 }
 
