@@ -43,7 +43,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     {
       componentName: "TabPanel",
       props: {
-        title: "$field",
+        title: "$data",
         key: "data",
         isField: true,
       },
