@@ -5,6 +5,7 @@ import { Container } from "./Container";
 import { YupRulesInput } from "./YupRulesInput";
 import { IYupValidateSchema } from "@rxdrag/fieldy-yup-validation";
 import { useCallback } from "react";
+import { Form } from "antd";
 
 export const AttributeValidation = (props: {
   attribute: AttributeMeta;
@@ -21,10 +22,17 @@ export const AttributeValidation = (props: {
 
   return (
     <Container className="property-pannel">
-      <YupRulesInput
-        value={attribute.valitateSchema as IYupValidateSchema | undefined}
-        onChange={handleChange}
-      />
+      <Form
+        colon={false}
+        labelAlign="left"
+        labelCol={{ span: 9 }}
+        wrapperCol={{ span: 15 }}
+      >
+        <YupRulesInput
+          value={attribute.valitateSchema as IYupValidateSchema | undefined}
+          onChange={handleChange}
+        />
+      </Form>
     </Container>
   );
 };
