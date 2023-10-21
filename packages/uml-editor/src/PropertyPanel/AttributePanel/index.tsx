@@ -3,6 +3,7 @@ import { Tabs, TabsProps } from "antd";
 import { useTranslate } from "@rxdrag/react-locales";
 import { AttributeMeta, ClassMeta, CONST_ID } from "@rxdrag/uml-schema";
 import { AttributeContent } from "./AttributeContent";
+import { AttributeValidation } from "./AttributeValidation";
 
 
 export const AttributePanel = (props: {
@@ -27,7 +28,7 @@ export const AttributePanel = (props: {
       tabs.push({
         key: 'validation',
         label: t('Validation'),
-        children: 'Content of Tab Pane 2',
+        children: <AttributeValidation attribute={attribute} cls={cls} />,
       },)
     }
     return tabs
@@ -37,6 +38,9 @@ export const AttributePanel = (props: {
     <Tabs
       size="small"
       defaultActiveKey="attributes"
+      tabBarStyle={{
+        paddingLeft: 16,
+      }}
       items={items}
     />
   );

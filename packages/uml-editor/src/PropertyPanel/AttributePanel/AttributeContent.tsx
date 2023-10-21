@@ -7,11 +7,7 @@ import { useMetaId } from "../../hooks/useMetaId";
 import { useTranslate } from "@rxdrag/react-locales";
 import { isStr } from "@rxdrag/shared";
 import { AttributeMeta, ClassMeta, CONST_ID, StereoType, Types } from "@rxdrag/uml-schema";
-import styled from "styled-components";
-
-export const Container = styled.div`
-  padding: 0 16px;
-`
+import { Container } from "./Container";
 
 export const AttributeContent = (props: {
   attribute: AttributeMeta;
