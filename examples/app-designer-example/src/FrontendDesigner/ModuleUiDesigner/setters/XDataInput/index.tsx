@@ -1,8 +1,9 @@
 import { memo, useCallback } from "react"
 import { FieldType, IFieldMeta, IValidateSchema } from "@rxdrag/fieldy";
-import { Form, Input } from "antd";
+import { Form, Input, Select } from "antd";
 import { useSettersTranslate } from "@rxdrag/react-core";
 import { ValueInput, YupRulesInput } from "@rxdrag/react-antd-props-inputs";
+import { useEntities } from "../../../hooks/useEntities";
 
 export const XDataInput = memo((
   props: {
@@ -14,7 +15,7 @@ export const XDataInput = memo((
 ) => {
   const { value, onChange, hasRules, fieldType } = props;
   const t = useSettersTranslate()
-
+  const entities = useEntities()
   const handleNameChange = useCallback((e?: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.({ type: fieldType, ...value, name: e?.target.value })
   }, [fieldType, onChange, value])
@@ -30,9 +31,9 @@ export const XDataInput = memo((
   return (
     <>
       <Form.Item label={t("entity")}>
-        <Input
-          value={value?.name}
-          onChange={handleNameChange}
+        <Select
+          allowClear
+          options={entities?.map(ent => ({ value: ent.uuid, label: ent.name }))}
         />
       </Form.Item>
       {

@@ -2,6 +2,9 @@ import { memo } from "react"
 import styled from "styled-components"
 import { LeftSide } from "./LeftSide"
 import { Outlet } from "react-router-dom"
+import { useQueryAppMeta } from "../hooks/useQueryAppMeta"
+import { MetaContext } from "./contexts"
+import { Spin } from "antd"
 
 //设备端的编辑区
 const AppDeviceArea = styled.div`
@@ -11,11 +14,16 @@ const AppDeviceArea = styled.div`
   `
 
 export const FrontendDesigner = memo(() => {
-
+  const { meta, loading } = useQueryAppMeta("app1")
   return (
-    <AppDeviceArea>
-      <LeftSide />
-      <Outlet />
-    </AppDeviceArea>
+    loading
+      ? <Spin spinning={loading}>
+      </Spin>
+      : <MetaContext.Provider value={meta?.publishedContent}>
+        <AppDeviceArea>
+          <LeftSide />
+          <Outlet />
+        </AppDeviceArea>
+      </MetaContext.Provider>
   )
 })
