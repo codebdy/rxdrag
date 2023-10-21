@@ -106,7 +106,10 @@ export const umlEditorLocales: ILocales = {
     "OnUpdated": "更新事件",
     "OnDeleted": "删除事件",
     "EditLogic": "编辑逻辑流",
-    "LogicFlowProperty": "逻辑编排属性"
+    "LogicFlowProperty": "逻辑编排属性",
+    "Hidden": "隐藏",
+    "Label": "标签",
+    "Length": "长度",
   },
   'en-US': {
     "Confirm": "Confirm",
@@ -163,7 +166,9 @@ export const umlEditorLocales: ILocales = {
     "DeleteDate": "Delete Date",
     "Side": "Side",
     "RoleName": "Role Name",
-    "Multiplicity": "Multiplicity"
-
+    "Multiplicity": "Multiplicity",
+    "Hidden": "Hidden",
+    "Label": "Label",
+    "Length": "Length",
   }
 }

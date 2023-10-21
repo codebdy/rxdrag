@@ -5,21 +5,20 @@ import PublishButton from "./PublishButton";
 import { SaveOutlined } from "@ant-design/icons";
 import { Operate } from "../Operate";
 import { useChangedState, useGetMeta, useMetaId, useValidate } from "@rxdrag/uml-editor";
-import { useApp } from "../../hooks/useApp";
 import { IMeta } from "../../interfaces/meta";
 import { useTranslate } from "@rxdrag/react-locales";
-import { useSaveApp } from "../../hooks/useSaveApp";
+import { useSaveMeta } from "../../hooks/useSaveMeta";
+import { createId } from "@rxdrag/shared";
 
 const SaveActions = memo((props: {
   meta: IMeta | undefined
 }) => {
   const { meta } = props;
   const metaId = useMetaId() || "";
-  const app = useApp();
   const [changed, setChanged] = useChangedState();
   const getMeta = useGetMeta(metaId);
-  const  t  = useTranslate();
-  const [saveApp, { loading: appSaving, }] = useSaveApp({
+  const t = useTranslate();
+  const [saveMeta, { loading: appSaving, }] = useSaveMeta({
     onComplete() {
       message.success(t("OperateSuccess"));
       setChanged(false);
@@ -46,8 +45,8 @@ const SaveActions = memo((props: {
       return;
     }
     const data = getMeta()
-    //save({ id: metaId ? metaId : undefined, content: data });
-  }, [getMeta, validate]);
+    saveMeta({ id: metaId ? metaId : createId(), publishedContent: data, app: { id: "app1" } });
+  }, [getMeta, metaId, saveMeta, validate]);
 
   return (
     <Space>
@@ -61,7 +60,7 @@ const SaveActions = memo((props: {
         {t("Save")}
       </Button>
       <PublishButton />
-      <Operate meta ={meta} />
+      <Operate meta={meta} />
     </Space>
   )
 })

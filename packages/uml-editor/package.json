@@ -35,7 +35,7 @@
     "@ant-design/icons": "^5.1.0",
     "@antv/x6": "^2.10.1",
     "@antv/x6-plugin-dnd": "^2.0.5",
-    "@antv/x6-plugin-minimap": "^2.0.2",
+    "@antv/x6-plugin-minimap": "^2.0.5",
     "@antv/x6-plugin-selection": "^2.1.7",
     "@antv/x6-plugin-transform": "^2.1.6",
     "@antv/x6-react-shape": "2.1.2",

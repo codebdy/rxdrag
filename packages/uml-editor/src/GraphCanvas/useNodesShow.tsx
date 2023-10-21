@@ -15,6 +15,7 @@ import { useGetPackage } from "../hooks/useGetPackage";
 import { useSelectedDiagramPackageId } from "../hooks/useSelectedDiagramPackageId";
 import { useToken } from "antd/es/theme/internal";
 import { ID } from "@rxdrag/shared";
+import { useTranslate } from "@rxdrag/react-locales";
 
 export function useNodesShow(graph: Graph | undefined, metaId: ID) {
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
@@ -26,7 +27,7 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
 
   const [, token] = useToken();
   const themeMode = useRecoilValue(themeModeState)
-
+  const t = useTranslate()
   const getClassRef = useRef(getClass);
   getClassRef.current = getClass;
 
@@ -50,6 +51,7 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
         themeMode: themeMode,
         backgroundColor: token.colorBgBase,
         textColor: token.colorText,
+        t,
         //selectedId: selectedElement,
         //pressedLineType: pressedLineType,
         //drawingLine: drawingLine,
