@@ -47,13 +47,20 @@ export const Tabs = memo(forwardRef<HTMLDivElement>((
   const schema = useComponentSchema()
   const node = useCurrentNode()
   const getNode = useGetNode()
-
   const items = useMemo(() => {
     if (isArr(children)) {
-      return schema?.children?.filter(childSchema => {
+      return schema?.children?.map(((childSchema, index) => {
+        const child = children?.[index]
+        return {
+          label: childSchema?.props?.title,
+          key: childSchema?.props?.key || index,
+          children: child,
+          isField: childSchema.props?.isField,
+        }
+      })).filter(childSchema => {//先映射，最后过滤，要不然会出现child不匹配的问题
         //确定是否需要显示Field tab页
         const parent = getNode(node?.parentId)
-        if (childSchema?.props?.isField) {
+        if (childSchema?.isField) {
           if (fieldContainer === parent?.meta.componentName) {
             return false
           } else if (isArr(fieldContainer)) {
@@ -63,14 +70,7 @@ export const Tabs = memo(forwardRef<HTMLDivElement>((
           }
         }
         return true
-      }).map(((childSchema, index) => {
-        const child = children?.[index]
-        return {
-          label: childSchema?.props?.title,
-          key: childSchema?.props?.key || index,
-          children: child,
-        }
-      }))
+      })
     }
   }, [children, fieldContainer, getNode, node?.parentId, schema?.children])
   return (
