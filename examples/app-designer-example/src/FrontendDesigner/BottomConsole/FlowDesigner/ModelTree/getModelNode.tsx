@@ -2,15 +2,17 @@ import { ActivityResource } from "@rxdrag/minions-logicflow-editor"
 import { IActivityMaterial } from "@rxdrag/minions-schema"
 import { DraggableText } from "../DraggableText"
 import { ClassMeta } from "@rxdrag/uml-schema"
-import { oneEntityIcon } from "@rxdrag/react-shared"
-import { queryOneEntityMaterial } from "../../../../minions/materials/QueryOneEntity"
 
-export function getEntityNode(cls: ClassMeta) {
+export function getModelNode(
+  cls: ClassMeta,
+  meterial: IActivityMaterial<React.ReactNode>,
+  key: string,
+) {
 
   return {
-    key: cls.uuid + "queryOne",
+    key: cls.uuid + key,
     title: <ActivityResource
-      material={queryOneEntityMaterial as IActivityMaterial<React.ReactNode>}
+      material={meterial}
       config={{
         entityId: cls.uuid
       }}
@@ -18,12 +20,12 @@ export function getEntityNode(cls: ClassMeta) {
       {
         (onStartDrag) => {
           return <DraggableText onMouseDown={onStartDrag}>
-            读取单实体
+            {meterial.label}
           </DraggableText>
         }
       }
     </ActivityResource>,
     isLeaf: true,
-    icon: oneEntityIcon
+    icon: meterial.icon
   }
 }

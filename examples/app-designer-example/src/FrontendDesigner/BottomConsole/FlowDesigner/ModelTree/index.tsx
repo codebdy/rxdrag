@@ -6,9 +6,11 @@ import { useMeta } from "../../../hooks/useMeta";
 import { useGetPackageEntities } from "../../../hooks/useGetPackageEntities";
 import { ClassMeta } from "@rxdrag/uml-schema";
 import { SvgIcon, classIcon } from "@rxdrag/react-shared";
-import { getListNode } from "./getListNode";
-import { getSaveNode } from "./getSaveNode";
-import { getEntityNode } from "./getEntityNode";
+import { queryOneEntityMaterial } from "../../../../minions/materials/QueryOneEntity"
+import { useTransMaterial } from "@rxdrag/logicflow-editor-antd5";
+import { getModelNode } from "./getModelNode";
+import { queryEntitiesMaterial } from "../../../../minions/materials/QueryEntities";
+import { saveEntityMaterial } from "../../../../minions/materials/SaveEntity";
 
 const { DirectoryTree } = Tree;
 
@@ -20,7 +22,10 @@ export const ModelTree = memo((
   const { display } = props;
   const meta = useMeta()
   const getPackageEntities = useGetPackageEntities()
-
+  const t = useTransMaterial()
+  const oneMaterial = useMemo(() => t(queryOneEntityMaterial), [t])
+  const listMaterial = useMemo(() => t(queryEntitiesMaterial), [t])
+  const saveMaterial = useMemo(() => t(saveEntityMaterial), [t])
   const getOneNode = useCallback((cls: ClassMeta): DataNode => {
 
     return {
@@ -28,12 +33,12 @@ export const ModelTree = memo((
       icon: <SvgIcon> {classIcon}</SvgIcon>,
       title: cls.label || cls.name,
       children: [
-        getListNode(cls),
-        getEntityNode(cls),
-        getSaveNode(cls)
+        getModelNode(cls, listMaterial, "query-list"),
+        getModelNode(cls, oneMaterial, "query-one"),
+        getModelNode(cls, saveMaterial, "save"),
       ]
     }
-  }, [])
+  }, [listMaterial, oneMaterial, saveMaterial])
 
   const treeData: DataNode[] = useMemo(() => {
     return meta?.packages?.map(pkg => ({
