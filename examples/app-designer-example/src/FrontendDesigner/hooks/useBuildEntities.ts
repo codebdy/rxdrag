@@ -41,6 +41,7 @@ const getEntityAssociations = (classUuid: string, classMetas: ClassMeta[], relat
 
     if (relation.sourceId === classUuid) {
       associations.push({
+        id: `${relation.uuid}:${relation.targetId}`,
         name: relation.roleOfTarget,
         label: relation.labelOfTarget,
         typeId: relation.targetId,
@@ -48,6 +49,7 @@ const getEntityAssociations = (classUuid: string, classMetas: ClassMeta[], relat
       })
     } else if (relation.targetId === classUuid) {
       associations.push({
+        id: `${relation.uuid}:${relation.sourceId}`,
         name: relation.roleOfSource,
         label: relation.labelOfSource,
         typeId: relation.sourceId,

@@ -4,6 +4,7 @@ import { IModelMeta } from "../../interfaces";
 import { Customized } from "./Customized";
 import { EntitySelect } from "./EntitySelect";
 import { AttributeSelect } from "./AttributeSelect";
+import { AssociationSelect } from "./AssociationSelect";
 
 export const XDataInput = memo((
   props: {
@@ -33,7 +34,14 @@ export const XDataInput = memo((
           onChange={onChange}
         />
       }
-
+      {
+        (fieldType === "object" || fieldType === "array") &&
+        <AssociationSelect
+          fieldType={fieldType}
+          value={value}
+          onChange={onChange}
+        />
+      }
       {
         !value?.modelMetaId && <Customized
           value={value}
