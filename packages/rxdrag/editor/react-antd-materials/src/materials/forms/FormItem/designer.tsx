@@ -6,5 +6,10 @@ import { memo } from "react";
 export const FormItemDesigner = memo((props: FormItemProps) => {
   const node = useNode()
   const fieldMeta = node?.meta?.["x-data"] as IFieldSchema | undefined
-  return <FormItem required={fieldMeta?.validateRules?.required} {...props} />
+
+  return <FormItem
+    required={fieldMeta?.validateRules?.required}
+    label={fieldMeta?.label}
+    {...props}
+  />
 },)
