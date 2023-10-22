@@ -2,15 +2,15 @@ import { ActivityResource } from "@rxdrag/minions-logicflow-editor"
 import { IActivityMaterial } from "@rxdrag/minions-schema"
 import { DraggableText } from "../DraggableText"
 import { ClassMeta } from "@rxdrag/uml-schema"
-import { queryEntitiesMaterial } from "../../../../minions/materials/QueryEntities"
-import { listIcon } from "@rxdrag/react-shared"
+import { saveEntityIcon } from "@rxdrag/react-shared"
+import { saveEntityMaterial } from "../../../../minions/materials/SaveEntity"
 
-export function getListNode(cls: ClassMeta) {
+export function getSaveNode(cls: ClassMeta) {
 
   return {
-    key: cls.uuid + "queryList",
+    key: cls.uuid + "saveEntity",
     title: <ActivityResource
-      material={queryEntitiesMaterial as IActivityMaterial<React.ReactNode>}
+      material={saveEntityMaterial as IActivityMaterial<React.ReactNode>}
       config={{
         entityId: cls.uuid
       }}
@@ -18,12 +18,12 @@ export function getListNode(cls: ClassMeta) {
       {
         (onStartDrag) => {
           return <DraggableText onMouseDown={onStartDrag}>
-            读取多实体
+            保存实体
           </DraggableText>
         }
       }
     </ActivityResource>,
     isLeaf: true,
-    icon: listIcon
+    icon: saveEntityIcon
   }
 }

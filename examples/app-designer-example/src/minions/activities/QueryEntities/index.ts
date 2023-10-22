@@ -7,7 +7,7 @@ export interface IQueryEntitiesConfig {
 
 @Activity(QueryEntities.NAME)
 export class QueryEntities extends AbstractActivity<IQueryEntitiesConfig> {
-  public static NAME = "system.mock"
+  public static NAME = "qurey-entities"
 
   constructor(meta: INodeDefine<IQueryEntitiesConfig>) {
     super(meta)

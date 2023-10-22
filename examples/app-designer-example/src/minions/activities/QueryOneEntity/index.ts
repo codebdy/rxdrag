@@ -7,7 +7,7 @@ export interface IQueryOneEntityConfig {
 
 @Activity(QueryOneEntity.NAME)
 export class QueryOneEntity extends AbstractActivity<IQueryOneEntityConfig> {
-  public static NAME = "system.mock"
+  public static NAME = "query-one-entity"
 
   constructor(meta: INodeDefine<IQueryOneEntityConfig>) {
     super(meta)

@@ -1,12 +1,12 @@
 import { createId } from "@rxdrag/shared";
 import { schema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
-import { graphqlRequestIcon } from "@rxdrag/react-shared";
+import { oneEntityIcon } from "@rxdrag/react-shared";
 import { IRxDragActivityMaterial } from "@rxdrag/minions-react-materials";
 import { QueryOneEntity } from "../../activities";
 
 export const queryOneEntityMaterial: IRxDragActivityMaterial = {
-  icon: graphqlRequestIcon,
+  icon: oneEntityIcon,
   label: "$queryOneEntity",
   color: "#e10098",
   activityType: NodeType.Activity,

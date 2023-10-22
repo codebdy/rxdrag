@@ -7,7 +7,7 @@ export interface ISaveEntityConfig {
 
 @Activity(SaveEntity.NAME)
 export class SaveEntity extends AbstractActivity<ISaveEntityConfig> {
-  public static NAME = "system.mock"
+  public static NAME = "save-entity"
 
   constructor(meta: INodeDefine<ISaveEntityConfig>) {
     super(meta)
