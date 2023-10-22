@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { LeftSide } from "./LeftSide"
 import { Outlet } from "react-router-dom"
 import { useQueryAppMeta } from "../hooks/useQueryAppMeta"
-import { EntitiesContext } from "./contexts"
+import { EntitiesContext, MetaContext } from "./contexts"
 import { Spin } from "antd"
 import { useBuildEntities } from "./hooks/useBuildEntities"
 
@@ -23,11 +23,13 @@ export const FrontendDesigner = memo(() => {
     loading
       ? <Spin spinning={loading}>
       </Spin>
-      : <EntitiesContext.Provider value={entities}>
-        <AppDeviceArea>
-          <LeftSide />
-          <Outlet />
-        </AppDeviceArea>
-      </EntitiesContext.Provider>
+      : <MetaContext.Provider value={meta?.publishedContent}>
+        <EntitiesContext.Provider value={entities}>
+          <AppDeviceArea>
+            <LeftSide />
+            <Outlet />
+          </AppDeviceArea>
+        </EntitiesContext.Provider>
+      </MetaContext.Provider>
   )
 })

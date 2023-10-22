@@ -22,10 +22,11 @@ import { controllerActivities, arrayActivities, variableActivities, activityMate
 import { useAppFrontend } from "../../../hooks/useAppFrontend"
 import { useQueryFlows } from "../../../hooks/useQueryFlows"
 import { LogicType, FxScope } from "../../../interfaces/flow"
-import { logicflowIcon, variableIcon } from "@rxdrag/react-shared"
+import { logicflowIcon, modelIcon, variableIcon } from "@rxdrag/react-shared"
 import { entityActivityMaterials } from "../../../minions/materials"
 import _ from "lodash"
 import { entityActivityMaterialLocales } from "../../../minions/materials/locales"
+import { ModelTree } from "./ModelTree"
 
 const Content = styled.div`
   flex: 1;
@@ -37,7 +38,7 @@ enum NavType {
   toolbox = "toolbox",
   flows = "flows",
   fxes = "fxes",
-  //model = "model",
+  model = "model",
   variables = "variables"
 }
 
@@ -76,6 +77,10 @@ export const FlowDesigner = memo(() => {
 
   const handleToggleComponents = useCallback(() => {
     setNavType(type => type === NavType.componentTree ? null : NavType.componentTree)
+  }, [])
+
+  const handleToggleModel = useCallback(() => {
+    setNavType(type => type === NavType.model ? null : NavType.model)
   }, [])
 
   const handleToggleToolbox = useCallback(() => {
@@ -138,6 +143,13 @@ export const FlowDesigner = memo(() => {
               onClick={handleToggleComponents}
             />
           </Tooltip>
+          <Tooltip title="领域模型" placement="right">
+            <NavButton
+              type={navType === NavType.model ? "primary" : "text"}
+              icon={modelIcon}
+              onClick={handleToggleModel}
+            />
+          </Tooltip>
           <Tooltip title="变量" placement="right">
             <NavButton
               type={navType === NavType.variables ? "primary" : "text"}
@@ -190,6 +202,12 @@ export const FlowDesigner = memo(() => {
               </span>
             }
             {
+              NavType.model === navType &&
+              <span>
+                领域模型
+              </span>
+            }
+            {
               NavType.variables === navType &&
               <span>
                 变量
@@ -221,6 +239,9 @@ export const FlowDesigner = memo(() => {
           <ComponentTree
             flow={flow}
             display={navType === NavType.componentTree}
+          />
+          <ModelTree
+            display={navType === NavType.model}
           />
           <Flows
             display={navType === NavType.flows}
