@@ -26,32 +26,37 @@
               "name": "name",
               "type": "String",
               "typeLabel": "String",
-              "nullable": true
+              "nullable": true,
+              "label": "姓名"
             },
             {
               "uuid": "PeprFClI",
               "name": "loginName",
               "type": "String",
-              "typeLabel": "String"
+              "typeLabel": "String",
+              "label": "登录ID"
             },
             {
               "uuid": "kt94gLbJ",
               "name": "email",
               "type": "String",
               "typeLabel": "String",
-              "nullable": true
+              "nullable": true,
+              "label": "邮箱"
             },
             {
               "uuid": "EscNzevB",
               "name": "status",
               "type": "Enum",
-              "typeLabel": "UserStatus",
-              "typeUuid": "nSJddrkb"
+              "typeLabel": "Enum",
+              "typeUuid": "nSJddrkb",
+              "label": "状态"
             }
           ],
           "stereoType": "Entity",
           "root": false,
-          "packageUuid": "t1hdx-Pu"
+          "packageUuid": "t1hdx-Pu",
+          "label": "用户"
         },
         {
           "uuid": "Adnk8q_b",
@@ -74,7 +79,8 @@
           ],
           "stereoType": "Entity",
           "root": false,
-          "packageUuid": "t1hdx-Pu"
+          "packageUuid": "t1hdx-Pu",
+          "label": "角色"
         },
         {
           "uuid": "CKUfLFkG",
@@ -92,12 +98,14 @@
               "uuid": "N3OxqEzu",
               "name": "name",
               "type": "String",
-              "typeLabel": "String"
+              "typeLabel": "String",
+              "label": "名称"
             }
           ],
           "stereoType": "Entity",
           "root": false,
-          "packageUuid": "t1hdx-Pu"
+          "packageUuid": "t1hdx-Pu",
+          "label": "部门"
         },
         {
           "uuid": "KPVAlMKG",
@@ -116,12 +124,14 @@
               "name": "title",
               "type": "String",
               "typeLabel": "String",
-              "nullable": true
+              "nullable": true,
+              "label": "标题"
             }
           ],
           "stereoType": "Entity",
           "root": false,
-          "packageUuid": "t1hdx-Pu"
+          "packageUuid": "t1hdx-Pu",
+          "label": "文章"
         },
         {
           "uuid": "z0vWjZs6",
@@ -138,7 +148,8 @@
           ],
           "stereoType": "Entity",
           "root": false,
-          "packageUuid": "t1hdx-Pu"
+          "packageUuid": "t1hdx-Pu",
+          "label": "文章分类"
         },
         {
           "uuid": "nSJddrkb",

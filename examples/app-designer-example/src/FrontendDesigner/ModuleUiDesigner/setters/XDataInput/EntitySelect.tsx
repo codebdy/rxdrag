@@ -14,7 +14,7 @@ export const EntitySelect = memo((
 ) => {
   const { value, onChange, fieldType } = props;
   const t = useSettersTranslate()
-  
+
   const handleEntityChange = useCallback((modelMetaId?: string) => {
     if (modelMetaId) {
       onChange?.({ fieldType, ...value, modelMetaId, type: ModelType.Entity, validateRules: null })
@@ -24,13 +24,13 @@ export const EntitySelect = memo((
 
   }, [fieldType, onChange, value])
 
-  
+
   const entities = useEntities()
   return (
     <Form.Item label={t("entity")}>
       <Select
         allowClear
-        options={entities?.map(ent => ({ value: ent.uuid, label: ent.name }))}
+        options={entities?.map(ent => ({ value: ent.uuid, label: ent.label || ent.name }))}
         value={value?.modelMetaId}
         onChange={handleEntityChange}
       />

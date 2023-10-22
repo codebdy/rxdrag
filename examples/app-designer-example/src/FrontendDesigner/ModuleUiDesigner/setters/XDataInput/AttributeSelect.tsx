@@ -28,13 +28,15 @@ export const AttributeSelect = memo((
   const entity = useRecentEntity()
 
   return (
-    <Form.Item label={t("attribute")}>
-      <Select
-        allowClear
-        options={entity?.attributes?.map(attr => ({ value: attr.uuid, label: attr.name }))}
-        value={value?.modelMetaId}
-        onChange={handleEntityChange}
-      />
-    </Form.Item>
+    entity
+      ? <Form.Item label={t("attribute")}>
+        <Select
+          allowClear
+          options={entity?.attributes?.map(attr => ({ value: attr.uuid, label: attr.label || attr.name }))}
+          value={value?.modelMetaId}
+          onChange={handleEntityChange}
+        />
+      </Form.Item>
+      : <></>
   )
 })
