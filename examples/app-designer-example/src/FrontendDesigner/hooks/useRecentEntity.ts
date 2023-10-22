@@ -8,6 +8,7 @@ import { EntityMeta } from "../ModuleUiDesigner/interfaces/EntityMeta";
 export function useRecentEntity() {
   const [entity, setEntity] = useState<EntityMeta>()
   const node = useCurrentNode()
+
   const getNode = useGetNode()
   const getEntity = useGetEntity()
   const getEntityId = useCallback((node?: ITreeNode | null) => {
@@ -23,8 +24,10 @@ export function useRecentEntity() {
       }
     }
   }, [getNode])
+  
   useEffect(() => {
     setEntity(getEntity(getEntityId(node)))
   }, [getEntity, getEntityId, node])
+
   return entity
 }

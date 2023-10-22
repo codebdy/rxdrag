@@ -17,7 +17,7 @@ export const AttributeSelect = memo((
 
   const handleEntityChange = useCallback((modelMetaId?: string) => {
     if (modelMetaId) {
-      onChange?.({ fieldType, ...value, modelMetaId, type: ModelType.Entity, validateRules: null })
+      onChange?.({ fieldType, ...value, modelMetaId, type: ModelType.Attribute, validateRules: null })
     } else {
       onChange?.({ fieldType, ...value, modelMetaId: null, type: null })
     }

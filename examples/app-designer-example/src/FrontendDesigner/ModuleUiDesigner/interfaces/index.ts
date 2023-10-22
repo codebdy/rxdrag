@@ -5,8 +5,10 @@ import { ID } from "@rxdrag/shared";
 export enum ModelType {
   //实体
   Entity = "Entity",
-  //性质：属性、关联
-  Property = "Property"
+  //属性
+  Attribute = "Attribute",
+  //关联
+  Association = "Association"
 }
 
 //字段元数据
