@@ -5,6 +5,7 @@ import { IModelMeta } from "../../interfaces";
 import { Form, Input } from "antd";
 import { useSettersTranslate } from "@rxdrag/react-core";
 import { DefaultValue } from "./DefaultValue";
+import { LabelInput } from "./LabelInput";
 
 export const Customized = memo((
   props: {
@@ -29,13 +30,14 @@ export const Customized = memo((
 
   return (
     <>
-      <Form.Item label={t("customized")}>
+      <Form.Item label={t("customizedName")}>
         <Input
           value={value?.customizedName || ""}
           onChange={handleNameChange}
           allowClear
         />
       </Form.Item>
+      <LabelInput value={value} onChange={onChange} />
       <DefaultValue
         value={value}
         onChange={onChange}

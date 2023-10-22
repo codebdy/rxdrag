@@ -25,4 +25,5 @@ export interface IModelMeta<ValidateRules extends IValidateSchema = IValidateSch
   customizedName?: string | null;
   //自定义时使用
   fieldType?: FieldType | null,
+  label?: string,
 }
