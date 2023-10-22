@@ -1,56 +1,39 @@
-import { memo, useCallback } from "react"
-import { FieldType, IFieldMeta, IValidateSchema } from "@rxdrag/fieldy";
-import { Form, Input, Select } from "antd";
-import { useSettersTranslate } from "@rxdrag/react-core";
-import { ValueInput, YupRulesInput } from "@rxdrag/react-antd-props-inputs";
-import { useEntities } from "../../../hooks/useEntities";
+import { memo } from "react"
+import { FieldType } from "@rxdrag/fieldy";
+import { IModelMeta } from "../../interfaces";
+import { Customized } from "./Customized";
+import { EntitySelect } from "./EntitySelect";
 
 export const XDataInput = memo((
   props: {
-    value?: IFieldMeta,
-    onChange?: (value?: IFieldMeta) => void,
+    value?: IModelMeta,
+    onChange?: (value?: IModelMeta) => void,
     hasRules?: boolean,
     fieldType?: FieldType,
   }
 ) => {
   const { value, onChange, hasRules, fieldType } = props;
-  const t = useSettersTranslate()
-  const entities = useEntities()
-  const handleNameChange = useCallback((e?: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.({ type: fieldType, ...value, name: e?.target.value })
-  }, [fieldType, onChange, value])
-
-  const handleDefaultValueChange = useCallback((defaultValue?: unknown) => {
-    onChange?.({ type: fieldType, ...value, defaultValue })
-  }, [fieldType, onChange, value])
-
-  const handleRulesChange = useCallback((rules?: IValidateSchema) => {
-    onChange?.({ type: fieldType, ...value, validateRules: rules })
-  }, [fieldType, onChange, value])
 
   return (
     <>
-      <Form.Item label={t("entity")}>
-        <Select
-          allowClear
-          options={entities?.map(ent => ({ value: ent.uuid, label: ent.name }))}
-        />
-      </Form.Item>
       {
-        fieldType === "normal" && <Form.Item label={t("defaultValue")}      >
-          <ValueInput
-            value={value?.defaultValue}
-            onChange={handleDefaultValueChange}
-          />
-        </Form.Item>
+        fieldType === "form" &&
+        <EntitySelect
+          fieldType={fieldType}
+          value={value}
+          onChange={onChange}
+        />
       }
 
       {
-        hasRules && <YupRulesInput
-          value={value?.validateRules}
-          onChange={handleRulesChange}
+        !value?.modelMetaId && <Customized
+          value={value}
+          onChange={onChange}
+          fieldType={fieldType}
+          hasRules={hasRules}
         />
       }
+
     </>
   )
 })

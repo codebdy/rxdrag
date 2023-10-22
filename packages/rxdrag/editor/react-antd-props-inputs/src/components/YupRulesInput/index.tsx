@@ -14,7 +14,7 @@ import { TestInput } from "./TestInput"
 
 export const YupRulesInput = memo((
   props: {
-    value?: IYupValidateSchema,
+    value?: IYupValidateSchema | null,
     onChange?: (value?: IYupValidateSchema) => void
   }
 ) => {
