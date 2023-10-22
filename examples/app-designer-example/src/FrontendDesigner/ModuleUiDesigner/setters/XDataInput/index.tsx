@@ -3,6 +3,7 @@ import { FieldType } from "@rxdrag/fieldy";
 import { IModelMeta } from "../../interfaces";
 import { Customized } from "./Customized";
 import { EntitySelect } from "./EntitySelect";
+import { AttributeSelect } from "./AttributeSelect";
 
 export const XDataInput = memo((
   props: {
@@ -19,6 +20,14 @@ export const XDataInput = memo((
       {
         fieldType === "form" &&
         <EntitySelect
+          fieldType={fieldType}
+          value={value}
+          onChange={onChange}
+        />
+      }
+      {
+        fieldType === "normal" &&
+        <AttributeSelect
           fieldType={fieldType}
           value={value}
           onChange={onChange}
