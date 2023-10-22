@@ -1,8 +1,12 @@
 import { Tree } from "antd";
-import { memo, useMemo } from "react"
+import { memo, useCallback, useMemo } from "react"
 import { TreeContainer } from "../../common/TreeContainer";
 import { DataNode } from "antd/es/tree";
 import { useMeta } from "../../../hooks/useMeta";
+import { useGetPackageEntities } from "../../../hooks/useGetPackageEntities";
+import { ClassMeta } from "@rxdrag/uml-schema";
+import { SvgIcon, classIcon } from "@rxdrag/react-shared";
+
 const { DirectoryTree } = Tree;
 
 export const ModelTree = memo((
@@ -12,15 +16,27 @@ export const ModelTree = memo((
 ) => {
   const { display } = props;
   const meta = useMeta()
+  const getPackageEntities = useGetPackageEntities()
+
+  const getOneNode = useCallback((cls: ClassMeta): DataNode => {
+
+    return {
+      key: cls.uuid,
+      icon: <SvgIcon> {classIcon}</SvgIcon>,
+      title: cls.label || cls.name,
+      children: [
+
+      ]
+    }
+  }, [])
 
   const treeData: DataNode[] = useMemo(() => {
     return meta?.packages?.map(pkg => ({
       key: pkg.uuid,
       title: pkg.name,
-      seletable: false,
-      //children: getSchemaTreeOfView(pkg.id)?.map(schema => getOneNode(schema)),
+      children: getPackageEntities(pkg.uuid)?.map(cls => getOneNode(cls)),
     })) || []
-  }, [meta?.packages])
+  }, [getOneNode, getPackageEntities, meta?.packages])
 
   return <TreeContainer
     className={!display ? "hidden" : undefined}
