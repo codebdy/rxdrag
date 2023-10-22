@@ -1,10 +1,12 @@
 import { ITreeNode } from "@rxdrag/core";
 import { useCurrentNode, useGetNode } from "@rxdrag/react-core";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { IModelMeta, ModelType } from "../ModuleUiDesigner/interfaces";
 import { useGetEntity } from "./useGetEntity";
+import { EntityMeta } from "../ModuleUiDesigner/interfaces/EntityMeta";
 
 export function useRecentEntity() {
+  const [entity, setEntity] = useState<EntityMeta>()
   const node = useCurrentNode()
   const getNode = useGetNode()
   const getEntity = useGetEntity()
@@ -21,6 +23,8 @@ export function useRecentEntity() {
       }
     }
   }, [getNode])
-
-  return getEntity(getEntityId(node))
+  useEffect(() => {
+    setEntity(getEntity(getEntityId(node)))
+  }, [getEntity, getEntityId, node])
+  return entity
 }
