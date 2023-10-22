@@ -9,7 +9,7 @@ import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
 import { PanelTitle } from "../common/PanelTitle"
 import { LogicFlowEditorAntd5Scope, Toolbox } from "@rxdrag/logicflow-editor-antd5"
-import { IActivityMaterial } from "@rxdrag/minions-schema"
+import { ActivityMaterialCategory, IActivityMaterial } from "@rxdrag/minions-schema"
 import { useDesignerEngine, useThemeMode } from "@rxdrag/react-core"
 import { ComponentTree } from "./ComponentTree"
 import { ID } from "@rxdrag/shared"
@@ -18,11 +18,14 @@ import { FlowEditor } from "./FlowEditor"
 import { Variables } from "./Variables"
 import { useModule } from "../../hooks/useModule"
 import { useQueryFlow } from "../../../hooks/useQueryFlow"
-import { controllerActivities, arrayActivities, variableActivities, activityMaterialLocales, activityMaterialCategories, LogicflowContextParam, fxFlowMaterial } from "@rxdrag/minions-react-materials"
+import { controllerActivities, arrayActivities, variableActivities, activityMaterialLocales, activityMaterialCategories, LogicflowContextParam, fxFlowMaterial, basicActivityCategory, commonActivityCategory, auxActivityCategory } from "@rxdrag/minions-react-materials"
 import { useAppFrontend } from "../../../hooks/useAppFrontend"
 import { useQueryFlows } from "../../../hooks/useQueryFlows"
 import { LogicType, FxScope } from "../../../interfaces/flow"
 import { logicflowIcon, variableIcon } from "@rxdrag/react-shared"
+import { entityActivityMaterials } from "../../../minions/materials"
+import _ from "lodash"
+import { entityActivityMaterialLocales } from "../../../minions/materials/locales"
 
 const Content = styled.div`
   flex: 1;
@@ -37,6 +40,13 @@ enum NavType {
   //model = "model",
   variables = "variables"
 }
+
+export const materialCategories: ActivityMaterialCategory<ReactNode>[] = [
+  basicActivityCategory,
+  { ...commonActivityCategory, materials: [...commonActivityCategory.materials, ...entityActivityMaterials] },
+  auxActivityCategory
+]
+
 
 export const FlowDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
@@ -60,7 +70,7 @@ export const FlowDesigner = memo(() => {
 
   const materials = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const materials: IActivityMaterial<ReactNode>[] = [...(controllerActivities as any), ...arrayActivities, ...variableActivities, fxFlowMaterial]
+    const materials: IActivityMaterial<ReactNode>[] = [...entityActivityMaterials, ...(controllerActivities as any), ...arrayActivities, ...variableActivities, fxFlowMaterial]
     return materials.concat(...activityMaterialCategories.map(category => category.materials))
   }, [])
 
@@ -109,7 +119,7 @@ export const FlowDesigner = memo(() => {
       themMode={themMode}
       token={token}
       materials={materials}
-      locales={activityMaterialLocales}
+      locales={_.merge(activityMaterialLocales, entityActivityMaterialLocales)}
       logicFlowContext={logicFlowContextParam}
     >
       <Container>
@@ -206,7 +216,7 @@ export const FlowDesigner = memo(() => {
           </PanelTitle>
           {
             navType === NavType.toolbox &&
-            <Toolbox materialCategories={activityMaterialCategories} />
+            <Toolbox materialCategories={materialCategories} />
           }
           <ComponentTree
             flow={flow}

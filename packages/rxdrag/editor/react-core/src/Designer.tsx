@@ -7,7 +7,7 @@ import {
   freedomPlugins,
 } from "@rxdrag/core";
 import { memo, useEffect, useRef, useState } from "react"
-import { CanvasConfigContext, DesignerEngineContext, IMinionOptions, MinionOptionContext } from "./contexts";
+import { CanvasConfigContext, DesignerEngineContext } from "./contexts";
 import { LocalesContext } from "@rxdrag/react-locales";
 import { ICanvasConfig, IMaterial } from "./interfaces";
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
@@ -23,7 +23,7 @@ export enum LayoutType {
 }
 
 export interface DesignerProps {
-  minionOptions?: IMinionOptions,
+  //minionOptions?: IMinionOptions,
   themeMode?: ThemeMode,
   children?: React.ReactNode,
   //初始物料，其它地方还可以继续注册
@@ -34,7 +34,7 @@ export interface DesignerProps {
   canvasConfig?: ICanvasConfig,
 }
 export const Designer = memo((props: DesignerProps) => {
-  const { minionOptions, themeMode = "light", children, materials, setters, locales, layoutType = LayoutType.Liquid, canvasConfig } = props
+  const { themeMode = "light", children, materials, setters, locales, layoutType = LayoutType.Liquid, canvasConfig } = props
   const [components, setComponents] = useState<IReactComponents>({})
   const [designers, setDesigners] = useState<IReactComponents>({})
   const [engine, setEngine] = useState<IDesignerEngine>();
@@ -102,21 +102,19 @@ export const Designer = memo((props: DesignerProps) => {
 
   return (
     <Fieldy>
-      <CanvasConfigContext.Provider value = {canvasConfig}>
-        <MinionOptionContext.Provider value={minionOptions}>
-          <LocalesContext.Provider value={engine?.getLocalesManager()}>
-            <DesignerEngineContext.Provider value={engine}>
-              <ComponentDesignersRoot components={designers}>
-                {
-                  //Preivew的时候用的组件，主要针对无Iframe画布
-                  <PreviewComponentsContext.Provider value={components}>
-                    {engine && children}
-                  </PreviewComponentsContext.Provider>
-                }
-              </ComponentDesignersRoot>
-            </DesignerEngineContext.Provider>
-          </LocalesContext.Provider>
-        </MinionOptionContext.Provider>
+      <CanvasConfigContext.Provider value={canvasConfig}>
+        <LocalesContext.Provider value={engine?.getLocalesManager()}>
+          <DesignerEngineContext.Provider value={engine}>
+            <ComponentDesignersRoot components={designers}>
+              {
+                //Preivew的时候用的组件，主要针对无Iframe画布
+                <PreviewComponentsContext.Provider value={components}>
+                  {engine && children}
+                </PreviewComponentsContext.Provider>
+              }
+            </ComponentDesignersRoot>
+          </DesignerEngineContext.Provider>
+        </LocalesContext.Provider>
       </CanvasConfigContext.Provider>
     </Fieldy>
   )
