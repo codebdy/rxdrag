@@ -6,6 +6,7 @@ import { useMeta } from "../../../hooks/useMeta";
 import { useGetPackageEntities } from "../../../hooks/useGetPackageEntities";
 import { ClassMeta } from "@rxdrag/uml-schema";
 import { SvgIcon, classIcon } from "@rxdrag/react-shared";
+import { getListNode } from "./getListNode";
 
 const { DirectoryTree } = Tree;
 
@@ -25,7 +26,7 @@ export const ModelTree = memo((
       icon: <SvgIcon> {classIcon}</SvgIcon>,
       title: cls.label || cls.name,
       children: [
-
+        getListNode(cls)
       ]
     }
   }, [])
