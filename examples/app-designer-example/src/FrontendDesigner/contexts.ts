@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { IModule } from "../interfaces/module";
-import { MetaContent } from "@rxdrag/uml-editor";
+import { EntityMeta } from "./ModuleUiDesigner/interfaces/EntityMeta";
 
 export const ModuleContext = createContext<IModule | undefined>(undefined)
-export const MetaContext = createContext<MetaContent | undefined>(undefined)
+export const EntitiesContext = createContext<EntityMeta[] | undefined>(undefined)

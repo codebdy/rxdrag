@@ -1,11 +1,6 @@
-import { useMemo } from "react";
-import { useMeta } from "./useMeta";
-import { StereoType } from "@rxdrag/uml-schema";
+import { useContext } from "react";
+import { EntitiesContext } from "../contexts";
 
 export function useEntities() {
-  const meta = useMeta()
-  const entities = useMemo(() => {
-    return meta?.classes?.filter(cls => cls.stereoType === StereoType.Entity)
-  }, [meta?.classes])
-  return entities
+  return useContext(EntitiesContext)
 }
