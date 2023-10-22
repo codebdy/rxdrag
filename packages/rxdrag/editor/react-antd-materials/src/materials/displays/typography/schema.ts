@@ -1,7 +1,7 @@
 export const typographySchema = [
   {
     componentName: "Select",
-    "x-field": {
+    "x-data": {
       name: "type",
       label: "$type",
     },
@@ -32,7 +32,7 @@ export const typographySchema = [
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "code",
       label: "$code",
       params: {
@@ -42,7 +42,7 @@ export const typographySchema = [
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "delete",
       label: "$delete",
       params: {
@@ -52,7 +52,7 @@ export const typographySchema = [
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "disabled",
       label: "$disabled",
       params: {
@@ -62,7 +62,7 @@ export const typographySchema = [
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "ellipsis",
       label: "$ellipsis",
       params: {
@@ -72,7 +72,7 @@ export const typographySchema = [
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "mark",
       label: "$mark",
       params: {
@@ -82,7 +82,7 @@ export const typographySchema = [
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "italic",
       label: "$italic",
       params: {
@@ -92,7 +92,7 @@ export const typographySchema = [
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "underline",
       label: "$underline",
       params: {

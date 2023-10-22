@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useChangeAttribute } from "../hooks/useChangeAttribute";
-import { useGetTypeLabel } from "../hooks/useGetTypeLabel";
+import { useChangeAttribute } from "../../hooks/useChangeAttribute";
+import { useGetTypeLabel } from "../../hooks/useGetTypeLabel";
 import { Form, Input, Switch } from "antd";
-import { AttributeTypeInput } from "./AttributeTypeInput";
-import { useMetaId } from "../hooks/useMetaId";
-import { PannelContainer } from "./PannelContainer";
+import { AttributeTypeInput } from "../AttributeTypeInput";
+import { useMetaId } from "../../hooks/useMetaId";
 import { useTranslate } from "@rxdrag/react-locales";
 import { isStr } from "@rxdrag/shared";
 import { AttributeMeta, ClassMeta, CONST_ID, StereoType, Types } from "@rxdrag/uml-schema";
+import { Container } from "./Container";
 
-export const AttributePanel = (props: {
+export const AttributeContent = (props: {
   attribute: AttributeMeta;
   cls: ClassMeta;
 }) => {
@@ -31,7 +31,7 @@ export const AttributePanel = (props: {
 
   const isId = useMemo(() => attribute.name === CONST_ID, [attribute.name]);
 
-  const handleChange = useCallback((form: any) => {
+  const handleChange = useCallback((form: AttributeMeta) => {
     if (form?.length && isStr(form?.length)) {
       form.length = parseInt(form.length)
     }
@@ -49,7 +49,7 @@ export const AttributePanel = (props: {
 
 
   return (
-    <PannelContainer className="property-pannel">
+    <Container className="property-pannel">
       <Form
         name="attributeForm"
         form={form}
@@ -188,6 +188,6 @@ export const AttributePanel = (props: {
           <Input.TextArea />
         </Form.Item>
       </Form>
-    </PannelContainer>
+    </Container>
   );
 };

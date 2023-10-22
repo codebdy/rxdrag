@@ -6,14 +6,14 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "value",
         label: "$content",
       },
     },
     {
       componentName: "Select",
-      "x-field": {
+      "x-data": {
         name: "level",
         label: "$level",
       },
@@ -46,7 +46,7 @@ const options: SchemaOptions = {
     ...typographySchema,
   ],
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 

@@ -65,6 +65,7 @@ export const FormItem: React.FC<FormItemProps> = memo((props) => {
   return (
     displayType !== DisplayType.none
       ? <Form.Item
+        label={field?.meta?.label}
         {...formParams}
         {...other}
         validateStatus={errors?.length ? "error" : "success"}

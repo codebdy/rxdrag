@@ -13,7 +13,7 @@ export const debugSchema: INodeSchema = {
       children: [
         {
           componentName: "Input",
-          "x-field": {
+          "x-data": {
             name: "config.tip",
           },
         }
@@ -27,7 +27,7 @@ export const debugSchema: INodeSchema = {
       children: [
         {
           componentName: "Switch",
-          "x-field": {
+          "x-data": {
             name: `config.closed`,
           },
         }

@@ -5,14 +5,14 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "rowKey",
         label: "$rowKey",
       }
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "bordered",
         label: "$bordered",
       }
@@ -37,7 +37,7 @@ const options: SchemaOptions = {
         ],
         defaultValue: "large",
       },
-      "x-field": {
+      "x-data": {
         name: "size",
         label: "$size",
       }
@@ -77,7 +77,7 @@ const options: SchemaOptions = {
         ],
         defaultValue: "bottomRight",
       },
-      "x-field": {
+      "x-data": {
         name: "pagination",
         label: "$pagination",
       }
@@ -98,7 +98,7 @@ const options: SchemaOptions = {
     },
   ],
   field: {
-    hasField: true,
+    fieldType: "array",
   },
 }
 

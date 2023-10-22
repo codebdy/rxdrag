@@ -6,14 +6,14 @@ const inputPros = [
   ...inputBaseSchemas,
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "showCount",
       label: "$showCount",
     },
   },
   {
     componentName: "InputNumber",
-    "x-field": {
+    "x-data": {
       name: "maxLength",
       label: "$maxLength",
     },
@@ -42,7 +42,7 @@ const options: SchemaOptions = {
   propSchemas:inputPros,
   slotSchemas:inputSlots,
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 export const inputSchema: INodeSchema = createSchema(options)
@@ -51,14 +51,14 @@ const textareaOptions: SchemaOptions = {
   propSchemas: [...inputPros,
   {
     componentName: "InputNumber",
-    "x-field": {
+    "x-data": {
       name: "rows",
       label: "$rows",
     },
   },
   ],
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 export const textAreaSchema: INodeSchema = createSchema(textareaOptions)

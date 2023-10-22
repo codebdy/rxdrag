@@ -5,14 +5,14 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "disabled",
         label: "$disabled",
       },
     },
   ],
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 

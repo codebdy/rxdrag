@@ -1,11 +1,11 @@
 import { ISlotSchema } from "./transSlotSchemas";
 import { INodeSchema } from "@rxdrag/schema";
-import { IFieldMeta } from "@rxdrag/fieldy";
+import { FieldType, IFieldMeta } from "@rxdrag/fieldy";
 import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 
 export type FieldOptions = {
-  hasField?: boolean,
   hasRules?: boolean,
+  fieldType?: FieldType,
 }
 
 export type SchemaOptions = {

@@ -6,21 +6,21 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "value",
         label: "$content",
       }
     },
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "href",
         label: "$href",
       }
     },
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "target",
         label: "$target",
       }
@@ -28,7 +28,7 @@ const options: SchemaOptions = {
     ...typographySchema,
   ],
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 

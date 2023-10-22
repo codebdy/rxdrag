@@ -2,6 +2,10 @@ import { memo } from "react"
 import styled from "styled-components"
 import { LeftSide } from "./LeftSide"
 import { Outlet } from "react-router-dom"
+import { useQueryAppMeta } from "../hooks/useQueryAppMeta"
+import { EntitiesContext } from "./contexts"
+import { Spin } from "antd"
+import { useBuildEntities } from "./hooks/useBuildEntities"
 
 //设备端的编辑区
 const AppDeviceArea = styled.div`
@@ -11,11 +15,19 @@ const AppDeviceArea = styled.div`
   `
 
 export const FrontendDesigner = memo(() => {
+  const { meta, loading } = useQueryAppMeta("app1")
+
+  const entities = useBuildEntities(meta?.publishedContent)
 
   return (
-    <AppDeviceArea>
-      <LeftSide />
-      <Outlet />
-    </AppDeviceArea>
+    loading
+      ? <Spin spinning={loading}>
+      </Spin>
+      : <EntitiesContext.Provider value={entities}>
+        <AppDeviceArea>
+          <LeftSide />
+          <Outlet />
+        </AppDeviceArea>
+      </EntitiesContext.Provider>
   )
 })

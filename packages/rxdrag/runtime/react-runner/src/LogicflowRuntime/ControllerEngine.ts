@@ -37,7 +37,7 @@ export class ControllerEngine {
 
   getSchemaControllers = (schema: IComponentRenderSchema, controllers: Record<string, IController>) => {
     const controllerMeta = schema?.["x-controller"];
-    const fieldMeta = schema?.["x-field"]
+    const fieldMeta = schema?.["x-data"]
     if (controllerMeta?.enable) {
       const controller = new ComponentController(controllerMeta);
       if (controller) {

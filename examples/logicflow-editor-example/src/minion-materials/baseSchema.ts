@@ -6,7 +6,7 @@ export const labelSchema = {
   children: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "label",
       },
     }
@@ -21,7 +21,7 @@ export const nameSchema = {
   children: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "name",
       },
     }

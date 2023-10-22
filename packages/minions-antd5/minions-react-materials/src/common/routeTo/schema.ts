@@ -13,7 +13,7 @@ export const routeToSchema: INodeSchema = {
       children: [
         {
           componentName: "Switch",
-          "x-field": {
+          "x-data": {
             name: "config.fromInput"
           },
         }
@@ -27,7 +27,7 @@ export const routeToSchema: INodeSchema = {
       children: [
         {
           componentName: "TextArea",
-          "x-field": {
+          "x-data": {
             name: `config.url`
           },
         }

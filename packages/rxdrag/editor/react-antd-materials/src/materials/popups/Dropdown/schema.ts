@@ -5,14 +5,14 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "arrow",
         label: "$arrow",
       },
     },
     {
       componentName: "Radio.Group",
-      "x-field": {
+      "x-data": {
         name: "trigger",
         label: "$trigger",
       },

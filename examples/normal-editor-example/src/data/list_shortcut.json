@@ -103,7 +103,7 @@
                             {
                               "componentName": "Input",
                               "props": {},
-                              "x-field": {
+                              "x-data": {
                                 "name": "keywords",
                                 "params": {}
                               },
@@ -1282,7 +1282,7 @@
                           "props": {
                             "title": "名称"
                           },
-                          "x-field": {
+                          "x-data": {
                             "name": "name"
                           },
                           "slots": {},
@@ -1293,7 +1293,7 @@
                           "props": {
                             "title": "登录名称"
                           },
-                          "x-field": {
+                          "x-data": {
                             "name": "login_name"
                           },
                           "slots": {},
@@ -1337,7 +1337,7 @@
                                             "label": "登录名"
                                           },
                                           "locked": false,
-                                          "x-field": {
+                                          "x-data": {
                                             "name": "login_name"
                                           },
                                           "slots": {},
@@ -1356,7 +1356,7 @@
                                             "label": "用户名"
                                           },
                                           "locked": false,
-                                          "x-field": {
+                                          "x-data": {
                                             "name": "name"
                                           },
                                           "slots": {},

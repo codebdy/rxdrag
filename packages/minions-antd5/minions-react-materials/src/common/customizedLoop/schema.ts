@@ -13,7 +13,7 @@ export const customizedLoopSchema: INodeSchema = {
       children: [
         {
           componentName: "Switch",
-          "x-field": {
+          "x-data": {
             name: "config.fromInput"
           },
         }
@@ -27,7 +27,7 @@ export const customizedLoopSchema: INodeSchema = {
       children: [
         {
           componentName: "InputNumber",
-          "x-field": {
+          "x-data": {
             name: "config.times"
           },
         }

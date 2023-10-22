@@ -7,7 +7,7 @@ export const containerSchema = [
         "pt", "pr", "pl", "pb"
       ],
     },
-    "x-field": {
+    "x-data": {
       name: "p",
     }
   },
@@ -19,7 +19,7 @@ export const containerSchema = [
         "mt", "mr", "ml", "mb"
       ]
     },
-    "x-field": {
+    "x-data": {
       name: "m",
     }
   },

@@ -13,7 +13,7 @@ export const intervalSchema: INodeSchema = {
       children: [
         {
           componentName: "InputNumber",
-          "x-field": {
+          "x-data": {
             name: `config.interval`
           },
         }

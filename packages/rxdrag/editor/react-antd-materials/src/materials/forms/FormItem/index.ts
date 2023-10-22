@@ -23,8 +23,8 @@ export const FormItemMaterial: IMaterial = {
     elements: [
       {
         componentName: name,
-        props: {
-          label: "FormItem"
+        "x-data":{
+          label: name
         },
         locked: false,
       }

@@ -6,14 +6,14 @@ const inputNumberPros = [
   ...inputBaseSchemas,
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "showCount",
       label: "$showCount",
     },
   },
   {
     componentName: "InputNumber",
-    "x-field": {
+    "x-data": {
       name: "maxLength",
       label: "$maxLength",
     },
@@ -44,7 +44,7 @@ const options: SchemaOptions = {
   propSchemas: inputNumberPros,
   slotSchemas: inputSlots,
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 export const inputNumberSchema: INodeSchema = createSchema(options)

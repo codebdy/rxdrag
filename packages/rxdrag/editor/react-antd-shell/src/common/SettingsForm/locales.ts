@@ -50,8 +50,7 @@ export const settingLocales = {
 
       selectImage: "选择图片",
 
-      fieldType: "字段类型",
-      fieldName: "字段名称",
+      fieldName: "名称",
       validation: "字段校验",
       validateRules: "校验规则",
       defaultValue: "默认值",
@@ -156,8 +155,7 @@ export const settingLocales = {
 
       selectImage: "Select image",
 
-      fieldType: "Field Type",
-      fieldName: "Field Name",
+      fieldName: "Name",
       validation: "Validation",
       validateRules: "Rules",
       defaultValue: "Default",

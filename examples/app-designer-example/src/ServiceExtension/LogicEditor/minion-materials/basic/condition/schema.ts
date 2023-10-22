@@ -13,7 +13,7 @@ export const conditionSchema: INodeSchema = {
       children: [
         {
           componentName: "TextArea",
-          "x-field": {
+          "x-data": {
             name: `config.trueExpression`,
             params: {
               withBind: true,

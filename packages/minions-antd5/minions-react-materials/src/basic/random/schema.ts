@@ -13,7 +13,7 @@ export const randomSchema: INodeSchema = {
       children: [
         {
           componentName: "InputNumber",
-          "x-field": {
+          "x-data": {
             name: `config.minValue`
           },
         }
@@ -27,7 +27,7 @@ export const randomSchema: INodeSchema = {
       children: [
         {
           componentName: "InputNumber",
-          "x-field": {
+          "x-data": {
             name: `config.maxValue`
           },
         }

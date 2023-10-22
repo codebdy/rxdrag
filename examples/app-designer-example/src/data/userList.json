@@ -21,14 +21,24 @@
         "name": "查询表单",
         "enable": true
       },
+      "x-data": {
+        "fieldType": "form",
+        "modelMetaId": "QksZdA-8",
+        "type": "Entity",
+        "validateRules": null
+      },
       "slots": {},
       "children": [
         {
           "componentName": "FormItem",
-          "props": {
+          "locked": false,
+          "x-data": {
+            "fieldType": "normal",
+            "modelMetaId": "qYBQKdC1",
+            "type": "Attribute",
+            "validateRules": null,
             "label": "姓名"
           },
-          "locked": false,
           "slots": {},
           "children": [
             {
@@ -40,10 +50,14 @@
         },
         {
           "componentName": "FormItem",
-          "props": {
-            "label": "登录名"
-          },
           "locked": false,
+          "x-data": {
+            "fieldType": "normal",
+            "modelMetaId": "PeprFClI",
+            "type": "Attribute",
+            "validateRules": null,
+            "label": "登录ID"
+          },
           "slots": {},
           "children": [
             {

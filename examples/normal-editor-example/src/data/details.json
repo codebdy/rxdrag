@@ -62,7 +62,7 @@
             {
               "componentName": "Input",
               "props": {},
-              "x-field": {
+              "x-data": {
                 "name": "test1"
               },
               "slots": {},
@@ -71,7 +71,7 @@
             {
               "componentName": "Input",
               "props": {},
-              "x-field": {
+              "x-data": {
                 "name": "test2"
               },
               "slots": {},

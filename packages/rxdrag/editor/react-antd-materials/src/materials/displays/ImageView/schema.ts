@@ -5,14 +5,14 @@ const options: SchemaOptions = {
   propSchemas:  [
     {
       componentName: "ImageInput",
-      "x-field": {
+      "x-data": {
         name: "value",
         label: "$value",
       },
     },
     {
       componentName: "SizeInput",
-      "x-field": {
+      "x-data": {
         name: "height",
         label: "$height",
       },

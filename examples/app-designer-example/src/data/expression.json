@@ -23,7 +23,7 @@
             "label": "FormItem"
           },
           "locked": false,
-          "x-field": {
+          "x-data": {
             "name": "name1"
           },
           "slots": {},
@@ -41,7 +41,7 @@
             "label": "FormItem"
           },
           "locked": false,
-          "x-field": {
+          "x-data": {
             "name": "name2"
           },
           "slots": {},

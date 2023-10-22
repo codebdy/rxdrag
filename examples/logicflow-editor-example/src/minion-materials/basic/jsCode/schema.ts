@@ -13,7 +13,7 @@ export const jsCodeSchema: INodeSchema = {
       children: [
         {
           componentName: "PortsInput",
-          "x-field": {
+          "x-data": {
             name: "inPorts",
           },
           props: {
@@ -32,7 +32,7 @@ export const jsCodeSchema: INodeSchema = {
       children: [
         {
           componentName: "PortsInput",
-          "x-field": {
+          "x-data": {
             name: "outPorts",
           },
           props: {
@@ -51,7 +51,7 @@ export const jsCodeSchema: INodeSchema = {
       children: [
         {
           componentName: "TextArea",
-          "x-field": {
+          "x-data": {
             name: "config.expression",
           },
           props: {

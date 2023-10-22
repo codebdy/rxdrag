@@ -1,35 +1,35 @@
 export const inputBaseSchemas = [
   {
     componentName: "Input",
-    "x-field": {
+    "x-data": {
       name: "placeholder",
       label: "$placeholder",
     },
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "disabled",
       label: "$disabled",
     },
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "autoFocus",
       label: "$autoFocus",
     },
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "allowClear",
       label: "$allowClear",
     },
   },
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "bordered",
       label: "$bordered",
     },
@@ -39,7 +39,7 @@ export const inputBaseSchemas = [
   },
   {
     componentName: "Radio.Group",
-    "x-field": {
+    "x-data": {
       name: "size",
       label: "$size",
     },

@@ -1,13 +1,14 @@
 import { EditorScope } from "@rxdrag/react-antd-shell"
 import { memo } from "react"
 import { ModuleUiDesignerInner } from "./ModuleUiDesignerInner"
-import { setterLocales, materials } from "example-common"
+import { materials } from "example-common"
 import { useAppThemeMode } from "../../hooks/useAppThemeMode"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { CANVAS_URL_PREFIX, PREVIEW_URL_PREFIX } from "../consts"
 import { useParams } from "react-router-dom"
 import { LayoutPart } from "../../interfaces"
 import { useQueryModule } from "../../hooks/useQueryModule"
+import { XDataInput, setterLocales } from "./setters"
 
 export const ModuleUiDesigner = memo(() => {
   const { device } = useParams()
@@ -25,7 +26,10 @@ export const ModuleUiDesigner = memo(() => {
       minionOptions={{
 
       }}
-
+      setters={{
+        //新的XDataInput覆盖旧的
+        XDataInput
+      }}
       materials={materials}
       canvasConfig={frontend?.canvasConfig}
     >

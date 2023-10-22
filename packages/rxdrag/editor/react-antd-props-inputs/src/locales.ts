@@ -39,7 +39,8 @@ export const setterLocales: ILocales = {
     replaceTip: "代码将被覆盖，您确定吗？",
     message: "消息",
     joinFlow: "参与编排",
-    name: "名称"
+    name: "名称",
+    defaultValue: "默认值"
   },
   'en-US': {
     validationType: "Validation Type",
@@ -79,6 +80,7 @@ export const setterLocales: ILocales = {
     replaceTip: "Code will be replaced, are you sure?",
     message: "Message",
     joinFlow: "Join Flow",
-    name: "Name"
+    name: "Name",
+    defaultValue: "Default Value"
   }
 }

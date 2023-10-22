@@ -21,7 +21,7 @@ const scehmaOptions: SchemaOptions = {
         defaultValue: "light",
       },
 
-      "x-field": {
+      "x-data": {
         label: "$themeMode",
         name: "themeMode",
       }
@@ -30,7 +30,7 @@ const scehmaOptions: SchemaOptions = {
       componentName: "ThemeTokenSetter",
       props: {
       },
-      "x-field": {
+      "x-data": {
         label: "$themeColor",
         name: "token",
       }

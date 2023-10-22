@@ -37,7 +37,7 @@ export const ComponentTree = memo((
   const getArrayNodes = useGetArrayNodes()
 
   const getOneNode = useCallback((rNode: ReactionableNode): DataNode => {
-    const isArray = rNode.node.meta?.["x-field"]?.type === "array"
+    const isArray = rNode.node.meta?.["x-data"]?.type === "array"
     const ctrlMeta = rNode.node.meta?.["x-controller"]
     const isInArray = isArray && flow?.ownerId === ctrlMeta?.id && !!ctrlMeta?.id
     const children = (isInArray || !isArray) ? rNode.children?.map(child => getOneNode(child)) : []

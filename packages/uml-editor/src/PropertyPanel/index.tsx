@@ -26,17 +26,16 @@ export const PropertyPanel = memo(() => {
   const relation = useRelation(selectedElement || "", metaId);
 
   return (
-    <PropertyBox title={t("Properties")} >
-      {selectedEntity && <ClassPanel cls={selectedEntity} />}
-      {attribute && attributeCls && (
-        <AttributePanel attribute={attribute} cls={attributeCls} />
-      )}
-      {relation && <RelationPanel relation={relation} />}
-      {!selectedElement && (
-        <div style={{ padding: "16px" }}>
-          <Empty />
-        </div>
-      )}
-    </PropertyBox>
+    attribute && attributeCls 
+      ? <AttributePanel attribute={attribute} cls={attributeCls} />
+      : <PropertyBox title={t("Properties")} >
+        {selectedEntity && <ClassPanel cls={selectedEntity} />}
+        {relation && <RelationPanel relation={relation} />}
+        {!selectedElement && (
+          <div style={{ padding: "16px" }}>
+            <Empty />
+          </div>
+        )}
+      </PropertyBox>
   );
 });

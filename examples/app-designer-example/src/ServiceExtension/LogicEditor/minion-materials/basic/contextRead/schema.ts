@@ -13,7 +13,7 @@ export const contextReadSchema: INodeSchema = {
       children: [
         {
           componentName: "Input",
-          "x-field": {
+          "x-data": {
             name: `config.name`,
             params: {
               withBind: true,

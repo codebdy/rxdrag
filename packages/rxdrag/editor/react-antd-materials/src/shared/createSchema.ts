@@ -31,7 +31,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     children: [
       {
         componentName: "ControllerSetter",
-        "x-field": {
+        "x-data": {
           name: "x-controller",
         },
       }
@@ -39,11 +39,11 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
   }];
 
 
-  const fieldTab = field?.hasField ? [
+  const fieldTab = field?.fieldType ? [
     {
       componentName: "TabPanel",
       props: {
-        title: "$field",
+        title: "$data",
         key: "data",
         isField: true,
       },
@@ -70,7 +70,7 @@ const styleTab = {
   children: [
     {
       componentName: 'StyleSetter',
-      'x-field': {
+      'x-data': {
         name: 'props.style',
       }
     }

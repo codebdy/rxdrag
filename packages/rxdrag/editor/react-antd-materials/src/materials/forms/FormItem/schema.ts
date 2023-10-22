@@ -6,7 +6,7 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "colon",
         label: "$colon",
       },
@@ -14,15 +14,15 @@ const options: SchemaOptions = {
         defaultChecked: false
       }
     },
+    // {
+    //   componentName: "Input",
+    //   "x-data": {
+    //     name: "label",
+    //     label: "$label",
+    //   },
+    // },
     {
-      componentName: "Input",
-      "x-field": {
-        name: "label",
-        label: "$label",
-      },
-    },
-    {
-      "x-field": {
+      "x-data": {
         name: "labelAlign",
         label: "$labelAlign",
       },
@@ -43,14 +43,14 @@ const options: SchemaOptions = {
       }
     },
     {
-      "x-field": {
+      "x-data": {
         name: "labelWrap",
         label: "$labelWrap",
       },
       componentName: "Switch"
     },
     {
-      "x-field": {
+      "x-data": {
         name: "labelCol",
       },
       componentName: "ColInput",
@@ -67,7 +67,7 @@ const options: SchemaOptions = {
       }
     },
     {
-      "x-field": {
+      "x-data": {
         name: "wrapperCol",
       },
       componentName: "ColInput",
@@ -86,7 +86,7 @@ const options: SchemaOptions = {
     ...fieldDisplaySchema,
   ],
   field: {
-    hasField: true,
+    fieldType: "normal",
     hasRules: true,
   },
 }

@@ -7,7 +7,7 @@ const options: SchemaOptions = {
     ...inputBaseSchemas,
     {
       componentName: "Select",
-      "x-field": {
+      "x-data": {
         name: "mode",
         label: "$mode",
       },
@@ -38,7 +38,7 @@ const options: SchemaOptions = {
     },
     {
       componentName: "Select",
-      "x-field": {
+      "x-data": {
         name: "picker",
         label: "$mode",
       },
@@ -70,7 +70,7 @@ const options: SchemaOptions = {
     },
     {
       componentName: "Select",
-      "x-field": {
+      "x-data": {
         name: "placement",
         label: "$mode",
       },
@@ -98,7 +98,7 @@ const options: SchemaOptions = {
     },
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "format",
         label: "$format",
       },
@@ -108,21 +108,21 @@ const options: SchemaOptions = {
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "showNow",
         label: "$showNow",
       },
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "showTime",
         label: "$showTime",
       },
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "showToday",
         label: "$showToday",
       },

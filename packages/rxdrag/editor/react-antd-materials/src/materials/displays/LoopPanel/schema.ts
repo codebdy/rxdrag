@@ -7,7 +7,7 @@ const options: SchemaOptions = {
   ],
 
   field: {
-    hasField: true,
+    fieldType: "array",
   },
 }
 

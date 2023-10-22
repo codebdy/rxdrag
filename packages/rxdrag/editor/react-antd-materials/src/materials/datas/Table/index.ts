@@ -25,7 +25,7 @@ export const TableMaterial: IMaterial = {
     elements: [
       {
         componentName: name,
-        "x-field": {
+        "x-data": {
           type: "array",
         },
         slots: {

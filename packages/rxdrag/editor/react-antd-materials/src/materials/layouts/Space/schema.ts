@@ -5,7 +5,7 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Select",
-      "x-field": {
+      "x-data": {
         name: "align",
         label: "$align",
       },
@@ -32,7 +32,7 @@ const options: SchemaOptions = {
     },
     {
       componentName: "Radio.Group",
-      "x-field": {
+      "x-data": {
         name: "direction",
         label: "$direction",
       },
@@ -53,7 +53,7 @@ const options: SchemaOptions = {
     },
     {
       componentName: "Radio.Group",
-      "x-field": {
+      "x-data": {
         name: "size",
         label: "$size",
       },
@@ -78,7 +78,7 @@ const options: SchemaOptions = {
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "wrap",
         label: "$wrap",
       },

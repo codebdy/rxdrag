@@ -1,31 +1,18 @@
 import { FieldOptions } from "./SchemaOptions"
-import { attachFormItem } from "./attachFormItem"
 
 export function createFieldSchema(field: FieldOptions) {
-  const fieldDefineFields = [
-    {
-      componentName: "NameInput",
-      "x-field": {
-        name: "x-field.name",
-        label: "$fieldName",
-        //defaultValue: "",
+  return field.fieldType
+    ? [
+      {
+        componentName: "XDataInput",
+        props: {
+          hasRules: field.hasRules,
+          fieldType: field.fieldType,
+        },
+        "x-data": {
+          name: "x-data",
+        },
       },
-    },
-    {
-      componentName: "ValueInput",
-      "x-field": {
-        name: "x-field.defaultValue",
-        label: "$defaultValue",
-      },
-    },
-  ]
-  return [
-    ...attachFormItem(fieldDefineFields) || [],
-    ...field.hasRules ? [{
-      componentName: "YupRulesInput",
-      "x-field": {
-        name: "x-field.validateRules",
-      },
-    }] : []
-  ]
+    ]
+    : []
 }

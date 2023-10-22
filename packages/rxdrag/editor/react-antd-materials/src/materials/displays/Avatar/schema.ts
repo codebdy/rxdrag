@@ -5,7 +5,7 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Radio.Group",
-      "x-field": {
+      "x-data": {
         name: "shape",
         label: "$shape",
       },
@@ -26,7 +26,7 @@ const options: SchemaOptions = {
     },
     {
       componentName: "InputNumber",
-      "x-field": {
+      "x-data": {
         name: "size",
         label: "$size",
       },

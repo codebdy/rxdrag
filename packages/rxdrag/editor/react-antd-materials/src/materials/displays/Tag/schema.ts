@@ -5,21 +5,21 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "value",
         label: "$content",
       }
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "closable",
         label: "$closable",
       }
     },
     {
       componentName: "TagColorInput",
-      "x-field": {
+      "x-data": {
         name: "color",
         label: "$color",
       }
@@ -32,7 +32,7 @@ const options: SchemaOptions = {
     }
   ],
   field: {
-    hasField: true,
+    fieldType: "normal",
   },
 }
 

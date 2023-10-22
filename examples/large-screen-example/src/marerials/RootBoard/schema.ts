@@ -21,7 +21,7 @@ const scehmaOptions: SchemaOptions = {
         defaultValue: "dark",
       },
 
-      "x-field": {
+      "x-data": {
         label: "$themeMode",
         name: "themeMode",
       }
@@ -30,14 +30,14 @@ const scehmaOptions: SchemaOptions = {
       componentName: "ThemeTokenSetter",
       props: {
       },
-      "x-field": {
+      "x-data": {
         label: "$themeColor",
         name: "token",
       }
     },
     {
       componentName: "ImageSelect",
-      "x-field": {
+      "x-data": {
         label: "$backgroundImage",
         name: "backgroundImage",
       }

@@ -25,7 +25,7 @@ export const FormLayoutMaterial: IMaterial = {
         props: {
           colon: false
         },
-        "x-field": {
+        "x-data": {
           type: "object"
         }
       }

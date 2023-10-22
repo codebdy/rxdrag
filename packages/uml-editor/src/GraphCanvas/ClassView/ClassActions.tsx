@@ -1,23 +1,22 @@
 import { DeleteOutlined, EyeInvisibleOutlined, MoreOutlined, PlusOutlined } from '@ant-design/icons';
-import { useTranslate } from '@rxdrag/react-locales';
-import { ClassMeta, StereoType } from '@rxdrag/uml-schema';
+import { StereoType } from '@rxdrag/uml-schema';
 import { Button, Dropdown } from 'antd';
 import React, { memo, useState } from 'react';
 import { useCallback } from 'react';
+import { ClassNodeData } from './ClassNodeData';
 
 const ClassActions = memo((
   props: {
-    cls: ClassMeta,
+    cls: ClassNodeData,
     onAddAttribute: () => void,
     onHidden: () => void,
     onDelete: () => void,
     onVisible: (visible: boolean) => void,
   }
 ) => {
-  const { cls, onAddAttribute, onHidden, onDelete, onVisible } = props;
+  const { cls, onAddAttribute, onHidden, onDelete, onVisible, } = props;
   const [visible, setVisible] = useState(false);
-  const t = useTranslate();
-
+  const t = cls.t
   const handleMenuClick = useCallback((e: { key: string }) => {
     setVisible(false);
     onVisible(false);

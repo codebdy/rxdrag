@@ -15,6 +15,7 @@ import { useGetPackage } from "../hooks/useGetPackage";
 import { useSelectedDiagramPackageId } from "../hooks/useSelectedDiagramPackageId";
 import { useToken } from "antd/es/theme/internal";
 import { ID } from "@rxdrag/shared";
+import { useTranslate } from "@rxdrag/react-locales";
 
 export function useNodesShow(graph: Graph | undefined, metaId: ID) {
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
@@ -26,7 +27,7 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
 
   const [, token] = useToken();
   const themeMode = useRecoilValue(themeModeState)
-
+  const t = useTranslate()
   const getClassRef = useRef(getClass);
   getClassRef.current = getClass;
 
@@ -50,10 +51,7 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
         themeMode: themeMode,
         backgroundColor: token.colorBgBase,
         textColor: token.colorText,
-        //selectedId: selectedElement,
-        //pressedLineType: pressedLineType,
-        //drawingLine: drawingLine,
-        //themeMode: themeMode,
+        t,
       };
       if (grahpNode) {
         //Update by diff
@@ -76,18 +74,6 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
           ...node,
           shape: "class-node",
           data,
-          // component: (
-          //   <ClassView
-          //     onAttributeSelect={handleAttributeSelect}
-          //     onAttributeDelete={handleAttributeDelete}
-          //     onAttributeCreate={handleAttributeCreate}
-          //     onMethodSelect={handleMethodSelect}
-          //     onMethodDelete={handleMothodDelete}
-          //     onMethodCreate={handleMethodCreate}
-          //     onDelete={handelDeleteClass}
-          //     onHide={handleHideClass}
-          //   />
-          // ),
         });
       }
     });
@@ -101,5 +87,5 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
         graph?.removeNode(node.id);
       }
     });
-  }, [getClass, getDiagramNode, getNode, getPackage, graph, nodes, selectedDiagram, selectedDiagramUuid, themeMode, token.colorBgBase, token.colorText]);
+  }, [getClass, getDiagramNode, getNode, getPackage, graph, nodes, selectedDiagram, selectedDiagramUuid, t, themeMode, token.colorBgBase, token.colorText]);
 }

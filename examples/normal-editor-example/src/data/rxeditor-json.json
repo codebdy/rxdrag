@@ -279,7 +279,7 @@
                           "props": {
                             "placeholder": "输入框"
                           },
-                          "x-field": {
+                          "x-data": {
                             "type": "normal",
                             "name": "username"
                           },

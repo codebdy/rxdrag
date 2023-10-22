@@ -13,7 +13,7 @@ export const increaseSchema: INodeSchema = {
       children: [
         {
           componentName: "InputNumber",
-          "x-field": {
+          "x-data": {
             name: `config.step`,
           },
         }

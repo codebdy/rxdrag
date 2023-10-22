@@ -5,14 +5,14 @@ const options: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "title",
         label: "$title",
       }
     },
     {
       componentName: "Select",
-      "x-field": {
+      "x-data": {
         name: "type",
         label: "$type",
       },
@@ -47,7 +47,7 @@ const options: SchemaOptions = {
     },
     {
       componentName: "Switch",
-      "x-field": {
+      "x-data": {
         name: "disabled",
         label: "$disabled",
       },

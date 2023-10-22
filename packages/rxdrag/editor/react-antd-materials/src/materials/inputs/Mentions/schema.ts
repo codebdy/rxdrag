@@ -6,14 +6,14 @@ const mentionsNumberPros = [
   ...inputBaseSchemas,
   {
     componentName: "Switch",
-    "x-field": {
+    "x-data": {
       name: "showCount",
       label: "$showCount",
     },
   },
   {
     componentName: "InputNumber",
-    "x-field": {
+    "x-data": {
       name: "maxLength",
       label: "$maxLength",
     },

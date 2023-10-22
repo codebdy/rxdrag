@@ -10,7 +10,7 @@ export const debugSchema: INodeSchema = {
       props: {
         label: "$tip",
       },
-      "x-field": {
+      "x-data": {
         name: "config.tip",
       },
       children: [
@@ -24,7 +24,7 @@ export const debugSchema: INodeSchema = {
       props: {
         label: "$close",
       },
-      "x-field": {
+      "x-data": {
         name: `config.closed`,
       },
       children: [

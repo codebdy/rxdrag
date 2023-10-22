@@ -5,7 +5,7 @@ export const propSchema: INodeSchema = {
   children: [
     {
       componentName: "PropSelect",
-      "x-field": {
+      "x-data": {
         name: "config",
       },
     },
