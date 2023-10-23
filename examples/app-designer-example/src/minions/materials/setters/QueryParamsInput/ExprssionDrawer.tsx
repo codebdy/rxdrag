@@ -13,7 +13,12 @@ const StyledDrawer = styled(Drawer)`
   }
 `
 
-export const ExprssionDrawer = memo(() => {
+export const ExprssionDrawer = memo((
+  props: {
+    entityId: string,
+  }
+) => {
+  const { entityId } = props;
   const [open, setOpen] = useState<boolean>()
   const [inputValue, setInputValue] = useState<(IExpression | IExpressionGroup)[]>()
   const t = useTranslate()
@@ -55,6 +60,7 @@ export const ExprssionDrawer = memo(() => {
         </Footer>}
       >
         <ExpressionTreeInput
+          entityId={entityId}
           value={inputValue}
           onChange={setInputValue}
         />

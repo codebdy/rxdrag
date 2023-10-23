@@ -91,8 +91,12 @@ export const QueryParamsInput = memo((
             </RootIcon>
             <Space>
               <span>{entity?.label || entity?.name}</span>
-              <ExprssionDrawer />
-              <Button type="text" size="small" icon={orderIcon}></Button>
+              {
+                entity && <>
+                  <ExprssionDrawer entityId={entity?.uuid} />
+                  <Button type="text" size="small" icon={orderIcon}></Button>
+                </>
+              }
             </Space>
           </EntityItem>
           <PropertiesArea>

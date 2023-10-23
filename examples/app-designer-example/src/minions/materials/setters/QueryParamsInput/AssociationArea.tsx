@@ -60,7 +60,9 @@ export const AssociationArea = memo((
           </Checkbox>
           {
             selected && <>
-              <ExprssionDrawer />
+              <ExprssionDrawer
+                entityId={asso.typeId}
+              />
               <Button type="text" size="small" icon={orderIcon}></Button>
             </>
           }

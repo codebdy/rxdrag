@@ -6,6 +6,7 @@ import { ExpressionItem } from "./ExpressionItem";
 
 export const ExpressionChild = memo((
   props: {
+    entityId: string,
     child: IExpression | IExpressionGroup,
     index: number,
     onRemove?: (id: string) => void
@@ -15,10 +16,11 @@ export const ExpressionChild = memo((
     onAddGroupAffter?: (index: number, groupType: ExpressionGroupType) => void
   }
 ) => {
-  const { child, index, onRemove, onGroupChange, onExpressionChange, onAddExpAffter: onInsertExpAffter, onAddGroupAffter } = props;
+  const { entityId, child, index, onRemove, onGroupChange, onExpressionChange, onAddExpAffter: onInsertExpAffter, onAddGroupAffter } = props;
   return (
     child.nodeType === ExpressionNodeType.Group ?
       <ExpressionGroup
+        entityId={entityId}
         key={child.id}
         value={child as IExpressionGroup}
         onChange={onGroupChange}
@@ -30,7 +32,7 @@ export const ExpressionChild = memo((
         onAddGroup={(nodType) => onAddGroupAffter?.(index, nodType)}
         onRemove={() => onRemove?.(child.id)}
       >
-        <ExpressionInput value={child} onChange={(val) => val && onExpressionChange?.(val)} />
+        <ExpressionInput entityId={entityId} value={child} onChange={(val) => val && onExpressionChange?.(val)} />
       </ExpressionItem>
   )
 })

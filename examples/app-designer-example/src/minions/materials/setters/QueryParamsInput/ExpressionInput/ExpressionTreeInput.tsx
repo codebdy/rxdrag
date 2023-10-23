@@ -16,11 +16,12 @@ const Container = styled.div`
 
 export const ExpressionTreeInput = memo((
   props: {
+    entityId: string,
     value?: (IExpression | IExpressionGroup)[],
     onChange?: (value?: (IExpression | IExpressionGroup)[]) => void
   }
 ) => {
-  const { value, onChange } = props
+  const { entityId, value, onChange } = props
   const t = useTranslate()
 
   const handleAddExp = useCallback(() => {
@@ -95,6 +96,7 @@ export const ExpressionTreeInput = memo((
             return (
               <ExpressionChild
                 key={child.id}
+                entityId = {entityId}
                 child={child}
                 index={index}
                 onAddExpAffter={handleAddExpAfter}

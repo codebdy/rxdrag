@@ -72,12 +72,13 @@ const GroupAction = styled.div`
 
 export const ExpressionGroup = memo((
   props: {
+    entityId: string,
     value: IExpressionGroup,
     onChange?: (value: IExpressionGroup) => void,
     onRemove?: (nodeId: string) => void
   }
 ) => {
-  const { value, onChange, onRemove } = props
+  const { entityId, value, onChange, onRemove } = props
   const t = useTranslate()
 
   const handleAddExp = useCallback(() => {
@@ -193,6 +194,7 @@ export const ExpressionGroup = memo((
           value?.children?.map((child, index) => {
             return (
               <ExpressionChild
+                entityId={entityId}
                 key={child.id}
                 child={child}
                 index={index}

@@ -41,6 +41,7 @@ export const entityActivityMaterialLocales = {
     addExpression: "添加条件",
     addAndGroup: "添加且组",
     addOrGroup: "添加或组",
+    pleaseSelect: "请选择"
   },
   'en-US': {
     entity: "Entity",
@@ -84,5 +85,6 @@ export const entityActivityMaterialLocales = {
     addExpression: "Add Expression",
     addAndGroup: "Add And Group",
     addOrGroup: "Add Or Group",
+    pleaseSelect: "Please select"
   }
 }
