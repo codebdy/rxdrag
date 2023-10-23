@@ -17,6 +17,7 @@ export const entityActivityMaterialLocales = {
     queryParams: "查询参数",
     config: "配置",
     failure: "失败",
+    loading: "加载中"
   },
   'en-US': {
     entity: "Entity",
@@ -36,5 +37,6 @@ export const entityActivityMaterialLocales = {
     queryParams: "Query Params",
     config: "Config",
     failure: "Failure",
+    loading: "Loading"
   }
 }

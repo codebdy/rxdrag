@@ -43,7 +43,7 @@ export const backendActivityMaterialLocales = {
     label: "标签",
     operation: "操作",
     defaultValue: "默认值",
-    loading: "等待",
+    loading: "加载中",
     error: "错误",
     trueExpression: "是表达式",
     expression: "表达式",
