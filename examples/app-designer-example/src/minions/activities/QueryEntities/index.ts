@@ -15,7 +15,8 @@ export class QueryEntities extends AbstractActivity<IQueryEntitiesConfig> {
   public static INPUT_NAME_CONDITION = "condition"
   public static INPUT_NAME_PAGE = "page"
   public static INPUT_PAGE_SIZE = "page_size"
-  public static OUTPUT_DATA = "data"
+  public static OUTPUT_LIST = "list"
+  public static OUTPUT_TOTAL = "total"
   public static OUTPUT_SUCCESS = "success"
 
   constructor(meta: INodeDefine<IQueryEntitiesConfig>,) {

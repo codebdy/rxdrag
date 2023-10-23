@@ -37,8 +37,13 @@ export const queryEntitiesMaterial: IRxDragActivityMaterial<IQueryEntitiesConfig
     outPorts: [
       {
         id: createId(),
-        name: "data",
-        label: "$data",
+        name: "list",
+        label: "$dataList",
+      },
+      {
+        id: createId(),
+        name: "total",
+        label: "$total",
       },
       {
         id: createId(),
