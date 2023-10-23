@@ -53,7 +53,7 @@ export const queryEntitiesMaterial: IRxDragActivityMaterial<IQueryEntitiesConfig
       {
         id: createId(),
         name: "error",
-        label: "$error",
+        label: "$failure",
       },
       {
         id: createId(),

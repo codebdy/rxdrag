@@ -16,6 +16,7 @@ export const entityActivityMaterialLocales = {
     pollingTime: "轮询间隔",
     queryParams: "查询参数",
     config: "配置",
+    failure: "失败",
   },
   'en-US': {
     entity: "Entity",
@@ -33,6 +34,7 @@ export const entityActivityMaterialLocales = {
     queryOnFocus: "queryOnFocus",
     pollingTime: "Polling time",
     queryParams: "Query Params",
-    config: "Config"
+    config: "Config",
+    failure: "Failure",
   }
 }
