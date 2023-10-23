@@ -15,7 +15,7 @@ const StyledDrawer = styled(Drawer)`
 
 export const ExprssionDrawer = memo(() => {
   const [open, setOpen] = useState<boolean>()
-  const [value, setValue] = useState<(IExpression | IExpressionGroup)[]>()
+  const [inputValue, setInputValue] = useState<(IExpression | IExpressionGroup)[]>()
   const t = useTranslate()
   const handleOpen = useCallback(() => {
     setOpen(open => !open)
@@ -23,6 +23,10 @@ export const ExprssionDrawer = memo(() => {
 
   const handleClose = useCallback(() => {
     setOpen(false)
+  }, [])
+
+  const handleClear = useCallback(() => {
+    setInputValue(undefined)
   }, [])
 
   return (
@@ -39,7 +43,9 @@ export const ExprssionDrawer = memo(() => {
         mask={false}
         open={open}
         footer={<Footer>
-          <Button>{t("clear")}</Button>
+          <Button
+            onClick={handleClear}
+          >{t("clear")}</Button>
           <Space>
             <Button onClick={handleClose}>{t("cancel")}</Button>
             <Button onClick={handleClose} type="primary">
@@ -49,8 +55,8 @@ export const ExprssionDrawer = memo(() => {
         </Footer>}
       >
         <ExpressionTreeInput
-          value={value}
-          onChange={setValue}
+          value={inputValue}
+          onChange={setInputValue}
         />
       </StyledDrawer>
     </>
