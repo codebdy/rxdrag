@@ -12,7 +12,7 @@ export interface IQueryEntitiesConfig {
 @Activity(QueryEntities.NAME)
 export class QueryEntities extends AbstractActivity<IQueryEntitiesConfig> {
   public static NAME = "qurey-entities"
-  public static INPUT_NAME_CONDITION = "condition"
+  public static INPUT_NAME_CONDITION_PARAMS = "condition_params"
   public static INPUT_NAME_PAGE = "page"
   public static INPUT_PAGE_SIZE = "page_size"
   public static OUTPUT_LIST = "list"

@@ -20,8 +20,8 @@ export const queryEntitiesMaterial: IRxDragActivityMaterial<IQueryEntitiesConfig
       },
       {
         id: createId(),
-        name: QueryEntities.INPUT_NAME_CONDITION,
-        label: "$condition",
+        name: QueryEntities.INPUT_NAME_CONDITION_PARAMS,
+        label: "$conditionParams",
       },
       {
         id: createId(),
