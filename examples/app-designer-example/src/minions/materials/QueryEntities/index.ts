@@ -34,6 +34,11 @@ export const queryEntitiesMaterial: IRxDragActivityMaterial<IEntityQueryConfig, 
         name: QueryEntities.INPUT_PAGE_SIZE,
         label: "$pageSize",
       },
+      {
+        id: createId(),
+        name: QueryEntities.INPUT_SORT,
+        label: "$sortParams",
+      },
     ],
     outPorts: [
       {
