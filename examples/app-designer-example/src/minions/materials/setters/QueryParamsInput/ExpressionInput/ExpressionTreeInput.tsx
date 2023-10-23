@@ -1,14 +1,13 @@
-import { memo } from "react";
-import { ExpressionGroup } from "./ExpressionGroup";
-import { IExpression, IExpressionGroup } from "../../../../activities/common/interfaces";
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { memo, useCallback } from "react";
+import { ExpressionGroupType, ExpressionNodeType, IExpression, IExpressionGroup } from "../../../../activities/common/interfaces";
+import { PlusOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useTranslate } from "@rxdrag/react-locales";
 import styled from "styled-components";
 import { AddMenu } from "./AddMenu";
 import { ExpressionChild } from "./ExpressionChild";
 import { ExpressionChildren } from "./ExpressionChildren";
-import { Item } from "./ExpressionItem";
+import { createId } from "@rxdrag/shared";
 
 const Container = styled.div`
   display: flex;
@@ -23,6 +22,35 @@ export const ExpressionTreeInput = memo((
 ) => {
   const { value, onChange } = props
   const t = useTranslate()
+
+  const handleAddExp = useCallback(() => {
+    onChange?.([
+      ...value || [],
+      {
+        id: createId(),
+        nodeType: ExpressionNodeType.Expression
+      }
+    ])
+  }, [onChange, value])
+
+  const handleAddGroup = useCallback((groupType: ExpressionGroupType) => {
+    const newNode: IExpressionGroup = {
+      id: createId(),
+      nodeType: ExpressionNodeType.Group,
+      groupType: groupType,
+      children: [
+        {
+          id: createId(),
+          nodeType: ExpressionNodeType.Expression
+        } as IExpression
+      ]
+    }
+
+    onChange?.([
+      ...value || [],
+      newNode
+    ])
+  }, [onChange, value])
 
   return (
     <Container>
@@ -45,13 +73,18 @@ export const ExpressionTreeInput = memo((
         }
 
       </ExpressionChildren>
-      <Button
-        type="dashed"
-        icon={<PlusOutlined />}
-        block
+      <AddMenu
+        onAddExpression={handleAddExp}
+        onAddGroup={handleAddGroup}
       >
-        {t("add")}
-      </Button>
+        <Button
+          type="dashed"
+          icon={<PlusOutlined />}
+          block
+        >
+          {t("add")}
+        </Button>
+      </AddMenu>
     </Container>
   )
 })
