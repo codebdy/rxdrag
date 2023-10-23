@@ -1,11 +1,12 @@
 import { Input, Space, TreeSelect, TreeSelectProps } from "antd"
-import { memo, useEffect, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import { OperatorSelect } from "./OperatorSelect"
 import type { ExpressionInputProps } from "./ExpressionInputProps"
 import { DefaultOptionType } from "antd/es/select"
 import { useEnitity } from "../../../../../FrontendDesigner/hooks/useEnitity"
 import { useTranslate } from "@rxdrag/react-locales"
 import { useGetEntity } from "../../../../../FrontendDesigner/hooks/useGetEntity"
+import { EntityMeta } from "../../../../../FrontendDesigner/ModuleUiDesigner/interfaces/EntityMeta"
 
 export const ExpressionInput = memo((
   props: ExpressionInputProps
@@ -17,59 +18,48 @@ export const ExpressionInput = memo((
   const t = useTranslate()
   const [treeData, setTreeData] = useState<Omit<DefaultOptionType, 'label'>[]>([]);
 
-  useEffect(() => {
-    setTreeData([
+  const getEntityNodes = useCallback((entity?: EntityMeta, pId?: string) => {
+    return [
       ...entity?.attributes?.map((attr) => {
+        const id = pId ? (pId + "." + attr.name) : attr.name
         return {
-          id: attr.uuid,
-          value: attr.uuid,
+          id: id,
+          pId,
+          value: id,
           title: attr.label || attr.name || attr.uuid,
           isLeaf: true
         }
       }) || [],
       ...entity?.associations?.map((asso) => {
+        const assoEntity = getEntity(asso.typeId)
+        const id = pId ? (pId + "." + asso.name) : asso.name
         return {
-          id: asso.id,
-          value: asso.id,
-          title: asso.label || asso.name || asso.id,
+          id: id,
+          pId,
+          value: id,
+          title: asso.label || asso.name || asso.id + ":" + assoEntity?.label || assoEntity?.name,
           selectable: false,
           typeId: asso.typeId,
         }
       }) || [],
-    ])
-  }, [entity?.associations, entity?.attributes])
+    ]
+  }, [getEntity])
+
+  useEffect(() => {
+    setTreeData(getEntityNodes(entity))
+  }, [entity, getEntityNodes])
 
   const onLoadData: TreeSelectProps['loadData'] = (arg) =>
     new Promise((resolve) => {
-      setTimeout(() => {
-        const entity = getEntity(arg.typeId)
-        setTreeData(
-          treeData.concat(entity?.attributes.map((attr) => {
-            const id = arg.id + "." + attr.uuid
-            return {
-              id: id,
-              pId: arg.id,
-              value: id,
-              title: attr.label || attr.name || attr.uuid,
-              isLeaf: true
-            }
-          }) || []).concat(entity?.associations?.map((asso) => {
-            const id = arg.id + "." + asso.id
-            return {
-              id: id,
-              pId: arg.id,
-              value: id,
-              title: asso.label || asso.name || asso.id,
-              selectable: false,
-              typeId: asso.typeId,
-            }
-          }) || [])
-        );
-        resolve(undefined);
-      }, 0);
+      const typeEntity = getEntity(arg.typeId)
+      setTreeData(
+        treeData.concat(getEntityNodes(typeEntity, arg.id))
+      );
+      resolve(undefined);
     });
 
   const onChange = (newValue: string) => {
+    console.log(newValue)
     setValue(newValue);
   };
 
