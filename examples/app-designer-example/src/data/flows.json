@@ -2569,5 +2569,81 @@
         }
       ]
     }
+  },
+  {
+    "id": "zewBD6uf",
+    "name": "测试流程",
+    "ownerId": "users",
+    "moduleId": "users",
+    "type": "normal",
+    "metas": {
+      "lines": [],
+      "nodes": [
+        {
+          "id": "30ee7bd6-ce13-4bc3-8c94-1f4d69641853",
+          "label": "读取实体列表",
+          "type": "Activity",
+          "activityName": "qurey-entities",
+          "inPorts": [
+            {
+              "id": "hvNuxBLY",
+              "name": "input",
+              "label": "查询"
+            },
+            {
+              "id": "4zYKJJze",
+              "name": "condition_params",
+              "label": "条件参数"
+            },
+            {
+              "id": "fhu4xCVg",
+              "name": "page",
+              "label": "页码"
+            },
+            {
+              "id": "q6N0IhdB",
+              "name": "page_size",
+              "label": "每页条数"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "r1jev7O1",
+              "name": "list",
+              "label": "数据列表"
+            },
+            {
+              "id": "CwOW45Qh",
+              "name": "total",
+              "label": "总数"
+            },
+            {
+              "id": "SkkXoLr9",
+              "name": "success",
+              "label": "成功"
+            },
+            {
+              "id": "JYbe61bS",
+              "name": "failure",
+              "label": "失败"
+            },
+            {
+              "id": "3GDmR3Ay",
+              "name": "loading",
+              "label": "加载中"
+            }
+          ],
+          "config": {
+            "entityId": "QksZdA-8"
+          },
+          "x6Node": {
+            "x": 270,
+            "y": 50,
+            "width": 144,
+            "height": 96
+          }
+        }
+      ]
+    }
   }
 ]

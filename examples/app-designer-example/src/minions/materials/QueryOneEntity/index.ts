@@ -24,16 +24,6 @@ export const queryOneEntityMaterial: IRxDragActivityMaterial<IEntityQueryConfig,
         name: QueryOneEntity.INPUT_NAME_CONDITION_PARAMS,
         label: "$conditionParams",
       },
-      {
-        id: createId(),
-        name: QueryOneEntity.INPUT_NAME_PAGE,
-        label: "$pageNumber",
-      },
-      {
-        id: createId(),
-        name: QueryOneEntity.INPUT_PAGE_SIZE,
-        label: "$pageSize",
-      },
     ],
     outPorts: [
       {

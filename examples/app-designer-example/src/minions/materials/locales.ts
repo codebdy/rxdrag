@@ -17,7 +17,10 @@ export const entityActivityMaterialLocales = {
     queryParams: "查询参数",
     config: "配置",
     failure: "失败",
-    loading: "加载中"
+    loading: "加载中",
+    queryConfig: "查询配置",
+    cancel: "取消",
+    confirm: "确定",
   },
   'en-US': {
     entity: "Entity",
@@ -37,6 +40,9 @@ export const entityActivityMaterialLocales = {
     queryParams: "Query Params",
     config: "Config",
     failure: "Failure",
-    loading: "Loading"
+    loading: "Loading",
+    queryConfig: "Query Config",
+    cancel: "Cancel",
+    confirm: "Confirm",
   }
 }

@@ -38,7 +38,7 @@
     "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/shared": "workspace:*",
-    "antd": "^5.9.2",
+    "antd": "^5.10.0",
     "classnames": "^2.3.2",
     "lodash": "^4.17.21",
     "styled-components": "^5.3.9"

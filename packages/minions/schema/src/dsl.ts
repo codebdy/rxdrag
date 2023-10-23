@@ -1,10 +1,12 @@
-export interface IPortDefine {
+export interface IPortDefine<TypeDefine = unknown> {
   //唯一标识
   id: string;
   //端口名词
   name: string;
   //显示文本
   label?: string;
+  //端口数据类型
+  type?: TypeDefine;
 }
 
 export enum NodeType {

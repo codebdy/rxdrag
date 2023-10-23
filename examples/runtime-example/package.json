@@ -41,7 +41,7 @@
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
-    "antd": "^5.9.2",
+    "antd": "^5.10.0",
     "styled-components": "^5.3.9"
   }
 }

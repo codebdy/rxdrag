@@ -28,7 +28,7 @@ export const querySchema: INodeSchema = {
         {
           componentName: "QueryParamsInput",
           "x-data": {
-            name: "config.queryParams"
+            name: "config"
           },
         }
       ]

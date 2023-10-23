@@ -54,7 +54,7 @@
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "lodash": "^4.17.21",
-    "antd": "^5.9.2",
+    "antd": "^5.10.0",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
     "insert-css": "^2.0.0",
