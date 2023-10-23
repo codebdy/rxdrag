@@ -1,7 +1,7 @@
 import { labelSchema } from "@rxdrag/minions-react-materials";
 import { INodeSchema } from "@rxdrag/schema";
 
-export const schema: INodeSchema = {
+export const querySchema: INodeSchema = {
   componentName: "Fragment",
   children: [
     labelSchema,

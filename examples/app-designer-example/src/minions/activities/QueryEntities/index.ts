@@ -1,16 +1,9 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
-
-export interface IQueryEntitiesConfig {
-  entityId?: string,
-  noQueryOnInit?: boolean,
-  queryOnFocus?: boolean,
-  pollingTime?: number,
-  queryParams?: unknown,
-}
+import { IEntityQueryConfig } from "../common/IEntityQueryConfig"
 
 @Activity(QueryEntities.NAME)
-export class QueryEntities extends AbstractActivity<IQueryEntitiesConfig> {
+export class QueryEntities extends AbstractActivity<IEntityQueryConfig> {
   public static NAME = "qurey-entities"
   public static INPUT_NAME_CONDITION_PARAMS = "condition_params"
   public static INPUT_NAME_PAGE = "page"
@@ -18,8 +11,10 @@ export class QueryEntities extends AbstractActivity<IQueryEntitiesConfig> {
   public static OUTPUT_LIST = "list"
   public static OUTPUT_TOTAL = "total"
   public static OUTPUT_SUCCESS = "success"
+  public static OUTPUT_FAILURE = "failure"
+  public static OUTPUT_LOADING = "loading"
 
-  constructor(meta: INodeDefine<IQueryEntitiesConfig>,) {
+  constructor(meta: INodeDefine<IEntityQueryConfig>,) {
     super(meta)
   }
 

@@ -1,15 +1,20 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
+import { IEntityQueryConfig } from "../common/IEntityQueryConfig"
 
-export interface IQueryOneEntityConfig {
-  data?: unknown,
-}
 
 @Activity(QueryOneEntity.NAME)
-export class QueryOneEntity extends AbstractActivity<IQueryOneEntityConfig> {
+export class QueryOneEntity extends AbstractActivity<IEntityQueryConfig> {
   public static NAME = "query-one-entity"
+  public static INPUT_NAME_CONDITION_PARAMS = "condition_params"
+  public static INPUT_NAME_PAGE = "page"
+  public static INPUT_PAGE_SIZE = "page_size"
+  public static OUTPUT_ENTITY = "entity"
+  public static OUTPUT_SUCCESS = "success"
+  public static OUTPUT_FAILURE = "failure"
+  public static OUTPUT_LOADING = "loading"
 
-  constructor(meta: INodeDefine<IQueryOneEntityConfig>) {
+  constructor(meta: INodeDefine<IEntityQueryConfig>) {
     super(meta)
   }
 

@@ -8,27 +8,13 @@ export const schema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
-        label: "$error",
+        label: "$entity",
       },
       children: [
         {
-          componentName: "Switch",
+          componentName: "EntitySelect",
           "x-data": {
-            name: `config.isError`
-          },
-        }
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$duration",
-      },
-      children: [
-        {
-          componentName: "InputNumber",
-          "x-data": {
-            name: "config.duration"
+            name: `config.entityId`
           },
         }
       ]

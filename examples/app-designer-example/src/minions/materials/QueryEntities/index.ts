@@ -1,12 +1,13 @@
 import { createId } from "@rxdrag/shared";
-import { schema } from "./schema";
+import { querySchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { listIcon } from "@rxdrag/react-shared";
 import { IRxDragActivityMaterial } from "@rxdrag/minions-react-materials";
-import { IQueryEntitiesConfig, QueryEntities } from "../../activities";
+import { QueryEntities } from "../../activities";
 import { IEntitiesContext } from "../../contexts";
+import { IEntityQueryConfig } from "../../activities/common/IEntityQueryConfig";
 
-export const queryEntitiesMaterial: IRxDragActivityMaterial<IQueryEntitiesConfig, IEntitiesContext> = {
+export const queryEntitiesMaterial: IRxDragActivityMaterial<IEntityQueryConfig, IEntitiesContext> = {
   icon: listIcon,
   label: "$queryEntities",
   color: "#e10098",
@@ -37,34 +38,34 @@ export const queryEntitiesMaterial: IRxDragActivityMaterial<IQueryEntitiesConfig
     outPorts: [
       {
         id: createId(),
-        name: "list",
+        name: QueryEntities.OUTPUT_LIST,
         label: "$dataList",
       },
       {
         id: createId(),
-        name: "total",
+        name: QueryEntities.OUTPUT_TOTAL,
         label: "$total",
       },
       {
         id: createId(),
-        name: "success",
+        name: QueryEntities.OUTPUT_SUCCESS,
         label: "$success",
       },
       {
         id: createId(),
-        name: "error",
+        name: QueryEntities.OUTPUT_FAILURE,
         label: "$failure",
       },
       {
         id: createId(),
-        name: "loading",
+        name: QueryEntities.OUTPUT_LOADING,
         label: "$loading",
       },
     ],
   },
-  schema: schema,
+  schema: querySchema,
   activityName: QueryEntities.NAME,
-  subTitle: (config?: IQueryEntitiesConfig, context?: IEntitiesContext) => {
+  subTitle: (config?: IEntityQueryConfig, context?: IEntitiesContext) => {
     const entity = context?.entities?.find(ent => ent.uuid === config?.entityId)
 
     return entity?.label || entity?.name || entity?.uuid

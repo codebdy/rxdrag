@@ -1,15 +1,20 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
+import { IEntityConfig } from "../common/IEntityConfig"
 
-export interface ISaveEntityConfig {
-  data?: unknown,
-}
+// export interface ISaveEntityConfig extends IEntityConfig {
+
+// }
 
 @Activity(SaveEntity.NAME)
-export class SaveEntity extends AbstractActivity<ISaveEntityConfig> {
+export class SaveEntity extends AbstractActivity<IEntityConfig> {
   public static NAME = "save-entity"
+  public static OUTPUT_ENTITY = "entity"
+  public static OUTPUT_SUCCESS = "success"
+  public static OUTPUT_FAILURE = "failure"
+  public static OUTPUT_LOADING = "loading"
 
-  constructor(meta: INodeDefine<ISaveEntityConfig>) {
+  constructor(meta: INodeDefine<IEntityConfig>) {
     super(meta)
   }
 
