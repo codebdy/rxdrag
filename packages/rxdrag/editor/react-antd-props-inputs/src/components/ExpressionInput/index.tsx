@@ -1,7 +1,7 @@
 import { DeleteOutlined, FunctionOutlined } from "@ant-design/icons"
 import Editor from 'react-monaco-editor';
 import { useThemeMode, useSettersTranslate } from "@rxdrag/react-core";
-import { Button, Drawer, Space } from "antd"
+import { Badge, Button, Drawer, Space } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components";
 
@@ -57,7 +57,20 @@ export const ExpressionInput = memo((props: {
 
   return (
     <>
-      <Button type={value ? "link" : "text"} icon={<FunctionOutlined />} onClick={handleOpen} {...other} />
+      <Button
+        type={"text"}
+        icon={
+          <Badge
+            dot
+            count={value ? undefined : 0}
+            status="processing"
+          >
+            <FunctionOutlined />
+          </Badge>
+        }
+        onClick={handleOpen} {...other}
+      />
+
       <StyledDrawer
         title={t("ExpressionInput.DialogTitle")}
         width={500}
