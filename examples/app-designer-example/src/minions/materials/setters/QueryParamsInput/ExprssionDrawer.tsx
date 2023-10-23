@@ -3,9 +3,27 @@ import { useTranslate } from "@rxdrag/react-locales"
 import { Button, Drawer, Space } from "antd"
 import { memo, useCallback, useState } from "react"
 import { Footer } from "./Footer"
+import { ExpressionTreeInput } from "./ExpressionInput"
+import { ExpressionGroupType, ExpressionNodeType, IExpressionGroup } from "../../../activities/common/interfaces"
+import { createId } from "@rxdrag/shared"
+import styled from "styled-components"
+
+const StyledDrawer = styled(Drawer)`
+  .ant-drawer-body{
+    padding: 8px;
+  }
+`
+
+const defalutExpessionGroup: IExpressionGroup = {
+  id: createId(),
+  nodeType: ExpressionNodeType.Group,
+  groupType: ExpressionGroupType.And,
+  children: []
+}
 
 export const ExprssionDrawer = memo(() => {
   const [open, setOpen] = useState<boolean>()
+  const [value, setValue] = useState<IExpressionGroup>(defalutExpessionGroup)
   const t = useTranslate()
   const handleOpen = useCallback(() => {
     setOpen(open => !open)
@@ -22,7 +40,7 @@ export const ExprssionDrawer = memo(() => {
         size="small" icon={<FunctionOutlined />}
         onClick={handleOpen}
       ></Button>
-      <Drawer title={t("configExpression")}
+      <StyledDrawer title={t("configExpression")}
         placement="right"
         width={"50%"}
         onClose={handleClose}
@@ -38,10 +56,11 @@ export const ExprssionDrawer = memo(() => {
           </Space>
         </Footer>}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Drawer>
+        <ExpressionTreeInput
+          value={value}
+          onChange={setValue}
+        />
+      </StyledDrawer>
     </>
   )
 })
