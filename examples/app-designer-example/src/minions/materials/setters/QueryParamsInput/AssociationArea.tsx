@@ -7,18 +7,15 @@ import styled from "styled-components"
 import { useEnitity } from "../../../../FrontendDesigner/hooks/useEnitity"
 import { EntityArea } from "./EntityArea"
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
+import { PropertiesArea } from "./PropertiesArea"
 
 const Container = styled.div`
   display: flex;
   flex-flow: column;
 `
 
-const PropertiesArea = styled.div`
+const EntityPropsArea = styled(PropertiesArea)`
   margin-left: 40px;
-  display: flex;
-  flex-flow: column;
-  box-sizing: border-box;
-  border-left: solid 1px ${props => props.theme.token?.colorBorder};
 `
 
 const RelationIcon = styled.div`
@@ -61,14 +58,18 @@ export const AssociationArea = memo((
               {asso.label || asso.name}
             </AssociationName>
           </Checkbox>
-          <Button type="text" size="small" icon={<FunctionOutlined />}></Button>
-          <Button type="text" size="small" icon={orderIcon}></Button>
+          {
+            selected && <>
+              <Button type="text" size="small" icon={<FunctionOutlined />}></Button>
+              <Button type="text" size="small" icon={orderIcon}></Button>
+            </>
+          }
         </Space>
       </AssociationItem>
       {
-        selected && <PropertiesArea>
+        selected && <EntityPropsArea>
           <EntityArea entity={entity} />
-        </PropertiesArea>
+        </EntityPropsArea>
       }
 
     </Container>

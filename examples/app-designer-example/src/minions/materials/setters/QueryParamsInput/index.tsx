@@ -7,6 +7,7 @@ import styled from "styled-components"
 import { oneEntityIcon, orderIcon } from "@rxdrag/react-shared"
 import { EntityArea } from "./EntityArea"
 import { FunctionOutlined } from "@ant-design/icons"
+import { PropertiesArea } from "./PropertiesArea"
 
 const EntityItem = styled.div`
   display: flex;
@@ -30,20 +31,11 @@ const Content = styled.div`
   overflow: auto;
 `
 
-const PropertiesArea = styled.div`
-  margin-left: 8px;
-  display: flex;
-  flex-flow: column;
-  box-sizing: border-box;
-  border-left: solid 1px ${props => props.theme.token?.colorBorder};
-`
-
 const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
-
 
 export const QueryParamsInput = memo((
   props: {
