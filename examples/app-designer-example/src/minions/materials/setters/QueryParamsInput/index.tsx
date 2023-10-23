@@ -8,6 +8,7 @@ import { oneEntityIcon, orderIcon } from "@rxdrag/react-shared"
 import { EntityArea } from "./EntityArea"
 import { FunctionOutlined } from "@ant-design/icons"
 import { PropertiesArea } from "./PropertiesArea"
+import { Footer } from "./Footer"
 
 const EntityItem = styled.div`
   display: flex;
@@ -29,12 +30,6 @@ const Content = styled.div`
   display: flex;
   flex-flow: column;
   overflow: auto;
-`
-
-const Footer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 `
 
 export const QueryParamsInput = memo((

@@ -22,7 +22,8 @@ export const entityActivityMaterialLocales = {
     cancel: "取消",
     confirm: "确定",
     reset: "重置",
-    configExpression: "配置条件表达式"
+    configExpression: "配置条件表达式",
+    clear: "清空"
   },
   'en-US': {
     entity: "Entity",
@@ -47,6 +48,7 @@ export const entityActivityMaterialLocales = {
     cancel: "Cancel",
     confirm: "Confirm",
     reset: "reset",
-    configExpression: "Config Expression"
+    configExpression: "Config Expression",
+    clear: "Clear"
   }
 }
