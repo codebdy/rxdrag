@@ -1,6 +1,5 @@
 import { memo, useCallback, useState } from "react"
 import { AssociationMeta } from "../../../../FrontendDesigner/ModuleUiDesigner/interfaces/AssociationMeta"
-import { FunctionOutlined } from "@ant-design/icons"
 import { associationIcon, orderIcon } from "@rxdrag/react-shared"
 import { Space, Checkbox, Button } from "antd"
 import styled from "styled-components"
@@ -8,6 +7,7 @@ import { useEnitity } from "../../../../FrontendDesigner/hooks/useEnitity"
 import { EntityArea } from "./EntityArea"
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import { PropertiesArea } from "./PropertiesArea"
+import { ExprssionDrawer } from "./ExprssionDrawer"
 
 const Container = styled.div`
   display: flex;
@@ -60,7 +60,7 @@ export const AssociationArea = memo((
           </Checkbox>
           {
             selected && <>
-              <Button type="text" size="small" icon={<FunctionOutlined />}></Button>
+              <ExprssionDrawer />
               <Button type="text" size="small" icon={orderIcon}></Button>
             </>
           }
