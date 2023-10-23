@@ -85,6 +85,7 @@ export const ExpressionInput = memo((
           onChange={onChange}
           loadData={onLoadData}
           treeData={treeData}
+          treeNodeLabelProp={"value"}
         />
       </div>
       <OperatorSelect />
