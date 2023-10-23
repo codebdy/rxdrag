@@ -8,13 +8,13 @@ export const schema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
-        label: "$error",
+        label: "$entity",
       },
       children: [
         {
-          componentName: "Switch",
+          componentName: "EntitySelect",
           "x-data": {
-            name: `config.isError`
+            name: `config.entityId`
           },
         }
       ]
@@ -22,13 +22,55 @@ export const schema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
-        label: "$duration",
+        label: "$queryParams",
+      },
+      children: [
+        {
+          componentName: "QueryParamsInput",
+          "x-data": {
+            name: "config.queryParams"
+          },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$noQueryOnInit",
+      },
+      children: [
+        {
+          componentName: "Switch",
+          "x-data": {
+            name: "config.noQueryOnInit"
+          },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$queryOnFocus",
+      },
+      children: [
+        {
+          componentName: "Switch",
+          "x-data": {
+            name: "config.queryOnFocus"
+          },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$pollingTime",
       },
       children: [
         {
           componentName: "InputNumber",
           "x-data": {
-            name: "config.duration"
+            name: "config.pollingTime"
           },
         }
       ]

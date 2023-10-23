@@ -27,6 +27,8 @@ import { entityActivityMaterials } from "../../../minions/materials"
 import _ from "lodash"
 import { entityActivityMaterialLocales } from "../../../minions/materials/locales"
 import { ModelTree } from "./ModelTree"
+import { IEntitiesContext } from "../../../minions/contexts"
+import { useEntities } from "../../hooks/useEntities"
 
 const Content = styled.div`
   flex: 1;
@@ -64,7 +66,7 @@ export const FlowDesigner = memo(() => {
   const { flows: deviceFxes } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.device)
   const { flows: appFxes } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.app)
   console.log("===>module", module)
-
+  const entities = useEntities()
   const allFxFlows = useMemo(() => [...moduleFxes || [], ...deviceFxes || [], ...appFxes || []],
     [appFxes, deviceFxes, moduleFxes]
   )
@@ -113,11 +115,12 @@ export const FlowDesigner = memo(() => {
     setSelectedFx(id)
   }, [])
 
-  const logicFlowContextParam: LogicflowContextParam = useMemo(() => ({
+  const logicFlowContextParam: LogicflowContextParam & IEntitiesContext = useMemo(() => ({
     engine,
     variables: module?.variables,
     fxFlowMetas: allFxFlows,
-  }), [allFxFlows, engine, module?.variables])
+    entities: entities,
+  }), [allFxFlows, engine, entities, module?.variables])
 
   return (
     <LogicFlowEditorAntd5Scope

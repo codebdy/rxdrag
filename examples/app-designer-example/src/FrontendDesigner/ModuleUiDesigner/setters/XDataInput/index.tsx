@@ -2,7 +2,7 @@ import { memo } from "react"
 import { FieldType } from "@rxdrag/fieldy";
 import { IModelMeta } from "../../interfaces";
 import { Customized } from "./Customized";
-import { EntitySelect } from "./EntitySelect";
+import { EntityInput } from "./EntityInput";
 import { AttributeSelect } from "./AttributeSelect";
 import { AssociationSelect } from "./AssociationSelect";
 
@@ -20,7 +20,7 @@ export const XDataInput = memo((
     <>
       {
         fieldType === "form" &&
-        <EntitySelect
+        <EntityInput
           fieldType={fieldType}
           value={value}
           onChange={onChange}

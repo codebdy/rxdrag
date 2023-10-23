@@ -2,14 +2,23 @@ import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
 
 export interface IQueryEntitiesConfig {
-  data?: unknown,
+  entityId?: string,
+  noQueryOnInit?: boolean,
+  queryOnFocus?: boolean,
+  pollingTime?: number,
+  queryParams?: unknown,
 }
 
 @Activity(QueryEntities.NAME)
 export class QueryEntities extends AbstractActivity<IQueryEntitiesConfig> {
   public static NAME = "qurey-entities"
+  public static INPUT_NAME_CONDITION = "condition"
+  public static INPUT_NAME_PAGE = "page"
+  public static INPUT_PAGE_SIZE = "page_size"
+  public static OUTPUT_DATA = "data"
+  public static OUTPUT_SUCCESS = "success"
 
-  constructor(meta: INodeDefine<IQueryEntitiesConfig>) {
+  constructor(meta: INodeDefine<IQueryEntitiesConfig>,) {
     super(meta)
   }
 

@@ -14,6 +14,7 @@ export const setterLocales: ILocales = {
       attribute: "实体属性",
       customizedName: "自定义名称",
       label: "标签文本",
+      config: "配置",
     }
   },
   'en-US': {
@@ -28,7 +29,8 @@ export const setterLocales: ILocales = {
       entity: "Entity",
       attribute: "Attribute",
       customizedName: "Customized Name",
-      label: "Label"
+      label: "Label",
+      config: "Config"
     }
   }
 }

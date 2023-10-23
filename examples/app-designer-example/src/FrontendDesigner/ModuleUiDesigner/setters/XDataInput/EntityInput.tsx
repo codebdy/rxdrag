@@ -1,11 +1,11 @@
 import { FieldType } from "@rxdrag/fieldy";
 import { useSettersTranslate } from "@rxdrag/react-core";
-import { Form, Select } from "antd";
+import { Form } from "antd";
 import { memo, useCallback } from "react";
 import { IModelMeta, ModelType } from "../../interfaces";
-import { useEntities } from "../../../hooks/useEntities";
+import { EntitySelect } from "../EntitySelect";
 
-export const EntitySelect = memo((
+export const EntityInput = memo((
   props: {
     value?: IModelMeta,
     onChange?: (value?: IModelMeta) => void,
@@ -25,12 +25,9 @@ export const EntitySelect = memo((
   }, [fieldType, onChange, value])
 
 
-  const entities = useEntities()
   return (
     <Form.Item label={t("entity")}>
-      <Select
-        allowClear
-        options={entities?.map(ent => ({ value: ent.uuid, label: ent.label || ent.name }))}
+      <EntitySelect
         value={value?.modelMetaId}
         onChange={handleEntityChange}
       />
