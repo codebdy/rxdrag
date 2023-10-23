@@ -1,13 +1,14 @@
 import { Button, Select } from "antd"
 import { memo, useCallback } from "react";
-import { ExpressionItem, Item, itemHeight } from "./ExpressionItem";
+import { Item, itemHeight } from "./ExpressionItem";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { AddMenu } from "./AddMenu";
 import { useTranslate } from "@rxdrag/react-locales";
 import styled from "styled-components";
 import { IExpressionGroup, ExpressionNodeType, ExpressionGroupType, IExpression, IExpressionNode } from "../../../../activities/common/interfaces";
 import { createId } from "@rxdrag/shared";
-import { DefaultExpressionInput } from "./DefaultExpressionInput";
+import { ExpressionChild } from "./ExpressionChild";
+import { ExpressionChildren } from "./ExpressionChildren";
 
 
 const ExpressionGroupShell = styled.div`
@@ -54,12 +55,6 @@ const GroupOperatorLine = styled.div`
     border: solid 1px ${props => props.theme.token?.colorBorder};
     border-radius: 50%;
   }
-`
-
-const ExpressionChildren = styled.div`
-  flex: 1;
-  display: flex;
-  flex-flow: column;
 `
 
 const GroupAction = styled.div`
@@ -204,21 +199,16 @@ export const ExpressionGroup = memo((
         {
           value?.children?.map((child, index) => {
             return (
-              child.nodeType === ExpressionNodeType.Group ?
-                <ExpressionGroup
-                  key={child.id}
-                  value={child as IExpressionGroup}
-                  onChange={handleChildChange}
-                  onRemove={() => handleRemoveChild(child.id)}
-                />
-                : <ExpressionItem
-                  key={child.id}
-                  onAddExpression={() => handleAddExpAfter(index)}
-                  onAddGroup={(nodType) => handleAddGroupAfter(index, nodType)}
-                  onRemove={() => handleRemoveChild(child.id)}
-                >
-                  <DefaultExpressionInput value={child} onChange={(val) => val && handleExpressionChange(val)} />
-                </ExpressionItem>
+              <ExpressionChild
+                key={child.id}
+                child={child}
+                index={index}
+                onAddExpAffter={handleAddExpAfter}
+                onExpressionChange={handleExpressionChange}
+                onRemove={handleRemoveChild}
+                onGroupChange={handleChildChange}
+                onAddGroupAffter={handleAddGroupAfter}
+              />
             )
           })
         }
@@ -233,20 +223,18 @@ export const ExpressionGroup = memo((
             >
               <Button
                 type="dashed"
-                block
                 icon={<PlusOutlined />}
               >
                 {t("add")}
               </Button>
             </AddMenu>
-            {
-              <Button
-                type="text"
-                icon={<DeleteOutlined />}
-                style={{ marginLeft: 8 }}
-                onClick={handleDeleteClick}
-              />
-            }
+            <Button
+              type="text"
+              icon={<DeleteOutlined />}
+              style={{ marginLeft: 8 }}
+              onClick={handleDeleteClick}
+            />
+
           </GroupAction>
         </Item>
       </ExpressionChildren>

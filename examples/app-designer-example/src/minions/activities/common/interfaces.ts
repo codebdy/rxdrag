@@ -49,5 +49,5 @@ export enum ExpressionGroupType {
 
 export interface IExpressionGroup extends IExpressionNode {
   groupType: ExpressionGroupType,
-  children: IExpression[] | IExpressionGroup[]
+  children: (IExpression | IExpressionGroup)[]
 }
