@@ -21,6 +21,7 @@ export const entityActivityMaterialLocales = {
     queryConfig: "查询配置",
     cancel: "取消",
     confirm: "确定",
+    reset: "重置"
   },
   'en-US': {
     entity: "Entity",
@@ -44,5 +45,6 @@ export const entityActivityMaterialLocales = {
     queryConfig: "Query Config",
     cancel: "Cancel",
     confirm: "Confirm",
+    reset: "reset",
   }
 }
