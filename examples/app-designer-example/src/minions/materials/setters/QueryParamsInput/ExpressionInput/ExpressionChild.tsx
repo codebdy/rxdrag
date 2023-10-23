@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { ExpressionGroupType, ExpressionNodeType, IExpression, IExpressionGroup, IExpressionNode } from "../../../../activities/common/interfaces"
-import { DefaultExpressionInput } from "./DefaultExpressionInput";
+import { ExpressionInput } from "./ExpressionInput";
 import { ExpressionGroup } from "./ExpressionGroup";
 import { ExpressionItem } from "./ExpressionItem";
 
@@ -30,7 +30,7 @@ export const ExpressionChild = memo((
         onAddGroup={(nodType) => onAddGroupAffter?.(index, nodType)}
         onRemove={() => onRemove?.(child.id)}
       >
-        <DefaultExpressionInput value={child} onChange={(val) => val && onExpressionChange?.(val)} />
+        <ExpressionInput value={child} onChange={(val) => val && onExpressionChange?.(val)} />
       </ExpressionItem>
   )
 })
