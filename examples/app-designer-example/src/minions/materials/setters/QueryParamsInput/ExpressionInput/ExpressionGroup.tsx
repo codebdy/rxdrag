@@ -80,10 +80,9 @@ export const ExpressionGroup = memo((
     value: IExpressionGroup,
     onChange?: (value: IExpressionGroup) => void,
     onRemove?: (nodeId: string) => void
-    root?: boolean,
   }
 ) => {
-  const { value, onChange, onRemove, root } = props
+  const { value, onChange, onRemove } = props
   const t = useTranslate()
 
   const handleAddExp = useCallback(() => {
@@ -193,7 +192,6 @@ export const ExpressionGroup = memo((
         <GroupOperatorLine className="group-operator-line" />
         <Select
           defaultValue={ExpressionGroupType.And}
-          open={false}
           value={value?.groupType}
           options={[
             { value: ExpressionGroupType.And, label: t(ExpressionGroupType.And) },
@@ -230,7 +228,6 @@ export const ExpressionGroup = memo((
         <Item>
           <GroupAction>
             <AddMenu
-              root={root}
               onAddExpression={handleAddExp}
               onAddGroup={handleAddGroup}
             >
@@ -243,7 +240,7 @@ export const ExpressionGroup = memo((
               </Button>
             </AddMenu>
             {
-              !root && <Button
+              <Button
                 type="text"
                 icon={<DeleteOutlined />}
                 style={{ marginLeft: 8 }}

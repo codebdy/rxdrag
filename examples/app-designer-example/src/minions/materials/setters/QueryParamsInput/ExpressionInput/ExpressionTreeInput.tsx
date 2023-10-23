@@ -14,7 +14,6 @@ export const ExpressionTreeInput = memo((
     <ExpressionGroup
       value={value}
       onChange={onChange}
-      root
     />
   )
 })

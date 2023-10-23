@@ -9,6 +9,7 @@ import { EntityArea } from "./EntityArea"
 import { FunctionOutlined } from "@ant-design/icons"
 import { PropertiesArea } from "./PropertiesArea"
 import { Footer } from "./Footer"
+import { ExprssionDrawer } from "./ExprssionDrawer"
 
 const EntityItem = styled.div`
   display: flex;
@@ -91,7 +92,7 @@ export const QueryParamsInput = memo((
             </RootIcon>
             <Space>
               <span>{entity?.label || entity?.name}</span>
-              <Button type="text" size="small" icon={<FunctionOutlined />}></Button>
+              <ExprssionDrawer />
               <Button type="text" size="small" icon={orderIcon}></Button>
             </Space>
           </EntityItem>
