@@ -174,13 +174,6 @@ export const ExpressionGroup = memo((
     onRemove?.(value.id)
   }, [onRemove, value.id])
 
-  const handleExpressionChange = useCallback((child: IExpressionNode) => {
-    onChange?.({
-      ...value,
-      children: (value.children as IExpressionNode[]).map(node => node.id === child.id ? { ...node, ...child } : node)
-    })
-  }, [onChange, value])
-
   return (
     <ExpressionGroupShell className="expression-group">
       <GroupOperator className="group-operator">
@@ -204,7 +197,7 @@ export const ExpressionGroup = memo((
                 child={child}
                 index={index}
                 onAddExpAffter={handleAddExpAfter}
-                onExpressionChange={handleExpressionChange}
+                onExpressionChange={handleChildChange}
                 onRemove={handleRemoveChild}
                 onGroupChange={handleChildChange}
                 onAddGroupAffter={handleAddGroupAfter}

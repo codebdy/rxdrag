@@ -1,5 +1,5 @@
 import { memo, useCallback } from "react";
-import { ExpressionGroupType, ExpressionNodeType, IExpression, IExpressionGroup } from "../../../../activities/common/interfaces";
+import { ExpressionGroupType, ExpressionNodeType, IExpression, IExpressionGroup, IExpressionNode } from "../../../../activities/common/interfaces";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useTranslate } from "@rxdrag/react-locales";
@@ -52,6 +52,41 @@ export const ExpressionTreeInput = memo((
     ])
   }, [onChange, value])
 
+  const handleAddExpAfter = useCallback((index: number) => {
+    const newNode: IExpression = {
+      id: createId(),
+      nodeType: ExpressionNodeType.Expression
+    }
+    const newValue = [...value || []]
+    newValue.splice(index + 1, 0, newNode)
+    onChange?.(newValue)
+  }, [onChange, value])
+
+  const handleAddGroupAfter = useCallback((index: number, groupType: ExpressionGroupType) => {
+    const newNode: IExpressionGroup = {
+      id: createId(),
+      nodeType: ExpressionNodeType.Group,
+      groupType,
+      children: [
+        {
+          id: createId(),
+          nodeType: ExpressionNodeType.Expression
+        }
+      ]
+    }
+    const newValue = [...value || []]
+    newValue.splice(index + 1, 0, newNode)
+    onChange?.(newValue)
+  }, [onChange, value])
+
+  const handleRemove = useCallback((nodeId: string) => {
+    onChange?.(value?.filter((child) => child.id !== nodeId))
+  }, [onChange, value])
+
+  const handleChildChange = useCallback((node: IExpressionNode | IExpressionGroup) => {
+    onChange?.(value?.map(child => child.id === node.id ? node : child))
+  }, [onChange, value])
+
   return (
     <Container>
       <ExpressionChildren className="expression-children">
@@ -62,16 +97,15 @@ export const ExpressionTreeInput = memo((
                 key={child.id}
                 child={child}
                 index={index}
-              // onAddExpAffter={handleAddExpAfter}
-              // onExpressionChange={handleExpressionChange}
-              // onRemove={handleRemoveChild}
-              // onGroupChange={handleChildChange}
-              // onAddGroupAffter={handleAddGroupAfter}
+                onAddExpAffter={handleAddExpAfter}
+                onExpressionChange={handleChildChange}
+                onRemove={handleRemove}
+                onGroupChange={handleChildChange}
+                onAddGroupAffter={handleAddGroupAfter}
               />
             )
           })
         }
-
       </ExpressionChildren>
       <AddMenu
         onAddExpression={handleAddExp}
