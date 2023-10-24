@@ -19,7 +19,7 @@ export const XDataInput = memo((
   return (
     <>
       {
-        fieldType === "form" &&
+        (fieldType === "form" || fieldType === "object" || fieldType === "array") &&
         <EntityInput
           fieldType={fieldType}
           value={value}
