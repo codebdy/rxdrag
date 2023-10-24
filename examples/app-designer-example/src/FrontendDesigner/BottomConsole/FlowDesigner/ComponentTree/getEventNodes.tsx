@@ -39,7 +39,7 @@ export function getEventNodes(rNode: ReactionableNode, engine: IDesignerEngine |
             ] : event.args.map(arg => ({
               id: createId(),
               name: arg.name,
-              lable: t(arg.label),
+              label: t(arg.label) || "",
             })),
             config: {
               controllerId: ctrlMeta?.id,

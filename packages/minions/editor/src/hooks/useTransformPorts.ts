@@ -7,7 +7,7 @@ export function useTransformPorts() {
   const token = useThemeToken()
   const t = useTranslate()
   const doTransform = useCallback((ports: IPortDefine[] | undefined, group: 'in' | 'out') => {
-    console.log("===>doTransform", ports)
+
     return ports?.map(
       port => ({
         id: port.id,
