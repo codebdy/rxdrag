@@ -1,7 +1,7 @@
 import { FunctionOutlined } from "@ant-design/icons"
 import { useTranslate } from "@rxdrag/react-locales"
-import { Button, Drawer, Space } from "antd"
-import { memo, useCallback, useState } from "react"
+import { Badge, Button, Drawer, Space } from "antd"
+import { memo, useCallback, useEffect, useState } from "react"
 import { Footer } from "./Footer"
 import { ExpressionTreeInput } from "./ExpressionInput"
 import { IExpression, IExpressionGroup } from "../../../activities/common/interfaces"
@@ -16,29 +16,46 @@ const StyledDrawer = styled(Drawer)`
 export const ExprssionDrawer = memo((
   props: {
     entityId: string,
+    value?: (IExpression | IExpressionGroup)[],
+    onChange?: (value?: (IExpression | IExpressionGroup)[]) => void
   }
 ) => {
-  const { entityId } = props;
+  const { entityId, value, onChange } = props;
   const [open, setOpen] = useState<boolean>()
   const [inputValue, setInputValue] = useState<(IExpression | IExpressionGroup)[]>()
   const t = useTranslate()
+
+  useEffect(() => {
+    setInputValue(value)
+  }, [value])
+
   const handleOpen = useCallback(() => {
     setOpen(open => !open)
   }, [])
 
   const handleClose = useCallback(() => {
     setOpen(false)
-  }, [])
+    setInputValue(value)
+  }, [value])
 
   const handleClear = useCallback(() => {
     setInputValue(undefined)
   }, [])
 
+  const handleConfirm = useCallback(() => {
+    onChange?.(inputValue)
+    setOpen(false)
+  }, [inputValue, onChange])
+
   return (
     <>
       <Button
         type={open ? "default" : "text"}
-        size="small" icon={<FunctionOutlined />}
+        size="small" icon={
+          <Badge dot count={value?.length || 0}>
+            <FunctionOutlined />
+          </Badge>
+        }
         onClick={handleOpen}
       ></Button>
       <StyledDrawer title={t("configExpression")}
@@ -53,7 +70,7 @@ export const ExprssionDrawer = memo((
           >{t("clear")}</Button>
           <Space>
             <Button onClick={handleClose}>{t("cancel")}</Button>
-            <Button onClick={handleClose} type="primary">
+            <Button onClick={handleConfirm} type="primary">
               {t("confirm")}
             </Button>
           </Space>

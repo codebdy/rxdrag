@@ -1,7 +1,6 @@
 import { useTranslate } from "@rxdrag/react-locales"
 import { Button, Modal, Space } from "antd"
-import { memo, useCallback, useState } from "react"
-import { IEntityConfig } from "../../../activities/common/IEntityConfig"
+import { memo, useCallback, useEffect, useState } from "react"
 import { useEnitity } from "../../../../FrontendDesigner/hooks/useEnitity"
 import styled from "styled-components"
 import { oneEntityIcon, orderIcon } from "@rxdrag/react-shared"
@@ -9,6 +8,8 @@ import { EntityArea } from "./EntityArea"
 import { PropertiesArea } from "./PropertiesArea"
 import { Footer } from "./Footer"
 import { ExprssionDrawer } from "./ExprssionDrawer"
+import { IEntityQueryConfig, IQureyEnitiyParam } from "../../../activities/common/IEntityQueryConfig"
+import { IExpression, IExpressionGroup } from "../../../activities/common/interfaces"
 
 const EntityItem = styled.div`
   display: flex;
@@ -34,12 +35,17 @@ const Content = styled.div`
 
 export const QueryParamsInput = memo((
   props: {
-    value?: IEntityConfig,
-    onChange?: (value?: IEntityConfig) => void
+    value?: IEntityQueryConfig,
+    onChange?: (value?: IEntityQueryConfig) => void
   }
 ) => {
-  const { value } = props;
+  const { value, onChange } = props;
+  const [inputValue, setInputValue] = useState<IEntityQueryConfig>()
   const [open, setOpen] = useState<boolean>()
+
+  useEffect(() => {
+    setInputValue(value)
+  }, [value])
 
   const entity = useEnitity(value?.entityId)
 
@@ -56,6 +62,14 @@ export const QueryParamsInput = memo((
     setOpen(false)
   }, [])
 
+  const handleRootExpressionChange = useCallback((exprs?: (IExpression | IExpressionGroup)[]) => {
+    setInputValue({ ...inputValue, queryParams: { ...inputValue?.queryParams, expressions: exprs } })
+  }, [inputValue])
+
+  const handleRootParamsChange = useCallback((params?: IQureyEnitiyParam) => {
+    setInputValue({ ...inputValue, queryParams: params })
+  }, [inputValue])
+
   return (
     <>
       <Button
@@ -71,7 +85,9 @@ export const QueryParamsInput = memo((
         onCancel={handleCancel}
         footer={
           <Footer>
-            <Button>{t("reset")}</Button>
+            <Button>
+              {t("reset")}
+            </Button>
             <Space>
               <Button
                 onClick={handleCancel}
@@ -93,14 +109,26 @@ export const QueryParamsInput = memo((
               <span>{entity?.label || entity?.name}</span>
               {
                 entity && <>
-                  <ExprssionDrawer entityId={entity?.uuid} />
-                  <Button type="text" size="small" icon={orderIcon}></Button>
+                  <ExprssionDrawer
+                    entityId={entity?.uuid}
+                    value={inputValue?.queryParams?.expressions}
+                    onChange={handleRootExpressionChange}
+                  />
+                  <Button
+                    type="text"
+                    size="small"
+                    icon={orderIcon}
+                  ></Button>
                 </>
               }
             </Space>
           </EntityItem>
           <PropertiesArea>
-            <EntityArea entity={entity} />
+            <EntityArea
+              entity={entity}
+              value={inputValue?.queryParams}
+              onChange={handleRootParamsChange}
+            />
           </PropertiesArea>
         </Content>
       </Modal>

@@ -1,8 +1,9 @@
-import { memo } from "react"
+import { memo, useCallback } from "react"
 import { EntityMeta } from "../../../../FrontendDesigner/ModuleUiDesigner/interfaces/EntityMeta"
 import styled from "styled-components"
 import { Checkbox } from "antd"
 import { AssociationArea } from "./AssociationArea"
+import { IAssociationParam, IQureyEnitiyParam } from "../../../activities/common/IEntityQueryConfig"
 
 const AttributeItem = styled.div`
   display: flex;
@@ -11,17 +12,42 @@ const AttributeItem = styled.div`
 
 export const EntityArea = memo((
   props: {
-    entity?: EntityMeta
+    entity?: EntityMeta,
+    value?: IQureyEnitiyParam,
+    onChange?: (value: IQureyEnitiyParam) => void
   }
 ) => {
-  const { entity } = props;
+  const { entity, value, onChange } = props;
+
+  const handleToggleAttribute = useCallback((id: string) => {
+    const newAttrs = value?.attributes?.find(attId => attId === id)
+      ? value?.attributes?.filter(attId => attId !== id)
+      : [...value?.attributes || [], id]
+    onChange?.({ ...value, attributes: newAttrs })
+  }, [onChange, value])
+
+  const handleRemove = useCallback((id: string) => {
+    onChange?.({ ...value, associations: value?.associations?.filter(asso => asso.assoId !== id) })
+  }, [onChange, value])
+
+  const hendleChange = useCallback((assoParams: IAssociationParam) => {
+    onChange?.({ ...value, associations: value?.associations?.map(asso => asso.assoId === assoParams.assoId ? assoParams : asso) })
+  }, [onChange, value])
+
+  const handleAdd = useCallback((assoParams: IAssociationParam) => {
+    onChange?.({ ...value, associations: [...value?.associations || [], assoParams] })
+  }, [onChange, value])
+
   return (
     <>
       {
         entity?.attributes?.map(attr => {
           return (
             <AttributeItem key={attr.uuid}>
-              <Checkbox>
+              <Checkbox
+                checked={!!value?.attributes?.find(id => id === attr.uuid)}
+                onChange={() => handleToggleAttribute(attr.uuid)}
+              >
                 {attr.label || attr.name}
               </Checkbox>
             </AttributeItem>
@@ -31,7 +57,13 @@ export const EntityArea = memo((
       {
         entity?.associations?.map(asso => {
           return (
-            <AssociationArea key={asso.id} asso={asso} />
+            <AssociationArea
+              key={asso.id}
+              asso={asso}
+              onRemove={handleRemove}
+              onChange={hendleChange}
+              onAdd={handleAdd}
+            />
           )
         })
       }

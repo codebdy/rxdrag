@@ -1,4 +1,4 @@
-import { Input, Space, TreeSelect, TreeSelectProps } from "antd"
+import { Space, TreeSelect, TreeSelectProps } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import { OperatorSelect } from "./OperatorSelect"
 import type { ExpressionInputProps } from "./ExpressionInputProps"
@@ -7,12 +7,12 @@ import { useEnitity } from "../../../../../FrontendDesigner/hooks/useEnitity"
 import { useTranslate } from "@rxdrag/react-locales"
 import { useGetEntity } from "../../../../../FrontendDesigner/hooks/useGetEntity"
 import { EntityMeta } from "../../../../../FrontendDesigner/ModuleUiDesigner/interfaces/EntityMeta"
+import { ValueInput } from "@rxdrag/react-antd-props-inputs"
 
 export const ExpressionInput = memo((
   props: ExpressionInputProps
 ) => {
-  const { entityId } = props;
-  const [value, setValue] = useState<string>();
+  const { entityId, value, onChange } = props;
   const rootEntity = useEnitity(entityId)
   const getEntity = useGetEntity()
   const t = useTranslate()
@@ -21,7 +21,7 @@ export const ExpressionInput = memo((
   const getEntityNodes = useCallback((entity?: EntityMeta, pId?: string, pLabel?: string, parentTypeIds?: string[]) => {
     return [
       ...entity?.attributes?.map((attr) => {
-        const id = pId ? (pId + "." + attr.name) : attr.name
+        const id = pId ? (pId + "." + attr.uuid) : attr.uuid
         const label = attr.label || attr.name || attr.uuid
         return {
           id: id,
@@ -39,7 +39,7 @@ export const ExpressionInput = memo((
         return true
       }).map((asso) => {
         const assoEntity = getEntity(asso.typeId)
-        const id = pId ? (pId + "." + asso.name) : asso.name
+        const id = pId ? (pId + "." + asso.id) : asso.id
         const label = (asso.label || asso.name || asso.id)
         return {
           id: id,
@@ -63,19 +63,19 @@ export const ExpressionInput = memo((
   }, [rootEntity, getEntityNodes])
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onLoadData: TreeSelectProps['loadData'] = (arg: any) =>
+  const handleLoadData: TreeSelectProps['loadData'] = useCallback((arg: any) =>
     new Promise((resolve) => {
       const typeEntity = getEntity(arg.typeId)
       setTreeData(
         treeData.concat(getEntityNodes(typeEntity, arg.id, arg.label, arg.parentTypeIds))
       );
       resolve(undefined);
-    });
+    }), [getEntity, getEntityNodes, treeData]);
 
-  const onChange = (newValue: string) => {
+  const handleChange = useCallback((newValue: string) => {
     console.log(newValue)
-    setValue(newValue);
-  };
+    onChange?.({ ...value, name: newValue });
+  }, [onChange, value]);
 
   return (
     <Space>
@@ -84,17 +84,17 @@ export const ExpressionInput = memo((
           allowClear
           treeDataSimpleMode
           style={{ width: "100%" }}
-          value={value}
+          value={value?.name}
           dropdownStyle={{ overflow: 'auto', width: 500 }}
           placeholder={t("pleaseSelect")}
-          onChange={onChange}
-          loadData={onLoadData}
+          onChange={handleChange}
+          loadData={handleLoadData}
           treeData={treeData}
           treeNodeLabelProp={"label"}
         />
       </div>
       <OperatorSelect />
-      <Input />
+      <ValueInput />
     </Space>
   )
 })
