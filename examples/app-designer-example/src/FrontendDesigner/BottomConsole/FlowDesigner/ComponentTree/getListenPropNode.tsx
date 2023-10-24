@@ -24,7 +24,6 @@ export function getListenPropNode(rNode: ReactionableNode) {
             {
               id: createId(),
               name: "output",
-              label: "$propsChange",
             },
           ],
           config: {

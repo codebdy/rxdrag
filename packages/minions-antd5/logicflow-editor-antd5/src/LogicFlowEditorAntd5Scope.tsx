@@ -17,6 +17,7 @@ export const LogicFlowEditorAntd5Scope = memo((
   useEffect(() => {
     locales && localesManager.registerLocales(locales)
   }, [localesManager, locales])
+
   return (
     <LocalesContext.Provider value={localesManager}>
       <LogicFlowEditorScope {...rest}>

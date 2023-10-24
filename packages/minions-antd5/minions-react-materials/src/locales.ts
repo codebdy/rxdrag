@@ -95,7 +95,7 @@ export const activityMaterialLocales = {
     equal: "相等",
     increase: "递增",
     step: "步长",
-    negation: "逻辑非"
+    negation: "逻辑非",
   },
   'en-US': {
     basicAcitivites: "Basic Reactions",

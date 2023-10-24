@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import { IThemeToken } from "../interfaces";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { Graph } from "@antv/x6";
+import { useTranslate } from "@rxdrag/react-locales";
 
 export type LogicFlowEditorScopeProps<T = unknown> = {
   themMode?: "dark" | "light",
@@ -29,6 +30,7 @@ export const LogicFlowEditorScope = memo((
     }
   }, [themMode, token])
 
+  const t = useTranslate()
 
   const store: EditorStore = useMemo(() => {
     return new EditorStore()
@@ -41,11 +43,14 @@ export const LogicFlowEditorScope = memo((
     })
   }, [materials, setMaterials])
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const newContext = useMemo(() => ({ ...(logicFlowContext as any), t }), [logicFlowContext, t])
+
   return (
     <LogicFlowEditorStoreContext.Provider value={store}>
       <ThemeProvider theme={theme}>
         <ThemeTokenContext.Provider value={token}>
-          <LogicFlowContext.Provider value={logicFlowContext}>
+          <LogicFlowContext.Provider value={newContext}>
             <MaterialsContext.Provider value={materialsState}>
               <GraphContext.Provider value={graphState}>
                 {children}

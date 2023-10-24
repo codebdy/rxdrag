@@ -38,10 +38,11 @@ export const listenPropMaterial: IRxDragActivityMaterial<IPropConfig, LogicflowC
     const { material } = getControllerComponentInfo(config, context?.engine)
     const prop = config?.prop
     const label = material?.controller?.props?.find(pro => pro.name === prop)?.label
+    const localesMgr = context?.engine?.getLocalesManager()
     const transedLabel = label?.startsWith("$")
-              ? context?.engine?.getLocalesManager().getComponentSettingsMessage(material?.componentName||"", label.substring(1))
-              : label
-    return transedLabel || prop
+      ? localesMgr?.getComponentSettingsMessage(material?.componentName || "", label.substring(1))
+      : label
+    return context?.t?.("propsChange") + " : " + (transedLabel || prop || "")
   },
   activityName: ListenProp.NAME,
 }

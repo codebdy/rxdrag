@@ -7,6 +7,7 @@ export type LogicflowContextParam = {
   engine?: IDesignerEngine,
   variables?: IVariable[],
   fxFlowMetas?: ILogicFlowDefine[],
+  t?: (key: string) => string,
 }
 
 export type IRxDragActivityMaterial<SetPropConfig = unknown, MaterialContext = unknown> = IActivityMaterial<ReactNode, INodeSchema, SetPropConfig, MaterialContext>

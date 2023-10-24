@@ -47,6 +47,8 @@ export interface INodeDefine<ConfigMeta = unknown> {
   activityName: string;
   //显示文本
   label?: string;
+  //子文本
+  subLabel?: string;
   //节点配置
   config?: ConfigMeta;
   //输入端口

@@ -4,7 +4,7 @@ import { IReactContext, UnListener } from "../../interfaces";
 import { ControllerActivity, IControllerConfig } from "../ControllerActivity";
 
 export interface IEventConfig extends IControllerConfig {
-  name?: string
+  name?: string,
 }
 
 @Activity(EventActivity.NAME)
