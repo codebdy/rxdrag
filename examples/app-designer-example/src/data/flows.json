@@ -105,6 +105,17 @@
             "nodeId": "344c4daa-3e39-4ada-8981-632cc1fd7f79",
             "portId": "88tGRYNk"
           }
+        },
+        {
+          "id": "6N6o08g-",
+          "source": {
+            "nodeId": "8678623f-32ed-43a0-ba44-83a842aaa725",
+            "portId": "SwZM1_RN"
+          },
+          "target": {
+            "nodeId": "f8ba7498-8104-4ac8-8146-cfad25398564",
+            "portId": "ATCFntmJ"
+          }
         }
       ],
       "nodes": [
@@ -408,6 +419,29 @@
             "y": 60,
             "width": 88,
             "height": 48
+          }
+        },
+        {
+          "id": "f8ba7498-8104-4ac8-8146-cfad25398564",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "ATCFntmJ",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "开始"
+          },
+          "x6Node": {
+            "x": 260,
+            "y": 120,
+            "width": 88,
+            "height": 32
           }
         }
       ]
