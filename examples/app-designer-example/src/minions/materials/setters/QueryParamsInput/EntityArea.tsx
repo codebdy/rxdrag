@@ -30,9 +30,10 @@ export const EntityArea = memo((
     onChange?.({ ...value, associations: value?.associations?.filter(asso => asso.assoId !== id) })
   }, [onChange, value])
 
-  const hendleChange = useCallback((assoParams: IAssociationParam) => {
-    console.log("===>hendleChange", value?.associations?.map(asso => asso.assoId === assoParams.assoId ? assoParams : asso))
-    onChange?.({ ...value, associations: value?.associations?.map(asso => asso.assoId === assoParams.assoId ? assoParams : asso) })
+  const handleChange = useCallback((assoParams: IAssociationParam) => {
+    const newAssos = value?.associations?.map(asso => asso.assoId === assoParams.assoId ? assoParams : asso) || [assoParams]
+    console.log("===>hendleChange",)
+    onChange?.({ ...value, associations: newAssos })
   }, [onChange, value])
 
   const handleAdd = useCallback((assoParams: IAssociationParam) => {
@@ -63,7 +64,7 @@ export const EntityArea = memo((
               asso={asso}
               value={value?.associations?.find(assoc => assoc.assoId === asso.id)}
               onRemove={handleRemove}
-              onChange={hendleChange}
+              onChange={handleChange}
               onAdd={handleAdd}
             />
           )
