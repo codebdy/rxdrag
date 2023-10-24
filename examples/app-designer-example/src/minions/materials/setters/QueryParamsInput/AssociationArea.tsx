@@ -55,7 +55,7 @@ export const AssociationArea = memo((
               <RelationIcon>
                 {associationIcon}
               </RelationIcon>
-              {asso.label || asso.name}
+              {asso.label || asso.name} : {entity?.label || entity.name}
             </AssociationName>
           </Checkbox>
           {

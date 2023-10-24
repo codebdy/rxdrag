@@ -18,15 +18,17 @@ export const ExpressionInput = memo((
   const t = useTranslate()
   const [treeData, setTreeData] = useState<Omit<DefaultOptionType, 'label'>[]>([]);
 
-  const getEntityNodes = useCallback((entity?: EntityMeta, pId?: string, parentTypeIds?: string[]) => {
+  const getEntityNodes = useCallback((entity?: EntityMeta, pId?: string, pLabel?: string, parentTypeIds?: string[]) => {
     return [
       ...entity?.attributes?.map((attr) => {
         const id = pId ? (pId + "." + attr.name) : attr.name
+        const label = attr.label || attr.name || attr.uuid
         return {
           id: id,
           pId,
           value: id,
-          title: attr.label || attr.name || attr.uuid,
+          title: label,
+          label: pLabel ? (pLabel + "." + label) : label,
           isLeaf: true
         }
       }) || [],
@@ -38,11 +40,13 @@ export const ExpressionInput = memo((
       }).map((asso) => {
         const assoEntity = getEntity(asso.typeId)
         const id = pId ? (pId + "." + asso.name) : asso.name
+        const label = (asso.label || asso.name || asso.id)
         return {
           id: id,
           pId,
           value: id,
-          title: (asso.label || asso.name || asso.id) + " : " + (assoEntity?.label || assoEntity?.name),
+          label: pLabel ? (pLabel + "." + label) : label,
+          title: label + " : " + (assoEntity?.label || assoEntity?.name),
           selectable: false,
           typeId: asso.typeId,
           parentTypeIds: [...parentTypeIds || [], asso.typeId]
@@ -53,16 +57,17 @@ export const ExpressionInput = memo((
 
   useEffect(() => {
     if (rootEntity) {
-      setTreeData(getEntityNodes(rootEntity, undefined, [rootEntity.uuid]))
+      setTreeData(getEntityNodes(rootEntity, undefined, undefined, [rootEntity.uuid]))
     }
 
   }, [rootEntity, getEntityNodes])
 
-  const onLoadData: TreeSelectProps['loadData'] = (arg) =>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onLoadData: TreeSelectProps['loadData'] = (arg: any) =>
     new Promise((resolve) => {
       const typeEntity = getEntity(arg.typeId)
       setTreeData(
-        treeData.concat(getEntityNodes(typeEntity, arg.id, arg.parentTypeIds))
+        treeData.concat(getEntityNodes(typeEntity, arg.id, arg.label, arg.parentTypeIds))
       );
       resolve(undefined);
     });
@@ -85,7 +90,7 @@ export const ExpressionInput = memo((
           onChange={onChange}
           loadData={onLoadData}
           treeData={treeData}
-          treeNodeLabelProp={"value"}
+          treeNodeLabelProp={"label"}
         />
       </div>
       <OperatorSelect />
