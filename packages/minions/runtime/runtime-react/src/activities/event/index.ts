@@ -21,6 +21,13 @@ export class EventActivity extends ControllerActivity<IEventConfig> {
   }
 
   handleEvent = (args?: unknown[]) => {
-    this.next(args, {})
+    if (!args) {
+      this.next(args, {})
+      return
+    }
+    for (let i = 0; i < args?.length; i++) {
+      const output = this.jointers?.getOutputs()?.[i]
+      output?.push(args[i], {})
+    }
   }
 }
