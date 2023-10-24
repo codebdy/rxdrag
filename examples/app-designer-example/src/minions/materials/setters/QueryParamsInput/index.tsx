@@ -3,13 +3,14 @@ import { Button, Modal, Space } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import { useEnitity } from "../../../../FrontendDesigner/hooks/useEnitity"
 import styled from "styled-components"
-import { oneEntityIcon, orderIcon } from "@rxdrag/react-shared"
+import { oneEntityIcon } from "@rxdrag/react-shared"
 import { EntityArea } from "./EntityArea"
 import { PropertiesArea } from "./PropertiesArea"
 import { Footer } from "./Footer"
 import { ExprssionDrawer } from "./ExprssionDrawer"
 import { IEntityQueryConfig, IQureyEnitiyParam } from "../../../activities/common/IEntityQueryConfig"
 import { IExpression, IExpressionGroup } from "../../../activities/common/interfaces"
+import { SortPopover } from "./SortPopover"
 
 const EntityItem = styled.div`
   display: flex;
@@ -31,6 +32,7 @@ const Content = styled.div`
   display: flex;
   flex-flow: column;
   overflow: auto;
+  background-color: ${props => props.theme?.token?.colorBgBase} !important;
 `
 
 export const QueryParamsInput = memo((
@@ -115,11 +117,7 @@ export const QueryParamsInput = memo((
                     value={inputValue?.queryParams?.expressions}
                     onChange={handleRootExpressionChange}
                   />
-                  <Button
-                    type="text"
-                    size="small"
-                    icon={orderIcon}
-                  ></Button>
+                  <SortPopover />
                 </>
               }
             </Space>

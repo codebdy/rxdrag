@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from "react"
 import { AssociationMeta } from "../../../../FrontendDesigner/ModuleUiDesigner/interfaces/AssociationMeta"
-import { associationIcon, orderIcon } from "@rxdrag/react-shared"
-import { Space, Checkbox, Button } from "antd"
+import { associationIcon } from "@rxdrag/react-shared"
+import { Space, Checkbox } from "antd"
 import styled from "styled-components"
 import { useEnitity } from "../../../../FrontendDesigner/hooks/useEnitity"
 import { EntityArea } from "./EntityArea"
@@ -10,6 +10,7 @@ import { PropertiesArea } from "./PropertiesArea"
 import { ExprssionDrawer } from "./ExprssionDrawer"
 import { IAssociationParam, IQureyEnitiyParam } from "../../../activities/common/IEntityQueryConfig"
 import { IExpression, IExpressionGroup } from "../../../activities/common/interfaces"
+import { SortPopover } from "./SortPopover"
 
 const Container = styled.div`
   display: flex;
@@ -87,7 +88,7 @@ export const AssociationArea = memo((
                 value={value?.expressions}
                 onChange={handleExpressionChange}
               />
-              <Button type="text" size="small" icon={orderIcon}></Button>
+              <SortPopover />
             </>
           }
         </Space>
