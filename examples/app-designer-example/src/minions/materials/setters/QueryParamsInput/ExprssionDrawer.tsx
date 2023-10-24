@@ -52,7 +52,11 @@ export const ExprssionDrawer = memo((
       <Button
         type={open ? "default" : "text"}
         size="small" icon={
-          <Badge dot count={value?.length || 0}>
+          <Badge
+            dot
+            count={value?.length ? undefined : 0}
+            status="processing"
+          >
             <FunctionOutlined />
           </Badge>
         }
