@@ -32,7 +32,6 @@ export const EntityArea = memo((
 
   const handleChange = useCallback((assoParams: IAssociationParam) => {
     const newAssos = value?.associations?.map(asso => asso.assoId === assoParams.assoId ? assoParams : asso) || [assoParams]
-    console.log("===>hendleChange",)
     onChange?.({ ...value, associations: newAssos })
   }, [onChange, value])
 

@@ -62,7 +62,6 @@ export const AssociationArea = memo((
   }, [asso.id, onChange, value])
 
   const handlePropsChange = useCallback((params?: IQureyEnitiyParam) => {
-    console.log("===>handlePropsChange", params)
     onChange?.({ ...params, assoId: asso.id })
   }, [asso.id, onChange])
 
