@@ -59,6 +59,25 @@ export const ButtonMaterial: IMaterial = {
       {
         name: "onClick",
         label: "$onClick",
+      },
+      {
+        name: "onTest",
+        label: "$onTest",
+        args: [
+          {
+            name: "arg1",
+            label: "$arg1",
+          },
+          {
+            name: "arg2",
+            label: "$arg2",
+          },
+
+          {
+            name: "arg3",
+            label: "$arg3",
+          },
+        ]
       }
     ],
     reactions: [

@@ -20,6 +20,10 @@ export const buttonLocales = {
       onClick: "点击",
       enable: "有效",
       disable: "无效",
+      onTest: "测试事件",
+      arg1: "参数1",
+      arg2: "参数2",
+      arg3: "参数3",
     }
 
   },
@@ -39,7 +43,7 @@ export const buttonLocales = {
       round: "Round",
       ...sizeLocales["en-US"],
       onClick: "On Click",
-      enable:"Enable",
+      enable: "Enable",
       disable: "Disable",
     }
   }

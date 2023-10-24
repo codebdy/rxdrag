@@ -47,9 +47,9 @@ export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, LogicflowCont
     const prop = config?.prop
     const label = material?.controller?.props?.find(pro => pro.name === prop)?.label
     const transedLabel = label?.startsWith("$")
-              ? context?.engine?.getLocalesManager().getComponentSettingsMessage(material?.componentName||"", label.substring(1))
-              : label
-    return transedLabel || prop
+      ? context?.engine?.getLocalesManager().getComponentSettingsMessage(material?.componentName || "", label.substring(1))
+      : label
+    return context?.t?.("setProps") + " : " + (transedLabel || prop || "")
   },
   activityName: SetProp.NAME,
 }

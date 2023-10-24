@@ -96,6 +96,7 @@ export const activityMaterialLocales = {
     increase: "递增",
     step: "步长",
     negation: "逻辑非",
+    setProps: "设置属性",
   },
   'en-US': {
     basicAcitivites: "Basic Reactions",
@@ -195,5 +196,6 @@ export const activityMaterialLocales = {
     increase: "Increase",
     step: "Step",
     negation: "negation",
+    setProps:"Set Props"
   }
 }
