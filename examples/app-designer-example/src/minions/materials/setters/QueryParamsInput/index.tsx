@@ -55,8 +55,9 @@ export const QueryParamsInput = memo((
   }, [])
 
   const handleOk = useCallback(() => {
+    onChange?.(inputValue)
     setOpen(false)
-  }, [])
+  }, [inputValue, onChange])
 
   const handleCancel = useCallback(() => {
     setOpen(false)
