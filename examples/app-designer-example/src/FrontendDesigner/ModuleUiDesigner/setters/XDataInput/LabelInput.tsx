@@ -17,7 +17,11 @@ export const LabelInput = memo((
 
   return (
     <Form.Item label={t("label")}>
-      <Input value={value?.label} onChange={handleChange} />
+      <Input
+        allowClear
+        value={value?.label}
+        onChange={handleChange}
+      />
     </Form.Item>
   )
 })

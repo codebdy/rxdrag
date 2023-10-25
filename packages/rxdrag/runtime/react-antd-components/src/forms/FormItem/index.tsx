@@ -31,6 +31,7 @@ export const FormItem: React.FC<FormItemProps> = memo((props) => {
     pattern,
     prettyComponent,
     style,
+    label = "FormItem",
     ...other
   } = props
   const field = useField();
@@ -65,7 +66,7 @@ export const FormItem: React.FC<FormItemProps> = memo((props) => {
   return (
     displayType !== DisplayType.none
       ? <Form.Item
-        label={field?.meta?.label}
+        label={field?.meta?.label || label}
         {...formParams}
         {...other}
         validateStatus={errors?.length ? "error" : "success"}

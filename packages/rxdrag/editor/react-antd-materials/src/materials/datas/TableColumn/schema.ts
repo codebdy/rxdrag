@@ -8,6 +8,9 @@ const options: SchemaOptions = {
       "x-data": {
         name: "title",
         label: "$title",
+      },
+      props: {
+        allowClear: true,
       }
     },
     {
@@ -95,6 +98,7 @@ const options: SchemaOptions = {
   field: {
     fieldType: "normal",
     hasDefaultValue: true,
+    hasLabel: true,
   },
 }
 

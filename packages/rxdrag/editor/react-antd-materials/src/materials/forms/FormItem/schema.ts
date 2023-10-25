@@ -20,6 +20,9 @@ const options: SchemaOptions = {
         name: "label",
         label: "$label",
       },
+      props: {
+        allowClear: true,
+      }
     },
     {
       "x-data": {
