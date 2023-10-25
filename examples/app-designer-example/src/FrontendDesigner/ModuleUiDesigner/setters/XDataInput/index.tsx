@@ -21,8 +21,6 @@ export const XDataInput = memo((
   const isEntitySelected = useIsEntitySelected(value?.modelMetaId)
   const isAssociationSelected = useIsAssociationSelected(value?.modelMetaId)
 
-  console.log("===>isAssociationSelected", isAssociationSelected)
-
   return (
     <>
       {

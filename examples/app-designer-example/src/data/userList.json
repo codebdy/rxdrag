@@ -102,6 +102,11 @@
                     "type": "primary",
                     "title": "查询"
                   },
+                  "x-controller": {
+                    "id": "OFJ4seD8",
+                    "enable": true,
+                    "name": "查询按钮"
+                  },
                   "slots": {},
                   "children": []
                 }
@@ -141,6 +146,11 @@
               "props": {
                 "type": "primary",
                 "title": "新建"
+              },
+              "x-controller": {
+                "id": "ezfaFJec",
+                "enable": true,
+                "name": "新建"
               },
               "slots": {
                 "icon": {
