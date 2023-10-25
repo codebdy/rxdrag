@@ -110,11 +110,6 @@
       ]
     },
     {
-      "componentName": "TextArea",
-      "slots": {},
-      "children": []
-    },
-    {
       "componentName": "Table",
       "selfRender": true,
       "x-controller": {
@@ -166,7 +161,14 @@
         {
           "componentName": "TableColumn",
           "props": {
-            "title": "登录名"
+            "title": ""
+          },
+          "x-data": {
+            "fieldType": "normal",
+            "modelMetaId": "PeprFClI",
+            "type": "Attribute",
+            "validateRules": null,
+            "label": "登录ID"
           },
           "slots": {},
           "children": []
@@ -175,6 +177,13 @@
           "componentName": "TableColumn",
           "props": {
             "title": "姓名"
+          },
+          "x-data": {
+            "fieldType": "normal",
+            "modelMetaId": "qYBQKdC1",
+            "type": "Attribute",
+            "validateRules": null,
+            "label": "姓名"
           },
           "slots": {},
           "children": []
@@ -185,7 +194,28 @@
             "title": "角色"
           },
           "slots": {},
-          "children": []
+          "children": [
+            {
+              "componentName": "LoopPanel",
+              "x-data": {
+                "fieldType": "array",
+                "modelMetaId": null,
+                "type": null,
+                "validateRules": null
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Tag",
+                  "props": {
+                    "value": "Tag"
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
         },
         {
           "componentName": "TableColumn",

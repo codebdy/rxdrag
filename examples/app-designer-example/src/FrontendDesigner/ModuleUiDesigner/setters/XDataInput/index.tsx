@@ -6,6 +6,8 @@ import { AttributeSelect } from "./AttributeSelect";
 import { AssociationSelect } from "./AssociationSelect";
 import { FieldOptions } from "@rxdrag/react-antd-materials";
 import { DefaultValue } from "./DefaultValue";
+import { useIsEntitySelected } from "./useIsEntitySelected";
+import { useIsAssociationSelected } from "./useIsAssociationSelected";
 
 export const XDataInput = memo((
   props: {
@@ -16,10 +18,15 @@ export const XDataInput = memo((
 ) => {
   const { value, onChange, fieldOptions } = props;
   const { fieldType, hasLabel } = fieldOptions || {}
+  const isEntitySelected = useIsEntitySelected(value?.modelMetaId)
+  const isAssociationSelected = useIsAssociationSelected(value?.modelMetaId)
+
+  console.log("===>isAssociationSelected", isAssociationSelected)
+
   return (
     <>
       {
-        (fieldType === "form" || fieldType === "object" || fieldType === "array") &&
+        (fieldType === "form" || fieldType === "object" || fieldType === "array") && !isAssociationSelected &&
         <EntityInput
           fieldType={fieldType}
           value={value}
@@ -27,19 +34,19 @@ export const XDataInput = memo((
         />
       }
       {
-        fieldType === "normal" &&
+        fieldType === "normal" && !isEntitySelected &&
         <AttributeSelect
           fieldType={fieldType}
-          hasLabel = {hasLabel}
+          hasLabel={hasLabel}
           value={value}
           onChange={onChange}
         />
       }
       {
-        (fieldType === "object" || fieldType === "array") &&
+        (fieldType === "object" || fieldType === "array") && !isEntitySelected &&
         <AssociationSelect
           fieldType={fieldType}
-          hasLabel = {hasLabel}
+          hasLabel={hasLabel}
           value={value}
           onChange={onChange}
         />

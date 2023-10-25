@@ -33,7 +33,7 @@ export const AssociationSelect = memo((
   return (
     entity
       ? <>
-        <Form.Item label={t("attribute")}>
+        <Form.Item label={t("association")}>
           <Select
             allowClear
             options={entity?.associations?.map(asso => ({

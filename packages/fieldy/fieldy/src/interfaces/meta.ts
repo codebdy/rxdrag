@@ -7,7 +7,7 @@ export interface IValidateSchema {
 
 //字段元数据
 export interface IFieldMeta<ValidateRules extends IValidateSchema = IValidateSchema> {
-  //类型：对象、数组、常规、表单
+  //类型：对象、数组、常规、表单。
   type?: FieldType;
   //数组行数据是数字
   name?: string | number;

@@ -12,6 +12,7 @@ export const setterLocales: ILocales = {
       business: "业务",
       entity: "实体",
       attribute: "实体属性",
+      association: "实体关联",
       customizedName: "自定义名称",
       label: "标签文本",
       config: "配置",
@@ -28,6 +29,7 @@ export const setterLocales: ILocales = {
       business: "Business",
       entity: "Entity",
       attribute: "Attribute",
+      association: "Association",
       customizedName: "Customized Name",
       label: "Label",
       config: "Config"
