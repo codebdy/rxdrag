@@ -15,6 +15,18 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
     {
       id: "users",
       title: "用户管理",
+      variables: [
+        {
+          "id": "b9_X4d5v",
+          "name": "当前页",
+          "defaultValue": "0"
+        },
+        {
+          "id": "gQhicxsa",
+          "name": "每页条数",
+          "defaultValue": "10"
+        }
+      ],
       views: [
         {
           id: "user-index",

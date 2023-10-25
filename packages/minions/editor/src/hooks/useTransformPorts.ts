@@ -19,7 +19,7 @@ export function useTransformPorts() {
         group: group,
         attrs: {
           text: {
-            text: port.label?.startsWith("$") ? t(port.label.substring(1)) : port.label,
+            text: (port.label?.startsWith("$") ? t(port.label.substring(1)) : port.label) || "",
             fill: token.colorTextSecondary,
             fontSize: 12,
           },

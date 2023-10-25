@@ -2606,12 +2606,57 @@
   },
   {
     "id": "zewBD6uf",
-    "name": "测试流程",
+    "name": "读取数据",
     "ownerId": "users",
     "moduleId": "users",
     "type": "normal",
     "metas": {
-      "lines": [],
+      "lines": [
+        {
+          "id": "QkblB3w_",
+          "source": {
+            "nodeId": "707b3691-8636-432a-aa5e-fe84380639cc",
+            "portId": "PRCryCTC"
+          },
+          "target": {
+            "nodeId": "30ee7bd6-ce13-4bc3-8c94-1f4d69641853",
+            "portId": "fhu4xCVg"
+          }
+        },
+        {
+          "id": "qM1lgAo2",
+          "source": {
+            "nodeId": "286a2edf-1bf1-411e-b4aa-fcd59982f9a6",
+            "portId": "ukjCDKzi"
+          },
+          "target": {
+            "nodeId": "30ee7bd6-ce13-4bc3-8c94-1f4d69641853",
+            "portId": "q6N0IhdB"
+          }
+        },
+        {
+          "id": "978nuxJS",
+          "source": {
+            "nodeId": "68aac946-0b60-4e15-be2d-5bb73263dc9d",
+            "portId": "tAH0Hy9G"
+          },
+          "target": {
+            "nodeId": "30ee7bd6-ce13-4bc3-8c94-1f4d69641853",
+            "portId": "hvNuxBLY"
+          }
+        },
+        {
+          "id": "cqw9IHp-",
+          "source": {
+            "nodeId": "30ee7bd6-ce13-4bc3-8c94-1f4d69641853",
+            "portId": "r1jev7O1"
+          },
+          "target": {
+            "nodeId": "df951fc2-264c-4633-b201-8398102f8d86",
+            "portId": "5aT-wcWP"
+          }
+        }
+      ],
       "nodes": [
         {
           "id": "30ee7bd6-ce13-4bc3-8c94-1f4d69641853",
@@ -2675,6 +2720,100 @@
             "y": 50,
             "width": 144,
             "height": 96
+          }
+        },
+        {
+          "id": "707b3691-8636-432a-aa5e-fe84380639cc",
+          "label": "当前页",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "PRCryCTC",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "当前页"
+          },
+          "x6Node": {
+            "x": 10,
+            "y": 80,
+            "width": 102,
+            "height": 32
+          }
+        },
+        {
+          "id": "286a2edf-1bf1-411e-b4aa-fcd59982f9a6",
+          "label": "每页条数",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "ukjCDKzi",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "每页条数"
+          },
+          "x6Node": {
+            "x": 10,
+            "y": 140,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "68aac946-0b60-4e15-be2d-5bb73263dc9d",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "初始化",
+          "outPorts": [
+            {
+              "id": "tAH0Hy9G",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "JClydKG7",
+            "name": "onInit"
+          },
+          "x6Node": {
+            "x": 10,
+            "y": -10,
+            "width": 116,
+            "height": 48
+          }
+        },
+        {
+          "id": "df951fc2-264c-4633-b201-8398102f8d86",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "5aT-wcWP",
+              "name": "setDataSource",
+              "label": "设置数据源"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "LIqRo1qO",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "JClydKG7"
+          },
+          "x6Node": {
+            "x": 600,
+            "y": 60,
+            "width": 116,
+            "height": 32
           }
         }
       ]
