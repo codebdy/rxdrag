@@ -1,3 +1,4 @@
+import { IFieldMeta } from "@rxdrag/fieldy";
 import { TableProps } from "@rxdrag/react-antd-components";
 import { useNode, useTreeNodes, ComponentDesignerView } from "@rxdrag/react-core";
 import { Table } from "antd";
@@ -12,25 +13,32 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
   const node = useNode()
   const childNodes = useTreeNodes(node?.children || [])
   const columns = useMemo(() => {
-    return childNodes?.map(child => ({
-      ...child?.meta?.props,
-      render: () => {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
-        return <ComponentDesignerView nodeId={child?.id!} />
-      },
-      onCell:()=>{
-        return {
-          //将rx-id传入表头，tr/th组合成一列
-          "rx-id": child?.id,
-        }
-      },
-      onHeaderCell: () => {
-        return {
-          //将rx-id传入表头，tr/th组合成一列
-          "rx-id": child?.id,
+
+    return childNodes?.map(child => {
+      const { title, ...rest } = child?.meta?.props || {}
+      const fiedMeta = child?.meta?.["x-data"] as IFieldMeta | undefined
+
+      return {
+        title: fiedMeta?.label || title,
+        ...rest,
+        render: () => {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
+          return <ComponentDesignerView nodeId={child?.id!} />
+        },
+        onCell: () => {
+          return {
+            //将rx-id传入表头，tr/th组合成一列
+            "rx-id": child?.id,
+          }
+        },
+        onHeaderCell: () => {
+          return {
+            //将rx-id传入表头，tr/th组合成一列
+            "rx-id": child?.id,
+          }
         }
       }
-    }))
+    })
   }, [childNodes])
 
   return (

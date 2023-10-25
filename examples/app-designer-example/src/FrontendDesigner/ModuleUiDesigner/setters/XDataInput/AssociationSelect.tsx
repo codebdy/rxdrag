@@ -36,7 +36,10 @@ export const AssociationSelect = memo((
         <Form.Item label={t("attribute")}>
           <Select
             allowClear
-            options={entity?.associations?.map(asso => ({ value: asso.id, label: asso.name }))}
+            options={entity?.associations?.map(asso => ({
+              value: asso.id,
+              label: asso?.label ? `${asso.label}(${asso.name})` : asso.name,
+            }))}
             value={value?.modelMetaId}
             onChange={handleEntityChange}
           />

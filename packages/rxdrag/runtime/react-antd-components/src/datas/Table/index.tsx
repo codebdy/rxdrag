@@ -71,6 +71,7 @@ export type TableProps = {
 }
 
 // 本控件强依赖ComponentRender
+// 目前机制，label无法支持表达式
 export const Table = memo((
   props: TableProps
 ) => {
@@ -80,8 +81,11 @@ export const Table = memo((
 
   const columns = useMemo(() => {
     return nodeSchema?.children?.map(child => {
+      const { label, ...rest } = child?.props || {}
+      const fiedMeta = child["x-data"]
       return {
-        ...child?.props,
+        label: fiedMeta?.label || label,
+        ...rest,
         render: () => {
           return <ComponentView node={child} />
         },
