@@ -36,20 +36,6 @@ export const querySchema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
-        label: "$noQueryOnInit",
-      },
-      children: [
-        {
-          componentName: "Switch",
-          "x-data": {
-            name: "config.noQueryOnInit"
-          },
-        }
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
         label: "$queryOnFocus",
       },
       children: [

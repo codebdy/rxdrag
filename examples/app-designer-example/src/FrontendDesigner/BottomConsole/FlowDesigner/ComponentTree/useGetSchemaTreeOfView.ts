@@ -6,10 +6,11 @@ import { useCallback } from "react"
 import { ReactionableNode } from "."
 import { useAllDocuments } from "../useAllDocuments"
 
-export function useGetSchemaTreeOfView(){
+export function useGetSchemaTreeOfView(flowOwnerId?: string) {
   const getNode = useGetNode()
   const docs = useAllDocuments()
   const getReactionableSchemas = useCallback((node: ITreeNode<IFieldMeta, IControllerMeta>) => {
+    const isArray = node.meta?.["x-data"]?.type === "array"
     const nodes: ReactionableNode[] = []
     let activeNodes = nodes
     if (node.meta["x-controller"]?.enable) {
@@ -22,14 +23,15 @@ export function useGetSchemaTreeOfView(){
     }
 
     //处理children
-    for (const childId of node.children) {
-      const child = getNode(childId)
-      if (child) {
-        const children = getReactionableSchemas(child as ITreeNode<IFieldMeta, IControllerMeta>)
-        activeNodes.push(...children)
+    if ((isArray && flowOwnerId && flowOwnerId === node.meta?.["x-controller"]?.id) || !isArray) {
+      for (const childId of node.children) {
+        const child = getNode(childId)
+        if (child) {
+          const children = getReactionableSchemas(child as ITreeNode<IFieldMeta, IControllerMeta>)
+          activeNodes.push(...children)
+        }
       }
     }
-
     //处理卡槽
     for (const key of Object.keys(node.slots || {})) {
       const slotId = node.slots?.[key]
@@ -40,7 +42,7 @@ export function useGetSchemaTreeOfView(){
       }
     }
     return nodes
-  }, [getNode])
+  }, [flowOwnerId, getNode])
 
   const getSchemaTreeOfView = useCallback((id: string) => {
     const doc = docs?.find(doc => doc.id === id)

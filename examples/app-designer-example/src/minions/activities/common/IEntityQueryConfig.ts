@@ -22,9 +22,7 @@ export interface IQureyEnitiyParam {
   associations?: IAssociationParam[],
 }
 
-
 export interface IEntityQueryConfig extends IEntityConfig {
-  noQueryOnInit?: boolean;
   queryOnFocus?: boolean;
   pollingTime?: number;
   queryParams?: IQureyEnitiyParam;
