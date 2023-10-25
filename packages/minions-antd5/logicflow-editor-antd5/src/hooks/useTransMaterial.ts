@@ -1,10 +1,11 @@
 import { IActivityMaterial, IPorts } from "@rxdrag/minions-schema"
-import { ReactNode, useCallback } from "react"
+import { useCallback } from "react"
 import { useTrans } from "./useTrans"
 
 export function useTransMaterial() {
   const trans = useTrans()
-  const translateMaterial = useCallback((material: IActivityMaterial<ReactNode>): IActivityMaterial<ReactNode> => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const translateMaterial = useCallback((material: IActivityMaterial<any, any, any, any>): IActivityMaterial<any> => {
     const ports: IPorts = {
       inPorts: [],
       outPorts: []

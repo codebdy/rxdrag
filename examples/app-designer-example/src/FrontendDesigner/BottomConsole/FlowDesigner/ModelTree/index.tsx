@@ -11,6 +11,7 @@ import { useTransMaterial } from "@rxdrag/logicflow-editor-antd5";
 import { getModelNode } from "./getModelNode";
 import { queryEntitiesMaterial } from "../../../../minions/materials/QueryEntities";
 import { saveEntityMaterial } from "../../../../minions/materials/SaveEntity";
+import { removeEntityMaterial } from "../../../../minions/materials/RemoveEntity";
 
 const { DirectoryTree } = Tree;
 
@@ -26,6 +27,7 @@ export const ModelTree = memo((
   const oneMaterial = useMemo(() => t(queryOneEntityMaterial), [t])
   const listMaterial = useMemo(() => t(queryEntitiesMaterial), [t])
   const saveMaterial = useMemo(() => t(saveEntityMaterial), [t])
+  const removeMaterial = useMemo(() => t(removeEntityMaterial), [t])
   const getOneNode = useCallback((cls: ClassMeta): DataNode => {
 
     return {
@@ -36,9 +38,10 @@ export const ModelTree = memo((
         getModelNode(cls, listMaterial, "query-list"),
         getModelNode(cls, oneMaterial, "query-one"),
         getModelNode(cls, saveMaterial, "save"),
+        getModelNode(cls, removeMaterial, "remove"),
       ]
     }
-  }, [listMaterial, oneMaterial, saveMaterial])
+  }, [listMaterial, oneMaterial, removeMaterial, saveMaterial])
 
   const treeData: DataNode[] = useMemo(() => {
     return meta?.packages?.map(pkg => ({
