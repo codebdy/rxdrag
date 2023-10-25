@@ -14,13 +14,13 @@ const options: SchemaOptions = {
         defaultChecked: false
       }
     },
-    // {
-    //   componentName: "Input",
-    //   "x-data": {
-    //     name: "label",
-    //     label: "$label",
-    //   },
-    // },
+    {
+      componentName: "Input",
+      "x-data": {
+        name: "label",
+        label: "$label",
+      },
+    },
     {
       "x-data": {
         name: "labelAlign",
@@ -88,6 +88,8 @@ const options: SchemaOptions = {
   field: {
     fieldType: "normal",
     hasRules: true,
+    hasDefaultValue: true,
+    hasLabel: true,
   },
 }
 

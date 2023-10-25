@@ -1,13 +1,12 @@
 import { FieldOptions } from "./SchemaOptions"
 
-export function createFieldSchema(field: FieldOptions) {
-  return field.fieldType
+export function createFieldSchema(fieldOptions?: FieldOptions) {
+  return fieldOptions?.fieldType
     ? [
       {
         componentName: "XDataInput",
         props: {
-          hasRules: field.hasRules,
-          fieldType: field.fieldType,
+          fieldOptions,
         },
         "x-data": {
           name: "x-data",

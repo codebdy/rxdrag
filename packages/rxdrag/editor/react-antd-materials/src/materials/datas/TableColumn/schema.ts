@@ -94,6 +94,7 @@ const options: SchemaOptions = {
   ],
   field: {
     fieldType: "normal",
+    hasDefaultValue: true,
   },
 }
 

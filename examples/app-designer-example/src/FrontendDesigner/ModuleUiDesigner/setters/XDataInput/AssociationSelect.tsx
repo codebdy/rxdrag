@@ -12,9 +12,10 @@ export const AssociationSelect = memo((
     value?: IModelMeta,
     onChange?: (value?: IModelMeta) => void,
     fieldType?: FieldType,
+    hasLabel?: boolean,
   }
 ) => {
-  const { value, onChange, fieldType } = props;
+  const { value, onChange, fieldType, hasLabel } = props;
   const t = useSettersTranslate()
 
   const entity = useRecentEntity()
@@ -41,7 +42,7 @@ export const AssociationSelect = memo((
           />
         </Form.Item>
         {
-          value?.modelMetaId &&
+          value?.modelMetaId && hasLabel &&
           <LabelInput value={value} onChange={onChange} />
         }
       </>

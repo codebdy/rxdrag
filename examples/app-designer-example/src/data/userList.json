@@ -110,12 +110,23 @@
       ]
     },
     {
+      "componentName": "TextArea",
+      "slots": {},
+      "children": []
+    },
+    {
       "componentName": "Table",
       "selfRender": true,
       "x-controller": {
         "id": "JClydKG7",
         "name": "用户列表",
         "enable": true
+      },
+      "x-data": {
+        "fieldType": "array",
+        "modelMetaId": "QksZdA-8",
+        "type": "Entity",
+        "validateRules": null
       },
       "slots": {
         "header": {

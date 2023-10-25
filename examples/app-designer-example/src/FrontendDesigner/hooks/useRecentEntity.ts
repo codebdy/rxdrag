@@ -24,10 +24,11 @@ export function useRecentEntity() {
       }
     }
   }, [getNode])
-  
+
   useEffect(() => {
-    setEntity(getEntity(getEntityId(node)))
-  }, [getEntity, getEntityId, node])
+    const parent = getNode(node?.parentId)
+    setEntity(getEntity(getEntityId(parent)))
+  }, [getEntity, getEntityId, getNode, node])
 
   return entity
 }

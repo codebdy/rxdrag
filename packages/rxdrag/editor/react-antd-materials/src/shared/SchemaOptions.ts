@@ -6,6 +6,8 @@ import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 export type FieldOptions = {
   hasRules?: boolean,
   fieldType?: FieldType,
+  hasLabel?: boolean,
+  hasDefaultValue?: boolean,
 }
 
 export type SchemaOptions = {

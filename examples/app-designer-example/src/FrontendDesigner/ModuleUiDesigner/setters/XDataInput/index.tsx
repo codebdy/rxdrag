@@ -1,21 +1,21 @@
 import { memo } from "react"
-import { FieldType } from "@rxdrag/fieldy";
 import { IModelMeta } from "../../interfaces";
 import { Customized } from "./Customized";
 import { EntityInput } from "./EntityInput";
 import { AttributeSelect } from "./AttributeSelect";
 import { AssociationSelect } from "./AssociationSelect";
+import { FieldOptions } from "@rxdrag/react-antd-materials";
+import { DefaultValue } from "./DefaultValue";
 
 export const XDataInput = memo((
   props: {
     value?: IModelMeta,
     onChange?: (value?: IModelMeta) => void,
-    hasRules?: boolean,
-    fieldType?: FieldType,
+    fieldOptions?: FieldOptions,
   }
 ) => {
-  const { value, onChange, hasRules, fieldType } = props;
-
+  const { value, onChange, fieldOptions } = props;
+  const { fieldType, hasLabel } = fieldOptions || {}
   return (
     <>
       {
@@ -30,6 +30,7 @@ export const XDataInput = memo((
         fieldType === "normal" &&
         <AttributeSelect
           fieldType={fieldType}
+          hasLabel = {hasLabel}
           value={value}
           onChange={onChange}
         />
@@ -38,6 +39,7 @@ export const XDataInput = memo((
         (fieldType === "object" || fieldType === "array") &&
         <AssociationSelect
           fieldType={fieldType}
+          hasLabel = {hasLabel}
           value={value}
           onChange={onChange}
         />
@@ -46,11 +48,16 @@ export const XDataInput = memo((
         !value?.modelMetaId && <Customized
           value={value}
           onChange={onChange}
-          fieldType={fieldType}
-          hasRules={hasRules}
+          fieldOptions={fieldOptions}
         />
       }
-
+      {
+        fieldOptions?.hasDefaultValue && <DefaultValue
+          value={value}
+          onChange={onChange}
+          fieldType={fieldType}
+        />
+      }
     </>
   )
 })
