@@ -19,7 +19,7 @@ export const Customized = memo((
   const t = useSettersTranslate()
 
   const handleNameChange = useCallback((e?: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.({ fieldType, ...value, customizedName: e?.target.value })
+    onChange?.({ type: fieldType, ...value, name: e?.target.value })
   }, [fieldType, onChange, value])
 
 
@@ -32,7 +32,7 @@ export const Customized = memo((
     <>
       <Form.Item label={t("customizedName")}>
         <Input
-          value={value?.customizedName || ""}
+          value={value?.name || ""}
           onChange={handleNameChange}
           allowClear
         />

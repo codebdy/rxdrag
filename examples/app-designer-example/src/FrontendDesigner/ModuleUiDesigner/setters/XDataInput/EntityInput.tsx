@@ -17,9 +17,9 @@ export const EntityInput = memo((
 
   const handleEntityChange = useCallback((modelMetaId?: string) => {
     if (modelMetaId) {
-      onChange?.({ fieldType, ...value, modelMetaId, type: ModelType.Entity, validateRules: null })
+      onChange?.({ type: fieldType, ...value, modelMetaId, modelType: ModelType.Entity, validateRules: null })
     } else {
-      onChange?.({ fieldType, ...value, modelMetaId: null, type: null })
+      onChange?.({ type: fieldType, ...value, modelMetaId: null, modelType: null })
     }
 
   }, [fieldType, onChange, value])

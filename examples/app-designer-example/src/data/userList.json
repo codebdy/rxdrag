@@ -22,9 +22,9 @@
         "enable": true
       },
       "x-data": {
-        "fieldType": "form",
+        "type": "form",
         "modelMetaId": "QksZdA-8",
-        "type": "Entity",
+        "modelType": "Entity",
         "validateRules": null
       },
       "slots": {},
@@ -33,11 +33,12 @@
           "componentName": "FormItem",
           "locked": false,
           "x-data": {
-            "fieldType": "normal",
+            "type": "normal",
             "modelMetaId": "qYBQKdC1",
-            "type": "Attribute",
+            "modelType": "Attribute",
             "validateRules": null,
-            "label": "姓名"
+            "label": "姓名",
+            "name": "name"
           },
           "slots": {},
           "children": [
@@ -52,11 +53,12 @@
           "componentName": "FormItem",
           "locked": false,
           "x-data": {
-            "fieldType": "normal",
+            "type": "normal",
             "modelMetaId": "PeprFClI",
-            "type": "Attribute",
+            "modelType": "Attribute",
             "validateRules": null,
-            "label": "登录ID"
+            "label": "登录ID",
+            "name": "loginName"
           },
           "slots": {},
           "children": [
@@ -118,9 +120,9 @@
         "enable": true
       },
       "x-data": {
-        "fieldType": "array",
+        "type": "array",
         "modelMetaId": "QksZdA-8",
-        "type": "Entity",
+        "modelType": "Entity",
         "validateRules": null
       },
       "slots": {
@@ -164,9 +166,9 @@
             "title": ""
           },
           "x-data": {
-            "fieldType": "normal",
+            "type": "normal",
             "modelMetaId": "PeprFClI",
-            "type": "Attribute",
+            "modelType": "Attribute",
             "validateRules": null,
             "label": "登录ID"
           },
@@ -179,9 +181,9 @@
             "title": "姓名"
           },
           "x-data": {
-            "fieldType": "normal",
+            "type": "normal",
             "modelMetaId": "qYBQKdC1",
-            "type": "Attribute",
+            "modelType": "Attribute",
             "validateRules": null,
             "label": "姓名"
           },
@@ -198,10 +200,11 @@
             {
               "componentName": "LoopPanel",
               "x-data": {
-                "fieldType": "array",
-                "modelMetaId": null,
-                "type": null,
-                "validateRules": null
+                "type": "array",
+                "modelMetaId": "sdLPK23a:Adnk8q_b",
+                "modelType": "Association",
+                "validateRules": null,
+                "name": "roles"
               },
               "slots": {},
               "children": [

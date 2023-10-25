@@ -13,7 +13,7 @@ export function useRecentEntity() {
   const getEntity = useGetEntity()
   const getEntityId = useCallback((node?: ITreeNode | null) => {
     const modelMeta = node?.meta?.["x-data"] as IModelMeta | undefined
-    if (modelMeta?.modelMetaId && modelMeta.type === ModelType.Entity) {
+    if (modelMeta?.modelMetaId && modelMeta.modelType === ModelType.Entity) {
       return modelMeta?.modelMetaId
     } else {
       if (node?.parentId) {

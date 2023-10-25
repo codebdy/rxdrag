@@ -22,13 +22,13 @@ export const AssociationSelect = memo((
 
   const handleEntityChange = useCallback((modelMetaId?: string) => {
     if (modelMetaId) {
-      const attr = entity?.attributes.find(att => att.uuid === modelMetaId)
-      onChange?.({ fieldType, ...value, modelMetaId, type: ModelType.Association, validateRules: null, label: attr?.label })
+      const assoc = entity?.associations.find(asso => asso.id === modelMetaId)
+      onChange?.({ type: fieldType, ...value, modelMetaId, modelType: ModelType.Association, validateRules: null, label: assoc?.label, name: assoc?.name })
     } else {
-      onChange?.({ fieldType, ...value, modelMetaId: null, type: null, label: "" })
+      onChange?.({ type: fieldType, ...value, modelMetaId: null, modelType: null, })
     }
 
-  }, [entity?.attributes, fieldType, onChange, value])
+  }, [entity?.associations, fieldType, onChange, value])
 
   return (
     entity

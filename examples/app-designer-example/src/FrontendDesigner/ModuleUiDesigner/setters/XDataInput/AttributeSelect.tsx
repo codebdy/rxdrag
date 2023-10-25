@@ -22,9 +22,9 @@ export const AttributeSelect = memo((
   const handleEntityChange = useCallback((modelMetaId?: string) => {
     if (modelMetaId) {
       const attr = entity?.attributes.find(att => att.uuid === modelMetaId)
-      onChange?.({ fieldType, ...value, modelMetaId, type: ModelType.Attribute, validateRules: null, label: attr?.label })
+      onChange?.({ type: fieldType, ...value, modelMetaId, modelType: ModelType.Attribute, validateRules: null, label: attr?.label, name: attr?.name })
     } else {
-      onChange?.({ fieldType, ...value, modelMetaId: null, type: null, label: "" })
+      onChange?.({ type: fieldType, ...value, modelMetaId: null, modelType: null, })
     }
 
   }, [entity?.attributes, fieldType, onChange, value])
