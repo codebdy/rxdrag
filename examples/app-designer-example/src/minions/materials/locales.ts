@@ -1,7 +1,7 @@
 export const entityActivityMaterialLocales = {
   "zh-CN": {
     entity: "实体",
-    queryEntities: "读取实体列表",
+    queryEntities: "读实体列表",
     queryOneEntity: "读取单实体",
     saveEntity: "保存实体",
     removeEntity: "删除实体",

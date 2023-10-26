@@ -2649,7 +2649,7 @@
       "nodes": [
         {
           "id": "906b86d6-0e91-480a-8918-32428ace28e1",
-          "label": "读取实体列表",
+          "label": "读实体列表",
           "type": "Activity",
           "activityName": "qurey-entities",
           "inPorts": [
