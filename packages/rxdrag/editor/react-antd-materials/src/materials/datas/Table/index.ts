@@ -78,13 +78,27 @@ export const TableMaterial: IMaterial = {
       {
         name: "onPageChange",
         label: "$onPageChange",
+        args: [
+          {
+            name: "currentPage",
+            label: "$currentPage",
+          },
+          {
+            name: "pageSize",
+            label: "$pageSize",
+          }
+        ]
       }
     ],
     reactions: [
       {
         name: "setDataSource",
         label: "$setDataSource",
-      }
+      },
+      {
+        name: "setPagination",
+        label: "$setPagination",
+      },
     ]
   }
 }

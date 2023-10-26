@@ -21,7 +21,6 @@
 
 import { memo, useCallback, useMemo, useState } from "react"
 import { Table as AntdTable, TablePaginationConfig } from "antd"
-import { IDataSource } from "../IDataSource"
 import { createId } from "@rxdrag/shared";
 import { ComponentView, useComponentSchema } from "@rxdrag/react-runner";
 import { ArrayField, ObjectField, useFieldValue } from "@rxdrag/react-fieldy";
@@ -62,8 +61,9 @@ export type TableProps = {
   header?: React.ReactElement,
   footer?: React.ReactElement,
   summary?: React.ReactElement,
-  dataSource?: IDataSource,
+  dataSource?: [],
   pagination?: false | 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight',
+  total?: number,
   pageSize?: number,
   currentPage?: number,
   rowKey?: string,
@@ -75,7 +75,18 @@ export type TableProps = {
 export const Table = memo((
   props: TableProps
 ) => {
-  const { header, footer, dataSource, pagination, summary, pageSize, rowKey = "id", onPageChange, currentPage, ...other } = props
+  const { header,
+    footer,
+    dataSource,
+    pagination,
+    summary,
+    rowKey = "id",
+    onPageChange,
+    total,
+    pageSize,
+    currentPage,
+    ...other
+  } = props
   const [id] = useState(createId())
   const nodeSchema = useComponentSchema()
 
@@ -99,7 +110,7 @@ export const Table = memo((
 
   const TableRow: React.FC<RowProps> = useMemo(() => (props) => {
     const { index, ...other } = props
-    const row = dataSource?.nodes?.[index]
+    const row = dataSource?.[index]
 
     return (
       index !== undefined
@@ -108,17 +119,17 @@ export const Table = memo((
         </ObjectField>
         : <tr {...other} />
     );
-  }, [dataSource?.nodes]);
+  }, [dataSource]);
 
   const handleChange = useCallback((pagination: TablePaginationConfig) => {
     onPageChange?.(pagination.current || 0, pagination.pageSize)
   }, [onPageChange])
 
   return (
-    <ArrayField name={id} value={dataSource?.nodes}>
+    <ArrayField name={id} value={dataSource}>
       <AntdTable
         columns={columns as any}
-        dataSource={dataSource?.nodes}
+        dataSource={dataSource}
         rowKey={rowKey}
         title={header && (() => header)}
         footer={footer && (() => footer)}
@@ -137,7 +148,7 @@ export const Table = memo((
               current: currentPage,
               position: pagination && [pagination],
               pageSize: pageSize,
-              total: dataSource?.total,
+              total: total,
             }
         }
         summary={() => {

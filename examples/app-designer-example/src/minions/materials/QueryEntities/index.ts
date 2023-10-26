@@ -26,16 +26,6 @@ export const queryEntitiesMaterial: IRxDragActivityMaterial<IEntityQueryConfig, 
       },
       {
         id: createId(),
-        name: QueryEntities.INPUT_NAME_PAGE,
-        label: "$pageNumber",
-      },
-      {
-        id: createId(),
-        name: QueryEntities.INPUT_PAGE_SIZE,
-        label: "$pageSize",
-      },
-      {
-        id: createId(),
         name: QueryEntities.INPUT_SORT,
         label: "$sortParams",
       },
@@ -48,8 +38,8 @@ export const queryEntitiesMaterial: IRxDragActivityMaterial<IEntityQueryConfig, 
       },
       {
         id: createId(),
-        name: QueryEntities.OUTPUT_TOTAL,
-        label: "$total",
+        name: QueryEntities.OUTPUT_PAGINATION,
+        label: "$pagination",
       },
       {
         id: createId(),

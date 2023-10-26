@@ -23,6 +23,7 @@ export const locales = {
       dataSource: "数据源",
       onPageChange: "分页变化",
       setDataSource: "设置数据源",
+      setPagination: "设置分页",
     }
 
   },
@@ -47,7 +48,8 @@ export const locales = {
       ...eventsLocales["en-US"],
       dataSource: "Dtata source",
       onPageChange: "onPageChange",
-      setDataSource: "setDataSource"
+      setDataSource: "setDataSource",
+      setPagination: "setPagination",
     }
   }
 }
@@ -58,18 +60,5 @@ export const resourceLocales = {
   },
   'en-US': {
     "Table": "Table",
-  }
-}
-
-export const controllerLocales = {
-  "zh-CN": {
-    "dataSource": "数据源",
-    "onPageChange": "分页变化",
-    "setDataSource": "设置数据源",
-  },
-  'en-US': {
-    "dataSource": "Datasource",
-    "onPageChange": "onPageChange",
-    "setDataSource": "setDataSource",
   }
 }
