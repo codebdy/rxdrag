@@ -27,3 +27,7 @@ export interface IEntityQueryConfig extends IEntityConfig {
   pollingTime?: number;
   queryParams?: IQureyEnitiyParam;
 }
+
+export interface IEntityListQueryConfig extends IEntityQueryConfig {
+  pageSize?: number,
+}

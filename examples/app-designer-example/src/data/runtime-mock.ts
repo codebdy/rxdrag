@@ -1,5 +1,5 @@
 export interface EntityInstance {
-  entityName: string,
+  entityId: string,
   id: string,
   [key: string]: unknown,
 }

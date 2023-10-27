@@ -36,6 +36,21 @@ export const querySchema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
+        label: "$pageSize",
+      },
+      children: [
+        {
+          componentName: "InputNumber",
+          "x-data": {
+            name: `config.pageSize`,
+            defaultValue: 10,
+          },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
         label: "$queryOnFocus",
       },
       children: [

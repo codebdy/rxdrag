@@ -27,6 +27,9 @@ export const locales = {
       setFilters: "过滤配置",
       setSorter: "排序配置",
       loading: "加载中",
+      paginationConfig: "分页配置",
+      filtersConfig: "过滤配置",
+      sorterConfig: "排序配置",
     }
 
   },
@@ -56,6 +59,9 @@ export const locales = {
       setFilters: "setFilters",
       setSorter: "setSorter",
       loading: "Loading",
+      paginationConfig: "paginationConfig",
+      filtersConfig: "filtersConfig",
+      sorterConfig: "sorterConfig",
     }
   }
 }

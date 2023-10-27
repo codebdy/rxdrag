@@ -73,6 +73,18 @@ export const TableMaterial: IMaterial = {
         name: "loading",
         label: "$loading"
       },
+      {
+        name: "pagination",
+        label: "$paginationConfig"
+      },
+      {
+        name: "filters",
+        label: "$filtersConfig"
+      },
+      {
+        name: "sorter",
+        label: "$sorterConfig"
+      },
     ],
     events: [
       {

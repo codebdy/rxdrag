@@ -119,9 +119,9 @@ export const Table = memo((
     );
   }, [dataSource]);
 
-  const handleChange = useCallback((pagination: TablePaginationConfig, filters: Record<string, FilterValue | null>, sorter: SorterResult<never> | SorterResult<never>[]) => {
-    //onPageChange?.(pagination.current || 0, pagination.pageSize)
-  }, [])
+  const handleChange = useCallback((paginationConfig: TablePaginationConfig, filters: Record<string, FilterValue | null>, sorter: SorterResult<never> | SorterResult<never>[]) => {
+    pagination?.onPageChange?.(paginationConfig.current || 0, paginationConfig.pageSize)
+  }, [pagination])
 
   return (
     <ArrayField name={id} value={dataSource}>
