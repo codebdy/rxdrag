@@ -16,12 +16,12 @@ export const queryEntitiesMaterial: IRxDragActivityMaterial<IEntityQueryConfig, 
     inPorts: [
       {
         id: createId(),
-        name: "input",
+        name: QueryEntities.INPUT_QUERY,
         label: "$query",
       },
       {
         id: createId(),
-        name: QueryEntities.INPUT_NAME_CONDITION_PARAMS,
+        name: QueryEntities.INPUT_CONDITION_PARAMS,
         label: "$conditionParams",
       },
       {

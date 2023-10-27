@@ -1,35 +1,30 @@
-import React, { memo, useCallback, useState } from "react"
+import React, { memo, useState } from "react"
 import { List as AntdList, ListProps } from "antd"
-import { IDataSource } from "../IDataSource"
 import { createId } from "@rxdrag/shared"
 import { ArrayField, ObjectField } from "@rxdrag/react-fieldy"
+import { IPaginationConfig } from "../interfaces"
 
 export type ListAddonProps = {
   renderItem?: React.ReactElement,
-  dataSource?: IDataSource,
-  pageSize?: number,
-  onPageChange?: (page: number, pageSize: number) => void
+  dataSource?: [],
+  pagination?: IPaginationConfig,
 }
 
 export const List = memo((props: ListProps<unknown> & ListAddonProps) => {
-  const { renderItem, dataSource, pageSize, pagination, onPageChange, ...other } = props
+  const { renderItem, dataSource, pagination, ...other } = props
   const [id] = useState(createId())
 
-  const handlePageChange = useCallback((page: number, pageSize: number) => {
-    onPageChange?.(page, pageSize)
-  }, [onPageChange])
-
   return (
-    <ArrayField name={id} value={dataSource?.nodes}>
+    <ArrayField name={id} value={dataSource}>
       <AntdList
-        dataSource={dataSource?.nodes}
+        dataSource={dataSource}
         pagination={
           pagination === false
             ? pagination
             : {
-              pageSize: pageSize,
-              total: dataSource?.total,
-              onChange: handlePageChange
+              pageSize: pagination?.pageSize,
+              total: pagination?.total,
+              onChange: pagination?.onPageChange
             }
         }
         renderItem={(_, index) => (

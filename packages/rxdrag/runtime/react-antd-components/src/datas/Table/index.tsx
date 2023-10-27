@@ -26,6 +26,7 @@ import { ComponentView, useComponentSchema } from "@rxdrag/react-runner";
 import { ArrayField, ObjectField, useFieldValue } from "@rxdrag/react-fieldy";
 import { IFieldMeta } from "@rxdrag/fieldy";
 import { FilterValue, SorterResult } from "antd/es/table/interface";
+import { IPaginationConfig } from "../interfaces";
 
 interface RowProps {
   index: number,
@@ -63,15 +64,11 @@ export type TableProps = {
   footer?: React.ReactElement,
   summary?: React.ReactElement,
   dataSource?: [],
-  pagination?: TablePaginationConfig,
+  pagination?: IPaginationConfig,
   paginationPosition?: false | 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight',
   filters?: Record<string, FilterValue | null>,//类型要改，附加事件
   sorter?: SorterResult<never>[],//类型要改，附加事件
-  //total?: number,
-  //pageSize?: number,
-  //currentPage?: number,
   rowKey?: string,
-  //onPageChange?: (currentPage: number, pageSize?: number) => void
 }
 
 // 本控件强依赖ComponentRender
@@ -86,10 +83,6 @@ export const Table = memo((
     paginationPosition,
     summary,
     rowKey = "id",
-    //onPageChange,
-    //total,
-    //pageSize,
-    //currentPage,
     ...other
   } = props
   const [id] = useState(createId())

@@ -5,7 +5,8 @@ import { IEntityQueryConfig } from "../common/IEntityQueryConfig"
 @Activity(QueryEntities.NAME)
 export class QueryEntities extends AbstractActivity<IEntityQueryConfig> {
   public static NAME = "qurey-entities"
-  public static INPUT_NAME_CONDITION_PARAMS = "condition_params"
+  public static INPUT_QUERY = "query"
+  public static INPUT_CONDITION_PARAMS = "condition_params"
   public static INPUT_SORT = "sort"
   public static OUTPUT_LIST = "list"
   public static OUTPUT_PAGINATION = "pagination"
@@ -19,8 +20,8 @@ export class QueryEntities extends AbstractActivity<IEntityQueryConfig> {
     super(meta)
   }
 
-  @Input()
-  inputHandler = (inputValue?: unknown, runContext?: object) => {
+  @Input(QueryEntities.INPUT_QUERY)
+  queryHandler = (inputValue?: unknown, runContext?: object) => {
     const portLoading = "loading"
     // this.next(true, runContext, portLoading)
     // if (this.meta.config?.isError) {
@@ -34,5 +35,15 @@ export class QueryEntities extends AbstractActivity<IEntityQueryConfig> {
     //     this.next(inputValue, runContext, "success")
     //   }, this.meta.config?.duration)
     // }
+  }
+
+  @Input(QueryEntities.INPUT_CONDITION_PARAMS)
+  conditionParamsHandler = (inputValue?: unknown, runContext?: object) => {
+    //
+  }
+
+  @Input(QueryEntities.INPUT_SORT)
+  sortParamsHandler = (inputValue?: unknown, runContext?: object) => {
+    //
   }
 }

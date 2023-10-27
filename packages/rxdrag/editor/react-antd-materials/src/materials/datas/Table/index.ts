@@ -69,6 +69,10 @@ export const TableMaterial: IMaterial = {
         name: "dataSource",
         label: "$dataSource"
       },
+      {
+        name: "loading",
+        label: "$loading"
+      },
     ],
     events: [
       {
