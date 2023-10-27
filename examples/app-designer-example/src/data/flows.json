@@ -2666,6 +2666,17 @@
             "nodeId": "e859aab2-2c37-495b-8667-a10fd9375567",
             "portId": "r1LKSglw"
           }
+        },
+        {
+          "id": "OxmQ884U",
+          "source": {
+            "nodeId": "ad863bfb-598e-4f27-8fc9-30bc5b267ee9",
+            "portId": "cnLUT5Hs"
+          },
+          "target": {
+            "nodeId": "9584934f-e17b-48c8-93cd-f31ffea6a397",
+            "portId": "hpThHurv"
+          }
         }
       ],
       "nodes": [
@@ -2870,6 +2881,28 @@
             "y": 160,
             "width": 116,
             "height": 32
+          }
+        },
+        {
+          "id": "ad863bfb-598e-4f27-8fc9-30bc5b267ee9",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "值变化",
+          "outPorts": [
+            {
+              "id": "cnLUT5Hs",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "LlRDj22u",
+            "name": "onChange"
+          },
+          "x6Node": {
+            "x": -90,
+            "y": 130,
+            "width": 116,
+            "height": 48
           }
         }
       ]
