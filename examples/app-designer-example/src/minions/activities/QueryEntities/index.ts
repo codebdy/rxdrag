@@ -30,6 +30,7 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
     super(meta)
     this.fetcher = new EntityFetcher(this.config?.entityId)
     this.pageSize = this.config?.pageSize
+    this.fetcher.subscribeToEntitySaved(this.revalidate)
   }
 
   @Input(QueryEntities.INPUT_QUERY)
@@ -42,7 +43,12 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
   @Input(QueryEntities.INPUT_CONDITION_PARAMS)
   conditionParamsHandler = (inputValue?: unknown, runContext?: object) => {
     this.runContext = { ...this.runContext, ...runContext }
-    this.conditionParams = inputValue as Record<string, unknown> | undefined
+    if (this.conditionParams !== inputValue) {
+      this.conditionParams = inputValue as Record<string, unknown> | undefined
+      if (this.started) {
+        this.triggerFetch(true)
+      }
+    }
   }
 
   @Input(QueryEntities.INPUT_SORT)
@@ -72,9 +78,16 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
     }
   }
 
-  doFetch = (isRefetch?: boolean) => {
-    this.next(true, this.runContext, QueryEntities.OUTPUT_LOADING)
-    this.fetcher.multiFetch().then(data => {
+  revalidate = () => {
+    this.doFetch(true, true)
+  }
+
+  doFetch = (isRefetch?: boolean, revalidating?: boolean) => {
+    if (!revalidating) {
+      this.next(true, this.runContext, QueryEntities.OUTPUT_LOADING)
+    }
+
+    this.fetcher.multiFetch(this.sortParams, this.current, this.pageSize).then(data => {
       this.next(data?.data, this.runContext, QueryEntities.OUTPUT_LIST)
       if (!isRefetch) {
         this.next(undefined, this.runContext, QueryEntities.OUTPUT_SUCCESS)
@@ -92,7 +105,15 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
     }).catch((err) => {
       this.next(err, this.runContext, QueryEntities.OUTPUT_FAILURE)
     }).finally(() => {
-      this.next(false, this.runContext, QueryEntities.OUTPUT_LOADING)
+      if (!revalidating) {
+        this.next(false, this.runContext, QueryEntities.OUTPUT_LOADING)
+      }
     })
+  }
+
+  destroy = () => {
+    super.destroy()
+    this.fetcher.unscrbe(this.revalidate)
+    this.fetcher.destory()
   }
 }
