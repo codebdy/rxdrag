@@ -25,6 +25,7 @@ import { createId } from "@rxdrag/shared";
 import { ComponentView, useComponentSchema } from "@rxdrag/react-runner";
 import { ArrayField, ObjectField, useFieldValue } from "@rxdrag/react-fieldy";
 import { IFieldMeta } from "@rxdrag/fieldy";
+import { FilterValue, SorterResult } from "antd/es/table/interface";
 
 interface RowProps {
   index: number,
@@ -62,12 +63,15 @@ export type TableProps = {
   footer?: React.ReactElement,
   summary?: React.ReactElement,
   dataSource?: [],
-  pagination?: false | 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight',
-  total?: number,
-  pageSize?: number,
-  currentPage?: number,
+  pagination?: TablePaginationConfig,
+  paginationPosition?: false | 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight',
+  filters?: Record<string, FilterValue | null>,//类型要改，附加事件
+  sorter?: SorterResult<never>[],//类型要改，附加事件
+  //total?: number,
+  //pageSize?: number,
+  //currentPage?: number,
   rowKey?: string,
-  onPageChange?: (currentPage: number, pageSize?: number) => void
+  //onPageChange?: (currentPage: number, pageSize?: number) => void
 }
 
 // 本控件强依赖ComponentRender
@@ -79,12 +83,13 @@ export const Table = memo((
     footer,
     dataSource,
     pagination,
+    paginationPosition,
     summary,
     rowKey = "id",
-    onPageChange,
-    total,
-    pageSize,
-    currentPage,
+    //onPageChange,
+    //total,
+    //pageSize,
+    //currentPage,
     ...other
   } = props
   const [id] = useState(createId())
@@ -121,9 +126,9 @@ export const Table = memo((
     );
   }, [dataSource]);
 
-  const handleChange = useCallback((pagination: TablePaginationConfig) => {
-    onPageChange?.(pagination.current || 0, pagination.pageSize)
-  }, [onPageChange])
+  const handleChange = useCallback((pagination: TablePaginationConfig, filters: Record<string, FilterValue | null>, sorter: SorterResult<never> | SorterResult<never>[]) => {
+    //onPageChange?.(pagination.current || 0, pagination.pageSize)
+  }, [])
 
   return (
     <ArrayField name={id} value={dataSource}>
@@ -142,13 +147,11 @@ export const Table = memo((
         }}
 
         pagination={
-          pagination === false
-            ? pagination
+          paginationPosition === false
+            ? paginationPosition
             : {
-              current: currentPage,
-              position: pagination && [pagination],
-              pageSize: pageSize,
-              total: total,
+              ...pagination,
+              position: paginationPosition && [paginationPosition],
             }
         }
         summary={() => {

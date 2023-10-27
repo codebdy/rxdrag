@@ -2613,21 +2613,21 @@
     "metas": {
       "lines": [
         {
-          "id": "BiL7sNbM",
+          "id": "wfVycOur",
           "source": {
             "nodeId": "68aac946-0b60-4e15-be2d-5bb73263dc9d",
             "portId": "tAH0Hy9G"
           },
           "target": {
-            "nodeId": "906b86d6-0e91-480a-8918-32428ace28e1",
-            "portId": "BISotCEz"
+            "nodeId": "9584934f-e17b-48c8-93cd-f31ffea6a397",
+            "portId": "w-PlzGYc"
           }
         },
         {
-          "id": "tZi0gBgM",
+          "id": "HQG80ggJ",
           "source": {
-            "nodeId": "906b86d6-0e91-480a-8918-32428ace28e1",
-            "portId": "h9zs4FGN"
+            "nodeId": "9584934f-e17b-48c8-93cd-f31ffea6a397",
+            "portId": "qIY8mq-J"
           },
           "target": {
             "nodeId": "df951fc2-264c-4633-b201-8398102f8d86",
@@ -2635,77 +2635,40 @@
           }
         },
         {
-          "id": "QxyuxsJZ",
+          "id": "MZHH2aOj",
           "source": {
-            "nodeId": "906b86d6-0e91-480a-8918-32428ace28e1",
-            "portId": "SuNCPkNe"
+            "nodeId": "9584934f-e17b-48c8-93cd-f31ffea6a397",
+            "portId": "Okmntr_m"
           },
           "target": {
             "nodeId": "72b6bd77-76d1-4db5-8ac5-37d1df529241",
             "portId": "5q8UgDvn"
           }
+        },
+        {
+          "id": "XY7t0ckG",
+          "source": {
+            "nodeId": "9584934f-e17b-48c8-93cd-f31ffea6a397",
+            "portId": "dfcPJZVO"
+          },
+          "target": {
+            "nodeId": "b001bdf3-ebfc-44cb-a7ae-917afe488e61",
+            "portId": "G6CnrSJ_"
+          }
+        },
+        {
+          "id": "EieAOSKo",
+          "source": {
+            "nodeId": "9584934f-e17b-48c8-93cd-f31ffea6a397",
+            "portId": "j_Stx0WW"
+          },
+          "target": {
+            "nodeId": "e859aab2-2c37-495b-8667-a10fd9375567",
+            "portId": "r1LKSglw"
+          }
         }
       ],
       "nodes": [
-        {
-          "id": "906b86d6-0e91-480a-8918-32428ace28e1",
-          "label": "读实体列表",
-          "type": "Activity",
-          "activityName": "qurey-entities",
-          "inPorts": [
-            {
-              "id": "BISotCEz",
-              "name": "input",
-              "label": "查询"
-            },
-            {
-              "id": "IAdkIZYn",
-              "name": "condition_params",
-              "label": "条件参数"
-            },
-            {
-              "id": "Jliife36",
-              "name": "sort",
-              "label": "排序参数"
-            }
-          ],
-          "outPorts": [
-            {
-              "id": "h9zs4FGN",
-              "name": "list",
-              "label": "数据列表"
-            },
-            {
-              "id": "SuNCPkNe",
-              "name": "pagination",
-              "label": "分页"
-            },
-            {
-              "id": "VaI_hMhZ",
-              "name": "success",
-              "label": "成功"
-            },
-            {
-              "id": "D__jCRly",
-              "name": "failure",
-              "label": "失败"
-            },
-            {
-              "id": "mL6a3-pq",
-              "name": "loading",
-              "label": "加载中"
-            }
-          ],
-          "config": {
-            "entityId": "QksZdA-8"
-          },
-          "x6Node": {
-            "x": 140,
-            "y": 50,
-            "width": 144,
-            "height": 96
-          }
-        },
         {
           "id": "68aac946-0b60-4e15-be2d-5bb73263dc9d",
           "type": "Activity",
@@ -2726,6 +2689,75 @@
             "y": -10,
             "width": 116,
             "height": 48
+          }
+        },
+        {
+          "id": "9584934f-e17b-48c8-93cd-f31ffea6a397",
+          "label": "读实体列表",
+          "type": "Activity",
+          "activityName": "qurey-entities",
+          "inPorts": [
+            {
+              "id": "w-PlzGYc",
+              "name": "input",
+              "label": "查询"
+            },
+            {
+              "id": "hpThHurv",
+              "name": "condition_params",
+              "label": "条件参数"
+            },
+            {
+              "id": "TA0lBE0j",
+              "name": "sort",
+              "label": "排序参数"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "qIY8mq-J",
+              "name": "list",
+              "label": "数据列表"
+            },
+            {
+              "id": "Okmntr_m",
+              "name": "pagination",
+              "label": "分页"
+            },
+            {
+              "id": "dfcPJZVO",
+              "name": "sorter",
+              "label": "排序"
+            },
+            {
+              "id": "j_Stx0WW",
+              "name": "filters",
+              "label": "过滤"
+            },
+            {
+              "id": "KS7YcYNI",
+              "name": "success",
+              "label": "成功"
+            },
+            {
+              "id": "Cyul3XTy",
+              "name": "failure",
+              "label": "失败"
+            },
+            {
+              "id": "-F9lQivO",
+              "name": "loading",
+              "label": "加载中"
+            }
+          ],
+          "config": {
+            "entityId": "QksZdA-8"
+          },
+          "x6Node": {
+            "x": 140,
+            "y": 40,
+            "width": 130,
+            "height": 128
           }
         },
         {
@@ -2750,8 +2782,8 @@
             "controllerId": "JClydKG7"
           },
           "x6Node": {
-            "x": 440,
-            "y": 20,
+            "x": 450,
+            "y": 10,
             "width": 116,
             "height": 32
           }
@@ -2764,7 +2796,7 @@
             {
               "id": "5q8UgDvn",
               "name": "setPagination",
-              "label": "设置分页"
+              "label": "分页配置"
             }
           ],
           "outPorts": [
@@ -2778,8 +2810,64 @@
             "controllerId": "JClydKG7"
           },
           "x6Node": {
-            "x": 440,
-            "y": 80,
+            "x": 450,
+            "y": 60,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "b001bdf3-ebfc-44cb-a7ae-917afe488e61",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "G6CnrSJ_",
+              "name": "setSorter",
+              "label": "排序配置"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "2LmJETu6",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "JClydKG7"
+          },
+          "x6Node": {
+            "x": 450,
+            "y": 110,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "e859aab2-2c37-495b-8667-a10fd9375567",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "r1LKSglw",
+              "name": "setFilters",
+              "label": "过滤配置"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "Rw3oiZs8",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "JClydKG7"
+          },
+          "x6Node": {
+            "x": 450,
+            "y": 160,
             "width": 116,
             "height": 32
           }

@@ -23,7 +23,9 @@ export const locales = {
       dataSource: "数据源",
       onPageChange: "分页变化",
       setDataSource: "设置数据源",
-      setPagination: "设置分页",
+      setPagination: "分页配置",
+      setFilters:"过滤配置",
+      setSorter:"排序配置",
     }
 
   },
@@ -50,6 +52,8 @@ export const locales = {
       onPageChange: "onPageChange",
       setDataSource: "setDataSource",
       setPagination: "setPagination",
+      setFilters:"setFilters",
+      setSorter:"setSorter",
     }
   }
 }

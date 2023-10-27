@@ -43,6 +43,16 @@ export const queryEntitiesMaterial: IRxDragActivityMaterial<IEntityQueryConfig, 
       },
       {
         id: createId(),
+        name: QueryEntities.OUTPUT_SORTER,
+        label: "$sorter",
+      },
+      {
+        id: createId(),
+        name: QueryEntities.OUTPUT_FILTERS,
+        label: "$filters",
+      },
+      {
+        id: createId(),
         name: QueryEntities.OUTPUT_SUCCESS,
         label: "$success",
       },

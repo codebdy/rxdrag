@@ -9,6 +9,8 @@ export class QueryEntities extends AbstractActivity<IEntityQueryConfig> {
   public static INPUT_SORT = "sort"
   public static OUTPUT_LIST = "list"
   public static OUTPUT_PAGINATION = "pagination"
+  public static OUTPUT_FILTERS = "filters"
+  public static OUTPUT_SORTER = "sorter"
   public static OUTPUT_SUCCESS = "success"
   public static OUTPUT_FAILURE = "failure"
   public static OUTPUT_LOADING = "loading"

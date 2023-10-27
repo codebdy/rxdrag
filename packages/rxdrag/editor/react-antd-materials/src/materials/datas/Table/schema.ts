@@ -78,8 +78,8 @@ const options: SchemaOptions = {
         defaultValue: "bottomRight",
       },
       "x-data": {
-        name: "pagination",
-        label: "$pagination",
+        name: "paginationPosition",
+        label: "$paginationPosition",
       }
     },
   ],

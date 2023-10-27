@@ -99,6 +99,14 @@ export const TableMaterial: IMaterial = {
         name: "setPagination",
         label: "$setPagination",
       },
+      {
+        name: "setSorter",
+        label: "$setSorter",
+      },
+      {
+        name: "setFilters",
+        label: "$setFilters",
+      },
     ]
   }
 }
