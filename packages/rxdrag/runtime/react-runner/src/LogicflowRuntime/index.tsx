@@ -17,6 +17,7 @@ export type LogicFlowOptions = {
   variables?: IVariable[],
   logicDefines?: LogicDefines,
   expVariables?: Record<string, unknown>,
+  context?: unknown,
 }
 
 export const LogicflowRuntime = memo((props: {
@@ -25,7 +26,7 @@ export const LogicflowRuntime = memo((props: {
   loopRow?: unknown,
   loopIndex?: number,
 } & LogicFlowOptions) => {
-  const { children, schema, ownerId, reactions, variables, loopRow, loopIndex, logicDefines, expVariables } = props
+  const { children, schema, ownerId, reactions, variables, loopRow, loopIndex, logicDefines, expVariables, context } = props
 
   const loopScope: ILoopScope = useMemo(() => {
     return {
@@ -69,7 +70,7 @@ export const LogicflowRuntime = memo((props: {
     }
   }, [])
 
-  const logicFlowContext = useLogicFlowContext(controllerEngine);
+  const logicFlowContext = useLogicFlowContext(controllerEngine, context);
 
   useEffect(() => {
     if (controllerEngine?.controllers) {

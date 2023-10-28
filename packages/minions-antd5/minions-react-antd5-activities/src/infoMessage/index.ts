@@ -1,6 +1,6 @@
 import { Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime";
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { message } from "antd";
+import { IReactAntdContext } from "../contexts";
 
 export enum MessageType {
   Success = "success",
@@ -16,10 +16,10 @@ export interface IInfoMessageConfig {
 }
 
 @Activity(InfoMessage.NAME)
-export class InfoMessage extends AbstractActivity<IInfoMessageConfig> {
+export class InfoMessage extends AbstractActivity<IInfoMessageConfig, IReactAntdContext> {
   public static NAME = "system-react-antd5.message";
-  constructor(meta: INodeDefine<IInfoMessageConfig>) {
-    super(meta)
+  constructor(meta: INodeDefine<IInfoMessageConfig>, context?: IReactAntdContext) {
+    super(meta, context)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("Debug inputs count error")
@@ -30,24 +30,25 @@ export class InfoMessage extends AbstractActivity<IInfoMessageConfig> {
   @Input()
   inputHandler = (inputValue?: string | Error) => {
     const msg = inputValue
+    const { messageApi } = this.context
     switch (this.meta.config?.type) {
       case MessageType.Success:
-        message.success(msg as string, this.meta.config?.duration)
+        messageApi?.success(msg as string, this.meta.config?.duration)
         break;
       case MessageType.Error:
-        inputValue && message.error((inputValue as Error)?.message, this.meta.config?.duration)
+        inputValue && messageApi?.error((inputValue as Error)?.message, this.meta.config?.duration)
         break;
       case MessageType.Info:
-        message.info(msg as string, this.meta.config?.duration)
+        messageApi?.info(msg as string, this.meta.config?.duration)
         break;
       case MessageType.Warning:
-        message.warning(msg as string, this.meta.config?.duration)
+        messageApi.warning(msg as string, this.meta.config?.duration)
         break;
       case MessageType.Loading:
-        message.loading(msg as string, this.meta.config?.duration)
+        messageApi?.loading(msg as string, this.meta.config?.duration)
         break;
       default:
-        message.info(msg as string, this.meta.config?.duration)
+        messageApi?.info(msg as string, this.meta.config?.duration)
         break;
     }
   }

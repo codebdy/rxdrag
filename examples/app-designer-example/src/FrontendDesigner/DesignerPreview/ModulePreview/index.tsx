@@ -6,6 +6,7 @@ import { frameMaterilas } from "../../UiFrameDesigner/materials";
 import { ComponentRender } from "@rxdrag/react-runner";
 import { PagePreview } from "./PagePreview";
 import { useParams } from "react-router-dom";
+import { message } from "antd";
 
 export const ModulePreview = memo((
   props: {
@@ -14,7 +15,7 @@ export const ModulePreview = memo((
 ) => {
   const { frameSchema } = props;
   const { device = "" } = useParams()
-
+  const [messageApi, contextHolder] = message.useMessage();
   const frameComponents = useMemo(() => {
     const materials = frameMaterilas[device]
     const coms: IReactComponents = {}
@@ -32,10 +33,22 @@ export const ModulePreview = memo((
     }
     return coms
   }, [device])
+
+  const context = useMemo(() => {
+    return {
+      messageApi
+    }
+  }, [messageApi])
+
+  
   return (
-    <ComponentRender
-      components={frameComponents}
-      schema={frameSchema}
-    />
+    <>
+      {contextHolder}
+      <ComponentRender
+        components={frameComponents}
+        schema={frameSchema}
+        logicflowOptions={{ context }}
+      />
+    </>
   )
 })

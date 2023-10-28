@@ -7,7 +7,7 @@ import { ControllerEngine } from "../LogicflowRuntime/ControllerEngine";
 
 export type MergedLogicFlowContext = IReactContext & IVariableContext & IFxContext & ILoopScopeContext &IExpContext
 
-export function useLogicFlowContext(engine: ControllerEngine | null) {
+export function useLogicFlowContext(engine: ControllerEngine | null, context:any) {
   const navigate = useNavigate()
   const form = useForm()
   const urlParams = useParams()
@@ -20,8 +20,9 @@ export function useLogicFlowContext(engine: ControllerEngine | null) {
     variableController: engine?.variableController,
     fxMetas: engine?.logicDefines?.fxFlows,
     loopScope: engine?.loopScope,
+    ...context
     
-  }), [engine, form, navigate, urlParams])
+  }), [context, engine?.controllers, engine?.logicDefines?.fxFlows, engine?.loopScope, engine?.reactions, engine?.variableController, form, navigate, urlParams])
 
   return logicFlowContext
 }
