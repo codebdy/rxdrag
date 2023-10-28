@@ -3023,5 +3023,159 @@
     "ownerId": "JClydKG7",
     "moduleId": "users",
     "type": "normal"
+  },
+  {
+    "id": "zYbckTOj",
+    "name": "新建用户",
+    "ownerId": "users",
+    "moduleId": "users",
+    "type": "normal",
+    "metas": {
+      "lines": [
+        {
+          "id": "SY28SKOl",
+          "source": {
+            "nodeId": "fc673acb-8b83-49f5-ab5f-43bc5a12db16",
+            "portId": "Qs1vaZXz"
+          },
+          "target": {
+            "nodeId": "705be7d1-cd2c-41b3-a173-133a8a2d1974",
+            "portId": "VGL_uHze"
+          }
+        },
+        {
+          "id": "E9PH8S1Q",
+          "source": {
+            "nodeId": "fc673acb-8b83-49f5-ab5f-43bc5a12db16",
+            "portId": "Qs1vaZXz"
+          },
+          "target": {
+            "nodeId": "a6aa1abb-5d3c-4158-98b3-afa4765664e4",
+            "portId": "RT4fyhcK"
+          }
+        },
+        {
+          "id": "pi-qogns",
+          "source": {
+            "nodeId": "a6aa1abb-5d3c-4158-98b3-afa4765664e4",
+            "portId": "ONfKJ5oI"
+          },
+          "target": {
+            "nodeId": "699a1232-b6f6-4ac4-b78b-cdd237767b92",
+            "portId": "bJvazgDP"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "fc673acb-8b83-49f5-ab5f-43bc5a12db16",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "点击",
+          "outPorts": [
+            {
+              "id": "Qs1vaZXz",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "ezfaFJec",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": -50,
+            "y": 110,
+            "width": 88,
+            "height": 48
+          }
+        },
+        {
+          "id": "705be7d1-cd2c-41b3-a173-133a8a2d1974",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "VGL_uHze",
+              "name": "open",
+              "label": "打开"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "TVvkW1H3",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "palKh10y"
+          },
+          "x6Node": {
+            "x": 150,
+            "y": 80,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "a6aa1abb-5d3c-4158-98b3-afa4765664e4",
+          "label": "常量",
+          "type": "Activity",
+          "activityName": "system.constValue",
+          "inPorts": [
+            {
+              "id": "RT4fyhcK",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "ONfKJ5oI",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "value": "新建用户"
+          },
+          "x6Node": {
+            "x": 110,
+            "y": 170,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "699a1232-b6f6-4ac4-b78b-cdd237767b92",
+          "type": "Activity",
+          "activityName": "system-react.setProp",
+          "inPorts": [
+            {
+              "id": "bJvazgDP",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "U2L61_xb",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "MkFfELRK",
+            "prop": "value"
+          },
+          "x6Node": {
+            "x": 280,
+            "y": 170,
+            "width": 130,
+            "height": 48
+          }
+        }
+      ]
+    }
   }
 ]

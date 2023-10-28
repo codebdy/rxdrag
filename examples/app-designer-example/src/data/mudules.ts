@@ -5,6 +5,7 @@ import mole from "./molepage.json"
 import moleSetting from "./molesettings.json"
 import userList from "./userList.json"
 import expression from "./expression.json"
+import editUser from "./edituser.json"
 
 const rootNodeSchema: INodeSchema = {
   componentName: "Page"
@@ -25,9 +26,7 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         {
           id: "user-edit",
           title: "编辑对话框",
-          schema: {
-            componentName: "Dialog"
-          },
+          schema: editUser,
         }
       ],
     },
