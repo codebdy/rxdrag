@@ -16,6 +16,11 @@
             "type": "default",
             "title": "取消"
           },
+          "x-controller": {
+            "id": "XlxrxRmt",
+            "enable": true,
+            "name": "取消按钮"
+          },
           "slots": {},
           "children": []
         },
@@ -24,6 +29,11 @@
           "props": {
             "type": "primary",
             "title": "确定"
+          },
+          "x-controller": {
+            "id": "-gnwSjWM",
+            "enable": true,
+            "name": "确定按钮"
           },
           "slots": {},
           "children": []

@@ -65,6 +65,10 @@ export const FormMaterial: IMaterial = {
       {
         name: "setValue",
         label: "$setValue"
+      },
+      {
+        name: "reset",
+        label: "$reset"
       }
     ]
   }

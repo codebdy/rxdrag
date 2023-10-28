@@ -13,3 +13,7 @@ export const setValue: ControllerReaction = (controller: IController, inputValue
   controller.setProp("value", inputValue)
   return inputValue
 }
+
+export const reset: ControllerReaction = (controller: IController) => {
+  return controller.fieldyNode?.reset()
+}

@@ -23,6 +23,7 @@ export const formLocales = {
       ...sizeLocales["zh-CN"],
       ...filedyLocales["zh-CN"],
       ...fieldDisplayLocales["zh-CN"],
+      reset: "重置",
     }
 
   },
@@ -46,6 +47,7 @@ export const formLocales = {
       ...sizeLocales["en-US"],
       ...filedyLocales["en-US"],
       ...fieldDisplayLocales["en-US"],
+      reset: "Reset"
     }
   }
 }
