@@ -3141,6 +3141,17 @@
             "nodeId": "2d613593-be1d-4799-b7da-d6cdfc47c55a",
             "portId": "JcbrEY07"
           }
+        },
+        {
+          "id": "eEzxC7VK",
+          "source": {
+            "nodeId": "f1b1dd89-abf6-4e55-a4bb-25751f9ad54e",
+            "portId": "SbEb2_N-"
+          },
+          "target": {
+            "nodeId": "3d8a8835-2329-41e7-b57a-f5f77aa2233b",
+            "portId": "i9jEvtUD"
+          }
         }
       ],
       "nodes": [
@@ -3498,6 +3509,34 @@
           "x6Node": {
             "x": 160,
             "y": 280,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "3d8a8835-2329-41e7-b57a-f5f77aa2233b",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "i9jEvtUD",
+              "name": "reset",
+              "label": "重置"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "eX16atxW",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "nepX8Hq4"
+          },
+          "x6Node": {
+            "x": 760,
+            "y": 410,
             "width": 116,
             "height": 32
           }
