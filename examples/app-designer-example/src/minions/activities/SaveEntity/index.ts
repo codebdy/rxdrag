@@ -22,7 +22,7 @@ export class SaveEntity extends AbstractActivity<IEntityConfig> {
     this.next(true, runContext, SaveEntity.OUTPUT_LOADING)
     this.fetcher.saveOne(inputValue).then((data) => {
       this.next(data, runContext, SaveEntity.OUTPUT_ENTITY)
-      this.next(undefined, runContext, SaveEntity.OUTPUT_SUCCESS)
+      this.next("success", runContext, SaveEntity.OUTPUT_SUCCESS)
     }).catch((err) => {
       this.next(err, runContext, SaveEntity.OUTPUT_FAILURE)
     }).finally(() => {

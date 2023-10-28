@@ -17,7 +17,7 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
   public static OUTPUT_FAILURE = "failure"
   public static OUTPUT_LOADING = "loading"
 
-  private current = 0;
+  private current = 1;
   private pageSize?: number;
   private waitingToFetch?: boolean;
   private started?: boolean;
@@ -90,7 +90,7 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
     this.fetcher.multiFetch(this.sortParams, this.current, this.pageSize).then(data => {
       this.next(data?.data, this.runContext, QueryEntities.OUTPUT_LIST)
       if (!isRefetch) {
-        this.next(undefined, this.runContext, QueryEntities.OUTPUT_SUCCESS)
+        this.next("success", this.runContext, QueryEntities.OUTPUT_SUCCESS)
       }
 
       this.next(

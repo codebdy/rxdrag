@@ -30,7 +30,7 @@ export class InfoMessage extends AbstractActivity<IInfoMessageConfig, IReactAntd
   @Input()
   inputHandler = (inputValue?: string | Error) => {
     const msg = inputValue
-    const { messageApi } = this.context
+    const { messageApi } = this.context || {}
     switch (this.meta.config?.type) {
       case MessageType.Success:
         messageApi?.success(msg as string, this.meta.config?.duration)
@@ -42,7 +42,7 @@ export class InfoMessage extends AbstractActivity<IInfoMessageConfig, IReactAntd
         messageApi?.info(msg as string, this.meta.config?.duration)
         break;
       case MessageType.Warning:
-        messageApi.warning(msg as string, this.meta.config?.duration)
+        messageApi?.warning(msg as string, this.meta.config?.duration)
         break;
       case MessageType.Loading:
         messageApi?.loading(msg as string, this.meta.config?.duration)

@@ -24,7 +24,7 @@ export class EntityFetcher {
       setTimeout(() => {
         const instances = allDatas?.filter(ins => this.entityId && ins.entityId === this.entityId)
         if (pageSize) {
-          const data = instances.slice((pageNumber || 0) * pageSize, (((pageNumber || 0) + 1) * pageSize - 1))
+          const data = instances.slice(((pageNumber || 1) - 1) * pageSize, ((pageNumber || 1) * pageSize - 1))
           resolve({ total: instances.length, data })
         } else {
           resolve({ total: instances.length, data: instances })

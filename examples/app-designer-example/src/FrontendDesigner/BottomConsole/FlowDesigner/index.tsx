@@ -1,6 +1,6 @@
 import { ReactNode, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
-import { Button, Spin, Tooltip, message, theme } from "antd"
+import { Button, Spin, Tooltip, theme } from "antd"
 import { FunctionOutlined, ControlOutlined, CloseOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons"
 import { FXes } from "./FXes"
 import { Flows } from "./Flows"
@@ -29,7 +29,6 @@ import { entityActivityMaterialLocales } from "../../../minions/materials/locale
 import { ModelTree } from "./ModelTree"
 import { IEntitiesContext } from "../../../minions/contexts"
 import { useEntities } from "../../hooks/useEntities"
-import { IReactContext } from "@rxdrag/minions-runtime-react"
 
 const Content = styled.div`
   flex: 1;
@@ -115,7 +114,6 @@ export const FlowDesigner = memo(() => {
     setSelectedFolw(undefined)
     setSelectedFx(id)
   }, [])
-  const [messageApi, contextHolder] = message.useMessage();
 
   const logicFlowContextParam: LogicflowContextParam & IEntitiesContext = useMemo(() => ({
     engine,
@@ -266,7 +264,6 @@ export const FlowDesigner = memo(() => {
           />
         </LeftColumn>
         <Content>
-          {contextHolder}
           {
             (selectedFlow || selectedFx) &&
             <FlowEditor
