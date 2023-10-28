@@ -1,10 +1,7 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
 import { IEntityConfig } from "../common/IEntityConfig"
-
-// export interface ISaveEntityConfig extends IEntityConfig {
-
-// }
+import { EntityFetcher } from "../../../data/EntityFetcher"
 
 @Activity(SaveEntity.NAME)
 export class SaveEntity extends AbstractActivity<IEntityConfig> {
@@ -13,25 +10,28 @@ export class SaveEntity extends AbstractActivity<IEntityConfig> {
   public static OUTPUT_SUCCESS = "success"
   public static OUTPUT_FAILURE = "failure"
   public static OUTPUT_LOADING = "loading"
+  private fetcher: EntityFetcher
 
   constructor(meta: INodeDefine<IEntityConfig>) {
     super(meta)
+    this.fetcher = new EntityFetcher(this.config?.entityId)
   }
 
   @Input()
   inputHandler = (inputValue?: unknown, runContext?: object) => {
-    const portLoading = "loading"
-    // this.next(true, runContext, portLoading)
-    // if (this.meta.config?.isError) {
-    //   setTimeout(() => {
-    //     this.next(false, runContext, portLoading)
-    //     this.next("Read data error", runContext, "error")
-    //   }, this.meta.config.duration)
-    // } else {
-    //   setTimeout(() => {
-    //     this.next(false, runContext, portLoading)
-    //     this.next(inputValue, runContext, "success")
-    //   }, this.meta.config?.duration)
-    // }
+    this.next(true, runContext, SaveEntity.OUTPUT_LOADING)
+    this.fetcher.saveOne(inputValue).then((data) => {
+      this.next(data, runContext, SaveEntity.OUTPUT_ENTITY)
+      this.next(undefined, runContext, SaveEntity.OUTPUT_SUCCESS)
+    }).catch((err) => {
+      this.next(err, runContext, SaveEntity.OUTPUT_FAILURE)
+    }).finally(() => {
+      this.next(false, runContext, SaveEntity.OUTPUT_LOADING)
+    })
+  }
+
+  destroy = () => {
+    this.fetcher.destory()
+    super.destroy()
   }
 }

@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { createId } from "@rxdrag/shared";
 import { ISort } from "../minions/activities/common/IEntityQueryConfig";
 import { EntityInstance, allDatas } from "./runtime-mock";
+import { EVENT_DATA_CHANGED, off, on, trigger } from "../hooks/events";
 
 export interface IListData {
   data?: EntityInstance[],
@@ -11,7 +14,10 @@ export type UnListener = () => void
 
 export class EntityFetcher {
   private listeners: EntitySavedListener[] = []
-  constructor(private entityId?: string) { }
+  constructor(private entityId?: string) {
+    on(EVENT_DATA_CHANGED, this.handleEnvent as any);
+  }
+
 
   public multiFetch(sorts: ISort[] | undefined, pageNumber: number | undefined, pageSize: number | undefined): Promise<IListData | undefined> {
     return new Promise((resolve, reject) => {
@@ -27,6 +33,20 @@ export class EntityFetcher {
     })
   }
 
+  public saveOne(obj: any): Promise<any | undefined> {
+    return new Promise((resolve, reject) => {
+      const entityId = this.entityId
+      if (entityId) {
+        setTimeout(() => {
+          const newObj = { ...obj, entityId: entityId, id: obj?.["id"] ?? createId() }
+          allDatas.push(newObj)
+          resolve(newObj)
+          trigger(EVENT_DATA_CHANGED, entityId)
+        }, 300)
+      }
+    })
+  }
+
   subscribeToEntitySaved(listener: EntitySavedListener): UnListener {
     this.listeners.push(listener)
     return () => {
@@ -38,7 +58,15 @@ export class EntityFetcher {
     this.listeners.splice(this.listeners.indexOf(listener), 1)
   }
 
-  destory=()=>{
-    //
+  private handleEnvent = (event: CustomEvent) => {
+    if (event.detail === this.entityId) {
+      for (const listener of this.listeners) {
+        listener()
+      }
+    }
+  }
+
+  destory = () => {
+    off(EVENT_DATA_CHANGED, this.handleEnvent as any);
   }
 }
