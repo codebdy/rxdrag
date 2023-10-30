@@ -3332,6 +3332,17 @@
             "nodeId": "3d8a8835-2329-41e7-b57a-f5f77aa2233b",
             "portId": "i9jEvtUD"
           }
+        },
+        {
+          "id": "GV7xtVSE",
+          "source": {
+            "nodeId": "bb03ad74-cce2-4561-b039-082410c98b15",
+            "portId": "1x6B6wUo"
+          },
+          "target": {
+            "nodeId": "88a7657d-0dae-46e7-be07-ed5ae0a940c4",
+            "portId": "ETfIFPTX"
+          }
         }
       ],
       "nodes": [
@@ -3718,6 +3729,29 @@
             "x": 760,
             "y": 410,
             "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "88a7657d-0dae-46e7-be07-ed5ae0a940c4",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "ETfIFPTX",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "表单取值"
+          },
+          "x6Node": {
+            "x": 340,
+            "y": 510,
+            "width": 88,
             "height": 32
           }
         }

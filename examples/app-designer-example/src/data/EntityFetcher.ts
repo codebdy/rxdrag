@@ -39,7 +39,11 @@ export class EntityFetcher {
       if (entityId) {
         setTimeout(() => {
           const newObj = { ...obj, entityId: entityId, id: obj?.["id"] ?? createId() }
-          allDatas.push(newObj)
+          if (obj?.["id"]) {
+            allDatas.splice(allDatas.findIndex(value => value.id === obj?.["id"]), 1, newObj)
+          } else {
+            allDatas.push(newObj)
+          }
           resolve(newObj)
           trigger(EVENT_DATA_CHANGED, entityId)
         }, 300)
