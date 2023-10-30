@@ -113,22 +113,20 @@ export const Table = memo((
     const row = dataSource?.[index]
 
     return (
-      <LogicflowRuntime
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        key={(row as any)?.[rowKey] || index}
-        ownerId={schema?.["x-controller"]?.id}
-        schema={childrenSchema}
-        loopIndex={index}
-        loopRow={row}
-      >
-        {
-          index !== undefined
-            ? <ObjectField name={index?.toString() || ""} value={row}>
-              <tr {...other} />
-            </ObjectField>
-            : <tr {...other} />
-        }
-      </LogicflowRuntime>
+      index !== undefined && row
+        ? <LogicflowRuntime
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          key={(row as any)?.[rowKey] || index}
+          ownerId={schema?.["x-controller"]?.id}
+          schema={childrenSchema}
+          loopIndex={index}
+          loopRow={row}
+        ><ObjectField name={index?.toString() || ""} value={row}>
+            <tr {...other} />
+          </ObjectField>
+        </LogicflowRuntime>
+        : <tr {...other} />
+
     );
   }, [childrenSchema, dataSource, rowKey, schema]);
 

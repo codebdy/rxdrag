@@ -42,11 +42,11 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
         const ctrl = controllerEngine.getController(meta.id)
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         const unsubEvents = ctrl?.subscribeEventHandlersChange(handleEventsChange)
-        ctrl?.initEvent?.()
+        //ctrl?.initEvent?.()
         setController(ctrl)
         return () => {
-          ctrl?.destroyEvent?.()
-          ctrl?.destroy()
+          //ctrl?.destroyEvent?.()
+          //ctrl?.destroy()
           unlistener?.()
           unsubEvents?.()
         }

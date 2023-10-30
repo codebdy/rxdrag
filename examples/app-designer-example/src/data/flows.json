@@ -2690,17 +2690,6 @@
           }
         },
         {
-          "id": "njSZUead",
-          "source": {
-            "nodeId": "08ed0acb-35ca-4c70-aaf8-23405548e265",
-            "portId": "dQBKNdGj"
-          },
-          "target": {
-            "nodeId": "38af48c9-e240-4cd5-bbc8-58e59a2ae6b8",
-            "portId": "al5BbmMM"
-          }
-        },
-        {
           "id": "lcObbBpB",
           "source": {
             "nodeId": "08ed0acb-35ca-4c70-aaf8-23405548e265",
@@ -2899,52 +2888,6 @@
           }
         },
         {
-          "id": "38af48c9-e240-4cd5-bbc8-58e59a2ae6b8",
-          "label": "提示消息",
-          "type": "Activity",
-          "activityName": "system-react-antd5.message",
-          "inPorts": [
-            {
-              "id": "al5BbmMM",
-              "name": "input",
-              "label": ""
-            }
-          ],
-          "outPorts": [],
-          "config": {
-            "type": "success"
-          },
-          "x6Node": {
-            "x": 430,
-            "y": 200,
-            "width": 116,
-            "height": 48
-          }
-        },
-        {
-          "id": "acfc27fd-30d1-4e5f-863b-4936f28d07e8",
-          "label": "提示消息",
-          "type": "Activity",
-          "activityName": "system-react-antd5.message",
-          "inPorts": [
-            {
-              "id": "al5BbmMM",
-              "name": "input",
-              "label": ""
-            }
-          ],
-          "outPorts": [],
-          "config": {
-            "type": "error"
-          },
-          "x6Node": {
-            "x": 440,
-            "y": 270,
-            "width": 116,
-            "height": 48
-          }
-        },
-        {
           "id": "08ed0acb-35ca-4c70-aaf8-23405548e265",
           "label": "读实体列表",
           "type": "Activity",
@@ -3012,6 +2955,29 @@
             "y": 50,
             "width": 130,
             "height": 128
+          }
+        },
+        {
+          "id": "acfc27fd-30d1-4e5f-863b-4936f28d07e8",
+          "label": "提示消息",
+          "type": "Activity",
+          "activityName": "system-react-antd5.message",
+          "inPorts": [
+            {
+              "id": "al5BbmMM",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "type": "error"
+          },
+          "x6Node": {
+            "x": 440,
+            "y": 230,
+            "width": 116,
+            "height": 48
           }
         }
       ]
@@ -3753,6 +3719,171 @@
             "y": 510,
             "width": 88,
             "height": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "2Vuo0R4u",
+    "name": "删除用户",
+    "ownerId": "JClydKG7",
+    "moduleId": "users",
+    "type": "normal",
+    "metas": {
+      "lines": [
+        {
+          "id": "o0jg6w7d",
+          "source": {
+            "nodeId": "f94d6fb7-0756-4023-9915-905b168d5aaf",
+            "portId": "df0jijxD"
+          },
+          "target": {
+            "nodeId": "4bd3d75f-e3ab-42b4-94b9-db76d78726c5",
+            "portId": "lwhZzDB2"
+          }
+        },
+        {
+          "id": "utPa2GRh",
+          "source": {
+            "nodeId": "4bd3d75f-e3ab-42b4-94b9-db76d78726c5",
+            "portId": "aRs-MFvi"
+          },
+          "target": {
+            "nodeId": "1ae345d5-fc1c-491e-94d3-fa263c4193be",
+            "portId": "sJju6aT8"
+          }
+        },
+        {
+          "id": "AGJtqYIa",
+          "source": {
+            "nodeId": "1ae345d5-fc1c-491e-94d3-fa263c4193be",
+            "portId": "idfX1euS"
+          },
+          "target": {
+            "nodeId": "d5cde08a-1f68-4171-b88d-35c0f22267cc",
+            "portId": "5uOE4iTp"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "f94d6fb7-0756-4023-9915-905b168d5aaf",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "点击",
+          "outPorts": [
+            {
+              "id": "df0jijxD",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "nWsxBY0_",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 110,
+            "y": 40,
+            "width": 116,
+            "height": 48
+          }
+        },
+        {
+          "id": "4bd3d75f-e3ab-42b4-94b9-db76d78726c5",
+          "label": "读取当前行",
+          "type": "Activity",
+          "activityName": "system-react.readArrayRow",
+          "inPorts": [
+            {
+              "id": "lwhZzDB2",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "aRs-MFvi",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "JClydKG7"
+          },
+          "x6Node": {
+            "x": 300,
+            "y": 30,
+            "width": 130,
+            "height": 48
+          }
+        },
+        {
+          "id": "1ae345d5-fc1c-491e-94d3-fa263c4193be",
+          "label": "删除实体",
+          "type": "Activity",
+          "activityName": "remove-entity",
+          "inPorts": [
+            {
+              "id": "sJju6aT8",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "gr3y7P_G",
+              "name": "success",
+              "label": "成功"
+            },
+            {
+              "id": "Rxm21F75",
+              "name": "failure",
+              "label": "失败"
+            },
+            {
+              "id": "idfX1euS",
+              "name": "loading",
+              "label": "加载中"
+            }
+          ],
+          "config": {
+            "entityId": "QksZdA-8"
+          },
+          "x6Node": {
+            "x": 520,
+            "y": 20,
+            "width": 116,
+            "height": 64
+          }
+        },
+        {
+          "id": "d5cde08a-1f68-4171-b88d-35c0f22267cc",
+          "type": "Activity",
+          "activityName": "system-react.setProp",
+          "inPorts": [
+            {
+              "id": "5uOE4iTp",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "czsYSOBY",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "nWsxBY0_",
+            "prop": "loading"
+          },
+          "x6Node": {
+            "x": 750,
+            "y": 50,
+            "width": 121,
+            "height": 48
           }
         }
       ]

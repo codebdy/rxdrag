@@ -15,24 +15,29 @@ export type ControllerOptions = {
 }
 
 export class ControllerEngine {
-  controllers: Record<string, IController>
-  variableController: IVariableController
+  selfControllers: Record<string, IController>
+  variableController?: IVariableController
   reactions?: Record<string, ControllerReaction>
   logicDefines?: LogicDefines
   loopScope?: ILoopScope
   expVariables?: Record<string, unknown>
+  inited?: boolean
+  controllers: Record<string, IController> = {}
 
   constructor(schema: IComponentRenderSchema,
-    options?: ControllerOptions,
   ) {
-    console.log("创建控制器引擎")
+    this.selfControllers = this.getSchemaControllers(schema, {})
+  }
+
+  init(options?: ControllerOptions) {
+    this.controllers = { ...this.selfControllers, ...options?.parent?.controllers }
     this.variableController = options?.parent?.variableController || new VariableController()
     this.reactions = options?.reactions
     this.logicDefines = options?.logicDefines
     this.variableController.setMetas(options?.variableMetas)
-    this.controllers = this.getSchemaControllers(schema, { ...options?.parent?.controllers },)
     this.loopScope = options?.loopScope
     this.expVariables = options?.expVariables
+    this.inited = true
   }
 
   getSchemaControllers = (schema: IComponentRenderSchema, controllers: Record<string, IController>) => {
@@ -79,6 +84,7 @@ export class ControllerEngine {
     //销毁控制器引擎
     console.log("销毁控制器引擎")
     for (const ctrlKey of Object.keys(this.controllers)) {
+      this.controllers[ctrlKey]?.destroyEvent()
       this.controllers[ctrlKey]?.destroy()
     }
     this.controllers = {}

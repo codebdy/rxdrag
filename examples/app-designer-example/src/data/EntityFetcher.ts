@@ -51,6 +51,19 @@ export class EntityFetcher {
     })
   }
 
+  public remove(obj: any): Promise<any | undefined> {
+    return new Promise((resolve, reject) => {
+      const entityId = this.entityId
+      if (entityId) {
+        setTimeout(() => {
+          allDatas.splice(allDatas.findIndex(value => value.id === obj?.["id"]), 1)
+          resolve(obj)
+          trigger(EVENT_DATA_CHANGED, entityId)
+        }, 300)
+      }
+    })
+  }
+
   subscribeToEntitySaved(listener: EntitySavedListener): UnListener {
     this.listeners.push(listener)
     return () => {

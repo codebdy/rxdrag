@@ -2,7 +2,7 @@ import React, { memo, useEffect, useMemo, useRef } from "react"
 import { useState } from "react"
 import { ControllerEngineContext } from "../contexts"
 import { ControllerEngine } from "./ControllerEngine"
-import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
+import { useGetLogicFlowContext } from "../hooks/useGetLogicFlowContext"
 import { IComponentRenderSchema } from "../ComponentView"
 import { IVariable } from "@rxdrag/minions-schema"
 import { useControllerEngine } from "../hooks/useControllerEngine"
@@ -27,7 +27,6 @@ export const LogicflowRuntime = memo((props: {
   loopIndex?: number,
 } & LogicFlowOptions) => {
   const { children, schema, ownerId, reactions, variables, loopRow, loopIndex, logicDefines, expVariables, context } = props
-
   const loopScope: ILoopScope = useMemo(() => {
     return {
       value: loopRow,
@@ -38,13 +37,29 @@ export const LogicflowRuntime = memo((props: {
   const engineRef = useRef(controllerEngine)
   engineRef.current = controllerEngine
   const urlParams = useParams()
-
+  const urlParamsRef = useRef(urlParams)
+  urlParamsRef.current = urlParams
   const parent = useControllerEngine()
 
   useEffect(() => {
-    if (logicDefines || parent) {
-      const rtEngine = new ControllerEngine(
-        schema,
+    const rtEngine = new ControllerEngine(
+      schema,
+    )
+    engineRef.current?.destroy()
+    setControllerEngine(rtEngine)
+  }, [schema])
+
+  useEffect(() => {
+    return () => {
+      engineRef.current?.destroy()
+    }
+  }, [])
+
+  const getLogicFlowContext = useGetLogicFlowContext();
+
+  useEffect(() => {
+    if (controllerEngine) {
+      controllerEngine.init(
         {
           parent,
           variableMetas: variables,
@@ -59,39 +74,21 @@ export const LogicflowRuntime = memo((props: {
           expVariables: { ...parent?.expVariables || {}, ...expVariables || {}, }
         }
       )
-      engineRef.current?.destroy()
-      setControllerEngine(rtEngine)
-    }
-  }, [expVariables, logicDefines, loopScope, parent, reactions, schema, variables])
-
-  useEffect(() => {
-    return () => {
-      engineRef.current?.destroy()
-    }
-  }, [])
-
-  const logicFlowContext = useLogicFlowContext(controllerEngine, context);
-
-  useEffect(() => {
-    if (controllerEngine?.controllers) {
       const flowRuntimes = controllerEngine?.logicDefines?.flows?.filter(flow => flow.ownerId === ownerId)?.map(flowMeta => {
-        return new LogicFlow(flowMeta, logicFlowContext)
+        return new LogicFlow(flowMeta, getLogicFlowContext(controllerEngine, context))
       })
+      const scriptRuntime = new ScriptRuntime(controllerEngine, { urlParams: urlParamsRef.current }, ownerId)
+      const controllers = controllerEngine?.selfControllers || {}
+      for (const name of Object.keys(controllers)) {
+        controllers[name]?.initEvent()
+      }
 
       return () => {
         flowRuntimes?.forEach(flow => flow.destroy())
+        scriptRuntime.dispose()
       }
     }
-  }, [controllerEngine, logicFlowContext, ownerId])
-
-  useEffect(() => {
-    if (controllerEngine?.logicDefines?.scripts?.length && controllerEngine) {
-      const scriptRuntim = new ScriptRuntime(controllerEngine, { urlParams }, ownerId)
-      return () => {
-        scriptRuntim.dispose()
-      }
-    }
-  }, [controllerEngine, ownerId, urlParams])
+  }, [context, controllerEngine, expVariables, getLogicFlowContext, logicDefines?.flows, logicDefines?.fxFlows, logicDefines?.fxScripts, logicDefines?.scripts, loopScope, ownerId, parent, reactions, variables])
 
   return (
     controllerEngine ?

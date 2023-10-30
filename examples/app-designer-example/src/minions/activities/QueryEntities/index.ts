@@ -79,7 +79,9 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
   }
 
   revalidate = () => {
-    this.doFetch(true, true)
+    if (this.started) {
+      this.doFetch(true, true)
+    }
   }
 
   doFetch = (isRefetch?: boolean, revalidating?: boolean) => {
@@ -98,6 +100,7 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
           current: this.current,
           pageSize: this.pageSize,
           onPageChange: this.handlePaginationChange,
+          total: data?.total,
         },
         this.runContext,
         QueryEntities.OUTPUT_PAGINATION
