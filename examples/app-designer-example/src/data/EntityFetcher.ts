@@ -19,10 +19,21 @@ export class EntityFetcher {
   }
 
 
-  public multiFetch(sorts: ISort[] | undefined, pageNumber: number | undefined, pageSize: number | undefined): Promise<IListData | undefined> {
+  public multiFetch(conditionParams: any | undefined, sorts: ISort[] | undefined, pageNumber: number | undefined, pageSize: number | undefined): Promise<IListData | undefined> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const instances = allDatas?.filter(ins => this.entityId && ins.entityId === this.entityId)
+        const instances = allDatas?.filter(ins => this.entityId && ins.entityId === this.entityId).filter(ins => {
+          if (!conditionParams) {
+            return true
+          }
+          for (const key of Object.keys(conditionParams)) {
+            const keyword = conditionParams[key]
+            if (ins?.[key] && (ins?.[key] as string)?.indexOf(keyword) < 0) {
+              return false
+            }
+          }
+          return true
+        })
         if (pageSize) {
           const data = instances.slice(((pageNumber || 1) - 1) * pageSize, ((pageNumber || 1) * pageSize - 1))
           resolve({ total: instances.length, data })

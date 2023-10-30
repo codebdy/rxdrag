@@ -35,6 +35,7 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
 
   @Input(QueryEntities.INPUT_QUERY)
   queryHandler = (inputValue?: unknown, runContext?: object) => {
+    console.log("====>entity list query")
     this.runContext = { ...this.runContext, ...runContext }
     this.triggerFetch()
     this.started = true;
@@ -42,6 +43,7 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
 
   @Input(QueryEntities.INPUT_CONDITION_PARAMS)
   conditionParamsHandler = (inputValue?: unknown, runContext?: object) => {
+    console.log("====>entity list condition", inputValue)
     this.runContext = { ...this.runContext, ...runContext }
     if (this.conditionParams !== inputValue) {
       this.conditionParams = inputValue as Record<string, unknown> | undefined
@@ -53,11 +55,13 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
 
   @Input(QueryEntities.INPUT_SORT)
   sortParamsHandler = (inputValue?: unknown, runContext?: object) => {
+    console.log("====>entity list sort")
     this.runContext = { ...this.runContext, ...runContext }
     this.sortParams = inputValue as ISort[] | undefined
   }
 
   handlePaginationChange = (currentPage: number, pageSize?: number) => {
+    console.log("====>entity list pagination")
     if (currentPage !== this.current || this.pageSize !== pageSize) {
       this.current = currentPage;
       this.pageSize = pageSize;
@@ -89,7 +93,7 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
       this.next(true, this.runContext, QueryEntities.OUTPUT_LOADING)
     }
 
-    this.fetcher.multiFetch(this.sortParams, this.current, this.pageSize).then(data => {
+    this.fetcher.multiFetch(this.conditionParams, this.sortParams, this.current, this.pageSize).then(data => {
       this.next(data?.data, this.runContext, QueryEntities.OUTPUT_LIST)
       if (!isRefetch) {
         this.next("success", this.runContext, QueryEntities.OUTPUT_SUCCESS)

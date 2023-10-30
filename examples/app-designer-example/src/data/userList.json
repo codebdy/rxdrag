@@ -7,14 +7,15 @@
       "props": {
         "colon": false,
         "wrapperCol": {
-          "span": 5
+          "span": 16
         },
         "labelCol": {
-          "span": 3
+          "span": 8
         },
         "m": {
           "mt": 2
-        }
+        },
+        "layout": "inline"
       },
       "x-controller": {
         "id": "LlRDj22u",
@@ -60,57 +61,16 @@
             "label": "登录ID",
             "name": "loginName"
           },
+          "props": {
+            "labelCol": {},
+            "wrapperCol": {}
+          },
           "slots": {},
           "children": [
             {
               "componentName": "Input",
               "slots": {},
               "children": []
-            }
-          ]
-        },
-        {
-          "componentName": "FormItem",
-          "props": {
-            "label": "",
-            "labelCol": {},
-            "wrapperCol": {
-              "push": 3
-            }
-          },
-          "locked": false,
-          "slots": {},
-          "children": [
-            {
-              "componentName": "Space",
-              "props": {},
-              "selfRender": true,
-              "slots": {},
-              "children": [
-                {
-                  "componentName": "Button",
-                  "props": {
-                    "type": "default",
-                    "title": "重置"
-                  },
-                  "slots": {},
-                  "children": []
-                },
-                {
-                  "componentName": "Button",
-                  "props": {
-                    "type": "primary",
-                    "title": "查询"
-                  },
-                  "x-controller": {
-                    "id": "OFJ4seD8",
-                    "enable": true,
-                    "name": "查询按钮"
-                  },
-                  "slots": {},
-                  "children": []
-                }
-              ]
             }
           ]
         }
@@ -129,6 +89,11 @@
         "modelMetaId": "QksZdA-8",
         "modelType": "Entity",
         "validateRules": null
+      },
+      "props": {
+        "style": {
+          "marginTop": "16px"
+        }
       },
       "slots": {
         "header": {
