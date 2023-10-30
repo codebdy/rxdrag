@@ -87,7 +87,7 @@ export const Table = memo((
   } = props
   const [id] = useState(createId())
   const nodeSchema = useComponentSchema()
-
+  console.log("====>dataSource", dataSource)
   const columns = useMemo(() => {
     return nodeSchema?.children?.map(child => {
       const { label, ...rest } = child?.props || {}

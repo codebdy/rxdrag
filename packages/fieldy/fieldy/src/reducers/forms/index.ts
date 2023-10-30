@@ -36,7 +36,7 @@ export function formsReduce(state: FormsState, action: IAction<FormActionPayload
         ...state,
         [action.payload.formName]: formReduce(formSate, action)
       }
-      //console.log("Fieldy store变化, newState, action:", newState, action)
+      console.log("Fieldy store变化, newState, action:", newState, action)
       return newState
     }
   }
