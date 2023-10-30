@@ -17,6 +17,6 @@ export class ReadRow extends AbstractActivity<unknown, ILoopScopeContext> {
 
   @Input()
   inputHandler = (_: unknown, runContext?: object) => {
-    this.next(this.context?.loopScope?.row, runContext)
+    this.next(this.context?.loopScope?.value, runContext)
   }
 }

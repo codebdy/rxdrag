@@ -24,7 +24,7 @@ export const AttributeSelect = memo((
       const attr = entity?.attributes.find(att => att.uuid === modelMetaId)
       onChange?.({ type: fieldType, ...value, modelMetaId, modelType: ModelType.Attribute, validateRules: null, label: attr?.label, name: attr?.name })
     } else {
-      onChange?.({ type: fieldType, ...value, modelMetaId: null, modelType: null, })
+      onChange?.({ type: fieldType, ...value, modelMetaId: null, modelType: null, name: null })
     }
 
   }, [entity?.attributes, fieldType, onChange, value])

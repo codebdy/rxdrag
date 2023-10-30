@@ -9,7 +9,7 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
   ref
 ) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { header, footer, summary, dataSource, pagination, ...other } = props
+  const { header, footer, summary, dataSource, paginationPosition, ...other } = props
   const node = useNode()
   const childNodes = useTreeNodes(node?.children || [])
   const columns = useMemo(() => {
@@ -49,7 +49,7 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
       title={header && (() => header)}
       footer={footer && (() => footer)}
       dataSource={[{ key: "1" }]}
-      pagination={pagination === false ? pagination : { position: pagination && [pagination] }}
+      pagination={paginationPosition === false ? paginationPosition : { position: paginationPosition && [paginationPosition] }}
       {...other}
       summary={() => {
         return (

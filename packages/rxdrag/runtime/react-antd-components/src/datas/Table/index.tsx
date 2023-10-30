@@ -22,7 +22,7 @@
 import { memo, useCallback, useMemo, useState } from "react"
 import { Table as AntdTable, TablePaginationConfig } from "antd"
 import { createId } from "@rxdrag/shared";
-import { ComponentView, useComponentSchema } from "@rxdrag/react-runner";
+import { ComponentView, LogicflowRuntime, useArraySchema, useComponentSchema } from "@rxdrag/react-runner";
 import { ArrayField, ObjectField, useFieldValue } from "@rxdrag/react-fieldy";
 import { IFieldMeta } from "@rxdrag/fieldy";
 import { FilterValue, SorterResult } from "antd/es/table/interface";
@@ -87,13 +87,15 @@ export const Table = memo((
   } = props
   const [id] = useState(createId())
   const nodeSchema = useComponentSchema()
-  console.log("====>dataSource", dataSource)
+  const { schema, childrenSchema } = useArraySchema()
+
   const columns = useMemo(() => {
     return nodeSchema?.children?.map(child => {
-      const { label, ...rest } = child?.props || {}
+      const { title, ...rest } = child?.props || {}
       const fiedMeta = child["x-data"]
+
       return {
-        label: fiedMeta?.label || label,
+        title: fiedMeta?.label || title,
         ...rest,
         render: () => {
           return <ComponentView node={child} />
@@ -111,13 +113,24 @@ export const Table = memo((
     const row = dataSource?.[index]
 
     return (
-      index !== undefined
-        ? <ObjectField name={index?.toString() || ""} value={row}>
-          <tr {...other} />
-        </ObjectField>
-        : <tr {...other} />
+      <LogicflowRuntime
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        key={(row as any)?.[rowKey] || index}
+        ownerId={schema?.["x-controller"]?.id}
+        schema={childrenSchema}
+        loopIndex={index}
+        loopRow={row}
+      >
+        {
+          index !== undefined
+            ? <ObjectField name={index?.toString() || ""} value={row}>
+              <tr {...other} />
+            </ObjectField>
+            : <tr {...other} />
+        }
+      </LogicflowRuntime>
     );
-  }, [dataSource]);
+  }, [childrenSchema, dataSource, rowKey, schema]);
 
   const handleChange = useCallback((paginationConfig: TablePaginationConfig, filters: Record<string, FilterValue | null>, sorter: SorterResult<never> | SorterResult<never>[]) => {
     pagination?.onPageChange?.(paginationConfig.current || 0, paginationConfig.pageSize)

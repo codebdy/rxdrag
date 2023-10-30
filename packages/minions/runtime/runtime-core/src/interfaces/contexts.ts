@@ -10,7 +10,7 @@ export interface IExpContext {
 
 export interface ILoopScope {
   index?: number,
-  row?: unknown,
+  value?: unknown,
 }
 
 export interface ILoopScopeContext {

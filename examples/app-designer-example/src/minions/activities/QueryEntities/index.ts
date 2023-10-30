@@ -88,7 +88,6 @@ export class QueryEntities extends AbstractActivity<IEntityListQueryConfig> {
     }
 
     this.fetcher.multiFetch(this.sortParams, this.current, this.pageSize).then(data => {
-      console.log("===doFetch", data, this.current, this.pageSize)
       this.next(data?.data, this.runContext, QueryEntities.OUTPUT_LIST)
       if (!isRefetch) {
         this.next("success", this.runContext, QueryEntities.OUTPUT_SUCCESS)

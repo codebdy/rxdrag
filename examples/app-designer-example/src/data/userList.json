@@ -180,7 +180,8 @@
             "modelMetaId": "PeprFClI",
             "modelType": "Attribute",
             "validateRules": null,
-            "label": "登录ID"
+            "label": "登录ID",
+            "name": "loginName"
           },
           "slots": {},
           "children": []
@@ -195,7 +196,8 @@
             "modelMetaId": "qYBQKdC1",
             "modelType": "Attribute",
             "validateRules": null,
-            "label": "姓名"
+            "label": "姓名",
+            "name": "name"
           },
           "slots": {},
           "children": []
@@ -235,6 +237,14 @@
           "props": {
             "title": "状态"
           },
+          "x-data": {
+            "type": "normal",
+            "modelMetaId": "EscNzevB",
+            "modelType": "Attribute",
+            "validateRules": null,
+            "label": "状态",
+            "name": "status"
+          },
           "slots": {},
           "children": []
         },
@@ -256,6 +266,11 @@
                   "props": {
                     "type": "default",
                     "title": "删除"
+                  },
+                  "x-controller": {
+                    "id": "nWsxBY0_",
+                    "enable": true,
+                    "name": "删除按钮"
                   },
                   "slots": {
                     "icon": {

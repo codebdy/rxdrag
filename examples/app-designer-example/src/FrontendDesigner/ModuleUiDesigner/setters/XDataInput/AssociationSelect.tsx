@@ -25,7 +25,7 @@ export const AssociationSelect = memo((
       const assoc = entity?.associations.find(asso => asso.id === modelMetaId)
       onChange?.({ type: fieldType, ...value, modelMetaId, modelType: ModelType.Association, validateRules: null, label: assoc?.label, name: assoc?.name })
     } else {
-      onChange?.({ type: fieldType, ...value, modelMetaId: null, modelType: null, })
+      onChange?.({ type: fieldType, ...value, modelMetaId: null, modelType: null, name: null })
     }
 
   }, [entity?.associations, fieldType, onChange, value])

@@ -3022,7 +3022,187 @@
     "name": "列表内流程",
     "ownerId": "JClydKG7",
     "moduleId": "users",
-    "type": "normal"
+    "type": "normal",
+    "metas": {
+      "lines": [
+        {
+          "id": "b0BLRn3F",
+          "source": {
+            "nodeId": "3996d66a-7777-4e29-ba85-c18458d64fac",
+            "portId": "3Ky-9-nw"
+          },
+          "target": {
+            "nodeId": "67534b38-e0fa-44fe-98dc-86e3b60589a7",
+            "portId": "auvK7GcF"
+          }
+        },
+        {
+          "id": "r-3E-gvJ",
+          "source": {
+            "nodeId": "67534b38-e0fa-44fe-98dc-86e3b60589a7",
+            "portId": "iw1OosWB"
+          },
+          "target": {
+            "nodeId": "f6264418-034f-491c-a635-3143f7a51c1b",
+            "portId": "sDzNbvP8"
+          }
+        },
+        {
+          "id": "86bg0Mm7",
+          "source": {
+            "nodeId": "f6264418-034f-491c-a635-3143f7a51c1b",
+            "portId": "bswSZA83"
+          },
+          "target": {
+            "nodeId": "952f02b0-bc84-413d-8578-75fd62c2cf46",
+            "portId": "iTdch_-v"
+          }
+        },
+        {
+          "id": "ryrA7nrp",
+          "source": {
+            "nodeId": "67534b38-e0fa-44fe-98dc-86e3b60589a7",
+            "portId": "iw1OosWB"
+          },
+          "target": {
+            "nodeId": "3a8fe090-03ec-4d83-814e-528935d4a792",
+            "portId": "Qk2B8c3A"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "67534b38-e0fa-44fe-98dc-86e3b60589a7",
+          "label": "读取当前行",
+          "type": "Activity",
+          "activityName": "system-react.readArrayRow",
+          "inPorts": [
+            {
+              "id": "auvK7GcF",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "iw1OosWB",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "JClydKG7"
+          },
+          "x6Node": {
+            "x": 260,
+            "y": 60,
+            "width": 130,
+            "height": 48
+          }
+        },
+        {
+          "id": "3996d66a-7777-4e29-ba85-c18458d64fac",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "点击",
+          "outPorts": [
+            {
+              "id": "3Ky-9-nw",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "j4lFf--c",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 80,
+            "y": 60,
+            "width": 116,
+            "height": 48
+          }
+        },
+        {
+          "id": "f6264418-034f-491c-a635-3143f7a51c1b",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "sDzNbvP8",
+              "name": "setValue",
+              "label": "赋值"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "bswSZA83",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "nepX8Hq4"
+          },
+          "x6Node": {
+            "x": 460,
+            "y": 40,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "952f02b0-bc84-413d-8578-75fd62c2cf46",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "iTdch_-v",
+              "name": "open",
+              "label": "打开"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "j0ex6ZrF",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "palKh10y"
+          },
+          "x6Node": {
+            "x": 690,
+            "y": 30,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "3a8fe090-03ec-4d83-814e-528935d4a792",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "Qk2B8c3A",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "da当前行"
+          },
+          "x6Node": {
+            "x": 470,
+            "y": 190,
+            "width": 88,
+            "height": 32
+          }
+        }
+      ]
+    }
   },
   {
     "id": "zYbckTOj",

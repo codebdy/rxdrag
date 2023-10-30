@@ -10,7 +10,7 @@ export interface IFieldMeta<ValidateRules extends IValidateSchema = IValidateSch
   //类型：对象、数组、常规、表单。
   type?: FieldType | null;
   //数组行数据是数字
-  name?: string | number;
+  name?: string | number | null;
   label?: string;
   defaultValue?: unknown;
   //校验规则
