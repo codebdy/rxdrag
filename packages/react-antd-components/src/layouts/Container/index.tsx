@@ -1,6 +1,6 @@
-import { withContainerLayout } from "@rxdrag/react-antd-components"
 import { forwardRef, memo } from "react"
 import styled from "styled-components"
+import { withContainerLayout } from "../../hocs"
 
 const StyledContainer = styled.div`
   min-height: 100%;

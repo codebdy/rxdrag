@@ -1,6 +1,7 @@
 export * from "./Box"
 export * from "./Breadcrumb"
 export * from "./Card"
+export * from "./Container"
 export * from "./Header"
 export * from "./Hero"
 export * from "./Logo"

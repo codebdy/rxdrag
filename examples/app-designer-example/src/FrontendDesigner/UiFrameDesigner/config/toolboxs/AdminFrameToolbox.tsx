@@ -2,9 +2,8 @@ import { Tabs, TabsProps } from "antd"
 import { memo, useMemo } from "react"
 import { ResourceWidget } from "../../../../ResourceWidget"
 import { ResourceGroup } from "example-common"
-import { ButtonMaterial, InputMaterial, TextAreaMaterial, InputNumberMaterial, AutoCompleteMaterial, SelectMaterial, CheckboxMaterial, DatePickerMaterial, DateRangePickerMaterial, MentionsMaterial, RadioMaterial, RateMaterial, SliderMaterial, SwitchMaterial, TimePickerMaterial, CascaderMaterial, TransferMaterial, TreeSelectMaterial, TitleMaterial, TextMaterial, LinkMaterial, IconViewMaterial, AvatarMaterial, BadgeMaterial, ImageViewMaterial, DropdownMaterial, DialogGroupMaterial, DrawerGroupMaterial, PopconfirmMaterial, PopoverMaterial, TooltipMaterial, HCFLayoutMaterial, TwoColumnLayoutMaterial, LogoMaterial, MenuMaterial, BoxMaterial, DividerMaterial, SpaceMaterial } from "@rxdrag/react-antd-materials"
+import { ButtonMaterial, InputMaterial, TextAreaMaterial, InputNumberMaterial, AutoCompleteMaterial, SelectMaterial, CheckboxMaterial, DatePickerMaterial, DateRangePickerMaterial, MentionsMaterial, RadioMaterial, RateMaterial, SliderMaterial, SwitchMaterial, TimePickerMaterial, CascaderMaterial, TransferMaterial, TreeSelectMaterial, TitleMaterial, TextMaterial, LinkMaterial, IconViewMaterial, AvatarMaterial, BadgeMaterial, ImageViewMaterial, DropdownMaterial, DialogGroupMaterial, DrawerGroupMaterial, PopconfirmMaterial, PopoverMaterial, TooltipMaterial, HCFLayoutMaterial, TwoColumnLayoutMaterial, LogoMaterial, MenuMaterial, BoxMaterial, DividerMaterial, SpaceMaterial, ContainerMaterial } from "@rxdrag/react-antd-materials"
 import { PageMaterial } from "../../materials/admin/Page"
-import { ContainerMaterial } from "../../materials/admin/Container"
 
 export const resources: ResourceGroup[] = [
   {

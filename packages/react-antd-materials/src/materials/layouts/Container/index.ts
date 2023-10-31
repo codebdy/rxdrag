@@ -1,8 +1,8 @@
 import { IMaterial } from "@rxdrag/react-core";
 import { locales, resourceLocales } from "./locales";
 import { containerIcon } from "./icon";
-import { Container } from "../../../components";
 import { schema } from "./schema";
+import { Container } from "@rxdrag/react-antd-components";
 
 const name = "Container"
 export const ContainerMaterial: IMaterial = {
