@@ -1,5 +1,5 @@
+import { Page } from "@rxdrag/react-antd-components"
 import { forwardRef, memo } from "react"
-import { Page } from "../../../../components/admin"
 import styled from "styled-components"
 
 const StylePage = styled(Page)`
