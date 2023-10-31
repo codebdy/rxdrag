@@ -31,6 +31,40 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
       ],
     },
     {
+      id: "roles",
+      title: "角色管理",
+      views: [
+        {
+          id: "roles-index",
+          title: "入口页",
+          viewType: ViewType.Main,
+          schema: rootNodeSchema,
+        },
+        {
+          id: "role-edit",
+          title: "编辑对话框",
+          schema: rootNodeSchema,
+        }
+      ],
+    },
+    {
+      id: "departments",
+      title: "部门管理",
+      views: [
+        {
+          id: "departments-index",
+          title: "入口页",
+          viewType: ViewType.Main,
+          schema: rootNodeSchema,
+        },
+        {
+          id: "department-edit",
+          title: "编辑对话框",
+          schema: rootNodeSchema,
+        }
+      ],
+    },
+    {
       id: "expression-demo",
       title: "表达式演示",
       views: [
@@ -203,6 +237,14 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
         {
           id: "users",
           title: "用户管理",
+        },
+        {
+          id: "roles",
+          title: "角色管理",
+        },
+        {
+          id: "departs",
+          title: "部门管理",
         },
         {
           id: "expression-demo",

@@ -18,12 +18,13 @@ export interface IContainerLayoutProps {
 
 const step = 8
 
-export function withContainerLayout<T = unknown>(WrappedComponent: ReactComponent) {
+export function withContainerLayout<T = unknown>(WrappedComponent: ReactComponent, defaultValue?: IContainerLayoutProps) {
 
   return memo(forwardRef<HTMLElement, T & IContainerLayoutProps & { style?: CSSProperties, children?: React.ReactNode }>((props, ref) => {
     const { p, m, style, ...rest } = props
-    const { pl, pt, pr, pb, } = p || {}
-    const { ml, mt, mr, mb, } = m || {}
+    const { p: dp, m: dm } = defaultValue || {}
+    const { pl, pt, pr, pb, } = p || dp || {}
+    const { ml, mt, mr, mb, } = m || dm || {}
     const newStyles = useMemo(() => {
       return {
         ...style,
