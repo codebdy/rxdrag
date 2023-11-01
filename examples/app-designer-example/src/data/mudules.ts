@@ -6,6 +6,8 @@ import moleSetting from "./molesettings.json"
 import userList from "./userList.json"
 import expression from "./expression.json"
 import editUser from "./edituser.json"
+import postList from "./postList.json"
+import editPost from "./editpost.json"
 
 const rootNodeSchema: INodeSchema = {
   componentName: "Page"
@@ -61,6 +63,23 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
           id: "department-edit",
           title: "编辑对话框",
           schema: rootNodeSchema,
+        }
+      ],
+    },
+    {
+      id: "posts",
+      title: "文章",
+      views: [
+        {
+          id: "posts-index",
+          title: "入口页",
+          viewType: ViewType.Main,
+          schema: postList,
+        },
+        {
+          id: "post-edit",
+          title: "编辑对话框",
+          schema: editPost,
         }
       ],
     },
@@ -245,6 +264,10 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
         {
           id: "departs",
           title: "部门管理",
+        },
+        {
+          id: "posts",
+          title: "文章管理",
         },
         {
           id: "expression-demo",
