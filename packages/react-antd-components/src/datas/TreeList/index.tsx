@@ -6,93 +6,16 @@ import { Spin, Tree } from 'antd';
 import type { DataNode, DirectoryTreeProps } from "antd/es/tree";
 import { EditButton } from "./EditButton";
 import classNames from "classnames";
+import { TreeListShell } from "./TreeListShell";
+import { TreeListTitle } from "./TreeListTitle";
+import { TreeListContent } from "./TreeListContent";
+import { TreeListTreeView } from "./TreeListTreeView";
 const { DirectoryTree } = Tree;
 
-const TreeEditorShell = styled.div`
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-  .bordered{
-    border: solid 1px ${props => props.theme?.token?.colorBorder}
-  }
-`
-
-const TreeTitle = styled.div`
-  display: flex;
-  align-items: center;
-  height: 48px;
-  justify-content: space-between;
-  border-bottom: solid 1px ${props => props.theme.token?.colorBorderSecondary};
-  padding: 0 16px;
-  .anticon{
-    //color:${props => props.theme.token?.colorPrimary};
-  }
-`
-
-const TreeContent = styled.div`
-  flex:1;
-  padding: 16px 8px;
-  overflow: auto;
-  height: 0;
-`
-
-const SpinContainer = styled(TreeContent)`
+const SpinContainer = styled(TreeListContent)`
   display: flex;
   align-items: center;
   justify-content: center;
-`
-
-const StyledTree = styled(DirectoryTree)`
-  .ant-tree-treenode{
-    padding: 0;
-    border-radius: 5px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin: 2px 0;
-    padding: 0 0 0 8px;
-    .anticon-file{
-      display: none;
-    }
-    .ant-tree-switcher{
-      display: flex;
-      align-items: center;
-      width: 12px;
-    }
-    .ant-tree-node-content-wrapper{
-      flex:1;
-      display: flex;
-      align-items: center;
-      background-color: transparent;
-      .ant-tree-title{
-        flex:1;
-        background-color: transparent;
-      }
-    }
-    &:hover{
-      background-color: #d8d1bf;
-      color: #a21f2d;
-    }
-    &::before{
-      display: none;
-    }
-  }
-  .ant-tree-node-selected{
-    color: #a21f2d !important;
-  }
-  .ant-tree-treenode-selected{
-    background-color: #d8d1bf;
-    color: #a21f2d;
-    .ant-tree-switcher{
-      color: #a21f2d !important;
-    }
-    &:hover{
-      background-color: #d8d1bf;
-    }
-    &::before{
-      display: none;
-    }
-  }
 `
 
 export enum PopupType {
@@ -108,12 +31,13 @@ export type TreeListProps = {
   loading?: boolean;
   dataSource?: DataNode[];
   popupType?: PopupType,
+  popupProps?: any,
   idKey?: string,
   labelKey?: string,
   onSave?: (node?: any) => void;
   onRemove?: (node?: any) => void;
   bordered?: boolean;
-  popup?: React.ReactNode;
+  formLayout?: React.ReactNode;
 }
 
 export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, ref) => {
@@ -125,7 +49,8 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
     popupType = PopupType.popover,
     idKey = "id",
     labelKey = "title",
-    bordered
+    bordered,
+    formLayout
   } = props;
   const [selected, setSelected] = useState<string>();
   const [expands, setExpands] = useState<string[]>();
@@ -186,8 +111,8 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
   }, [])
 
   return (
-    <TreeEditorShell ref={ref} className={classNames("tree-editor-shell", { bordered })}>
-      <TreeTitle className="tree-title">
+    <TreeListShell ref={ref} className={classNames("tree-editor-shell", { bordered })}>
+      <TreeListTitle className="tree-title">
         <span>{title}</span>
         {
           !readOnly && <EditButton
@@ -195,15 +120,15 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
             labelKey={labelKey}
           />
         }
-      </TreeTitle>
+      </TreeListTitle>
       {
         loading
           ?
           <SpinContainer>
             <Spin spinning={loading} />
           </SpinContainer>
-          : <TreeContent>
-            <StyledTree
+          : <TreeListContent>
+            <TreeListTreeView
               showIcon={false}
               multiple={false}
               defaultExpandAll={false}
@@ -212,8 +137,8 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
               onExpand={handleExpand}
               treeData={treeData || []}
             />
-          </TreeContent>
+          </TreeListContent>
       }
-    </TreeEditorShell>
+    </TreeListShell>
   )
 }))

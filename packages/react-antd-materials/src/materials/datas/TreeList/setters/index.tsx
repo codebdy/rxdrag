@@ -1,4 +1,4 @@
-import { useCurrentNode, useTreeNode, useRemoveSlot, useAddSlot, useSettersTranslate } from "@rxdrag/react-core"
+import { useCurrentNode, useTreeNode, useRemoveSlot, useAddSlot } from "@rxdrag/react-core"
 import { useTranslate } from "@rxdrag/react-locales"
 import { Select } from "antd"
 import { memo, useCallback, useMemo } from "react"
