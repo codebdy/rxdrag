@@ -5,12 +5,16 @@ import styled from "styled-components"
 import { Spin, Tree } from 'antd';
 import type { DataNode, DirectoryTreeProps } from "antd/es/tree";
 import { EditButton } from "./EditButton";
+import classNames from "classnames";
 const { DirectoryTree } = Tree;
 
 const TreeEditorShell = styled.div`
   display: flex;
   flex-flow: column;
   height: 100%;
+  .bordered{
+    border: solid 1px ${props => props.theme?.token?.colorBorder}
+  }
 `
 
 const TreeTitle = styled.div`
@@ -21,7 +25,7 @@ const TreeTitle = styled.div`
   border-bottom: solid 1px ${props => props.theme.token?.colorBorderSecondary};
   padding: 0 16px;
   .anticon{
-    color:${props => props.theme.token?.colorPrimary};
+    //color:${props => props.theme.token?.colorPrimary};
   }
 `
 
@@ -108,6 +112,8 @@ export type TreeListProps = {
   labelKey?: string,
   onSave?: (node?: any) => void;
   onRemove?: (node?: any) => void;
+  bordered?: boolean;
+  popup?: React.ReactNode;
 }
 
 export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, ref) => {
@@ -119,6 +125,7 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
     popupType = PopupType.popover,
     idKey = "id",
     labelKey = "title",
+    bordered
   } = props;
   const [selected, setSelected] = useState<string>();
   const [expands, setExpands] = useState<string[]>();
@@ -179,7 +186,7 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
   }, [])
 
   return (
-    <TreeEditorShell ref={ref} className="tree-editor-shell">
+    <TreeEditorShell ref={ref} className={classNames("tree-editor-shell", { bordered })}>
       <TreeTitle className="tree-title">
         <span>{title}</span>
         {

@@ -64,7 +64,7 @@ export const EditButton = memo((
       {
         value?.[idKey]
           ? <Button type="text" size="small" icon={<EditOutlined />} />
-          : <Button size="small" type="text" icon={<PlusOutlined />} />
+          : <Button type="text" size="small"  icon={<PlusOutlined />} />
       }
     </Popover>
   )

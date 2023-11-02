@@ -17,7 +17,16 @@
                 "span": 6
               },
               "slots": {},
-              "children": []
+              "children": [
+                {
+                  "componentName": "TreeList",
+                  "props": {
+                    "title": "部门"
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
             },
             {
               "componentName": "Col",

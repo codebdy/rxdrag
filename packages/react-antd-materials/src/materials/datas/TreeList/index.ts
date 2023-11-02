@@ -4,7 +4,7 @@ import { boxLocales, boxResourceLocales } from "./locales";
 import { boxSchema } from "./schema";
 import { TreeList } from "@rxdrag/react-antd-components"
 import { TreeListDesigner } from "./designer";
-
+import { TreeListPopupSelect } from "./setters";
 
 const name = "TreeList"
 export const TreeListMaterial: IMaterial = {
@@ -26,5 +26,8 @@ export const TreeListMaterial: IMaterial = {
   },
   behaviorRule: {
     droppable: true,
+  },
+  setters: {
+    TreeListPopupSelect: TreeListPopupSelect
   }
 }

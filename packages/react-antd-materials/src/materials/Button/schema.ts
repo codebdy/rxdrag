@@ -1,7 +1,7 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../shared";
 
-const scehmaOptions: SchemaOptions = {
+const schemaOptions: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Input",
@@ -135,4 +135,4 @@ const scehmaOptions: SchemaOptions = {
   ],
 }
 
-export const buttonSchema: INodeSchema = createSchema(scehmaOptions)
+export const buttonSchema: INodeSchema = createSchema(schemaOptions)
