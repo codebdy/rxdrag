@@ -14,5 +14,5 @@ export interface ILogicScope {
 }
 
 export interface ILogicScopeContext {
-  scope: ILogicScope | undefined
+  logicScope: ILogicScope | undefined
 }

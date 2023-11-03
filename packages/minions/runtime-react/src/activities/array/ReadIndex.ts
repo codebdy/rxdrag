@@ -18,6 +18,6 @@ export class ReadIndex extends AbstractActivity<unknown, ILogicScopeContext> {
 
   @Input()
   inputHandler = (_: unknown, runContext?: object) => {
-    this.next(this.context?.scope?.index, runContext)
+    this.next(this.context?.logicScope?.index, runContext)
   }
 }

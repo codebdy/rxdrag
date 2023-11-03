@@ -34,13 +34,13 @@ export const ComponentTree = memo((
   const module = useModule()
   const engine = useDesignerEngine()
   const getSchemaTreeOfView = useGetSchemaTreeOfView(flow?.ownerId)
-  const getArrayNodes = useGetArrayNodes()
+  const getArrayNodes = useGetArrayNodes(flow?.ownerId)
 
   const getOneNode = useCallback((rNode: ReactionableNode): DataNode => {
-    const isArray = rNode.node.meta?.["x-data"]?.type === "array"
+    //const isArray = rNode.node.meta?.["x-data"]?.type === "array"
     const ctrlMeta = rNode.node.meta?.["x-controller"]
     //所在流程在数组内
-    const isFlowInArray = isArray && flow?.ownerId === ctrlMeta?.id && !!ctrlMeta?.id
+    //const isFlowInArray = isArray && flow?.ownerId === ctrlMeta?.id && !!ctrlMeta?.id
     const children = rNode.children?.map(child => getOneNode(child))
     const title = ctrlMeta?.name || rNode.node.title;
     const comMaterial = engine?.getComponentManager().getComponentConfig(rNode.node.meta.componentName || "") as IMaterial | undefined
@@ -57,13 +57,13 @@ export const ComponentTree = memo((
       children: [
         ...children || [],
         getSetPropsNode(rNode),
-        ...getArrayNodes(rNode, isFlowInArray),
+        ...getArrayNodes(rNode),
         ...getReactionNodes(rNode, engine, comMaterial),
         getListenPropNode(rNode),
         ...getEventNodes(rNode, engine, comMaterial),
       ]
     }
-  }, [engine, flow?.ownerId, getArrayNodes])
+  }, [engine, getArrayNodes])
 
   const treeData: DataNode[] = useMemo(() => {
     return module?.views?.map(view => ({

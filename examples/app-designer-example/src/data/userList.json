@@ -115,7 +115,8 @@
                   "x-controller": {
                     "id": "JClydKG7",
                     "name": "用户列表",
-                    "enable": true
+                    "enable": true,
+                    "scopeType": "array"
                   },
                   "x-data": {
                     "type": "array",
