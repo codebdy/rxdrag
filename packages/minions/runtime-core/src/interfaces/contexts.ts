@@ -8,11 +8,11 @@ export interface IExpContext {
   expVariables?: Record<string, unknown>
 }
 
-export interface ILoopScope {
+export interface ILogicScope {
   index?: number,
   value?: unknown,
 }
 
-export interface ILoopScopeContext {
-  loopScope: ILoopScope | undefined
+export interface ILogicScopeContext {
+  scope: ILogicScope | undefined
 }

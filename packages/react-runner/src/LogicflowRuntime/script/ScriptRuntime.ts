@@ -29,9 +29,9 @@ export class ScriptRuntime {
 
     for (const script of scripts || []) {
       if (script.code) {
-        const fn = new Function("loopScope", 'get', 'variables', ...Object.keys(this.params || {}), fxStrs + "\n" + script.code);
+        const fn = new Function("logicScope", 'get', 'variables', ...Object.keys(this.params || {}), fxStrs + "\n" + script.code);
         fn(
-          this.controllerEngine?.loopScope,
+          this.controllerEngine?.logicScope,
           this.getComponent,
           this.variables,
           ...Object.values(this.params || {})

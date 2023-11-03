@@ -2,10 +2,10 @@ import { IReactContext, IVariableContext } from "@rxdrag/minions-runtime-react";
 import { useForm } from "@rxdrag/react-fieldy";
 import { useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { IExpContext, IFxContext, ILoopScopeContext } from "@rxdrag/minions-runtime";
+import { IExpContext, IFxContext, ILogicScopeContext } from "@rxdrag/minions-runtime";
 import { ControllerEngine } from "../LogicflowRuntime/ControllerEngine";
 
-export type MergedLogicFlowContext = IReactContext & IVariableContext & IFxContext & ILoopScopeContext & IExpContext
+export type MergedLogicFlowContext = IReactContext & IVariableContext & IFxContext & ILogicScopeContext & IExpContext
 
 
 export function useGetLogicFlowContext() {
@@ -22,7 +22,7 @@ export function useGetLogicFlowContext() {
       reactions: engine?.reactions,
       variableController: engine?.variableController,
       fxMetas: engine?.logicDefines?.fxFlows,
-      loopScope: engine?.loopScope,
+      logicScope: engine?.logicScope,
       ...context
 
     }

@@ -1,4 +1,4 @@
-import { IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { ControllerScopeType, IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { createId } from "@rxdrag/shared"
 import { Form, Input, Switch } from "antd"
@@ -8,9 +8,10 @@ export const ControllerSetter = memo((
   props: {
     value?: IControllerMeta | null,
     onChange?: (value?: IControllerMeta | null) => void,
+    scopeType?: ControllerScopeType,
   }
 ) => {
-  const { value, onChange } = props;
+  const { value, onChange, scopeType } = props;
   const t = useSettersTranslate()
 
   const handleSwitch = useCallback((checked: boolean) => {
@@ -19,13 +20,14 @@ export const ControllerSetter = memo((
         ...value,
         id: value?.id ? value.id : createId(),
         enable: true,
+        scopeType,
       })
     } else {
       if (value) {
         onChange?.({ ...value, enable: false })
       }
     }
-  }, [onChange, value])
+  }, [scopeType, onChange, value])
 
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (value) {

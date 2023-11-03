@@ -119,8 +119,8 @@ export const Table = memo((
           key={(row as any)?.[rowKey] || index}
           ownerId={schema?.["x-controller"]?.id}
           schema={childrenSchema}
-          loopIndex={index}
-          loopRow={row}
+          scropeIndex={index}
+          scropeValue={row}
         ><ObjectField name={index?.toString() || ""} value={row}>
             <tr {...other} />
           </ObjectField>

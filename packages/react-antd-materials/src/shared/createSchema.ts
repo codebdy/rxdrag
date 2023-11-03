@@ -31,6 +31,9 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     children: [
       {
         componentName: "ControllerSetter",
+        props: {
+          scopeType: options.ctrlScopeType,
+        },
         "x-data": {
           name: "x-controller",
         },

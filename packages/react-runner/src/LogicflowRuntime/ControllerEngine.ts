@@ -3,14 +3,14 @@
 import { ComponentController, ControllerReaction, IController, IVariableController, LogicDefines, VariableController } from "@rxdrag/minions-runtime-react"
 import { IComponentRenderSchema } from "../ComponentView"
 import { IVariable } from "@rxdrag/minions-schema"
-import { ILoopScope } from "@rxdrag/minions-runtime"
+import { ILogicScope } from "@rxdrag/minions-runtime"
 
 export type ControllerOptions = {
   variableMetas?: IVariable[],
   parent?: ControllerEngine,
   reactions?: Record<string, ControllerReaction>,
   logicDefines?: LogicDefines,
-  loopScope?: ILoopScope,
+  logicScope?: ILogicScope,
   expVariables?: Record<string, unknown>,
 }
 
@@ -19,7 +19,7 @@ export class ControllerEngine {
   variableController?: IVariableController
   reactions?: Record<string, ControllerReaction>
   logicDefines?: LogicDefines
-  loopScope?: ILoopScope
+  logicScope?: ILogicScope
   expVariables?: Record<string, unknown>
   inited?: boolean
   controllers: Record<string, IController> = {}
@@ -35,7 +35,7 @@ export class ControllerEngine {
     this.reactions = options?.reactions
     this.logicDefines = options?.logicDefines
     this.variableController.setMetas(options?.variableMetas)
-    this.loopScope = options?.loopScope
+    this.logicScope = options?.logicScope
     this.expVariables = options?.expVariables
     this.inited = true
   }

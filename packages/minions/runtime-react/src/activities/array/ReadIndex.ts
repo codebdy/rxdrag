@@ -1,13 +1,13 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
 import { IControllerConfig } from "../ControllerActivity";
-import { AbstractActivity, Activity, ILoopScopeContext, Input } from "@rxdrag/minions-runtime";
+import { AbstractActivity, Activity, ILogicScopeContext, Input } from "@rxdrag/minions-runtime";
 
 //未实现
 @Activity(ReadIndex.NAME)
-export class ReadIndex extends AbstractActivity<unknown, ILoopScopeContext> {
+export class ReadIndex extends AbstractActivity<unknown, ILogicScopeContext> {
   public static NAME = "system-react.readArrayIndex"
 
-  constructor(meta: INodeDefine<IControllerConfig>, context?: ILoopScopeContext) {
+  constructor(meta: INodeDefine<IControllerConfig>, context?: ILogicScopeContext) {
     super(meta, context)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -18,6 +18,6 @@ export class ReadIndex extends AbstractActivity<unknown, ILoopScopeContext> {
 
   @Input()
   inputHandler = (_: unknown, runContext?: object) => {
-    this.next(this.context?.loopScope?.index, runContext)
+    this.next(this.context?.scope?.index, runContext)
   }
 }

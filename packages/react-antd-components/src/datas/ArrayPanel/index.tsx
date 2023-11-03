@@ -34,8 +34,8 @@ export const ArrayPanel = memo((props: ArrayPanelProps) => {
             key={(val as any)?.[rowKey] || index}
             ownerId={schema?.["x-controller"]?.id}
             schema={childrenSchema}
-            loopIndex={index}
-            loopRow={val}
+            scropeIndex={index}
+            scropeValue={val}
           >
             <ObjectField name={index.toString()}>
               {

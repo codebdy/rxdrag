@@ -7,7 +7,7 @@ import { IComponentRenderSchema } from "../ComponentView"
 import { IVariable } from "@rxdrag/minions-schema"
 import { useControllerEngine } from "../hooks/useControllerEngine"
 import { ControllerReaction, LogicDefines, predefinedReactions } from "@rxdrag/minions-runtime-react"
-import { ILoopScope, LogicFlow } from "@rxdrag/minions-runtime"
+import { ILogicScope, LogicFlow } from "@rxdrag/minions-runtime"
 import { ScriptRuntime } from "./script/ScriptRuntime"
 import { useParams } from "react-router-dom"
 
@@ -23,16 +23,16 @@ export type LogicFlowOptions = {
 export const LogicflowRuntime = memo((props: {
   children: React.ReactNode,
   schema: IComponentRenderSchema,
-  loopRow?: unknown,
-  loopIndex?: number,
+  scropeValue?: unknown,
+  scropeIndex?: number,
 } & LogicFlowOptions) => {
-  const { children, schema, ownerId, reactions, variables, loopRow, loopIndex, logicDefines, expVariables, context } = props
-  const loopScope: ILoopScope = useMemo(() => {
+  const { children, schema, ownerId, reactions, variables, scropeValue, scropeIndex, logicDefines, expVariables, context } = props
+  const logicScope: ILogicScope = useMemo(() => {
     return {
-      value: loopRow,
-      index: loopIndex,
+      value: scropeValue,
+      index: scropeIndex,
     }
-  }, [loopIndex, loopRow])
+  }, [scropeIndex, scropeValue])
   const [controllerEngine, setControllerEngine] = useState<ControllerEngine | null>(null)
   const engineRef = useRef(controllerEngine)
   engineRef.current = controllerEngine
@@ -70,7 +70,7 @@ export const LogicflowRuntime = memo((props: {
             fxFlows: [...logicDefines?.fxFlows || [], ...parent?.logicDefines?.fxFlows || []],
             fxScripts: [...logicDefines?.fxScripts || [], ...parent?.logicDefines?.fxScripts || []],
           },
-          loopScope,
+          logicScope,
           expVariables: { ...parent?.expVariables || {}, ...expVariables || {}, }
         }
       )
@@ -88,7 +88,7 @@ export const LogicflowRuntime = memo((props: {
         scriptRuntime.dispose()
       }
     }
-  }, [context, controllerEngine, expVariables, getLogicFlowContext, logicDefines?.flows, logicDefines?.fxFlows, logicDefines?.fxScripts, logicDefines?.scripts, loopScope, ownerId, parent, reactions, variables])
+  }, [context, controllerEngine, expVariables, getLogicFlowContext, logicDefines?.flows, logicDefines?.fxFlows, logicDefines?.fxScripts, logicDefines?.scripts, logicScope, ownerId, parent, reactions, variables])
 
   return (
     controllerEngine ?
