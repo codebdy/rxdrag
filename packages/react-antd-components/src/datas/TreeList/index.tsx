@@ -2,7 +2,7 @@
 import type { Key } from "react";
 import { forwardRef, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
-import { Spin, Tree } from 'antd';
+import { Spin } from 'antd';
 import type { DataNode, DirectoryTreeProps } from "antd/es/tree";
 import { EditButton } from "./EditButton";
 import classNames from "classnames";
@@ -10,7 +10,6 @@ import { TreeListShell } from "./TreeListShell";
 import { TreeListTitle } from "./TreeListTitle";
 import { TreeListContent } from "./TreeListContent";
 import { TreeListTreeView } from "./TreeListTreeView";
-const { DirectoryTree } = Tree;
 
 const SpinContainer = styled(TreeListContent)`
   display: flex;

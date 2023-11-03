@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { Tree } from 'antd';
+
+const { DirectoryTree } = Tree;
 
 export const TreeListTreeView = styled(DirectoryTree)`
   .ant-tree-treenode{

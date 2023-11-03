@@ -7,6 +7,7 @@ import { DesignerEngineContext, DocumentRoot, InIframeContext, ParamsContext, Sc
 import { IReactComponents } from "@rxdrag/react-shared";
 import { ComponentDesignersRoot } from "../ComponentDesignersRoot";
 import { Fieldy } from "@rxdrag/react-fieldy";
+import { LocalesContext } from "@rxdrag/react-locales";
 declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument, params?: unknown | undefined };
 
 export interface IFrameCanvasEvent {
@@ -58,12 +59,14 @@ export const CanvasProxy = memo((
         <ParamsContext.Provider value={params}>
           <InIframeContext.Provider value={true}>
             <DesignerEngineContext.Provider value={engine}>
-              <ComponentDesignersRoot components={components}>
-                <DocumentRoot doc={doc}>
-                  {engine ? children : <></>}
-                  <Scroller />
-                </DocumentRoot>
-              </ComponentDesignersRoot>
+              <LocalesContext.Provider value={engine?.getLocalesManager()}>
+                <ComponentDesignersRoot components={components}>
+                  <DocumentRoot doc={doc}>
+                    {engine ? children : <></>}
+                    <Scroller />
+                  </DocumentRoot>
+                </ComponentDesignersRoot>
+              </LocalesContext.Provider>
             </DesignerEngineContext.Provider>
           </InIframeContext.Provider>
         </ParamsContext.Provider>

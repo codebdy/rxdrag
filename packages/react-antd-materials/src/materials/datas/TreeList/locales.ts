@@ -1,6 +1,7 @@
 export const boxLocales = {
   "zh-CN": {
     title: "树形列表",
+    openPopup: "打开弹层",
     settings: {
       title: "标题",
       popupType: "弹层类型",
@@ -12,10 +13,11 @@ export const boxLocales = {
   },
   'en-US': {
     title: "树形列表",
+    openPopup: "Open Popup",
     settings: {
       title: "title",
       popupType: "Popup type",
-      popover: "Popover"
+      popover: "Popover",
     }
   }
 }
