@@ -2,14 +2,15 @@
 import type { Key } from "react";
 import { forwardRef, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
-import { Spin } from 'antd';
+import { Spin, Tree } from 'antd';
 import type { DataNode, DirectoryTreeProps } from "antd/es/tree";
 import { EditButton } from "./EditButton";
 import classNames from "classnames";
 import { TreeListShell } from "./TreeListShell";
 import { TreeListTitle } from "./TreeListTitle";
 import { TreeListContent } from "./TreeListContent";
-import { TreeListTreeView } from "./TreeListTreeView";
+
+const { DirectoryTree } = Tree;
 
 const SpinContainer = styled(TreeListContent)`
   display: flex;
@@ -37,6 +38,7 @@ export type TreeListProps = {
   onRemove?: (node?: any) => void;
   bordered?: boolean;
   formLayout?: React.ReactNode;
+  defaultExpandAll?: boolean;
 }
 
 export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, ref) => {
@@ -49,7 +51,8 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
     idKey = "id",
     labelKey = "title",
     bordered,
-    formLayout
+    formLayout,
+    defaultExpandAll = false
   } = props;
   const [selected, setSelected] = useState<string>();
   const [expands, setExpands] = useState<string[]>();
@@ -127,10 +130,10 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
             <Spin spinning={loading} />
           </SpinContainer>
           : <TreeListContent>
-            <TreeListTreeView
+            <DirectoryTree
               showIcon={false}
               multiple={false}
-              defaultExpandAll={false}
+              defaultExpandAll={defaultExpandAll}
               selectedKeys={selected ? [selected] : []}
               onSelect={handleSelect}
               onExpand={handleExpand}

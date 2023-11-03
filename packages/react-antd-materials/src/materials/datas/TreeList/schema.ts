@@ -14,8 +14,8 @@ const schemaOptions: SchemaOptions = {
     {
       componentName: "Switch",
       "x-data": {
-        label: "$disabled",
-        name: "disabled",
+        label: "$readOnly",
+        name: "readOnly",
       }
     },
     {

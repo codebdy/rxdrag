@@ -26,7 +26,7 @@ const Actions = styled.div`
   }
 `
 
-export const ItemLabel = memo((
+export const TreeListItemLabel = memo((
   props: {
     node?: any,
     icon?: React.ReactNode,
@@ -100,6 +100,8 @@ export const ItemLabel = memo((
           <RemoveButton
             value={node}
             onOpenChange={handleDeleteOpenChange}
+            idKey={idKey}
+            labelKey={labelKey}
           />
         </Actions>
       }
