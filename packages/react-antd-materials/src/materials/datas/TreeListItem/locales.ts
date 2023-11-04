@@ -2,14 +2,14 @@ export const locales = {
   "zh-CN": {
     title: "树形列表条目",
     settings: {
-      readOnly: "只读",
+      actions: "动作",
     }
 
   },
   'en-US': {
     title: "Tree List Item",
     settings: {
-      readOnly: "Read Only",
+      actions: "Actions",
     }
   }
 }

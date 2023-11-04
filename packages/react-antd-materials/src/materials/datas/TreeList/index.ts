@@ -1,7 +1,7 @@
 import { IMaterial } from "@rxdrag/react-core";
 import { treeListIcon } from "./icon";
 import { locales, resourceLocales } from "./locales";
-import { boxSchema } from "./schema";
+import { schema } from "./schema";
 import { TreeList } from "@rxdrag/react-antd-components"
 
 const name = "TreeList"
@@ -10,7 +10,7 @@ export const TreeListMaterial: IMaterial = {
   component: TreeList,
   designer: TreeList,
   designerLocales: locales,
-  propsSchema: boxSchema,
+  propsSchema: schema,
   designerProps: {
     selectable: false,
     dataSource: [{
@@ -30,5 +30,5 @@ export const TreeListMaterial: IMaterial = {
   },
   behaviorRule: {
     droppable: true,
-  }
+  },
 }

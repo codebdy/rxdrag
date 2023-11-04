@@ -1,5 +1,6 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
+import { ControllerScopeType } from "@rxdrag/minions-runtime-react";
 
 const schemaOptions: SchemaOptions = {
   propSchemas: [
@@ -92,6 +93,11 @@ const schemaOptions: SchemaOptions = {
       }
     },
   ],
+  field: {
+    //主要为了显示实体选择列表，实际不会使用该字段
+    fieldType: "object",
+  },
+  ctrlScopeType: ControllerScopeType.tree,
 }
 
-export const boxSchema: INodeSchema = createSchema(schemaOptions)
+export const schema: INodeSchema = createSchema(schemaOptions)

@@ -23,8 +23,109 @@
                   "props": {
                     "title": "部门"
                   },
+                  "x-data": {
+                    "type": "object",
+                    "modelMetaId": "CKUfLFkG",
+                    "modelType": "Entity",
+                    "validateRules": null
+                  },
                   "slots": {},
-                  "children": []
+                  "children": [
+                    {
+                      "componentName": "TreeListItem",
+                      "slots": {
+                        "action": {
+                          "componentName": "TreeListItemActions",
+                          "slots": {},
+                          "children": []
+                        },
+                        "actions": {
+                          "componentName": "TreeListItemActions",
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Popover",
+                              "slots": {
+                                "title": {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "编辑部门"
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                },
+                                "content": {
+                                  "componentName": "DefaultSlot",
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
+                              "children": [
+                                {
+                                  "componentName": "Button",
+                                  "props": {
+                                    "title": "",
+                                    "type": "text"
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "FormOutlined"
+                                        }
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "text",
+                                "title": ""
+                              },
+                              "slots": {
+                                "icon": {
+                                  "componentName": "IconView",
+                                  "props": {
+                                    "icon": {
+                                      "iconKey": "DeleteOutlined"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
+                              "children": []
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "componentName": "Text",
+                          "props": {
+                            "value": "Text"
+                          },
+                          "x-data": {
+                            "type": "normal",
+                            "modelMetaId": "N3OxqEzu",
+                            "modelType": "Attribute",
+                            "validateRules": null,
+                            "label": "名称",
+                            "name": "name"
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },

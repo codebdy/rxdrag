@@ -92,6 +92,16 @@ const schemaOptions: SchemaOptions = {
       }
     },
   ],
+  slotSchemas: [
+    {
+      name: "icon",
+      label: "$icon"
+    },
+    {
+      name: "actions",
+      label: "$actions"
+    },
+  ],
 }
 
-export const boxSchema: INodeSchema = createSchema(schemaOptions)
+export const schema: INodeSchema = createSchema(schemaOptions)

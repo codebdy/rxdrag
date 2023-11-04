@@ -6,6 +6,8 @@ import { Spin, Tree } from 'antd';
 import type { DataNode, DirectoryTreeProps } from "antd/es/tree";
 import classNames from "classnames";
 import { TreeListShell } from "./TreeListShell";
+import { ObjectField } from "@rxdrag/react-fieldy";
+import { LogicflowRuntime, useArraySchema } from "@rxdrag/react-runner";
 
 const { DirectoryTree } = Tree;
 
@@ -29,12 +31,16 @@ export enum PopupType {
   drawer = "drawer"
 }
 
+export interface ITreeDataNode {
+  id: string,
+  children?: ITreeDataNode[],
+}
+
 export type TreeListProps = {
-  title: React.ReactNode;
   onSelect?: (node?: any) => void;
   readOnly?: boolean | undefined;
   loading?: boolean;
-  dataSource?: DataNode[];
+  dataSource?: ITreeDataNode[];
   formLayout?: React.ReactNode;
   defaultExpandAll?: boolean;
   style?: CSSProperties;
@@ -43,12 +49,11 @@ export type TreeListProps = {
 }
 
 export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, ref) => {
-  const { title,
+  const { 
     onSelect,
     readOnly,
     loading,
     dataSource,
-    bordered,
     defaultExpandAll = false,
     style,
     className,
@@ -57,14 +62,7 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
   } = props;
   const [selected, setSelected] = useState<string>();
   const [expands, setExpands] = useState<string[]>();
-  // const { loading, data } = useQuery<unknown[] | undefined>({
-  //   api: entityConfig.curdApi.listAll,
-  //   entity: entityConfig.entity
-  // })
-
-  // const tree = useMemo(() => {
-  //   return TreeKit.toTree(data, treeFieldNames)
-  // }, [data, treeFieldNames])
+  const { schema, childrenSchema } = useArraySchema()
 
   const handleSelect = useCallback((selectedKeys: Key[]) => {
     const key = selectedKeys?.[0] as string | undefined
@@ -84,43 +82,33 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
     setExpands(keys)
   }, []);
 
-  // const getNodes = useCallback((nodesData: unknown[] | undefined, parent?: unknown) => {
-  //   const nodes: DataNode[] = []
-  //   for (const child of nodesData || []) {
-  //     const node = child as any;
-  //     const id = node[treeFieldNames.key || defaultFieldNames.key]
-  //     const children = getNodes(node[treeFieldNames.children || defaultFieldNames.children], node)
-  //     const folderIcon = expands?.find(k => k === id) ? <FolderOpenOutlined /> : <FolderOutlined />
-  //     nodes.push({
-  //       key: id,
-  //       title: <ItemLabel
-  //         treeFieldNames={treeFieldNames}
-  //         entityConfig={entityConfig}
-  //         parent={parent}
-  //         node={node}
-  //         icon={children?.length ? folderIcon : undefined}
-  //         readOnly={readOnly}
-  //       />,
-  //       children: children,
-  //       isLeaf: children?.length ? false : true,
-  //     })
-  //   }
 
-  //   return nodes.length > 0 ? nodes : undefined
-  // }, [expands, readOnly])
-  
-  const treeData: DataNode[] = useMemo(() => [
-    {
-      key: "000",
-      title: children,
-    },
-  ], [children]);
+  const getOneNode = useCallback((node: ITreeDataNode): DataNode => {
+    return {
+      key: node.id,
+      title: <LogicflowRuntime
+        ownerId={schema?.["x-controller"]?.id}
+        schema={childrenSchema}
+        scropeValue={node}
+      >
+        <ObjectField name={node.id} value={node}>
+          {children}
+        </ObjectField>
+      </LogicflowRuntime>,
+      children: node.children?.map(node => getOneNode(node))
+    }
+  }, [children, childrenSchema, schema])
+
+  const treeData: DataNode[] = useMemo(
+    () => dataSource?.map(node => getOneNode(node)) || [],
+    [dataSource, getOneNode]
+  );
 
   return (
     <TreeListShell
       ref={ref}
       style={style}
-      className={classNames("tree-editor-shell", className, { bordered })}
+      className={classNames("tree-editor-shell", className)}
     >
       {
         loading
@@ -130,7 +118,7 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
           </SpinContainer>
           : <TreeListContent>
             <DirectoryTree
-              showIcon={false}
+              //showIcon={false}
               multiple={false}
               defaultExpandAll={defaultExpandAll}
               selectedKeys={selected ? [selected] : []}

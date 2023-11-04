@@ -24,15 +24,17 @@ export const LogicflowRuntime = memo((props: {
   children: React.ReactNode,
   schema: IComponentRenderSchema,
   scropeValue?: unknown,
+  parentValue?: unknown,
   scropeIndex?: number,
 } & LogicFlowOptions) => {
-  const { children, schema, ownerId, reactions, variables, scropeValue, scropeIndex, logicDefines, expVariables, context } = props
+  const { children, schema, ownerId, reactions, variables, scropeValue,parentValue, scropeIndex, logicDefines, expVariables, context } = props
   const logicScope: ILogicScope = useMemo(() => {
     return {
       value: scropeValue,
       index: scropeIndex,
+      parent: parentValue,
     }
-  }, [scropeIndex, scropeValue])
+  }, [parentValue, scropeIndex, scropeValue])
   const [controllerEngine, setControllerEngine] = useState<ControllerEngine | null>(null)
   const engineRef = useRef(controllerEngine)
   engineRef.current = controllerEngine

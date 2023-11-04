@@ -11,6 +11,7 @@ export interface IExpContext {
 export interface ILogicScope {
   index?: number,
   value?: unknown,
+  parent?: unknown,
 }
 
 export interface ILogicScopeContext {

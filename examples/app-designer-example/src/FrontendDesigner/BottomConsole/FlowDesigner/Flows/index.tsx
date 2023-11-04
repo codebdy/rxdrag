@@ -61,7 +61,7 @@ export const Flows = memo((
   const treeData: DataNode[] = useMemo(() => [
     {
       title: <RootFlowsLabel />,
-      key: 'flows',
+      key: 'module-flows',
       selectable: false,
       children: [
         ...module?.views?.map(view => ({
@@ -79,6 +79,11 @@ export const Flows = memo((
         }) || []
       ]
     },
+    {
+      //组件范围内的流，用于跟随组件移动
+      title: "组件流",
+      key: 'scope-flows',
+    }
   ], [flows, getListNodes, getOneNode, module?.id, module?.views]);
 
 

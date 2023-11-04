@@ -5,6 +5,9 @@ const schemaOptions: SchemaOptions = {
   propSchemas: [
     {
       componentName: "Input",
+      props: {
+        allowClear: true,
+      },
       "x-data": {
         label: "$title",
         name: "title",
