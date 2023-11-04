@@ -1,16 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { Key } from "react";
-import { forwardRef, memo, useCallback, useMemo, useState } from "react"
+import type { CSSProperties, Key } from "react";
+import React, { forwardRef, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
 import { Spin, Tree } from 'antd';
 import type { DataNode, DirectoryTreeProps } from "antd/es/tree";
-import { EditButton } from "./EditButton";
 import classNames from "classnames";
 import { TreeListShell } from "./TreeListShell";
-import { TreeListTitle } from "./TreeListTitle";
-import { TreeListContent } from "./TreeListContent";
 
 const { DirectoryTree } = Tree;
+
+export const TreeListContent = styled.div`
+  flex:1;
+  padding: 16px 8px;
+  overflow: auto;
+  height: 0;
+`;
+
 
 const SpinContainer = styled(TreeListContent)`
   display: flex;
@@ -30,15 +35,11 @@ export type TreeListProps = {
   readOnly?: boolean | undefined;
   loading?: boolean;
   dataSource?: DataNode[];
-  popupType?: PopupType,
-  popupProps?: any,
-  idKey?: string,
-  labelKey?: string,
-  onSave?: (node?: any) => void;
-  onRemove?: (node?: any) => void;
-  bordered?: boolean;
   formLayout?: React.ReactNode;
   defaultExpandAll?: boolean;
+  style?: CSSProperties;
+  className?: string;
+  children?: React.ReactNode;
 }
 
 export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, ref) => {
@@ -47,12 +48,12 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
     readOnly,
     loading,
     dataSource,
-    popupType = PopupType.popover,
-    idKey = "id",
-    labelKey = "title",
     bordered,
-    formLayout,
-    defaultExpandAll = false
+    defaultExpandAll = false,
+    style,
+    className,
+    children,
+    ...rest
   } = props;
   const [selected, setSelected] = useState<string>();
   const [expands, setExpands] = useState<string[]>();
@@ -107,22 +108,20 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
 
   //   return nodes.length > 0 ? nodes : undefined
   // }, [expands, readOnly])
-
-  const treeData: DataNode[] = useMemo(() => {
-    return []
-  }, [])
+  
+  const treeData: DataNode[] = useMemo(() => [
+    {
+      key: "000",
+      title: children,
+    },
+  ], [children]);
 
   return (
-    <TreeListShell ref={ref} className={classNames("tree-editor-shell", { bordered })}>
-      <TreeListTitle className="tree-title">
-        <span>{title}</span>
-        {
-          !readOnly && <EditButton
-            idKey={idKey}
-            labelKey={labelKey}
-          />
-        }
-      </TreeListTitle>
+    <TreeListShell
+      ref={ref}
+      style={style}
+      className={classNames("tree-editor-shell", className, { bordered })}
+    >
       {
         loading
           ?
@@ -137,7 +136,8 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
               selectedKeys={selected ? [selected] : []}
               onSelect={handleSelect}
               onExpand={handleExpand}
-              treeData={treeData || []}
+              treeData={treeData}
+              {...rest}
             />
           </TreeListContent>
       }

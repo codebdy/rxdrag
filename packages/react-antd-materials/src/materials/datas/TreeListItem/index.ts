@@ -1,14 +1,14 @@
 import { IMaterial } from "@rxdrag/react-core";
-import { treeListIcon } from "./icon";
+import { treeListItemIcon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { boxSchema } from "./schema";
-import { TreeList } from "@rxdrag/react-antd-components"
+import { TreeListItem } from "@rxdrag/react-antd-components"
 
-const name = "TreeList"
-export const TreeListMaterial: IMaterial = {
+const name = "TreeListItem"
+export const TreeListItemMaterial: IMaterial = {
   componentName: name,
-  component: TreeList,
-  designer: TreeList,
+  component: TreeListItem,
+  designer: TreeListItem,
   designerLocales: locales,
   propsSchema: boxSchema,
   designerProps: {
@@ -19,7 +19,7 @@ export const TreeListMaterial: IMaterial = {
   },
   resource: {
     name: name,
-    icon: treeListIcon,
+    icon: treeListItemIcon,
     color: "#dfa324",
     resourceLocales: resourceLocales,
     elements: [
