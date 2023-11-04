@@ -94,10 +94,6 @@ const schemaOptions: SchemaOptions = {
   ],
   slotSchemas: [
     {
-      name: "icon",
-      label: "$icon"
-    },
-    {
       name: "actions",
       label: "$actions"
     },

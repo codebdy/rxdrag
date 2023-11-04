@@ -4,7 +4,6 @@ import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
 import { TreeListItem } from "@rxdrag/react-antd-components"
 import { TreeListItemActionsMaterial } from "../TreeListItemActions";
-import { IconViewMaterial } from "../../displays";
 
 const name = "TreeListItem"
 export const TreeListItemMaterial: IMaterial = {
@@ -41,7 +40,6 @@ export const TreeListItemMaterial: IMaterial = {
     ]
   },
   slots: {
-    icon: IconViewMaterial,
     actions: TreeListItemActionsMaterial,
   },
   behaviorRule: {

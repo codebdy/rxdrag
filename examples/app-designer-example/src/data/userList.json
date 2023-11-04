@@ -19,6 +19,20 @@
               "slots": {},
               "children": [
                 {
+                  "componentName": "Box",
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Text",
+                      "props": {
+                        "value": "部门"
+                      },
+                      "slots": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
                   "componentName": "TreeList",
                   "props": {
                     "title": "部门"

@@ -14,10 +14,6 @@ const Content = styled.div`
   flex:1;
 `
 
-const Icon = styled.span`
-  margin-right: 4px;
-`
-
 const Actions = styled.div`
  // position: absolute;
   //right:0;
@@ -30,15 +26,13 @@ export const handleBlockClick = (e: React.MouseEvent) => {
 }
 
 export type TreeListItemProps = {
-  icon?: React.ReactNode,
-  readOnly?: boolean,
   children?: React.ReactNode,
   fixed?: boolean,
   actions?: React.ReactNode,
 }
 
 export const TreeListItem = memo(forwardRef<HTMLDivElement, TreeListItemProps>((props, ref) => {
-  const { icon, readOnly, children, fixed, actions } = props;
+  const { children, fixed, actions } = props;
   const [hover, setHover] = useState(false)
 
   const handleMouseEnter = useCallback(() => {
@@ -55,11 +49,6 @@ export const TreeListItem = memo(forwardRef<HTMLDivElement, TreeListItemProps>((
       onMouseLeave={handleMouseLeave}
       {...props}
     >
-      {
-        icon && <Icon>
-          {icon}
-        </Icon>
-      }
       <Content>
         {children}
       </Content>
