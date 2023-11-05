@@ -1,5 +1,5 @@
 import { ITreeNode } from "@rxdrag/core";
-import { IControllerMeta } from "@rxdrag/minions-runtime-react";
+import { ControllerScopeType, IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { useDesignerEngine, useGetNode } from "@rxdrag/react-core";
 import { useCallback } from "react";
 import { ListNode } from "./ListNode";
@@ -12,7 +12,8 @@ export function useGetListNodes() {
   const getReactionableSchemas = useCallback((node: ITreeNode<IFieldMeta, IControllerMeta>) => {
     const nodes: ListNode[] = []
     let activeNodes = nodes
-    if (node.meta["x-controller"]?.enable && (node.meta["x-data"])?.type === "array") {
+    const ctrlMeta = node.meta["x-controller"]
+    if (ctrlMeta?.enable && (ctrlMeta?.scopeType === ControllerScopeType.array || ctrlMeta?.scopeType === ControllerScopeType.tree)) {
       const rNode: ListNode = {
         node: node,
         children: []

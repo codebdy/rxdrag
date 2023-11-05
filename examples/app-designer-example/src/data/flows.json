@@ -4560,5 +4560,219 @@
         }
       ]
     }
+  },
+  {
+    "id": "8dGmPj1E",
+    "name": "树内流程",
+    "ownerId": "2QrkMp7t",
+    "moduleId": "users",
+    "type": "normal",
+    "metas": {
+      "lines": [
+        {
+          "id": "CI8_kt4D",
+          "source": {
+            "nodeId": "87053015-2bee-43f7-8adf-6adfaf6d6e4a",
+            "portId": "peIFjpAc"
+          },
+          "target": {
+            "nodeId": "1c680813-0ca8-41ca-bdd4-6696befc8b19",
+            "portId": "3BF1K_RV"
+          }
+        },
+        {
+          "id": "_Nf7q-x9",
+          "source": {
+            "nodeId": "f120e0ff-ba3a-4ab8-a0c5-dbd66b6cca37",
+            "portId": "LYw2LPV8"
+          },
+          "target": {
+            "nodeId": "89259ffb-e499-435f-a83a-f4a7efd6e086",
+            "portId": "qtaA75zE"
+          }
+        },
+        {
+          "id": "HWXAwrf1",
+          "source": {
+            "nodeId": "89259ffb-e499-435f-a83a-f4a7efd6e086",
+            "portId": "cSJ-XqX-"
+          },
+          "target": {
+            "nodeId": "da2d35d3-d6fb-4b3e-8d77-a0883e6989dc",
+            "portId": "GwK_axPG"
+          }
+        },
+        {
+          "id": "ak-QuzsP",
+          "source": {
+            "nodeId": "da2d35d3-d6fb-4b3e-8d77-a0883e6989dc",
+            "portId": "yCjU1XLn"
+          },
+          "target": {
+            "nodeId": "41e51339-c7f2-4fb3-9ba3-fb3f1036aeca",
+            "portId": "JXRnkUpk"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "f120e0ff-ba3a-4ab8-a0c5-dbd66b6cca37",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "点击",
+          "outPorts": [
+            {
+              "id": "LYw2LPV8",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "WpDDiuI2",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 70,
+            "y": 50,
+            "width": 144,
+            "height": 48
+          }
+        },
+        {
+          "id": "87053015-2bee-43f7-8adf-6adfaf6d6e4a",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "点击",
+          "outPorts": [
+            {
+              "id": "peIFjpAc",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "1bS7s-E3",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 80,
+            "y": 140,
+            "width": 158,
+            "height": 48
+          }
+        },
+        {
+          "id": "1c680813-0ca8-41ca-bdd4-6696befc8b19",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "3BF1K_RV",
+              "name": "open",
+              "label": "打开"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "g0bU5h4f",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "UM7RRcZF"
+          },
+          "x6Node": {
+            "x": 390,
+            "y": 140,
+            "width": 130,
+            "height": 32
+          }
+        },
+        {
+          "id": "89259ffb-e499-435f-a83a-f4a7efd6e086",
+          "label": "读取当前行",
+          "type": "Activity",
+          "activityName": "system-react.readArrayRow",
+          "inPorts": [
+            {
+              "id": "qtaA75zE",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "cSJ-XqX-",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "2QrkMp7t"
+          },
+          "x6Node": {
+            "x": 250,
+            "y": 40,
+            "width": 130,
+            "height": 48
+          }
+        },
+        {
+          "id": "da2d35d3-d6fb-4b3e-8d77-a0883e6989dc",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "GwK_axPG",
+              "name": "setValue",
+              "label": "赋值"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "yCjU1XLn",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "zu_KBWNF"
+          },
+          "x6Node": {
+            "x": 450,
+            "y": 60,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "41e51339-c7f2-4fb3-9ba3-fb3f1036aeca",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "JXRnkUpk",
+              "name": "open",
+              "label": "打开"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "NQMZlOyJ",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "UM7RRcZF"
+          },
+          "x6Node": {
+            "x": 640,
+            "y": 30,
+            "width": 130,
+            "height": 32
+          }
+        }
+      ]
+    }
   }
 ]
