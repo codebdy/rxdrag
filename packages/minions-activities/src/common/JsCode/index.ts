@@ -39,8 +39,8 @@ export class JsCode extends AbstractActivity<IJsCodeConfig, IExpContext> {
         outputs[output.name] = output.push
       }
 
-      const fn = new Function(...Object.keys(this.context?.expVariables || {}), "context", "inputs", "outputs", expression)
-      fn?.(...Object.values(this.context?.expVariables || {}), context, inputs, outputs)
+      const fn = new Function(...Object.keys(this.context?.expVariables || {}), "return " + expression)
+      fn?.(...Object.values(this.context?.expVariables || {}))?.({ context, inputs, outputs })
     }
   }
 

@@ -4645,6 +4645,17 @@
             "nodeId": "bd784be2-0920-48f9-83be-2a7b7b963db4",
             "portId": "kiOdoAmR"
           }
+        },
+        {
+          "id": "eSZAZVXT",
+          "source": {
+            "nodeId": "371699c9-5f8c-4843-a2b2-3db0e9018e21",
+            "portId": "w7N4xNOR"
+          },
+          "target": {
+            "nodeId": "e1a5cd32-8e61-43e3-90a8-e26a1a6f2eea",
+            "portId": "2KIz7GUT"
+          }
         }
       ],
       "nodes": [
@@ -4863,6 +4874,29 @@
           }
         },
         {
+          "id": "e1a5cd32-8e61-43e3-90a8-e26a1a6f2eea",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "2KIz7GUT",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "处理值"
+          },
+          "x6Node": {
+            "x": 650,
+            "y": 280,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
           "id": "371699c9-5f8c-4843-a2b2-3db0e9018e21",
           "label": "JS代码",
           "type": "Activity",
@@ -4882,7 +4916,7 @@
             }
           ],
           "config": {
-            "expression": "({ inputs, outputs }) => {\n  const { output } = outputs;\n  output(output?{parent:{id:output.id}}:output );\n}"
+            "expression": "( {inputs, outputs} ) => {\n  const { input } = inputs;\n  const { output } = outputs;\n  output(input?{parent:{id:input.id, name:input.name}}:input);\n} "
           },
           "x6Node": {
             "x": 420,
