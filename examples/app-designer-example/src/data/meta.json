@@ -220,6 +220,17 @@
           "roleOfSource": "category",
           "sourceMutiplicity": "0..1",
           "targetMultiplicity": "0..*"
+        },
+        {
+          "uuid": "-p7OoUFN",
+          "innerId": 1005,
+          "relationType": "oneWayAssociation",
+          "sourceId": "CKUfLFkG",
+          "targetId": "CKUfLFkG",
+          "roleOfTarget": "",
+          "roleOfSource": "parent",
+          "sourceMutiplicity": "0..*",
+          "targetMultiplicity": "0..1"
         }
       ],
       "diagrams": [
@@ -380,6 +391,40 @@
             "offset": -20
           },
           "diagramUuid": "lW_webV7"
+        },
+        {
+          "id": "-p7OoUFN",
+          "vertices": [
+            {
+              "x": 1120,
+              "y": 150
+            },
+            {
+              "x": 1120,
+              "y": -20
+            },
+            {
+              "x": 870,
+              "y": -20
+            }
+          ],
+          "roleOnSourcePosition": {
+            "distance": 40,
+            "offset": 20
+          },
+          "sourceMultiplicityPosition": {
+            "distance": 40,
+            "offset": -20
+          },
+          "roleOnTargetPosition": {
+            "distance": -40,
+            "offset": 20
+          },
+          "targetMultiplicityPosition": {
+            "distance": -40,
+            "offset": -20
+          },
+          "diagramUuid": "o23VdNv-"
         }
       ]
     },

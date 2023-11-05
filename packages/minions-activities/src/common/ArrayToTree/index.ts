@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
 
@@ -15,6 +16,28 @@ export class ArrayToTree extends AbstractActivity<IArrayToTreeConfig> {
 
   @Input()
   inputHandler = (inputValue?: any[], runContext?: object) => {
-    //this.next(inputValue + this.meta.config?.step, runContext)
+    const parentField = this.getParentField()
+    const tree: any[] = [] //| undefined = inputValue?.map(node => ({ ...node, children: this.getChildren(node) }))
+    for (const node of inputValue || []) {
+      if (!node?.[parentField]) {
+        tree.push(node)
+      }
+    }
+    this.next(tree, runContext)
+  }
+
+  getChildren = (id: string, inputValue?: any[]) => {
+    const parentField = this.getParentField()
+    const children: any[] = []
+    for (const node of inputValue || []) {
+      if (node?.[parentField]?.id === id) {
+        children.push({ ...node, children: this.getChildren(node) })
+      }
+    }
+    return children
+  }
+
+  getParentField = () => {
+    return this.config?.parentField || "parent"
   }
 }

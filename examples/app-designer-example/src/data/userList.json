@@ -50,7 +50,93 @@
                         "content": {
                           "componentName": "DefaultSlot",
                           "slots": {},
-                          "children": []
+                          "children": [
+                            {
+                              "componentName": "Form",
+                              "props": {
+                                "colon": false,
+                                "labelCol": {
+                                  "span": 8
+                                }
+                              },
+                              "x-data": {
+                                "type": "form",
+                                "modelMetaId": "CKUfLFkG",
+                                "modelType": "Entity",
+                                "validateRules": null
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "FormItem",
+                                  "x-data": {
+                                    "label": "FormItem"
+                                  },
+                                  "locked": false,
+                                  "slots": {},
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "FormItem",
+                                  "x-data": {
+                                    "type": "normal",
+                                    "label": "名称",
+                                    "modelMetaId": "N3OxqEzu",
+                                    "modelType": "Attribute",
+                                    "validateRules": null,
+                                    "name": "name"
+                                  },
+                                  "locked": false,
+                                  "slots": {},
+                                  "children": [
+                                    {
+                                      "componentName": "Input",
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "componentName": "Box",
+                                  "props": {
+                                    "style": {
+                                      "display": "flex",
+                                      "justifyContent": "flex-end"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": [
+                                    {
+                                      "componentName": "Space",
+                                      "props": {},
+                                      "selfRender": true,
+                                      "slots": {},
+                                      "children": [
+                                        {
+                                          "componentName": "Button",
+                                          "props": {
+                                            "type": "default",
+                                            "title": "取消"
+                                          },
+                                          "slots": {},
+                                          "children": []
+                                        },
+                                        {
+                                          "componentName": "Button",
+                                          "props": {
+                                            "type": "primary",
+                                            "title": "确定"
+                                          },
+                                          "slots": {},
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
                         }
                       },
                       "children": [
@@ -123,7 +209,50 @@
                                 "content": {
                                   "componentName": "DefaultSlot",
                                   "slots": {},
-                                  "children": []
+                                  "children": [
+                                    {
+                                      "componentName": "Form",
+                                      "props": {
+                                        "colon": false
+                                      },
+                                      "slots": {},
+                                      "children": [
+                                        {
+                                          "componentName": "FormItem",
+                                          "x-data": {
+                                            "label": "FormItem"
+                                          },
+                                          "locked": false,
+                                          "slots": {},
+                                          "children": [
+                                            {
+                                              "componentName": "Text",
+                                              "props": {
+                                                "value": "Text"
+                                              },
+                                              "slots": {},
+                                              "children": []
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "componentName": "FormItem",
+                                          "x-data": {
+                                            "label": "FormItem"
+                                          },
+                                          "locked": false,
+                                          "slots": {},
+                                          "children": [
+                                            {
+                                              "componentName": "Input",
+                                              "slots": {},
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 }
                               },
                               "children": [

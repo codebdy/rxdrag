@@ -4120,5 +4120,12 @@
         }
       ]
     }
+  },
+  {
+    "id": "CsQcpgA_",
+    "name": "新建部门",
+    "ownerId": "users",
+    "moduleId": "users",
+    "type": "normal"
   }
 ]
