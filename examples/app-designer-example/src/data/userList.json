@@ -37,157 +37,30 @@
                       "children": []
                     },
                     {
-                      "componentName": "Popover",
+                      "componentName": "Button",
+                      "props": {
+                        "title": "",
+                        "type": "text"
+                      },
+                      "locked": true,
+                      "x-controller": {
+                        "id": "COZkDHNo",
+                        "enable": true,
+                        "name": "新建部门按钮"
+                      },
                       "slots": {
-                        "title": {
-                          "componentName": "Text",
+                        "icon": {
+                          "componentName": "IconView",
                           "props": {
-                            "value": "编辑部门"
+                            "icon": {
+                              "iconKey": "PlusOutlined"
+                            }
                           },
                           "slots": {},
                           "children": []
-                        },
-                        "content": {
-                          "componentName": "DefaultSlot",
-                          "slots": {},
-                          "children": [
-                            {
-                              "componentName": "Form",
-                              "props": {
-                                "colon": false,
-                                "labelCol": {
-                                  "span": 8
-                                }
-                              },
-                              "x-data": {
-                                "type": "form",
-                                "modelMetaId": "CKUfLFkG",
-                                "modelType": "Entity",
-                                "validateRules": null
-                              },
-                              "slots": {},
-                              "children": [
-                                {
-                                  "componentName": "ObjectContainer",
-                                  "x-data": {
-                                    "type": "object",
-                                    "modelMetaId": "-p7OoUFN:CKUfLFkG",
-                                    "modelType": "Association",
-                                    "validateRules": null,
-                                    "name": "parent"
-                                  },
-                                  "slots": {},
-                                  "children": [
-                                    {
-                                      "componentName": "FormItem",
-                                      "x-data": {
-                                        "type": "normal",
-                                        "label": "上一级",
-                                        "modelMetaId": "N3OxqEzu",
-                                        "modelType": "Attribute",
-                                        "validateRules": null,
-                                        "name": "name"
-                                      },
-                                      "locked": false,
-                                      "slots": {},
-                                      "children": [
-                                        {
-                                          "componentName": "Text",
-                                          "props": {
-                                            "value": "Text"
-                                          },
-                                          "slots": {},
-                                          "children": []
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "componentName": "FormItem",
-                                  "x-data": {
-                                    "type": "normal",
-                                    "label": "名称",
-                                    "modelMetaId": "N3OxqEzu",
-                                    "modelType": "Attribute",
-                                    "validateRules": null,
-                                    "name": "name"
-                                  },
-                                  "locked": false,
-                                  "slots": {},
-                                  "children": [
-                                    {
-                                      "componentName": "Input",
-                                      "slots": {},
-                                      "children": []
-                                    }
-                                  ]
-                                },
-                                {
-                                  "componentName": "Box",
-                                  "props": {
-                                    "style": {
-                                      "display": "flex",
-                                      "justifyContent": "flex-end"
-                                    }
-                                  },
-                                  "slots": {},
-                                  "children": [
-                                    {
-                                      "componentName": "Space",
-                                      "props": {},
-                                      "selfRender": true,
-                                      "slots": {},
-                                      "children": [
-                                        {
-                                          "componentName": "Button",
-                                          "props": {
-                                            "type": "default",
-                                            "title": "取消"
-                                          },
-                                          "slots": {},
-                                          "children": []
-                                        },
-                                        {
-                                          "componentName": "Button",
-                                          "props": {
-                                            "type": "primary",
-                                            "title": "确定"
-                                          },
-                                          "slots": {},
-                                          "children": []
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
                         }
                       },
-                      "children": [
-                        {
-                          "componentName": "Button",
-                          "props": {
-                            "title": "",
-                            "type": "text"
-                          },
-                          "slots": {
-                            "icon": {
-                              "componentName": "IconView",
-                              "props": {
-                                "icon": {
-                                  "iconKey": "PlusOutlined"
-                                }
-                              },
-                              "slots": {},
-                              "children": []
-                            }
-                          },
-                          "children": []
-                        }
-                      ]
+                      "children": []
                     }
                   ]
                 },
@@ -223,87 +96,56 @@
                           "slots": {},
                           "children": [
                             {
-                              "componentName": "Popover",
+                              "componentName": "Button",
+                              "props": {
+                                "title": "",
+                                "type": "text"
+                              },
+                              "locked": false,
                               "slots": {
-                                "title": {
-                                  "componentName": "Text",
+                                "icon": {
+                                  "componentName": "IconView",
                                   "props": {
-                                    "value": "编辑部门"
+                                    "icon": {
+                                      "iconKey": "FormOutlined"
+                                    }
+                                  },
+                                  "x-controller": {
+                                    "id": "6AQf0kxy",
+                                    "enable": true,
+                                    "name": "编辑部门按钮"
                                   },
                                   "slots": {},
                                   "children": []
-                                },
-                                "content": {
-                                  "componentName": "DefaultSlot",
-                                  "slots": {},
-                                  "children": [
-                                    {
-                                      "componentName": "Form",
-                                      "props": {
-                                        "colon": false
-                                      },
-                                      "slots": {},
-                                      "children": [
-                                        {
-                                          "componentName": "FormItem",
-                                          "x-data": {
-                                            "label": "FormItem"
-                                          },
-                                          "locked": false,
-                                          "slots": {},
-                                          "children": [
-                                            {
-                                              "componentName": "Text",
-                                              "props": {
-                                                "value": "Text"
-                                              },
-                                              "slots": {},
-                                              "children": []
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "componentName": "FormItem",
-                                          "x-data": {
-                                            "label": "FormItem"
-                                          },
-                                          "locked": false,
-                                          "slots": {},
-                                          "children": [
-                                            {
-                                              "componentName": "Input",
-                                              "slots": {},
-                                              "children": []
-                                            }
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
                                 }
                               },
-                              "children": [
-                                {
-                                  "componentName": "Button",
+                              "children": []
+                            },
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "title": "",
+                                "type": "text"
+                              },
+                              "locked": true,
+                              "x-controller": {
+                                "id": "1bS7s-E3",
+                                "enable": true,
+                                "name": "新建子部门按钮"
+                              },
+                              "slots": {
+                                "icon": {
+                                  "componentName": "IconView",
                                   "props": {
-                                    "title": "",
-                                    "type": "text"
-                                  },
-                                  "slots": {
                                     "icon": {
-                                      "componentName": "IconView",
-                                      "props": {
-                                        "icon": {
-                                          "iconKey": "FormOutlined"
-                                        }
-                                      },
-                                      "slots": {},
-                                      "children": []
+                                      "iconKey": "PlusOutlined"
                                     }
                                   },
+                                  "slots": {},
                                   "children": []
                                 }
-                              ]
+                              },
+                              "children": []
                             },
                             {
                               "componentName": "Button",
@@ -311,6 +153,7 @@
                                 "type": "text",
                                 "title": ""
                               },
+                              "locked": true,
                               "slots": {
                                 "icon": {
                                   "componentName": "IconView",
@@ -318,6 +161,11 @@
                                     "icon": {
                                       "iconKey": "DeleteOutlined"
                                     }
+                                  },
+                                  "x-controller": {
+                                    "id": "avBB9ZdC",
+                                    "enable": true,
+                                    "name": "删除按钮"
                                   },
                                   "slots": {},
                                   "children": []

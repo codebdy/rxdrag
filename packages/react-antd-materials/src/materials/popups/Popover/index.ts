@@ -25,6 +25,9 @@ export const PopoverMaterial: IMaterial = {
     elements: [
       {
         componentName: name,
+        props: {
+          trigger: "click",
+        },
         slots: {
           title: {
             componentName: "Text",

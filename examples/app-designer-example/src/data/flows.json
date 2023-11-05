@@ -4126,6 +4126,400 @@
     "name": "新建部门",
     "ownerId": "users",
     "moduleId": "users",
-    "type": "normal"
+    "type": "normal",
+    "metas": {
+      "lines": [
+        {
+          "id": "oZTFaBBg",
+          "source": {
+            "nodeId": "a3a24b33-76be-4965-a5de-dba10eacd6fc",
+            "portId": "d4cJCxBm"
+          },
+          "target": {
+            "nodeId": "45c2045c-f55c-4371-a951-612e7150d989",
+            "portId": "oemnxgB-"
+          }
+        },
+        {
+          "id": "ccFvxwEI",
+          "source": {
+            "nodeId": "4ae8af66-5b74-4ca3-b191-e3428f18cf49",
+            "portId": "HazejBBc"
+          },
+          "target": {
+            "nodeId": "35458ce8-a3bd-4d64-b99b-76315a390cbd",
+            "portId": "UoAB7tn1"
+          }
+        },
+        {
+          "id": "Pmk4gv_K",
+          "source": {
+            "nodeId": "35458ce8-a3bd-4d64-b99b-76315a390cbd",
+            "portId": "Z0A5Hzg5"
+          },
+          "target": {
+            "nodeId": "119584bf-337a-4c77-8249-e2ecc47b6880",
+            "portId": "aQsLSyMo"
+          }
+        },
+        {
+          "id": "b9wR5qiO",
+          "source": {
+            "nodeId": "7dd7d993-14d5-4302-add5-88d9188d8b7d",
+            "portId": "wqqT02OU"
+          },
+          "target": {
+            "nodeId": "831134ab-cea5-4e0f-adbd-1a5a8f1d1467",
+            "portId": "A4fctktJ"
+          }
+        },
+        {
+          "id": "1NWgfjuu",
+          "source": {
+            "nodeId": "831134ab-cea5-4e0f-adbd-1a5a8f1d1467",
+            "portId": "4BceW6Pk"
+          },
+          "target": {
+            "nodeId": "e41ecb7a-f219-40cb-ae57-7f916610f06d",
+            "portId": "AIQ6Xon7"
+          }
+        },
+        {
+          "id": "DBEozqzT",
+          "source": {
+            "nodeId": "e41ecb7a-f219-40cb-ae57-7f916610f06d",
+            "portId": "R56IwlNl"
+          },
+          "target": {
+            "nodeId": "4dc1f033-661e-41f2-87fa-c05a04bffd68",
+            "portId": "rY7Q-uqZ"
+          }
+        },
+        {
+          "id": "DiyHulmN",
+          "source": {
+            "nodeId": "e41ecb7a-f219-40cb-ae57-7f916610f06d",
+            "portId": "haLs_hoI"
+          },
+          "target": {
+            "nodeId": "de7d8024-ed1c-474b-87f3-f60e4088133c",
+            "portId": "CWTiLbwE"
+          }
+        },
+        {
+          "id": "RemqMqvn",
+          "source": {
+            "nodeId": "e41ecb7a-f219-40cb-ae57-7f916610f06d",
+            "portId": "R56IwlNl"
+          },
+          "target": {
+            "nodeId": "76f35858-6dd4-45eb-b817-130e75ebe3b5",
+            "portId": "TgLcv51O"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "a3a24b33-76be-4965-a5de-dba10eacd6fc",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "点击",
+          "outPorts": [
+            {
+              "id": "d4cJCxBm",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "COZkDHNo",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 30,
+            "y": 40,
+            "width": 144,
+            "height": 48
+          }
+        },
+        {
+          "id": "45c2045c-f55c-4371-a951-612e7150d989",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "oemnxgB-",
+              "name": "open",
+              "label": "打开"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "Wu1GomNb",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "UM7RRcZF"
+          },
+          "x6Node": {
+            "x": 270,
+            "y": 10,
+            "width": 130,
+            "height": 32
+          }
+        },
+        {
+          "id": "4ae8af66-5b74-4ca3-b191-e3428f18cf49",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "点击",
+          "outPorts": [
+            {
+              "id": "HazejBBc",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "-6E5_O4K",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 50,
+            "y": 120,
+            "width": 116,
+            "height": 48
+          }
+        },
+        {
+          "id": "35458ce8-a3bd-4d64-b99b-76315a390cbd",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "UoAB7tn1",
+              "name": "close",
+              "label": "关闭"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "Z0A5Hzg5",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "UM7RRcZF"
+          },
+          "x6Node": {
+            "x": 270,
+            "y": 80,
+            "width": 130,
+            "height": 32
+          }
+        },
+        {
+          "id": "119584bf-337a-4c77-8249-e2ecc47b6880",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "aQsLSyMo",
+              "name": "reset",
+              "label": "重置"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "izDD293R",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "zu_KBWNF"
+          },
+          "x6Node": {
+            "x": 490,
+            "y": 80,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "7dd7d993-14d5-4302-add5-88d9188d8b7d",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "点击",
+          "outPorts": [
+            {
+              "id": "wqqT02OU",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "_HlDM184",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 70,
+            "y": 220,
+            "width": 116,
+            "height": 48
+          }
+        },
+        {
+          "id": "831134ab-cea5-4e0f-adbd-1a5a8f1d1467",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "A4fctktJ",
+              "name": "getValue",
+              "label": "取值"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "4BceW6Pk",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "zu_KBWNF"
+          },
+          "x6Node": {
+            "x": 260,
+            "y": 220,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "e41ecb7a-f219-40cb-ae57-7f916610f06d",
+          "label": "保存实体",
+          "type": "Activity",
+          "activityName": "save-entity",
+          "inPorts": [
+            {
+              "id": "AIQ6Xon7",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "t1ZAV7U-",
+              "name": "entity",
+              "label": "实体"
+            },
+            {
+              "id": "R56IwlNl",
+              "name": "success",
+              "label": "成功"
+            },
+            {
+              "id": "1MIg3xCA",
+              "name": "failure",
+              "label": "失败"
+            },
+            {
+              "id": "haLs_hoI",
+              "name": "loading",
+              "label": "加载中"
+            }
+          ],
+          "config": {
+            "entityId": "CKUfLFkG"
+          },
+          "x6Node": {
+            "x": 420,
+            "y": 220,
+            "width": 116,
+            "height": 80
+          }
+        },
+        {
+          "id": "de7d8024-ed1c-474b-87f3-f60e4088133c",
+          "type": "Activity",
+          "activityName": "system-react.setProp",
+          "inPorts": [
+            {
+              "id": "CWTiLbwE",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "Oz4WPEfn",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "_HlDM184",
+            "prop": "loading"
+          },
+          "x6Node": {
+            "x": 650,
+            "y": 280,
+            "width": 159,
+            "height": 48
+          }
+        },
+        {
+          "id": "4dc1f033-661e-41f2-87fa-c05a04bffd68",
+          "label": "提示消息",
+          "type": "Activity",
+          "activityName": "system-react-antd5.message",
+          "inPorts": [
+            {
+              "id": "rY7Q-uqZ",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {},
+          "x6Node": {
+            "x": 660,
+            "y": 160,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "76f35858-6dd4-45eb-b817-130e75ebe3b5",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "TgLcv51O",
+              "name": "close",
+              "label": "关闭"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "UsXYjdPX",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "UM7RRcZF"
+          },
+          "x6Node": {
+            "x": 710,
+            "y": 220,
+            "width": 130,
+            "height": 32
+          }
+        }
+      ]
+    }
   }
 ]
