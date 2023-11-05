@@ -68,13 +68,40 @@
                               "slots": {},
                               "children": [
                                 {
-                                  "componentName": "FormItem",
+                                  "componentName": "ObjectContainer",
                                   "x-data": {
-                                    "label": "FormItem"
+                                    "type": "object",
+                                    "modelMetaId": "-p7OoUFN:CKUfLFkG",
+                                    "modelType": "Association",
+                                    "validateRules": null,
+                                    "name": "parent"
                                   },
-                                  "locked": false,
                                   "slots": {},
-                                  "children": []
+                                  "children": [
+                                    {
+                                      "componentName": "FormItem",
+                                      "x-data": {
+                                        "type": "normal",
+                                        "label": "上一级",
+                                        "modelMetaId": "N3OxqEzu",
+                                        "modelType": "Attribute",
+                                        "validateRules": null,
+                                        "name": "name"
+                                      },
+                                      "locked": false,
+                                      "slots": {},
+                                      "children": [
+                                        {
+                                          "componentName": "Text",
+                                          "props": {
+                                            "value": "Text"
+                                          },
+                                          "slots": {},
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 },
                                 {
                                   "componentName": "FormItem",

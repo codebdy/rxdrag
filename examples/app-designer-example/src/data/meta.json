@@ -227,8 +227,8 @@
           "relationType": "oneWayAssociation",
           "sourceId": "CKUfLFkG",
           "targetId": "CKUfLFkG",
-          "roleOfTarget": "",
-          "roleOfSource": "parent",
+          "roleOfTarget": "parent",
+          "roleOfSource": "",
           "sourceMutiplicity": "0..*",
           "targetMultiplicity": "0..1"
         }
