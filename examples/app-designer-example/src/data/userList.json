@@ -20,6 +20,12 @@
               "children": [
                 {
                   "componentName": "Box",
+                  "props": {
+                    "style": {
+                      "display": "flex",
+                      "justifyContent": "space-between"
+                    }
+                  },
                   "slots": {},
                   "children": [
                     {
@@ -29,6 +35,46 @@
                       },
                       "slots": {},
                       "children": []
+                    },
+                    {
+                      "componentName": "Popover",
+                      "slots": {
+                        "title": {
+                          "componentName": "Text",
+                          "props": {
+                            "value": "编辑部门"
+                          },
+                          "slots": {},
+                          "children": []
+                        },
+                        "content": {
+                          "componentName": "DefaultSlot",
+                          "slots": {},
+                          "children": []
+                        }
+                      },
+                      "children": [
+                        {
+                          "componentName": "Button",
+                          "props": {
+                            "title": "",
+                            "type": "text"
+                          },
+                          "slots": {
+                            "icon": {
+                              "componentName": "IconView",
+                              "props": {
+                                "icon": {
+                                  "iconKey": "PlusOutlined"
+                                }
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          },
+                          "children": []
+                        }
+                      ]
                     }
                   ]
                 },
@@ -42,6 +88,12 @@
                     "modelMetaId": "CKUfLFkG",
                     "modelType": "Entity",
                     "validateRules": null
+                  },
+                  "x-controller": {
+                    "id": "2QrkMp7t",
+                    "enable": true,
+                    "scopeType": "tree",
+                    "name": "部门树"
                   },
                   "slots": {},
                   "children": [

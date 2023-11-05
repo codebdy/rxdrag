@@ -3888,5 +3888,237 @@
         }
       ]
     }
+  },
+  {
+    "id": "NhZvv9FF",
+    "name": "读取部门",
+    "ownerId": "users",
+    "moduleId": "users",
+    "type": "normal",
+    "metas": {
+      "lines": [
+        {
+          "id": "KXCWppd9",
+          "source": {
+            "nodeId": "12b051d8-4e9b-4190-8168-c9162540ebef",
+            "portId": "Ty0QN_u8"
+          },
+          "target": {
+            "nodeId": "c732d2b6-8219-4308-a346-cb18923c756e",
+            "portId": "SzeQb-2p"
+          }
+        },
+        {
+          "id": "Gt9DTnmh",
+          "source": {
+            "nodeId": "c732d2b6-8219-4308-a346-cb18923c756e",
+            "portId": "1BMfdK1N"
+          },
+          "target": {
+            "nodeId": "d72537ed-607f-4b25-83db-e1f4c602fd5c",
+            "portId": "ATTVfAcR"
+          }
+        },
+        {
+          "id": "Oa41LWEW",
+          "source": {
+            "nodeId": "d72537ed-607f-4b25-83db-e1f4c602fd5c",
+            "portId": "v9ABswrD"
+          },
+          "target": {
+            "nodeId": "8d2b1498-24c8-4628-89bd-bfde9d43bd50",
+            "portId": "-sdGH7n2"
+          }
+        },
+        {
+          "id": "Q27TZmdl",
+          "source": {
+            "nodeId": "c732d2b6-8219-4308-a346-cb18923c756e",
+            "portId": "ZxRAR7bo"
+          },
+          "target": {
+            "nodeId": "6d618fe6-d19a-400d-9889-d01d791fd527",
+            "portId": "NDTLuIe_"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "12b051d8-4e9b-4190-8168-c9162540ebef",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "初始化",
+          "outPorts": [
+            {
+              "id": "Ty0QN_u8",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "2QrkMp7t",
+            "name": "onInit"
+          },
+          "x6Node": {
+            "x": 130,
+            "y": 60,
+            "width": 102,
+            "height": 48
+          }
+        },
+        {
+          "id": "c732d2b6-8219-4308-a346-cb18923c756e",
+          "label": "读实体列表",
+          "type": "Activity",
+          "activityName": "qurey-entities",
+          "inPorts": [
+            {
+              "id": "SzeQb-2p",
+              "name": "query",
+              "label": "查询"
+            },
+            {
+              "id": "NpfbRU_n",
+              "name": "condition_params",
+              "label": "条件参数"
+            },
+            {
+              "id": "-0Mq_tO0",
+              "name": "sort",
+              "label": "排序参数"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "1BMfdK1N",
+              "name": "list",
+              "label": "数据列表"
+            },
+            {
+              "id": "q6qn5WY7",
+              "name": "pagination",
+              "label": "分页"
+            },
+            {
+              "id": "FVH8H3Ig",
+              "name": "sorter",
+              "label": "排序"
+            },
+            {
+              "id": "3mzVZh_o",
+              "name": "filters",
+              "label": "过滤"
+            },
+            {
+              "id": "ZxRAR7bo",
+              "name": "loading",
+              "label": "加载中"
+            },
+            {
+              "id": "GlNdw9C6",
+              "name": "success",
+              "label": "成功"
+            },
+            {
+              "id": "nnLSmHdm",
+              "name": "failure",
+              "label": "失败"
+            }
+          ],
+          "config": {
+            "entityId": "CKUfLFkG"
+          },
+          "x6Node": {
+            "x": 330,
+            "y": 20,
+            "width": 130,
+            "height": 128
+          }
+        },
+        {
+          "id": "d72537ed-607f-4b25-83db-e1f4c602fd5c",
+          "label": "构造树",
+          "type": "Activity",
+          "activityName": "system.ArrayToTree",
+          "inPorts": [
+            {
+              "id": "ATTVfAcR",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "v9ABswrD",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {},
+          "x6Node": {
+            "x": 580,
+            "y": 30,
+            "width": 102,
+            "height": 32
+          }
+        },
+        {
+          "id": "8d2b1498-24c8-4628-89bd-bfde9d43bd50",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "-sdGH7n2",
+              "name": "setDataSource",
+              "label": "设置数据源"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "x7lNWIN3",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "2QrkMp7t"
+          },
+          "x6Node": {
+            "x": 790,
+            "y": 60,
+            "width": 102,
+            "height": 32
+          }
+        },
+        {
+          "id": "6d618fe6-d19a-400d-9889-d01d791fd527",
+          "type": "Activity",
+          "activityName": "system-react.setProp",
+          "inPorts": [
+            {
+              "id": "NDTLuIe_",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "hV1p0iN7",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "2QrkMp7t",
+            "prop": "loading"
+          },
+          "x6Node": {
+            "x": 620,
+            "y": 120,
+            "width": 121,
+            "height": 48
+          }
+        }
+      ]
+    }
   }
 ]

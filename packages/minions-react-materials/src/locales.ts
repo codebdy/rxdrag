@@ -97,6 +97,7 @@ export const activityMaterialLocales = {
     step: "步长",
     negation: "逻辑非",
     setProps: "设置属性",
+    arrayToTree: "构造树"
   },
   'en-US': {
     basicAcitivites: "Basic Reactions",
@@ -196,6 +197,7 @@ export const activityMaterialLocales = {
     increase: "Increase",
     step: "Step",
     negation: "negation",
-    setProps:"Set Props"
+    setProps: "Set Props",
+    arrayToTree: "Make tree"
   }
 }

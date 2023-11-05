@@ -14,7 +14,7 @@ export const TreeListMaterial: IMaterial = {
   designerProps: {
     selectable: false,
     dataSource: [{
-      id:"designer",
+      id: "designer",
     }]
   },
   resource: {
@@ -31,4 +31,32 @@ export const TreeListMaterial: IMaterial = {
   behaviorRule: {
     droppable: true,
   },
+  controller: {
+    props: [
+      {
+        name: "dataSource",
+        label: "$dataSource"
+      },
+      {
+        name: "loading",
+        label: "$loading"
+      },
+    ],
+    events: [
+      {
+        name: "onInit",
+        label: "$onInit",
+      },
+      {
+        name: "onSelect",
+        label: "$onSelect",
+      }
+    ],
+    reactions: [
+      {
+        name: "setDataSource",
+        label: "$setDataSource",
+      },
+    ]
+  }
 }

@@ -1,14 +1,18 @@
+import { eventsLocales } from "../../locales"
+
 export const locales = {
   "zh-CN": {
     title: "树形列表",
     settings: {
-      title: "标题",
+      ...eventsLocales["zh-CN"],
+      setDataSource: "设置数据源",
     }
   },
   'en-US': {
     title: "Tree List",
     settings: {
-      title: "title",
+      ...eventsLocales["en-US"],
+      setDataSource: "setDataSource",
     }
   }
 }
