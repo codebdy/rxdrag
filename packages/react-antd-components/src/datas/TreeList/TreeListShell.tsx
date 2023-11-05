@@ -17,4 +17,8 @@ export const TreeListShell = styled.div`
       align-items: center;
     }
   }
+  .ant-tree-switcher{
+    display: flex;
+    align-items: center;
+  }
 `;

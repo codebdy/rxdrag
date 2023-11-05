@@ -17,10 +17,10 @@ export class ArrayToTree extends AbstractActivity<IArrayToTreeConfig> {
   @Input()
   inputHandler = (inputValue?: any[], runContext?: object) => {
     const parentField = this.getParentField()
-    const tree: any[] = [] //| undefined = inputValue?.map(node => ({ ...node, children: this.getChildren(node) }))
+    const tree: any[] = []
     for (const node of inputValue || []) {
       if (!node?.[parentField]) {
-        tree.push(node)
+        tree.push({ ...node, children: this.getChildren(node.id, inputValue) })
       }
     }
     this.next(tree, runContext)
@@ -31,7 +31,7 @@ export class ArrayToTree extends AbstractActivity<IArrayToTreeConfig> {
     const children: any[] = []
     for (const node of inputValue || []) {
       if (node?.[parentField]?.id === id) {
-        children.push({ ...node, children: this.getChildren(node) })
+        children.push({ ...node, children: this.getChildren(node.id, inputValue) })
       }
     }
     return children
