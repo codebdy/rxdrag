@@ -2,7 +2,7 @@ import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
 import { ComponentRender } from "@rxdrag/react-runner"
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared"
 import { isStr } from "@rxdrag/shared"
-import { memo, useMemo } from "react"
+import { Fragment, memo, useMemo } from "react"
 import { frameMaterilas } from "../../UiFrameDesigner/materials"
 import { PageCanvas } from "./PageCanvas"
 import { useParams } from "react-router-dom"
@@ -29,6 +29,7 @@ export const ModuleCanvas = memo((
         coms[slot.componentName] = slot.component as ReactComponent
       }
       coms["Page"] = PageCanvas
+      coms["Fragment"] = Fragment
     }
     return coms
   }, [device])

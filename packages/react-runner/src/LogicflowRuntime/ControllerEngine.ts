@@ -1,6 +1,6 @@
 
 
-import { ComponentController, ControllerReaction, IController, IVariableController, LogicDefines, VariableController } from "@rxdrag/minions-runtime-react"
+import { ComponentController, ControllerReaction, ControllerScopeType, IController, IVariableController, LogicDefines, VariableController } from "@rxdrag/minions-runtime-react"
 import { IComponentRenderSchema } from "../ComponentView"
 import { IVariable } from "@rxdrag/minions-schema"
 import { ILogicScope } from "@rxdrag/minions-runtime"
@@ -42,7 +42,7 @@ export class ControllerEngine {
 
   getSchemaControllers = (schema: IComponentRenderSchema, controllers: Record<string, IController>) => {
     const controllerMeta = schema?.["x-controller"];
-    const fieldMeta = schema?.["x-data"]
+    //const fieldMeta = schema?.["x-data"]
     if (controllerMeta?.enable) {
       const controller = new ComponentController(controllerMeta);
       if (controller) {
@@ -50,7 +50,7 @@ export class ControllerEngine {
       }
     }
 
-    if (fieldMeta?.type !== "array") {
+    if (controllerMeta?.scopeType !== ControllerScopeType.array && controllerMeta?.scopeType !== ControllerScopeType.tree) {
       for (const child of schema?.children || []) {
         this.getSchemaControllers(child as IComponentRenderSchema, controllers);
       }
