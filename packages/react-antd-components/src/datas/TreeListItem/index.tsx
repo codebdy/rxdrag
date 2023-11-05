@@ -12,6 +12,9 @@ const StyledItem = styled.div`
 
 const Content = styled.div`
   flex:1;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
 `
 
 const Actions = styled.div`

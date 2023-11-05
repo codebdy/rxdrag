@@ -49,7 +49,7 @@ export type TreeListProps = {
 }
 
 export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, ref) => {
-  const { 
+  const {
     onSelect,
     readOnly,
     loading,
@@ -95,6 +95,7 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
           {children}
         </ObjectField>
       </LogicflowRuntime>,
+      isLeaf: !node.children?.length,
       children: node.children?.map(node => getOneNode(node))
     }
   }, [children, childrenSchema, schema])

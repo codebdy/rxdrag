@@ -12,7 +12,9 @@ export const TreeListShell = styled.div`
     display: flex;
     align-items: center;
     .ant-tree-title{
-      flex:1
+      flex:1;
+      display: flex;
+      align-items: center;
     }
   }
 `;
