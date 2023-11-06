@@ -33,8 +33,8 @@ export const TreeSelect = memo(forwardRef<HTMLDivElement, TreeSelectProps>((prop
   );
 
 
-  const handleChange = useCallback((value: IDataNode) => {
-    onChange?.({ id: value?.id })
+  const handleChange = useCallback((value: string) => {
+    onChange?.({ id: value })
   }, [onChange])
 
   return (
@@ -43,7 +43,7 @@ export const TreeSelect = memo(forwardRef<HTMLDivElement, TreeSelectProps>((prop
       ref={ref as any}
       showSearch
       style={{ width: '100%', ...style }}
-      value={value}
+      value={value?.id}
       dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
       allowClear
       treeDefaultExpandAll

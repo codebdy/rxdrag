@@ -41,9 +41,9 @@ export const XDataInput = memo((
         />
       }
       {
-        (fieldType === "object" || fieldType === "array") && !isEntitySelected &&
+        (fieldType === "normal" || fieldType === "object" || fieldType === "array") && !isEntitySelected &&
         <AssociationSelect
-          fieldType={fieldType}
+          //fieldType={fieldType}
           hasLabel={hasLabel}
           value={value}
           onChange={onChange}

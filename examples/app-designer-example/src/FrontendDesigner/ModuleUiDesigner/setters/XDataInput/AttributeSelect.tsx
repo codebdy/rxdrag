@@ -1,7 +1,7 @@
 import { FieldType } from "@rxdrag/fieldy";
 import { useSettersTranslate } from "@rxdrag/react-core";
 import { Form, Select } from "antd";
-import { memo, useCallback } from "react";
+import { memo, useCallback, useMemo } from "react";
 import { IModelMeta, ModelType } from "../../interfaces";
 import { useRecentEntity } from "../../../hooks/useRecentEntity";
 import { LabelInput } from "./LabelInput";
@@ -16,8 +16,9 @@ export const AttributeSelect = memo((
 ) => {
   const { value, onChange, fieldType, hasLabel } = props;
   const t = useSettersTranslate()
-
   const entity = useRecentEntity()
+
+  const selectedAssoc = useMemo(() => entity?.associations.find(asso => asso.id === value?.modelMetaId), [entity?.associations, value?.modelMetaId])
 
   const handleEntityChange = useCallback((modelMetaId?: string) => {
     if (modelMetaId) {
@@ -30,7 +31,7 @@ export const AttributeSelect = memo((
   }, [entity?.attributes, fieldType, onChange, value])
 
   return (
-    entity
+    entity && !selectedAssoc
       ? <>
         <Form.Item label={t("attribute")}>
           <Select

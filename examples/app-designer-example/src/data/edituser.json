@@ -128,41 +128,27 @@
           ]
         },
         {
-          "componentName": "ObjectContainer",
+          "componentName": "FormItem",
           "x-data": {
-            "type": "object",
+            "type": "normal",
+            "label": "所属部门",
             "modelMetaId": "HxHeLzzC:CKUfLFkG",
             "modelType": "Association",
             "validateRules": null,
-            "label": "所属部门",
             "name": "department"
           },
+          "locked": false,
           "slots": {},
           "children": [
             {
-              "componentName": "FormItem",
-              "x-data": {
-                "type": "normal",
-                "label": "所属部门",
-                "modelMetaId": "N3OxqEzu",
-                "modelType": "Attribute",
-                "validateRules": null,
-                "name": "name"
+              "componentName": "TreeSelect",
+              "x-controller": {
+                "id": "mQjZXV0D",
+                "enable": true,
+                "name": "部门下拉"
               },
-              "locked": false,
               "slots": {},
-              "children": [
-                {
-                  "componentName": "TreeSelect",
-                  "x-controller": {
-                    "id": "mQjZXV0D",
-                    "enable": true,
-                    "name": "部门下拉"
-                  },
-                  "slots": {},
-                  "children": []
-                }
-              ]
+              "children": []
             }
           ]
         }
