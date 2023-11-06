@@ -142,11 +142,22 @@
             {
               "componentName": "FormItem",
               "x-data": {
-                "label": "FormItem"
+                "type": "normal",
+                "label": "所属部门",
+                "modelMetaId": "N3OxqEzu",
+                "modelType": "Attribute",
+                "validateRules": null,
+                "name": "name"
               },
               "locked": false,
               "slots": {},
-              "children": []
+              "children": [
+                {
+                  "componentName": "TreeSelect",
+                  "slots": {},
+                  "children": []
+                }
+              ]
             }
           ]
         }

@@ -3309,6 +3309,39 @@
             "nodeId": "88a7657d-0dae-46e7-be07-ed5ae0a940c4",
             "portId": "ETfIFPTX"
           }
+        },
+        {
+          "id": "lv6DOeb8",
+          "source": {
+            "nodeId": "fc673acb-8b83-49f5-ab5f-43bc5a12db16",
+            "portId": "Qs1vaZXz"
+          },
+          "target": {
+            "nodeId": "8f5579a2-d20f-4955-8f32-476b8f5b5c7c",
+            "portId": "kNT_Kkra"
+          }
+        },
+        {
+          "id": "pOzOp3uu",
+          "source": {
+            "nodeId": "8f5579a2-d20f-4955-8f32-476b8f5b5c7c",
+            "portId": "i3iNlwTH"
+          },
+          "target": {
+            "nodeId": "e5154ba6-4d03-4385-b47e-d115f44a5878",
+            "portId": "bPIir3RQ"
+          }
+        },
+        {
+          "id": "r-B5Sk_8",
+          "source": {
+            "nodeId": "e5154ba6-4d03-4385-b47e-d115f44a5878",
+            "portId": "oKyPsJwq"
+          },
+          "target": {
+            "nodeId": "dec49532-e253-4ee7-a7d9-3d132f8a2a54",
+            "portId": "wcQQhOhH"
+          }
         }
       ],
       "nodes": [
@@ -3718,6 +3751,92 @@
             "x": 340,
             "y": 510,
             "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "8f5579a2-d20f-4955-8f32-476b8f5b5c7c",
+          "label": "当前部门",
+          "type": "Activity",
+          "activityName": "system-react.readVariable",
+          "inPorts": [
+            {
+              "id": "kNT_Kkra",
+              "name": "input",
+              "label": "$read"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "i3iNlwTH",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "当前部门"
+          },
+          "x6Node": {
+            "x": 90,
+            "y": -10,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "dec49532-e253-4ee7-a7d9-3d132f8a2a54",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "wcQQhOhH",
+              "name": "setValue",
+              "label": "赋值"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "jI0n4DD1",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "nepX8Hq4"
+          },
+          "x6Node": {
+            "x": 470,
+            "y": 0,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "e5154ba6-4d03-4385-b47e-d115f44a5878",
+          "label": "JS代码",
+          "type": "Activity",
+          "activityName": "system.jsCode",
+          "inPorts": [
+            {
+              "id": "bPIir3RQ",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "oKyPsJwq",
+              "name": "output",
+              "label": "output"
+            }
+          ],
+          "config": {
+            "expression": "( {inputs, outputs} ) => {\n  const { input } = inputs;\n  const { output } = outputs;\n  output(input?{department:{id:input.id, name:input.name}}:input);\n} "
+          },
+          "x6Node": {
+            "x": 260,
+            "y": -10,
+            "width": 102,
             "height": 32
           }
         }

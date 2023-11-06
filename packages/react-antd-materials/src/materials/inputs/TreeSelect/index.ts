@@ -1,8 +1,8 @@
 import { IMaterial } from "@rxdrag/react-core";
-import { TreeSelect } from "antd";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
+import { TreeSelect } from "@rxdrag/react-antd-components";
 
 const name = "TreeSelect"
 export const TreeSelectMaterial: IMaterial = {
