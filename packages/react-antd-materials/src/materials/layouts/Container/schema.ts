@@ -1,5 +1,5 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema } from "@rxdrag/react-antd-materials";
+import { SchemaOptions, createSchema } from "../../../shared";
 
 export const schemaOptions: SchemaOptions = {
   propSchemas: [

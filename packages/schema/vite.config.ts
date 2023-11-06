@@ -1,3 +1,3 @@
-import { definePackageConfig } from '../../../internal';
+import { definePackageConfig } from '../../internal';
 
 export default definePackageConfig();
