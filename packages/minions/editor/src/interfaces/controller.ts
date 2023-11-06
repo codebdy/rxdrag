@@ -1,10 +1,13 @@
+
+export interface IEventArgMeta {
+  name: string,
+  label?: string,
+}
+
 export interface IEventMeta {
   name: string,
   label: string,
-  //其它公司在用，本项目暂时不使用
-  async?: boolean,
-  //其它公司在用，本项目暂时不使用
-  isRunBack?: boolean
+  args?: IEventArgMeta[]
 }
 
 export interface IPropsMeta {
@@ -23,6 +26,6 @@ export interface IReactionMeta {
 //控制器物料定义
 export interface IControllerMaterial {
   props?: IPropsMeta[],
-  events?: (IEventMeta)[],
+  events?: IEventMeta[],
   reactions?: IReactionMeta[],
 }

@@ -33,7 +33,8 @@
           "x-controller": {
             "id": "KiE-KrsA",
             "enable": true,
-            "name": "数组容器"
+            "name": "数组容器",
+            "scopeType": "array"
           },
           "slots": {},
           "children": [

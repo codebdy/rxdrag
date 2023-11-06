@@ -23,7 +23,7 @@ export const RootFlowsLabel = memo(() => {
           : <></>
       }
     >
-      根目录
+      全局流
     </TreeNodeLabel>
   )
 })

@@ -24,10 +24,10 @@
             },
             {
               "componentName": "Menu",
-              "slots": {},
               "props": {
                 "menuId": "menu1-admin"
               },
+              "slots": {},
               "children": []
             }
           ]
@@ -38,9 +38,15 @@
           "slots": {},
           "children": [
             {
-              "componentName": "Page",
+              "componentName": "Container",
               "slots": {},
-              "children": []
+              "children": [
+                {
+                  "componentName": "Page",
+                  "slots": {},
+                  "children": []
+                }
+              ]
             }
           ]
         },

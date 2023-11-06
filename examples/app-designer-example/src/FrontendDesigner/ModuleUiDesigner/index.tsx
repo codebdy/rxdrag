@@ -23,9 +23,6 @@ export const ModuleUiDesigner = memo(() => {
       canvasUrl={`/${CANVAS_URL_PREFIX}/${device}/${LayoutPart.module}`}
       previewUrl={`/${PREVIEW_URL_PREFIX}/${device}/${LayoutPart.module}/${module?.id}`}
       themeMode={themeMode}
-      minionOptions={{
-
-      }}
       setters={{
         //新的XDataInput覆盖旧的
         XDataInput

@@ -1,0 +1,139 @@
+{
+  "componentName": "Dialog",
+  "x-controller": {
+    "id": "UM7RRcZF",
+    "enable": true,
+    "name": "部门对话框"
+  },
+  "slots": {
+    "title": {
+      "componentName": "DialogTitle",
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Text",
+          "props": {
+            "value": "新建部门"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    },
+    "footer": {
+      "componentName": "DialogFooter",
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Button",
+          "props": {
+            "type": "default",
+            "title": "取消"
+          },
+          "x-controller": {
+            "id": "-6E5_O4K",
+            "enable": true,
+            "name": "部门取消"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Button",
+          "props": {
+            "type": "primary",
+            "title": "确定"
+          },
+          "x-controller": {
+            "id": "_HlDM184",
+            "enable": true,
+            "name": "部门确定"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    }
+  },
+  "children": [
+    {
+      "componentName": "Form",
+      "props": {
+        "colon": false,
+        "labelCol": {
+          "span": 4
+        }
+      },
+      "x-data": {
+        "type": "form",
+        "modelMetaId": "CKUfLFkG",
+        "modelType": "Entity",
+        "validateRules": null
+      },
+      "x-controller": {
+        "id": "zu_KBWNF",
+        "enable": true,
+        "name": "部门表单"
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "ObjectContainer",
+          "x-data": {
+            "type": "object",
+            "modelMetaId": "-p7OoUFN:CKUfLFkG",
+            "modelType": "Association",
+            "validateRules": null,
+            "name": "parent"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "FormItem",
+              "x-data": {
+                "type": "normal",
+                "label": "上级",
+                "modelMetaId": "N3OxqEzu",
+                "modelType": "Attribute",
+                "validateRules": null,
+                "name": "name"
+              },
+              "locked": false,
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Text",
+                  "props": {
+                    "value": "Text"
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "x-data": {
+            "type": "normal",
+            "label": "名称",
+            "modelMetaId": "N3OxqEzu",
+            "modelType": "Attribute",
+            "validateRules": null,
+            "name": "name"
+          },
+          "locked": false,
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

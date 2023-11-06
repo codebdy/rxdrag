@@ -46,11 +46,6 @@ export const ExampleInner = memo((
           //controllerMetas={[inputValue]}
           materialCategories={activityMaterialCategories}
           locales={activityMaterialLocales}
-        // setters={{
-        //   VariableSelect,
-        //   PropSelect,
-        //   ReactionSelect,
-        // }}
         />
       </ShellContainer>
     </Fieldy>

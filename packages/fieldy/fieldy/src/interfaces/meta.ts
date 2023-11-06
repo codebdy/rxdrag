@@ -7,12 +7,12 @@ export interface IValidateSchema {
 
 //字段元数据
 export interface IFieldMeta<ValidateRules extends IValidateSchema = IValidateSchema> {
-  //类型：对象、数组、常规、表单
-  type?: FieldType;
+  //类型：对象、数组、常规、表单。
+  type?: FieldType | null;
   //数组行数据是数字
-  name?: string | number;
+  name?: string | number | null;
   label?: string;
   defaultValue?: unknown;
   //校验规则
-  validateRules?: ValidateRules;
+  validateRules?: ValidateRules | null;
 }

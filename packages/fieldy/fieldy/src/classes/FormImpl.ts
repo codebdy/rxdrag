@@ -28,9 +28,8 @@ export class FormImpl implements IForm {
   }
 
   reset(): void {
-    throw new Error("Method not implemented.");
+    this.fieldy.resetForm(this.name)
   }
-
 
   getModified(): boolean {
     return this.fieldy.getFormState(this.name)?.modified || false

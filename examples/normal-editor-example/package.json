@@ -44,7 +44,7 @@
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/react-antd-components": "workspace:*",
-    "antd": "^5.9.2",
+    "antd": "^5.10.0",
     "styled-components": "^5.3.9"
   }
 }

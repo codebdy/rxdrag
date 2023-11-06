@@ -599,7 +599,7 @@
                               },
                               {
                                 "id": "72d45eb8-388c-4110-8ba2-d6ef98f98845",
-                                "label": "合并",
+                                "label": "组合",
                                 "type": "Activity",
                                 "activityName": "system.merge",
                                 "inPorts": [
@@ -972,7 +972,7 @@
                               },
                               {
                                 "id": "526e0bc6-d6f5-4af6-a051-63e94784e1ae",
-                                "label": "合并",
+                                "label": "组合",
                                 "type": "Activity",
                                 "activityName": "system.merge",
                                 "inPorts": [

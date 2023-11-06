@@ -16,6 +16,7 @@ import { useQueryScripts } from "../../../hooks/useQueryScripts"
 import { useQueryModule } from "../../../hooks/useQueryModule"
 import { DeviceType } from "../../../interfaces"
 import { Page, PageProps } from "@rxdrag/react-antd-components"
+import { message } from "antd"
 
 //每次设计器画布修改，本预览组件都会刷新，后面要优化
 export const PagePreview = memo((props: PageProps) => {
@@ -35,6 +36,7 @@ export const PagePreview = memo((props: PageProps) => {
   const { scripts: deviceScriptFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.device)
   const { scripts: appScriptFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.app)
   const fxLoaded = Boolean(moduleFxes && deviceFxes && appFxes);
+  const [messageApi, contextHolder] = message.useMessage();
 
   const { flows } = useQueryModuleFlows(fxLoaded ? moduleId : undefined)
 
@@ -97,8 +99,15 @@ export const PagePreview = memo((props: PageProps) => {
     }
   }, [engine, handleChange])
 
+  const context = useMemo(() => {
+    return {
+      messageApi
+    }
+  }, [messageApi])
+
   return (
     <Page {...props}>
+      {contextHolder}
       {
         tree
           ? <ComponentRender
@@ -109,6 +118,7 @@ export const PagePreview = memo((props: PageProps) => {
                 variables: module?.variables,
                 ownerId: module?.id,
                 logicDefines: defines,
+                context,
               }
             }
           />

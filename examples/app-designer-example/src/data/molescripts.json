@@ -21,6 +21,6 @@
         "ownerId": "KiE-KrsA",
         "moduleId": "mole-script",
         "type": "normal",
-        "code": "const moleBtn = get(\"地鼠\")\r\nvariables.on(\"活跃地鼠\", (val) => {\r\n    if (val === loopScope.index) {\r\n        moleBtn.enable();\r\n    } else {\r\n        moleBtn.disable();\r\n    }\r\n})\r\n\r\nmoleBtn.on(\"onClick\", () => {\r\n    moleBtn.setProp(\"danger\", true);\r\n    variables.set(\"成绩\", variables.get(\"成绩\") + 1)\r\n    setTimeout(() => {\r\n        moleBtn.setProp(\"danger\", false);\r\n        moleBtn.disable();\r\n    }, 500)\r\n})"
+        "code": "const moleBtn = get(\"地鼠\")\r\nvariables.on(\"活跃地鼠\", (val) => {\r\n    if (val === logicScope.index) {\r\n        moleBtn.enable();\r\n    } else {\r\n        moleBtn.disable();\r\n    }\r\n})\r\n\r\nmoleBtn.on(\"onClick\", () => {\r\n    moleBtn.setProp(\"danger\", true);\r\n    variables.set(\"成绩\", variables.get(\"成绩\") + 1)\r\n    setTimeout(() => {\r\n        moleBtn.setProp(\"danger\", false);\r\n        moleBtn.disable();\r\n    }, 500)\r\n})"
     }
 ]

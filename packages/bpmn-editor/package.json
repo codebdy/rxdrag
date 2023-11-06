@@ -36,7 +36,7 @@
     "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
-    "antd": "^5.9.2",
+    "antd": "^5.10.0",
     "bpmn-js": "^10.0.0",
     "classnames": "^2.3.2",
     "diagram-js-minimap": "^3.0.0",

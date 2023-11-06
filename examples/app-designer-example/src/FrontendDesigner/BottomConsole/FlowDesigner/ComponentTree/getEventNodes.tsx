@@ -12,10 +12,14 @@ import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
 
 export function getEventNodes(rNode: ReactionableNode, engine: IDesignerEngine | undefined, comMaterial?: IMaterial) {
   const ctrlMeta = rNode.node.meta?.["x-controller"]
+  const t = (msg?: string) => {
+    return msg?.startsWith("$")
+      ? engine?.getLocalesManager().getComponentSettingsMessage(comMaterial?.componentName || "", msg?.substring(1))
+      : msg
+  }
   return comMaterial?.controller?.events?.map(event => {
-    const label = event.label.startsWith("$")
-      ? engine?.getLocalesManager().getComponentSettingsMessage(comMaterial.componentName, event.label.substring(1))
-      : event.label;
+    const label = t(event.label);
+
     return {
       key: rNode.node.id + event.name,
       title: <ActivityResource
@@ -26,13 +30,17 @@ export function getEventNodes(rNode: ReactionableNode, engine: IDesignerEngine |
             //label: title,
             type: eventMaterial.activityType,
             activityName: eventMaterial.activityName,
-            outPorts: [
+            subLabel: label || "",
+            outPorts: !event.args ? [
               {
                 id: createId(),
                 name: DEFAULT_OUTPUT_NAME,
-                label: label || "",
               },
-            ],
+            ] : event.args.map(arg => ({
+              id: createId(),
+              name: arg.name,
+              label: t(arg.label) || "",
+            })),
             config: {
               controllerId: ctrlMeta?.id,
               name: event.name,

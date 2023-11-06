@@ -11,9 +11,10 @@ export const AttributeSelect = memo((
     value?: IModelMeta,
     onChange?: (value?: IModelMeta) => void,
     fieldType?: FieldType,
+    hasLabel?: boolean,
   }
 ) => {
-  const { value, onChange, fieldType } = props;
+  const { value, onChange, fieldType, hasLabel } = props;
   const t = useSettersTranslate()
 
   const entity = useRecentEntity()
@@ -21,9 +22,9 @@ export const AttributeSelect = memo((
   const handleEntityChange = useCallback((modelMetaId?: string) => {
     if (modelMetaId) {
       const attr = entity?.attributes.find(att => att.uuid === modelMetaId)
-      onChange?.({ fieldType, ...value, modelMetaId, type: ModelType.Attribute, validateRules: null, label: attr?.label })
+      onChange?.({ type: fieldType, ...value, modelMetaId, modelType: ModelType.Attribute, validateRules: null, label: attr?.label, name: attr?.name })
     } else {
-      onChange?.({ fieldType, ...value, modelMetaId: null, type: null, label: "" })
+      onChange?.({ type: fieldType, ...value, modelMetaId: null, modelType: null, name: null })
     }
 
   }, [entity?.attributes, fieldType, onChange, value])
@@ -34,13 +35,16 @@ export const AttributeSelect = memo((
         <Form.Item label={t("attribute")}>
           <Select
             allowClear
-            options={entity?.attributes?.map(attr => ({ value: attr.uuid, label: attr.name }))}
+            options={entity?.attributes?.map(attr => ({
+              value: attr.uuid,
+              label: attr?.label ? `${attr.label}(${attr.name})` : attr.name,
+            }))}
             value={value?.modelMetaId}
             onChange={handleEntityChange}
           />
         </Form.Item>
         {
-          value?.modelMetaId &&
+          value?.modelMetaId && hasLabel &&
           <LabelInput value={value} onChange={onChange} />
         }
       </>

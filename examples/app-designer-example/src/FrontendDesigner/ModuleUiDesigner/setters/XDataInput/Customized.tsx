@@ -1,25 +1,25 @@
-import { FieldType, IValidateSchema } from "@rxdrag/fieldy";
+import { IValidateSchema } from "@rxdrag/fieldy";
 import { YupRulesInput } from "@rxdrag/react-antd-props-inputs";
 import { memo, useCallback } from "react"
 import { IModelMeta } from "../../interfaces";
 import { Form, Input } from "antd";
 import { useSettersTranslate } from "@rxdrag/react-core";
-import { DefaultValue } from "./DefaultValue";
 import { LabelInput } from "./LabelInput";
+import { FieldOptions } from "@rxdrag/react-antd-materials";
 
 export const Customized = memo((
   props: {
     value?: IModelMeta,
     onChange?: (value?: IModelMeta) => void,
-    fieldType?: FieldType,
-    hasRules?: boolean,
+    fieldOptions?: FieldOptions,
   }
 ) => {
-  const { value, onChange, fieldType, hasRules } = props;
+  const { value, onChange, fieldOptions } = props;
+  const { fieldType, hasRules, hasLabel } = fieldOptions || {}
   const t = useSettersTranslate()
 
   const handleNameChange = useCallback((e?: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.({ fieldType, ...value, customizedName: e?.target.value })
+    onChange?.({ type: fieldType, ...value, name: e?.target.value })
   }, [fieldType, onChange, value])
 
 
@@ -32,17 +32,12 @@ export const Customized = memo((
     <>
       <Form.Item label={t("customizedName")}>
         <Input
-          value={value?.customizedName || ""}
+          value={value?.name || ""}
           onChange={handleNameChange}
           allowClear
         />
       </Form.Item>
-      <LabelInput value={value} onChange={onChange} />
-      <DefaultValue
-        value={value}
-        onChange={onChange}
-        fieldType={fieldType}
-      />
+      {hasLabel && <LabelInput value={value} onChange={onChange} />}
       {
         hasRules && <YupRulesInput
           value={value?.validateRules}

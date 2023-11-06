@@ -13,21 +13,27 @@ export function useRecentEntity() {
   const getEntity = useGetEntity()
   const getEntityId = useCallback((node?: ITreeNode | null) => {
     const modelMeta = node?.meta?.["x-data"] as IModelMeta | undefined
-    if (modelMeta?.modelMetaId && modelMeta.type === ModelType.Entity) {
-      return modelMeta?.modelMetaId
-    } else {
-      if (node?.parentId) {
-        const parent = getNode(node?.parentId)
-        if (parent) {
-          return getEntityId(parent)
-        }
+    if (modelMeta?.modelMetaId) {
+      if (modelMeta.modelType === ModelType.Entity) {
+        return modelMeta?.modelMetaId
+      } else if (modelMeta.modelType === ModelType.Association) {
+        const [, entityId] = modelMeta.modelMetaId.split(":")
+        return entityId
       }
     }
+    if (node?.parentId) {
+      const parent = getNode(node?.parentId)
+      if (parent) {
+        return getEntityId(parent)
+      }
+    }
+
   }, [getNode])
-  
+
   useEffect(() => {
-    setEntity(getEntity(getEntityId(node)))
-  }, [getEntity, getEntityId, node])
+    const parent = getNode(node?.parentId)
+    setEntity(getEntity(getEntityId(parent)))
+  }, [getEntity, getEntityId, getNode, node])
 
   return entity
 }

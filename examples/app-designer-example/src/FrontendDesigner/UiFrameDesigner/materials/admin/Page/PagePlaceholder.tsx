@@ -1,14 +1,16 @@
+import { Page } from "@rxdrag/react-antd-components"
 import { forwardRef, memo } from "react"
-import { Page } from "../../../../components/admin"
 import styled from "styled-components"
 
 const StylePage = styled(Page)`
+  min-height: 100%;
   display: flex;
+  flex-flow: column;
   align-items: stretch;
   justify-content: stretch;
   font-size: 30px;
   color: ${props => props.theme.token?.colorTextDisabled};
-  padding: 16px;
+  //padding: 16px;
   box-sizing: border-box;
   font-style: italic;
 `

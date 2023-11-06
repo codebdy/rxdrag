@@ -1,4 +1,4 @@
-import { FormActionPayload, REMOVE_FORM, CREATE_FORM } from "../../actions";
+import { FormActionPayload, REMOVE_FORM, CREATE_FORM, RESET_FORM } from "../../actions";
 import { FormsState } from "..";
 import { IAction } from "../../interfaces/fieldy";
 import { formReduce } from "./form";
@@ -19,6 +19,16 @@ export function formsReduce(state: FormsState, action: IAction<FormActionPayload
             fieldSchemas: [],
           }
         }
+      case RESET_FORM: {
+        const formState = state?.[action.payload.formName]
+        return {
+          ...state,
+          [action.payload.formName]: {
+            ...formState,
+            value: formState?.defaultValue || {}
+          } as any
+        }
+      }
     }
     const formSate = state[action.payload.formName]
     if (action.payload.formName && formSate) {

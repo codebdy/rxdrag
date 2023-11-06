@@ -1,0 +1,35 @@
+{
+  "componentName": "Page",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Paper",
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Row",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Col",
+              "props": {
+                "span": 6
+              },
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Col",
+              "props": {
+                "span": 18
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

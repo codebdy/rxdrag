@@ -7,6 +7,7 @@ export function useTransformPorts() {
   const token = useThemeToken()
   const t = useTranslate()
   const doTransform = useCallback((ports: IPortDefine[] | undefined, group: 'in' | 'out') => {
+
     return ports?.map(
       port => ({
         id: port.id,
@@ -18,7 +19,7 @@ export function useTransformPorts() {
         group: group,
         attrs: {
           text: {
-            text: port.label?.startsWith("$") ? t(port.label.substring(1)) : port.label,
+            text: (port.label?.startsWith("$") ? t(port.label.substring(1)) : port.label) || "",
             fill: token.colorTextSecondary,
             fontSize: 12,
           },

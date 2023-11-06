@@ -5,6 +5,10 @@ import mole from "./molepage.json"
 import moleSetting from "./molesettings.json"
 import userList from "./userList.json"
 import expression from "./expression.json"
+import editUser from "./edituser.json"
+import postList from "./postList.json"
+import editPost from "./editpost.json"
+import editDepartment from "./editdepartment.json"
 
 const rootNodeSchema: INodeSchema = {
   componentName: "Page"
@@ -15,6 +19,13 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
     {
       id: "users",
       title: "用户管理",
+      variables: [
+        {
+          "id": "LJYNYrrL",
+          "name": "当前部门",
+          "defaultValue": null
+        }
+      ],
       views: [
         {
           id: "user-index",
@@ -24,10 +35,64 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         },
         {
           id: "user-edit",
+          title: "用户对话框",
+          schema: editUser,
+        },
+        {
+          id: "department-edit",
+          title: "部门对话框",
+          schema: editDepartment,
+        }
+      ],
+    },
+    {
+      id: "roles",
+      title: "角色管理",
+      views: [
+        {
+          id: "roles-index",
+          title: "入口页",
+          viewType: ViewType.Main,
+          schema: rootNodeSchema,
+        },
+        {
+          id: "role-edit",
           title: "编辑对话框",
-          schema: {
-            componentName: "Dialog"
-          },
+          schema: rootNodeSchema,
+        }
+      ],
+    },
+    {
+      id: "departments",
+      title: "部门管理",
+      views: [
+        {
+          id: "departments-index",
+          title: "入口页",
+          viewType: ViewType.Main,
+          schema: rootNodeSchema,
+        },
+        {
+          id: "department-edit",
+          title: "编辑对话框",
+          schema: rootNodeSchema,
+        }
+      ],
+    },
+    {
+      id: "posts",
+      title: "文章",
+      views: [
+        {
+          id: "posts-index",
+          title: "入口页",
+          viewType: ViewType.Main,
+          schema: postList,
+        },
+        {
+          id: "post-edit",
+          title: "编辑对话框",
+          schema: editPost,
         }
       ],
     },
@@ -204,6 +269,18 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
         {
           id: "users",
           title: "用户管理",
+        },
+        {
+          id: "roles",
+          title: "角色管理",
+        },
+        {
+          id: "departs",
+          title: "部门管理",
+        },
+        {
+          id: "posts",
+          title: "文章管理",
         },
         {
           id: "expression-demo",

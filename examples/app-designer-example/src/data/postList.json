@@ -1,0 +1,286 @@
+{
+  "componentName": "Page",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Form",
+      "props": {
+        "colon": false,
+        "wrapperCol": {
+          "span": 16
+        },
+        "labelCol": {
+          "span": 8
+        },
+        "m": {
+          "mt": 2
+        },
+        "layout": "inline"
+      },
+      "x-controller": {
+        "id": "LlRDj22u",
+        "name": "查询表单",
+        "enable": true
+      },
+      "x-data": {
+        "type": "form",
+        "modelMetaId": "QksZdA-8",
+        "modelType": "Entity",
+        "validateRules": null
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "FormItem",
+          "locked": false,
+          "x-data": {
+            "type": "normal",
+            "modelMetaId": "qYBQKdC1",
+            "modelType": "Attribute",
+            "validateRules": null,
+            "label": "姓名",
+            "name": "name"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "locked": false,
+          "x-data": {
+            "type": "normal",
+            "modelMetaId": "PeprFClI",
+            "modelType": "Attribute",
+            "validateRules": null,
+            "label": "登录ID",
+            "name": "loginName"
+          },
+          "props": {
+            "labelCol": {},
+            "wrapperCol": {}
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "componentName": "Table",
+      "selfRender": true,
+      "x-controller": {
+        "id": "JClydKG7",
+        "name": "用户列表",
+        "enable": true
+      },
+      "x-data": {
+        "type": "array",
+        "modelMetaId": "QksZdA-8",
+        "modelType": "Entity",
+        "validateRules": null
+      },
+      "props": {
+        "style": {
+          "marginTop": "16px"
+        }
+      },
+      "slots": {
+        "header": {
+          "componentName": "Header",
+          "props": {
+            "style": {
+              "display": "flex",
+              "justifyContent": "flex-end"
+            }
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "新建"
+              },
+              "x-controller": {
+                "id": "ezfaFJec",
+                "enable": true,
+                "name": "新建"
+              },
+              "slots": {
+                "icon": {
+                  "componentName": "IconView",
+                  "props": {
+                    "icon": {
+                      "iconKey": "PlusOutlined"
+                    }
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              },
+              "children": []
+            }
+          ]
+        }
+      },
+      "children": [
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": ""
+          },
+          "x-data": {
+            "type": "normal",
+            "modelMetaId": "PeprFClI",
+            "modelType": "Attribute",
+            "validateRules": null,
+            "label": "登录ID",
+            "name": "loginName"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "姓名"
+          },
+          "x-data": {
+            "type": "normal",
+            "modelMetaId": "qYBQKdC1",
+            "modelType": "Attribute",
+            "validateRules": null,
+            "label": "姓名",
+            "name": "name"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "角色"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "LoopPanel",
+              "x-data": {
+                "type": "array",
+                "modelMetaId": "sdLPK23a:Adnk8q_b",
+                "modelType": "Association",
+                "validateRules": null,
+                "name": "roles"
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Tag",
+                  "props": {
+                    "value": "Tag"
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "状态"
+          },
+          "x-data": {
+            "type": "normal",
+            "modelMetaId": "EscNzevB",
+            "modelType": "Attribute",
+            "validateRules": null,
+            "label": "状态",
+            "name": "status"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "操作"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Space",
+              "props": {},
+              "selfRender": true,
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "default",
+                    "title": "删除"
+                  },
+                  "x-controller": {
+                    "id": "nWsxBY0_",
+                    "enable": true,
+                    "name": "删除按钮"
+                  },
+                  "slots": {
+                    "icon": {
+                      "componentName": "IconView",
+                      "props": {
+                        "icon": {
+                          "iconKey": "DeleteOutlined"
+                        }
+                      },
+                      "slots": {},
+                      "children": []
+                    }
+                  },
+                  "children": []
+                },
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "primary",
+                    "title": "编辑"
+                  },
+                  "x-controller": {
+                    "id": "j4lFf--c",
+                    "name": "编辑按钮",
+                    "enable": true
+                  },
+                  "slots": {
+                    "icon": {
+                      "componentName": "IconView",
+                      "props": {
+                        "icon": {
+                          "iconKey": "FormOutlined"
+                        }
+                      },
+                      "slots": {},
+                      "children": []
+                    }
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

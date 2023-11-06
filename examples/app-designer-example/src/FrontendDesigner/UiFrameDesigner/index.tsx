@@ -19,9 +19,6 @@ export const UiFrameDesigner = memo(() => {
       canvasUrl={`/${CANVAS_URL_PREFIX}/${device}/${LayoutPart.frame}`}
       previewUrl={`/${PREVIEW_URL_PREFIX}/${device}/${LayoutPart.frame}`}
       themeMode={themeMode}
-      minionOptions={{
-      }}
-
       materials={frameMaterilas[frontend?.deviceType || ""]}
       canvasConfig={frontend?.canvasConfig}
     >

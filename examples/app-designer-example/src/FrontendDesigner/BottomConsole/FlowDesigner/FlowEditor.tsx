@@ -3,11 +3,13 @@ import { ReactNode, memo, useCallback, useEffect, useState } from "react"
 import { Button } from "antd"
 import styled from "styled-components"
 import { Toolbar } from "./Toolbar"
-import { PropSelect } from "../setters"
 import { ILogicMetas, useChangeFlag } from "@rxdrag/minions-logicflow-editor"
 import { useSaveFlow } from "../../../hooks/useSaveFlow"
 import { IFlow } from "../../../interfaces/flow"
 import { activityMaterialCategories } from "@rxdrag/minions-react-materials"
+import { EntitySelect } from "../../ModuleUiDesigner/setters/EntitySelect"
+import { PropSelect } from "../../ModuleUiDesigner/setters"
+import { QueryParamsInput } from "../../../minions/materials/setters"
 
 const SaveButton = styled(Button)`
   margin-left: 32px;
@@ -49,7 +51,7 @@ export const FlowEditor = memo((
       materialCategories={activityMaterialCategories}
       value={inputValue}
       toolbox={false}
-      setters={{ PropSelect }}
+      setters={{ PropSelect, EntitySelect, QueryParamsInput }}
       toolbar={<Toolbar
         title={
           <>

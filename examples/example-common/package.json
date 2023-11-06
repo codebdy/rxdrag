@@ -49,7 +49,7 @@
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "styled-components": "^5.3.9",
-    "antd": "^5.9.2",
+    "antd": "^5.10.0",
     "axios": "^1.4.0",
     "lodash": "^4.17.21",
     "mockjs": "^1.1.0"

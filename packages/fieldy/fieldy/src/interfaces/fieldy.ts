@@ -158,6 +158,7 @@ export interface IFieldyEngine {
   //动作
   createForm(options?: IFormProps): IForm
   removeForm(name: string): void
+  resetForm(name: string): void
   //setFormFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
   //不触发change事件
   setFormInitialValue(name: string, value: FormValue | undefined): void

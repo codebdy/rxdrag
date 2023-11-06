@@ -24,7 +24,7 @@ export function getSetPropsNode(rNode: ReactionableNode) {
             {
               id: createId(),
               name: "input",
-              label: "$props",
+              label: "",
             },
           ],
           outPorts: [
