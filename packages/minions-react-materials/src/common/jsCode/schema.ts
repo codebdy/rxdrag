@@ -8,6 +8,20 @@ export const jsCodeSchema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
+        label: "$noWaiting",
+      },
+      children: [
+        {
+          componentName: "Switch",
+          "x-data": {
+            name: "config.noWaiting"
+          },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
         label: "$inputPorts",
       },
       children: [

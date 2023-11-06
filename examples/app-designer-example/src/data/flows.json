@@ -1605,7 +1605,7 @@
         },
         {
           "id": "e1e1242e-ca41-4f94-8842-89f8f62bd3ac",
-          "label": "合并",
+          "label": "组合",
           "type": "Activity",
           "activityName": "system.merge",
           "inPorts": [
@@ -2624,17 +2624,6 @@
           }
         },
         {
-          "id": "Le_7E--Z",
-          "source": {
-            "nodeId": "ad863bfb-598e-4f27-8fc9-30bc5b267ee9",
-            "portId": "cnLUT5Hs"
-          },
-          "target": {
-            "nodeId": "08ed0acb-35ca-4c70-aaf8-23405548e265",
-            "portId": "c0VzvUED"
-          }
-        },
-        {
           "id": "55TpfA-y",
           "source": {
             "nodeId": "08ed0acb-35ca-4c70-aaf8-23405548e265",
@@ -2698,6 +2687,39 @@
           "target": {
             "nodeId": "acfc27fd-30d1-4e5f-863b-4936f28d07e8",
             "portId": "al5BbmMM"
+          }
+        },
+        {
+          "id": "ueyoyWPp",
+          "source": {
+            "nodeId": "ad863bfb-598e-4f27-8fc9-30bc5b267ee9",
+            "portId": "cnLUT5Hs"
+          },
+          "target": {
+            "nodeId": "e102600b-f6d8-49a2-b5a7-8cefd9795004",
+            "portId": "TAkX-CYk"
+          }
+        },
+        {
+          "id": "1qy41QbE",
+          "source": {
+            "nodeId": "43d6075f-eb70-4e9f-8938-d4db41e88ad9",
+            "portId": "Q2TIQfkv"
+          },
+          "target": {
+            "nodeId": "e102600b-f6d8-49a2-b5a7-8cefd9795004",
+            "portId": "B80FMmhd"
+          }
+        },
+        {
+          "id": "e1iDLF7H",
+          "source": {
+            "nodeId": "e102600b-f6d8-49a2-b5a7-8cefd9795004",
+            "portId": "DtXUR0F4"
+          },
+          "target": {
+            "nodeId": "08ed0acb-35ca-4c70-aaf8-23405548e265",
+            "portId": "c0VzvUED"
           }
         }
       ],
@@ -2837,28 +2859,6 @@
           }
         },
         {
-          "id": "ad863bfb-598e-4f27-8fc9-30bc5b267ee9",
-          "type": "Activity",
-          "activityName": "system-react.event",
-          "subLabel": "值变化",
-          "outPorts": [
-            {
-              "id": "cnLUT5Hs",
-              "name": "output"
-            }
-          ],
-          "config": {
-            "controllerId": "LlRDj22u",
-            "name": "onChange"
-          },
-          "x6Node": {
-            "x": -90,
-            "y": 110,
-            "width": 116,
-            "height": 48
-          }
-        },
-        {
           "id": "b68eb827-d15a-461d-8134-4402362b6f43",
           "type": "Activity",
           "activityName": "system-react.setProp",
@@ -2978,6 +2978,86 @@
             "y": 230,
             "width": 116,
             "height": 48
+          }
+        },
+        {
+          "id": "43d6075f-eb70-4e9f-8938-d4db41e88ad9",
+          "label": "当前部门",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "Q2TIQfkv",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "当前部门"
+          },
+          "x6Node": {
+            "x": -200,
+            "y": 230,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "ad863bfb-598e-4f27-8fc9-30bc5b267ee9",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "subLabel": "值变化",
+          "outPorts": [
+            {
+              "id": "cnLUT5Hs",
+              "name": "output"
+            }
+          ],
+          "config": {
+            "controllerId": "LlRDj22u",
+            "name": "onChange"
+          },
+          "x6Node": {
+            "x": -200,
+            "y": 100,
+            "width": 116,
+            "height": 48
+          }
+        },
+        {
+          "id": "e102600b-f6d8-49a2-b5a7-8cefd9795004",
+          "label": "JS代码",
+          "type": "Activity",
+          "activityName": "system.jsCode",
+          "inPorts": [
+            {
+              "id": "TAkX-CYk",
+              "name": "input",
+              "label": "添加",
+              "key": "TAkX-CYk"
+            },
+            {
+              "id": "B80FMmhd",
+              "name": "department",
+              "label": "部门",
+              "key": "B80FMmhd"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "DtXUR0F4",
+              "name": "output",
+              "label": "output"
+            }
+          ],
+          "config": {
+            "expression": "({ inputs, outputs }) => {\n  const { input, department } = inputs;\n  const { output } = outputs;\n  output({...input, department});\n}"
+          },
+          "x6Node": {
+            "x": -30,
+            "y": 190,
+            "width": 102,
+            "height": 32
           }
         }
       ]

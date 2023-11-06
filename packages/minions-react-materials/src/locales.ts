@@ -9,7 +9,7 @@ export const activityMaterialLocales = {
     inputCondition: "输入条件",
     conditionCheck: "条件判断",
     loop: "循环",
-    merge: "合并",
+    merge: "组合",
     switch: "分流",
     delay: "延时",
     random: "随机数",
@@ -97,7 +97,8 @@ export const activityMaterialLocales = {
     step: "步长",
     negation: "逻辑非",
     setProps: "设置属性",
-    arrayToTree: "构造树"
+    arrayToTree: "构造树",
+    noWaiting:"不等待"
   },
   'en-US': {
     basicAcitivites: "Basic Reactions",
@@ -108,7 +109,7 @@ export const activityMaterialLocales = {
     inputCondition: "Input Condition",
     conditionCheck: "Condition Check",
     loop: "Loop",
-    merge: "Merge",
+    merge: "Combination",
     switch: "Switch",
     delay: "Delay",
     random: "Random",
@@ -198,6 +199,7 @@ export const activityMaterialLocales = {
     step: "Step",
     negation: "negation",
     setProps: "Set Props",
-    arrayToTree: "Make tree"
+    arrayToTree: "Make tree",
+    noWaiting:"No waiting"
   }
 }

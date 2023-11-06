@@ -3,6 +3,7 @@ import { createId } from "@rxdrag/shared";
 import { ISort } from "../minions/activities/common/IEntityQueryConfig";
 import { EntityInstance, allDatas } from "./runtime-mock";
 import { EVENT_DATA_CHANGED, off, on, trigger } from "../hooks/events";
+import { isObject, isString } from "lodash";
 
 export interface IListData {
   data?: EntityInstance[],
@@ -28,8 +29,14 @@ export class EntityFetcher {
           }
           for (const key of Object.keys(conditionParams)) {
             const keyword = conditionParams[key]
-            if (ins?.[key] && (ins?.[key] as string)?.indexOf(keyword) < 0) {
-              return false
+            if (ins?.[key]) {
+              if (isObject(ins?.[key])) {
+                if ((ins?.[key] as any)?.id && (ins?.[key] as any)?.id !== conditionParams[key]?.id) {
+                  return false
+                }
+              } else if (isString(ins?.[key]) && (ins?.[key] as string)?.indexOf(keyword) < 0) {
+                return false
+              }
             }
           }
           return true

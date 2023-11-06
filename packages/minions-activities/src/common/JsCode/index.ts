@@ -3,6 +3,7 @@ import { INodeDefine } from "@rxdrag/minions-schema"
 
 
 export interface IJsCodeConfig {
+  noWaiting?: boolean,
   expression?: string
 }
 
@@ -22,11 +23,11 @@ export class JsCode extends AbstractActivity<IJsCodeConfig, IExpContext> {
   }
 
   @DynamicInput
-  inputHandler = (inputName: string, inputValue: unknown) => {
+  inputHandler = (inputName: string, inputValue: unknown, context?: unknown) => {
     this.inputs[inputName] = inputValue
     this.noPassInputs.splice(this.noPassInputs.indexOf(inputName), 1)
-    if (this.noPassInputs.length === 0) {
-      this.outputHandler(this.inputs)
+    if (this.noPassInputs.length === 0 || this.config?.noWaiting) {
+      this.outputHandler(this.inputs, context)
     }
   }
 
