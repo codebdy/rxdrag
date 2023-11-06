@@ -78,7 +78,7 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
         const children = node.children
         if (!children?.length) {
           setSelected(key)
-          onSelect?.(node)
+          onSelect?.({ id: node.id })
         }
       }
     }
