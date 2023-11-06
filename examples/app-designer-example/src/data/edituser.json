@@ -154,6 +154,11 @@
               "children": [
                 {
                   "componentName": "TreeSelect",
+                  "x-controller": {
+                    "id": "mQjZXV0D",
+                    "enable": true,
+                    "name": "部门下拉"
+                  },
                   "slots": {},
                   "children": []
                 }

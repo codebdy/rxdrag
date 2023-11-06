@@ -1,51 +1,41 @@
 import { TreeSelect as AntdTreeSelect } from 'antd';
-import { CSSProperties, forwardRef, memo } from 'react';
+import { DataNode } from 'antd/es/tree';
+import { CSSProperties, forwardRef, memo, useCallback, useMemo } from 'react';
 
-const treeData = [
-  {
-    value: 'parent 1',
-    title: 'parent 1',
-    children: [
-      {
-        value: 'parent 1-0',
-        title: 'parent 1-0',
-        children: [
-          {
-            value: 'leaf1',
-            title: 'leaf1',
-          },
-          {
-            value: 'leaf2',
-            title: 'leaf2',
-          },
-        ],
-      },
-      {
-        value: 'parent 1-1',
-        title: 'parent 1-1',
-        children: [
-          {
-            value: 'leaf3',
-            title: <b style={{ color: '#08c' }}>leaf3</b>,
-          },
-        ],
-      },
-    ],
-  },
-];
 
 interface IDataNode {
   id: string,
+  name?: string,
+  children?: IDataNode[],
 }
 
 type TreeSelectProps = {
   value?: IDataNode,
   onChange?: (value?: IDataNode) => void,
   style?: CSSProperties,
+  dataSource?: IDataNode[]
 }
 
 export const TreeSelect = memo(forwardRef<HTMLDivElement, TreeSelectProps>((props, ref) => {
-  const { value, onChange, style, ...rest } = props;
+  const { value, onChange, style, dataSource, ...rest } = props;
+
+  const getOneNode = useCallback((node: IDataNode): DataNode => {
+    return {
+      key: node.id,
+      title: node.name,
+      children: node.children?.map(node => getOneNode(node))
+    }
+  }, [])
+
+  const treeData: DataNode[] = useMemo(
+    () => dataSource?.map(node => getOneNode(node)) || [],
+    [dataSource, getOneNode]
+  );
+
+
+  const handleChange = useCallback(() => {
+    //
+  }, [])
 
   return (
     <AntdTreeSelect
@@ -57,7 +47,7 @@ export const TreeSelect = memo(forwardRef<HTMLDivElement, TreeSelectProps>((prop
       dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
       allowClear
       treeDefaultExpandAll
-      onChange={onChange}
+      onChange={handleChange}
       treeData={treeData}
       {...rest}
     />

@@ -3342,6 +3342,39 @@
             "nodeId": "dec49532-e253-4ee7-a7d9-3d132f8a2a54",
             "portId": "wcQQhOhH"
           }
+        },
+        {
+          "id": "FY6smMAZ",
+          "source": {
+            "nodeId": "fc673acb-8b83-49f5-ab5f-43bc5a12db16",
+            "portId": "Qs1vaZXz"
+          },
+          "target": {
+            "nodeId": "49d6e000-12a6-43fc-b707-dfb25f47d145",
+            "portId": "iIokWie4"
+          }
+        },
+        {
+          "id": "vKb63a73",
+          "source": {
+            "nodeId": "49d6e000-12a6-43fc-b707-dfb25f47d145",
+            "portId": "T4WtL_Bi"
+          },
+          "target": {
+            "nodeId": "4c6f2fa1-e333-4cb2-ad19-a9445af87fe1",
+            "portId": "UVUI8DmF"
+          }
+        },
+        {
+          "id": "7FBhjUXq",
+          "source": {
+            "nodeId": "4c6f2fa1-e333-4cb2-ad19-a9445af87fe1",
+            "portId": "8PnMS112"
+          },
+          "target": {
+            "nodeId": "8c57738a-c6cc-422b-af5c-c2a805de05fd",
+            "portId": "396Gv-vd"
+          }
         }
       ],
       "nodes": [
@@ -3365,34 +3398,6 @@
             "y": 110,
             "width": 88,
             "height": 48
-          }
-        },
-        {
-          "id": "705be7d1-cd2c-41b3-a173-133a8a2d1974",
-          "type": "Activity",
-          "activityName": "system-react.reaction",
-          "inPorts": [
-            {
-              "id": "VGL_uHze",
-              "name": "open",
-              "label": "打开"
-            }
-          ],
-          "outPorts": [
-            {
-              "id": "TVvkW1H3",
-              "name": "output",
-              "label": ""
-            }
-          ],
-          "config": {
-            "controllerId": "palKh10y"
-          },
-          "x6Node": {
-            "x": 150,
-            "y": 80,
-            "width": 116,
-            "height": 32
           }
         },
         {
@@ -3778,7 +3783,7 @@
           },
           "x6Node": {
             "x": 90,
-            "y": -10,
+            "y": -70,
             "width": 116,
             "height": 32
           }
@@ -3805,10 +3810,107 @@
             "controllerId": "nepX8Hq4"
           },
           "x6Node": {
-            "x": 470,
-            "y": 0,
+            "x": 460,
+            "y": -80,
             "width": 116,
             "height": 32
+          }
+        },
+        {
+          "id": "705be7d1-cd2c-41b3-a173-133a8a2d1974",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "VGL_uHze",
+              "name": "open",
+              "label": "打开"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "TVvkW1H3",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "palKh10y"
+          },
+          "x6Node": {
+            "x": 190,
+            "y": 110,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "49d6e000-12a6-43fc-b707-dfb25f47d145",
+          "label": "读实体列表",
+          "type": "Activity",
+          "activityName": "qurey-entities",
+          "inPorts": [
+            {
+              "id": "iIokWie4",
+              "name": "query",
+              "label": "查询"
+            },
+            {
+              "id": "DZq5kDUf",
+              "name": "condition_params",
+              "label": "条件参数"
+            },
+            {
+              "id": "AiDE3WQU",
+              "name": "sort",
+              "label": "排序参数"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "T4WtL_Bi",
+              "name": "list",
+              "label": "数据列表"
+            },
+            {
+              "id": "y_9-BRDH",
+              "name": "pagination",
+              "label": "分页"
+            },
+            {
+              "id": "j3wXUMX6",
+              "name": "sorter",
+              "label": "排序"
+            },
+            {
+              "id": "gKC9Ly-Y",
+              "name": "filters",
+              "label": "过滤"
+            },
+            {
+              "id": "l1CYibU6",
+              "name": "loading",
+              "label": "加载中"
+            },
+            {
+              "id": "JYFoig8F",
+              "name": "success",
+              "label": "成功"
+            },
+            {
+              "id": "-XMtdbp6",
+              "name": "failure",
+              "label": "失败"
+            }
+          ],
+          "config": {
+            "entityId": "CKUfLFkG"
+          },
+          "x6Node": {
+            "x": 370,
+            "y": -20,
+            "width": 130,
+            "height": 128
           }
         },
         {
@@ -3835,9 +3937,65 @@
           },
           "x6Node": {
             "x": 260,
+            "y": -90,
+            "width": 102,
+            "height": 32
+          }
+        },
+        {
+          "id": "4c6f2fa1-e333-4cb2-ad19-a9445af87fe1",
+          "label": "构造树",
+          "type": "Activity",
+          "activityName": "system.ArrayToTree",
+          "inPorts": [
+            {
+              "id": "UVUI8DmF",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "8PnMS112",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {},
+          "x6Node": {
+            "x": 600,
             "y": -10,
             "width": 102,
             "height": 32
+          }
+        },
+        {
+          "id": "8c57738a-c6cc-422b-af5c-c2a805de05fd",
+          "type": "Activity",
+          "activityName": "system-react.setProp",
+          "inPorts": [
+            {
+              "id": "396Gv-vd",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "U1bUWhI0",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "mQjZXV0D",
+            "prop": "dataSource"
+          },
+          "x6Node": {
+            "x": 790,
+            "y": -10,
+            "width": 121,
+            "height": 48
           }
         }
       ]
