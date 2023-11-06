@@ -3,7 +3,7 @@ import type { CSSProperties, Key } from "react";
 import React, { forwardRef, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
 import { Spin, Tree } from 'antd';
-import type { DataNode, DirectoryTreeProps } from "antd/es/tree";
+import type { DataNode } from "antd/es/tree";
 import classNames from "classnames";
 import { TreeListShell } from "./TreeListShell";
 import { ObjectField } from "@rxdrag/react-fieldy";
@@ -38,7 +38,6 @@ export interface ITreeDataNode {
 
 export type TreeListProps = {
   onSelect?: (node?: any) => void;
-  readOnly?: boolean | undefined;
   loading?: boolean;
   dataSource?: ITreeDataNode[];
   formLayout?: React.ReactNode;
@@ -51,7 +50,6 @@ export type TreeListProps = {
 export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, ref) => {
   const {
     onSelect,
-    readOnly,
     loading,
     dataSource,
     defaultExpandAll = false,
@@ -61,26 +59,40 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
     ...rest
   } = props;
   const [selected, setSelected] = useState<string>();
-  const [expands, setExpands] = useState<string[]>();
+  //const [expands, setExpands] = useState<string[]>();
   const { schema, childrenSchema } = useArraySchema()
+
+  const getNodeById = useCallback((nodes?: ITreeDataNode[], id?: string): ITreeDataNode | undefined => {
+    for (const node of nodes || []) {
+      if (node.id === id) {
+        return node
+      }
+
+      const child = getNodeById(node.children, id)
+
+      if (child) {
+        return child
+      }
+    }
+  }, [])
 
   const handleSelect = useCallback((selectedKeys: Key[]) => {
     const key = selectedKeys?.[0] as string | undefined
     if (key) {
-      // const node = getNodeById(tree, key)
-      // if (node) {
-      //   const children = node[treeFieldNames.children || defaultFieldNames.children]
-      //   if (!children?.length) {
-      //     setSelected(key)
-      //     onSelect?.(node)
-      //   }
-      // }
+      const node = getNodeById(dataSource, key)
+      if (node) {
+        const children = node.children
+        if (!children?.length) {
+          setSelected(key)
+          onSelect?.(node)
+        }
+      }
     }
-  }, []);
+  }, [dataSource, getNodeById, onSelect]);
 
-  const handleExpand: DirectoryTreeProps['onExpand'] = useCallback((keys: any) => {
-    setExpands(keys)
-  }, []);
+  // const handleExpand: DirectoryTreeProps['onExpand'] = useCallback((keys: any) => {
+  //   setExpands(keys)
+  // }, []);
 
 
   const getOneNode = useCallback((node: ITreeDataNode): DataNode => {
@@ -96,6 +108,7 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
         </ObjectField>
       </LogicflowRuntime>,
       isLeaf: !node.children?.length,
+      selectable: !node.children?.length,
       children: node.children?.map(node => getOneNode(node))
     }
   }, [children, childrenSchema, schema])
@@ -124,7 +137,7 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
               defaultExpandAll={defaultExpandAll}
               selectedKeys={selected ? [selected] : []}
               onSelect={handleSelect}
-              onExpand={handleExpand}
+              //onExpand={handleExpand}
               treeData={treeData}
               {...rest}
             />

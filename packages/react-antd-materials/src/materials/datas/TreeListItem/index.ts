@@ -4,12 +4,13 @@ import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
 import { TreeListItem } from "@rxdrag/react-antd-components"
 import { TreeListItemActionsMaterial } from "../TreeListItemActions";
+import { TreeListItemDesigner } from "./Designer";
 
 const name = "TreeListItem"
 export const TreeListItemMaterial: IMaterial = {
   componentName: name,
   component: TreeListItem,
-  designer: TreeListItem,
+  designer: TreeListItemDesigner,
   designerLocales: locales,
   propsSchema: schema,
   designerProps: {

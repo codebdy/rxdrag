@@ -85,6 +85,10 @@
                   "children": [
                     {
                       "componentName": "TreeListItem",
+                      "x-controller": {
+                        "id": "sYFCfdFY",
+                        "enable": false
+                      },
                       "slots": {
                         "action": {
                           "componentName": "TreeListItemActions",
@@ -93,13 +97,19 @@
                         },
                         "actions": {
                           "componentName": "TreeListItemActions",
+                          "x-controller": {
+                            "id": "hBmOcH3j",
+                            "enable": true,
+                            "name": "节点动作"
+                          },
                           "slots": {},
                           "children": [
                             {
                               "componentName": "Button",
                               "props": {
                                 "title": "",
-                                "type": "text"
+                                "type": "text",
+                                "size": "small"
                               },
                               "locked": false,
                               "x-controller": {
@@ -130,7 +140,8 @@
                               "componentName": "Button",
                               "props": {
                                 "title": "",
-                                "type": "text"
+                                "type": "text",
+                                "size": "small"
                               },
                               "locked": true,
                               "x-controller": {
@@ -156,9 +167,15 @@
                               "componentName": "Button",
                               "props": {
                                 "type": "text",
-                                "title": ""
+                                "title": "",
+                                "size": "small"
                               },
                               "locked": true,
+                              "x-controller": {
+                                "id": "AQ3UTMuL",
+                                "enable": true,
+                                "name": "删除按钮"
+                              },
                               "slots": {
                                 "icon": {
                                   "componentName": "IconView",
@@ -169,8 +186,8 @@
                                   },
                                   "x-controller": {
                                     "id": "avBB9ZdC",
-                                    "enable": true,
-                                    "name": "删除按钮"
+                                    "enable": false,
+                                    "name": ""
                                   },
                                   "slots": {},
                                   "children": []
@@ -208,6 +225,11 @@
               "componentName": "Col",
               "props": {
                 "span": 18
+              },
+              "x-controller": {
+                "id": "LTymNiJe",
+                "enable": true,
+                "name": "用户区域"
               },
               "slots": {},
               "children": [

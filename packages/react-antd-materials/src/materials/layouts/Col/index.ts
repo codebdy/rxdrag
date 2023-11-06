@@ -1,14 +1,14 @@
 
 import { IMaterial } from "@rxdrag/react-core";
-import { Col as AntdCol } from "antd";
 import { colIcon } from "./icon";
 import { colLocales, colResourceLocales } from "./locales";
 import { rowSchema } from "./schema";
+import { Col } from "@rxdrag/react-antd-components";
 
 export const ColMaterial: IMaterial = {
   componentName: "Col",
-  component: AntdCol,
-  designer: AntdCol,
+  component: Col,
+  designer: Col,
   designerLocales: colLocales,
   propsSchema: rowSchema,
   resource: {

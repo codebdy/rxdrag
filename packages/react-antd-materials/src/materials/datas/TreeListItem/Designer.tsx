@@ -1,3 +1,4 @@
+import { TreeListItemProps } from "@rxdrag/react-antd-components"
 import { forwardRef, memo, useCallback, useState } from "react"
 import styled from "styled-components"
 
@@ -18,23 +19,9 @@ const Content = styled.div`
 `
 
 const Actions = styled.div`
-  position: absolute;
-  right:0;
-  top:50%;
-  transform: translateY(-50%);
 `
 
-export const handleBlockClick = (e: React.MouseEvent) => {
-  e.stopPropagation()
-}
-
-export type TreeListItemProps = {
-  children?: React.ReactNode,
-  fixed?: boolean,
-  actions?: React.ReactNode,
-}
-
-export const TreeListItem = memo(forwardRef<HTMLDivElement, TreeListItemProps>((props, ref) => {
+export const TreeListItemDesigner = memo(forwardRef<HTMLDivElement, TreeListItemProps>((props, ref) => {
   const { children, fixed, actions } = props;
   const [hover, setHover] = useState(false)
 
@@ -55,15 +42,16 @@ export const TreeListItem = memo(forwardRef<HTMLDivElement, TreeListItemProps>((
       <Content>
         {children}
       </Content>
+
       {
         (hover || fixed) &&
         <Actions
           className="item-acions"
-          onClick={handleBlockClick}
         >
           {actions}
         </Actions>
       }
+
     </StyledItem>
   )
 }))
