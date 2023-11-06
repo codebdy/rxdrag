@@ -3,12 +3,13 @@ import { treeListIcon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
 import { TreeList } from "@rxdrag/react-antd-components"
+import { TreeListDesigner } from "./Designer";
 
 const name = "TreeList"
 export const TreeListMaterial: IMaterial = {
   componentName: name,
   component: TreeList,
-  designer: TreeList,
+  designer: TreeListDesigner,
   designerLocales: locales,
   propsSchema: schema,
   designerProps: {

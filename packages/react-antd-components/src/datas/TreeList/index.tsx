@@ -25,12 +25,6 @@ const SpinContainer = styled(TreeListContent)`
   justify-content: center;
 `
 
-export enum PopupType {
-  popover = "popover",
-  modal = "modal",
-  drawer = "drawer"
-}
-
 export interface ITreeDataNode {
   id: string,
   children?: ITreeDataNode[],
