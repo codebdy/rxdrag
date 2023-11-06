@@ -2,7 +2,7 @@
 import type { CSSProperties, Key } from "react";
 import React, { forwardRef, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
-import { Spin, Tree } from 'antd';
+import { ConfigProvider, Spin, Tree, theme } from 'antd';
 import type { DataNode } from "antd/es/tree";
 import classNames from "classnames";
 import { TreeListShell } from "./TreeListShell";
@@ -104,14 +104,20 @@ export const TreeList = memo(forwardRef<HTMLDivElement, TreeListProps>((props, r
         scropeValue={node}
       >
         <ObjectField name={node.id} value={node}>
-          {children}
+          <ConfigProvider
+            theme={{
+              algorithm: selected === node.id ? theme.darkAlgorithm : theme.defaultAlgorithm
+            }}
+          >
+            {children}
+          </ConfigProvider>
         </ObjectField>
       </LogicflowRuntime>,
       isLeaf: !node.children?.length,
       selectable: !node.children?.length,
       children: node.children?.map(node => getOneNode(node))
     }
-  }, [children, childrenSchema, schema])
+  }, [children, childrenSchema, schema, selected])
 
   const treeData: DataNode[] = useMemo(
     () => dataSource?.map(node => getOneNode(node)) || [],

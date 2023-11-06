@@ -19,10 +19,10 @@ type TreeSelectProps = {
 export const TreeSelect = memo(forwardRef<HTMLDivElement, TreeSelectProps>((props, ref) => {
   const { value, onChange, style, dataSource, ...rest } = props;
 
-  const getOneNode = useCallback((node: IDataNode): DataNode => {
+  const getOneNode = useCallback((node: IDataNode): any => {
     return {
-      key: node.id,
       title: node.name,
+      value: node.id,
       children: node.children?.map(node => getOneNode(node))
     }
   }, [])
@@ -33,9 +33,9 @@ export const TreeSelect = memo(forwardRef<HTMLDivElement, TreeSelectProps>((prop
   );
 
 
-  const handleChange = useCallback(() => {
-    //
-  }, [])
+  const handleChange = useCallback((value: IDataNode) => {
+    onChange?.({ id: value?.id })
+  }, [onChange])
 
   return (
     <AntdTreeSelect
