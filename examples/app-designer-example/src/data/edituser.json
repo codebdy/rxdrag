@@ -126,6 +126,29 @@
               "children": []
             }
           ]
+        },
+        {
+          "componentName": "ObjectContainer",
+          "x-data": {
+            "type": "object",
+            "modelMetaId": "HxHeLzzC:CKUfLFkG",
+            "modelType": "Association",
+            "validateRules": null,
+            "label": "所属部门",
+            "name": "department"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "FormItem",
+              "x-data": {
+                "label": "FormItem"
+              },
+              "locked": false,
+              "slots": {},
+              "children": []
+            }
+          ]
         }
       ]
     }
