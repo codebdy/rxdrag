@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-locales",
-  "version": "0.4.3",
+  "version": "0.6.0",
   "type": "module",
   "module": "index.ts",
   "files": [

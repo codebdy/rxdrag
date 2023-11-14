@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/shared",
-  "version": "0.4.2",
+  "version": "0.6.0",
   "author": "Water.Li",
   "module": "index.ts",
   "files": [
