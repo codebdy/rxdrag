@@ -45,6 +45,12 @@ export class LogicFlow<LogicFlowContext = unknown> {
         case NodeType.End: {
           //end 只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
           const endJointer = new Jointer(activityMeta.id, activityMeta.name || "output");
+          // 上下文中有回调事件时执行
+          endJointer.connect((inputValue, runContext?: {asyncBack?:(isError: boolean, data: unknown) => void}) => {
+            if (endJointer['outlets']?.length === 1 && runContext?.asyncBack) {
+              runContext.asyncBack(false, inputValue)
+            }
+          })
           this.jointers.addOutput(endJointer);
           break;
         }
