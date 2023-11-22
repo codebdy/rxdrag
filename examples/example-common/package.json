@@ -1,6 +1,6 @@
 {
   "name": "example-common",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "module": "index.ts",
   "files": [
