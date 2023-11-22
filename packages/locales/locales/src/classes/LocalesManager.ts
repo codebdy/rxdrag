@@ -46,7 +46,7 @@ export class LocalesManager implements ILocalesManager {
     const [subKey, ...others] = key.split(".")
 
     if (!others?.length) {
-      return locales[subKey]
+      return locales?.[subKey]
     } else {
       const valueByMergedKey = locales?.[key]
       //处理这种情况：Layout.Header

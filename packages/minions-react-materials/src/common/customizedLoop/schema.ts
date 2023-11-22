@@ -1,0 +1,37 @@
+import { INodeSchema } from "@rxdrag/schema";
+import { labelSchema } from "../../baseSchema";
+
+export const customizedLoopSchema: INodeSchema = {
+  componentName: "Fragment",
+  children: [
+    labelSchema,
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$fromInput",
+      },
+      children: [
+        {
+          componentName: "Switch",
+          "x-data": {
+            name: "config.fromInput"
+          },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$times",
+      },
+      children: [
+        {
+          componentName: "InputNumber",
+          "x-data": {
+            name: "config.times"
+          },
+        }
+      ]
+    },
+  ],
+}

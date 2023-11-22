@@ -13,12 +13,8 @@ export const loopSchema: INodeSchema = {
       children: [
         {
           componentName: "Switch",
-          "x-field": {
+          "x-data": {
             name: "config.fromInput",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
           },
         }
       ]
@@ -31,11 +27,8 @@ export const loopSchema: INodeSchema = {
       children: [
         {
           componentName: "InputNumber",
-          "x-field": {
+          "x-data": {
             name: "config.times",
-            params: {
-              withBind: true,
-            }
           },
         }
       ]

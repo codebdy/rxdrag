@@ -13,11 +13,8 @@ export const splitObjectSchema: INodeSchema = {
       children: [
         {
           componentName: "PortsInput",
-          "x-field": {
+          "x-data": {
             name: "outPorts",
-            params: {
-              withBind: true,
-            }
           },
           props: {
             title: "$configPorts",

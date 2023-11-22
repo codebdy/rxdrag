@@ -1,7 +1,7 @@
 {
   "name": "rxdrag-demo",
   "private": true,
-  "version": "0.2.3",
+  "version": "0.6.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -9,9 +9,8 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf build"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.8.0",
+    "@ant-design/icons": "^5.1.0",
     "@rxdrag/core": "workspace:*",
-    "@rxdrag/fieldy-minions-materials": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-react-materials": "workspace:*",
@@ -27,15 +26,13 @@
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
-    "@rxdrag/controller-editor-antd5": "workspace:*",
     "example-common": "workspace:*",
-    "controller-editor-example": "workspace:*",
     "logicflow-editor-example": "workspace:*",
-    "inline-editor-example": "workspace:*",
     "normal-editor-example": "workspace:*",
     "runtime-example": "workspace:*",
     "large-screen-example": "workspace:*",
-    "antd": "^5.6.2",
+    "app-designer-example": "workspace:*",
+    "antd": "^5.10.0",
     "axios": "^1.4.0",
     "styled-components": "^5.3.9",
     "classnames": "^2.3.2",
@@ -49,8 +46,8 @@
   },
   "devDependencies": {
     "@types/mockjs": "^1.0.7",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^3.1.0",
     "@types/lodash": "^4.14.191",
     "@types/styled-components": "^5.1.26",

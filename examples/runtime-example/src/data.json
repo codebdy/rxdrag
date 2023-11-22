@@ -628,7 +628,7 @@
                           "props": {
                             "style": {}
                           },
-                          "x-field": {
+                          "x-data": {
                             "params": {}
                           },
                           "x-controller": {
@@ -885,11 +885,8 @@
                                         "value": "Title",
                                         "style": {}
                                       },
-                                      "x-field": {
-                                        "name": "title",
-                                        "params": {
-                                          "withBind": true
-                                        }
+                                      "x-data": {
+                                        "name": "title"
                                       },
                                       "slots": {},
                                       "children": []
@@ -900,10 +897,7 @@
                                         "value": "Description",
                                         "style": {}
                                       },
-                                      "x-field": {
-                                        "params": {
-                                          "withBind": true
-                                        },
+                                      "x-data": {
                                         "name": "description"
                                       },
                                       "slots": {},
@@ -1178,10 +1172,7 @@
                                   "props": {
                                     "value": "Link"
                                   },
-                                  "x-field": {
-                                    "params": {
-                                      "withBind": true
-                                    },
+                                  "x-data": {
                                     "name": "name"
                                   },
                                   "slots": {},
@@ -1194,7 +1185,7 @@
                               "props": {
                                 "title": "标签"
                               },
-                              "x-field": {
+                              "x-data": {
                                 "params": {},
                                 "type": "array",
                                 "name": "tags"
@@ -1204,22 +1195,12 @@
                                 {
                                   "componentName": "LoopPanel",
                                   "props": {},
-                                  "x-field": {
-                                    "params": {
-                                      "withBind": true
-                                    }
-                                  },
                                   "slots": {},
                                   "children": [
                                     {
                                       "componentName": "Tag",
                                       "props": {
                                         "value": "Tag"
-                                      },
-                                      "x-field": {
-                                        "params": {
-                                          "withBind": true
-                                        }
                                       },
                                       "slots": {},
                                       "children": []

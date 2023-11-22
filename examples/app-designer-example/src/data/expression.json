@@ -1,0 +1,77 @@
+{
+  "componentName": "Page",
+  "props": {
+    "p": {
+      "pt": 4,
+      "pr": 4,
+      "pl": 4,
+      "pb": 4
+    }
+  },
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Form",
+      "props": {
+        "colon": false
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "FormItem"
+          },
+          "locked": false,
+          "x-data": {
+            "name": "name1"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "FormItem"
+          },
+          "locked": false,
+          "x-data": {
+            "name": "name2"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "FormItem"
+          },
+          "locked": false,
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Switch",
+              "exprs": {
+                "disabled": "name1===\"xxx\""
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

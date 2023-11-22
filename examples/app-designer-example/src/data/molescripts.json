@@ -1,0 +1,26 @@
+[
+    {
+        "id": "a6t5H0f5",
+        "name": "主流程",
+        "ownerId": "mole-script",
+        "moduleId": "mole-script",
+        "type": "normal",
+        "code": "//开始按钮\r\nconst startButton = get(\"开始按钮\");\r\n//结束按钮\r\nconst stopButton = get(\"结束按钮\");\r\nstopButton.disable()\r\n//设置按钮\r\nconst settingsButton = get(\"设置按钮\");\r\n\r\n//数组容器\r\nconst arrayContainer = get(\"数组容器\");\r\n//分数显示组件\r\nconst scoreCtrl = get(\"分数\")\r\n\r\nvariables.on(\"地鼠数量\", (val) => {\r\n    arrayContainer.setDataSource(val);\r\n});\r\n\r\nvariables.on(\"成绩\",(val)=>{\r\n    scoreCtrl.setProp(\"value\", val)\r\n})\r\n\r\n\r\nlet timer;\r\nstartButton.on(\"onClick\", () => {\r\n    variables.set(\"成绩\", 0);\r\n    stopButton.enable();\r\n    startButton.disable();\r\n    settingsButton.disable();\r\n    timer = setInterval(() => {\r\n        //当前活跃地鼠\r\n        const number = Math.floor(Math.random() * variables.get(\"地鼠数量\"));\r\n        variables.set(\"活跃地鼠\", number)\r\n    }, variables.get(\"间隔\"))\r\n}) \r\n\r\nstopButton.on(\"onClick\", () => {\r\n    stopButton.disable();\r\n    startButton.enable();\r\n    settingsButton.enable();\r\n    variables.set(\"活跃地鼠\", -1)\r\n    if (timer) {\r\n        clearInterval(timer);\r\n    }\r\n})"
+    },
+    {
+        "id": "2d-Ou-Ga",
+        "name": "设置",
+        "ownerId": "mole-script",
+        "moduleId": "mole-script",
+        "type": "normal",
+        "code": "variables.set(\"地鼠数量\", 9);\r\nvariables.set(\"活跃地鼠\", -1);\r\nvariables.set(\"间隔\", 2000);\r\nvariables.set(\"成绩\", 0);\r\n\r\nconst settingsButton = get(\"设置按钮\");\r\nconst settingsDialog = get(\"设置对话框\");\r\nconst settingsForm = get(\"表单\");\r\n\r\nsettingsButton.on(\"onClick\", () => {\r\n    settingsForm.setValue({\r\n        count: variables.get(\"地鼠数量\"),\r\n        interval: variables.get(\"间隔\"),\r\n    })\r\n    settingsDialog.open();\r\n});\r\n\r\nconst cancelButton = get(\"取消按钮\");\r\nconst confirmButton = get(\"确认按钮\");\r\n\r\ncancelButton.on(\"onClick\", () => {\r\n    settingsDialog.close();\r\n});\r\n\r\nconfirmButton.on(\"onClick\", () => {\r\n    const { count, interval } = settingsForm.getValue()\r\n    variables.set(\"地鼠数量\", count);\r\n    variables.set(\"间隔\", interval);\r\n    settingsDialog.close();\r\n});"
+    },
+    {
+        "id": "_4Ug-t7u",
+        "name": "地鼠",
+        "ownerId": "KiE-KrsA",
+        "moduleId": "mole-script",
+        "type": "normal",
+        "code": "const moleBtn = get(\"地鼠\")\r\nvariables.on(\"活跃地鼠\", (val) => {\r\n    if (val === logicScope.index) {\r\n        moleBtn.enable();\r\n    } else {\r\n        moleBtn.disable();\r\n    }\r\n})\r\n\r\nmoleBtn.on(\"onClick\", () => {\r\n    moleBtn.setProp(\"danger\", true);\r\n    variables.set(\"成绩\", variables.get(\"成绩\") + 1)\r\n    setTimeout(() => {\r\n        moleBtn.setProp(\"danger\", false);\r\n        moleBtn.disable();\r\n    }, 500)\r\n})"
+    }
+]

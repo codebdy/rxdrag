@@ -1,0 +1,31 @@
+.rx-node-margin {
+  padding: 8px;
+}
+
+.rx-node-outlined {
+  outline: dashed grey 1px;
+}
+
+.rx-editor ::-webkit-scrollbar {
+  display: block;
+  width: 0.35rem;
+  height: 0.35rem;
+}
+
+.rx-editor ::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+
+body .rx-editor ::-webkit-scrollbar-thumb {
+  border-radius: 0.2rem;
+  background: rgba(0, 0, 0, 0.3);
+  transition: all .2s;
+}
+
+.rx-editor.dark ::-webkit-scrollbar-thumb {
+  border-radius: 0.2rem;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all .2s;
+}
+
+::-webkit-scrollbar-corner { background: transparent; }

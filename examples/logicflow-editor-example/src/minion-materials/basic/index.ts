@@ -6,10 +6,10 @@ import { loopMaterial } from "./loop";
 import { mergeMaterial } from "./merge";
 import { IActivityMaterial, NodeType } from "@rxdrag/minions-schema";
 import { INodeSchema } from "@rxdrag/schema";
-import { endIcon, startIcon } from "../icons";
 import { splitArrayMaterial } from "./SplitArray";
 import { splitObjectMaterial } from "./SplitObject";
 import { jsCodeMaterial } from "./jsCode";
+import { startIcon, endIcon } from "@rxdrag/react-shared";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",

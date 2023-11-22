@@ -5,10 +5,11 @@ import styled, { ThemeProvider } from "styled-components"
 
 const Container = styled.div`
   width: 100%;
-  height: calc(100vh - 80px);
+  height: 100%;
   display: flex;
   flex-flow: column;
   background-color: ${props => props.theme.token?.colorBgBase};
+  box-sizing: border-box;
 `
 
 export const ShellContainer = memo((

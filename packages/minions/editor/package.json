@@ -1,0 +1,49 @@
+{
+  "name": "@rxdrag/minions-logicflow-editor",
+  "version": "0.6.0",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "module": "dist/index.mjs",
+    "typings": "dist/index.d.ts",
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .ts,tsx",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*",
+    "@types/insert-css": "^2.0.1",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.26",
+    "@types/lodash": "^4.14.191",
+    "eslint": "^7.32.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@antv/x6": "^2.10.1",
+    "@antv/x6-plugin-dnd": "^2.0.5",
+    "@antv/x6-plugin-minimap": "^2.0.5",
+    "@antv/x6-plugin-selection": "^2.1.7",
+    "@antv/x6-react-shape": "^2.1.2",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@rxdrag/minions-activities": "workspace:*",
+    "@rxdrag/minions-schema": "workspace:*",
+    "@rxdrag/shared": "workspace:*",
+    "@rxdrag/react-locales": "workspace:*",
+    "insert-css": "^2.0.0",
+    "lodash": "^4.17.21",
+    "redux": "^4.2.1",
+    "classnames": "^2.3.2",
+    "styled-components": "^5.3.9"
+  }
+}

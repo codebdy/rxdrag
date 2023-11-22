@@ -11,12 +11,12 @@ export class ObjectToUrl extends AbstractActivity {
   }
 
   @Input()
-  inputHandler = (inputValue?: any): void => {
+  inputHandler = (inputValue?: any, runContext?: object): void => {
     const params: string[] = []
 
     for (const key of Object.keys(inputValue || {})) {
       inputValue?.[key] && params.push(key + "=" + inputValue?.[key])
     }
-    this.next(params.join("&"))
+    this.next(params.join("&"), runContext)
   }
 }

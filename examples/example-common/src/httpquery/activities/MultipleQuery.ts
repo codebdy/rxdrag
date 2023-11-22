@@ -27,25 +27,25 @@ export class MultipleQuery extends AbstractActivity<IQueryConfig> {
   }
 
   @Input()
-  inputHandler(urlParam: string): void {
+  inputHandler(urlParam: string, runContext?: object): void {
     //@@ 最好能添加防抖处理，把一段小段时间间隔内的请求，合并为一个请求，使用最后的参数查询
     this?.querySession?.query(urlParam, {
-      onData: this.complateHandler,
-      onError: this.errorHandler,
-      onLoading: this.loadingHandler,
+      onData: (data: unknown) => this.complateHandler(data, runContext),
+      onError: (error?: Error) => this.errorHandler(error, runContext),
+      onLoading: (loading?: boolean) => this.loadingHandler(loading, runContext),
     })
   }
 
-  complateHandler = (data: unknown) => {
-    this.next(data, MultipleQuery.OUTPUT_NAME_DATA)
+  complateHandler = (data: unknown, runContext?: object) => {
+    this.next(data, runContext, MultipleQuery.OUTPUT_NAME_DATA)
   }
 
-  errorHandler = (error?: Error) => {
-    this.next(error, MultipleQuery.OUTPUT_NAME_ERROR)
+  errorHandler = (error?: Error, runContext?: object) => {
+    this.next(error, runContext, MultipleQuery.OUTPUT_NAME_ERROR)
   }
 
-  loadingHandler = (loading?: boolean) => {
-    this.next(loading, MultipleQuery.OUTPUT_NAME_QUERYING)
+  loadingHandler = (loading?: boolean, runContext?: object) => {
+    this.next(loading, runContext, MultipleQuery.OUTPUT_NAME_QUERYING)
   }
 
   destroy = () => {

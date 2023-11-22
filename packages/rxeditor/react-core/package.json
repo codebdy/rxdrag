@@ -1,0 +1,52 @@
+{
+  "name": "@rxdrag/react-core",
+  "version": "0.6.0",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "module": "dist/index.mjs",
+    "typings": "dist/index.d.ts",
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .ts,tsx",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.191",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.26",
+    "eslint": "^7.32.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1",
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*",
+    "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1"
+  },
+  "dependencies": {
+    "@rxdrag/core": "workspace:*",
+    "@rxdrag/locales": "workspace:*",
+    "@rxdrag/react-locales": "workspace:*",
+    "@rxdrag/react-runner": "workspace:*",
+    "@rxdrag/react-shared": "workspace:*",
+    "@rxdrag/schema": "workspace:*",
+    "@rxdrag/shared": "workspace:*",
+    "@rxdrag/react-fieldy": "workspace:*",
+    "@rxdrag/minions-schema": "workspace:*",
+    "@rxdrag/minions-runtime-react": "workspace:*",
+    "@rxdrag/minions-logicflow-editor": "workspace:*",
+    "react-monaco-editor": "^0.54.0",
+    "lodash": "^4.17.21",
+    "styled-components": "^5.3.9"
+  }
+}

@@ -41,8 +41,8 @@ export class FormHelper {
     let currentValue: any = formValue;
     let parentField: FieldState | undefined = undefined
     for (const field of fields) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const fieldValue = parentField?.meta.type === "array" ? currentValue?.[parseInt(field.name!)] : currentValue?.[field.name!]
+
+      const fieldValue = parentField?.meta.type === "array" ? currentValue?.[field.name as number] : currentValue?.[field.name as string]
 
       currentValue = fieldValue
       parentField = field
@@ -55,14 +55,14 @@ export class FormHelper {
     return this.doSetValueByPath(this.formState.value, path, fieldValue);
   }
 
-  doSetValueByPath(parentValue: FormValue | undefined, path: string, fieldValue: unknown): FormValue | undefined {
+  doSetValueByPath(parentValue: FormValue | undefined, path: string, fieldValue: unknown, parentField?: FieldState): FormValue | undefined {
     if (!path) {
       return parentValue;
     }
     const pathArray = path.split(".")
     const [fieldName, ...other] = pathArray;
-    const parentPath = pathArray.length > 1 ? pathArray.slice(0, pathArray.length - 2).join(".") : undefined
-    const parentField = parentPath ? this.formState.fields[parentPath] : undefined
+    //const parentPath = pathArray.length > 1 ? pathArray.slice(0, pathArray.length - 2).join(".") : undefined
+    //const parentField = parentPath ? this.formState.fields[parentPath] : undefined
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let newParentValue: any;
     if (parentValue === undefined) {
@@ -71,12 +71,13 @@ export class FormHelper {
       newParentValue = parentValue
     }
     const oldValue = newParentValue?.[parentField?.meta?.type === "array" ? parseInt(fieldName) : fieldName]
-    const value = other.length === 0 ? fieldValue : this.doSetValueByPath(oldValue, other.join("."), fieldValue)
+    const value = other.length === 0 ? fieldValue : this.doSetValueByPath(oldValue, other.join("."), fieldValue, this.formState.fields[parentField?.path ? parentField?.path + "." + fieldName : fieldName])
     if (parentField?.meta?.type === "array") {
       newParentValue = [...newParentValue];
-      (newParentValue as unknown[]).splice(parseInt(fieldName), 0, value)
+      (newParentValue as unknown[]).splice(parseInt(fieldName), 1, value)
     } else {
-      newParentValue = { ...newParentValue, [fieldName]: value }
+      newParentValue = { ...newParentValue }
+      newParentValue[fieldName] = value
     }
     return newParentValue
   }
@@ -86,20 +87,20 @@ export class FormHelper {
     return value
   }
 
-  doRemoveValueByPath(parentValue: any | undefined, path: string | undefined): FormValue | undefined {
+  doRemoveValueByPath(parentValue: any | undefined, path: string | undefined, parentField?:FieldState): FormValue | undefined {
     if (!path) {
       return parentValue
     }
     const pathArray = path.split(".")
     const [fieldName, ...other] = pathArray;
-    const parentPath = pathArray.length > 1 ? pathArray.slice(0, pathArray.length - 2).join(".") : undefined
-    const parentField = parentPath ? this.formState.fields[parentPath] : undefined
+    //const parentPath = pathArray.length > 1 ? pathArray.slice(0, pathArray.length - 2).join(".") : undefined
+    //const parentField = parentPath ? this.formState.fields[parentPath] : undefined
     if (parentValue === undefined) {
       return parentValue
     } else {
       let newParentValue = parentField?.meta?.type === "array" ? [...parentValue] : { ...parentValue }
       const oldValue = newParentValue?.[parentField?.meta?.type === "array" ? parseInt(fieldName) : fieldName]
-      const value = other.length === 0 ? undefined : this.doRemoveValueByPath(oldValue, other.join("."))
+      const value = other.length === 0 ? undefined : this.doRemoveValueByPath(oldValue, other.join("."), this.formState.fields[parentField?.path ? parentField?.path + "." + fieldName : fieldName])
       //newParentValue = { ...newParentValue, [fieldName]: value }
       if (other.length === 0) {
         if (parentField?.meta?.type === "array") {

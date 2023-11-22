@@ -1,0 +1,1 @@
+export const test = "这里放组件运行时需要的多语言资源"

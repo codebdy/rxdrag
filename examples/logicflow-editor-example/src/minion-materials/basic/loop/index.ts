@@ -1,8 +1,8 @@
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { loopSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
-import { loopIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
+import { loopIcon } from "@rxdrag/react-shared";
 
 export const loopMaterial: IRxDragActivityMaterial = {
   icon: loopIcon,
@@ -11,7 +11,7 @@ export const loopMaterial: IRxDragActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "input",
         label: "",
       },
@@ -19,7 +19,7 @@ export const loopMaterial: IRxDragActivityMaterial = {
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "output",
         label: "",
       },

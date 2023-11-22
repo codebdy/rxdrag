@@ -1,0 +1,405 @@
+{
+  "name": "zeebe",
+  "prefix": "zeebe",
+  "uri": "http://camunda.org/schema/zeebe/1.0",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "ZeebeServiceTask",
+      "extends": [
+        "bpmn:ServiceTask",
+        "bpmn:BusinessRuleTask",
+        "bpmn:ScriptTask",
+        "bpmn:SendTask",
+        "bpmn:EndEvent",
+        "bpmn:IntermediateThrowEvent"
+      ],
+      "properties": [
+        {
+          "name": "retryCounter",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "IoMapping",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "ioMapping",
+          "type": "IoMapping"
+        },
+        {
+          "name": "inputParameters",
+          "isMany": true,
+          "type": "Input"
+        },
+        {
+          "name": "outputParameters",
+          "isMany": true,
+          "type": "Output"
+        }
+      ],
+      "meta": {
+        "allowedIn": [
+          "bpmn:CallActivity",
+          "bpmn:Event",
+          "bpmn:ReceiveTask",
+          "zeebe:ZeebeServiceTask",
+          "bpmn:SubProcess",
+          "bpmn:UserTask"
+        ]
+      }
+    },
+    {
+      "name": "InputOutputParameter",
+      "properties": [
+        {
+          "name": "source",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "target",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "Subscription",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "correlationKey",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "superClass": [
+        "InputOutputParameter"
+      ],
+      "meta": {
+        "allowedIn": [
+          "bpmn:CallActivity",
+          "zeebe:ZeebeServiceTask",
+          "bpmn:SubProcess",
+          "bpmn:UserTask"
+        ]
+      }
+    },
+    {
+      "name": "Output",
+      "superClass": [
+        "InputOutputParameter"
+      ],
+      "meta": {
+        "allowedIn": [
+          "bpmn:CallActivity",
+          "bpmn:Event",
+          "bpmn:ReceiveTask",
+          "zeebe:ZeebeServiceTask",
+          "bpmn:SubProcess",
+          "bpmn:UserTask"
+        ]
+      }
+    },
+    {
+      "name": "TaskHeaders",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [
+          "zeebe:ZeebeServiceTask",
+          "bpmn:UserTask"
+        ]
+      },
+      "properties": [
+        {
+          "name": "values",
+          "type": "Header",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "Header",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "TaskDefinition",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [
+          "zeebe:ZeebeServiceTask"
+        ]
+      },
+      "properties": [
+        {
+          "name": "type",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "retries",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "LoopCharacteristics",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [
+          "zeebe:ZeebeServiceTask",
+          "bpmn:ReceiveTask",
+          "bpmn:SubProcess"
+        ]
+      },
+      "properties": [
+        {
+          "name": "inputCollection",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "inputElement",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "outputCollection",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "outputElement",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "CalledElement",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [
+          "bpmn:CallActivity"
+        ]
+      },
+      "properties": [
+        {
+          "name": "processId",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "processIdExpression",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "propagateAllChildVariables",
+          "isAttr": true,
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "UserTaskForm",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [
+          "bpmn:Process"
+        ]
+      },
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "body",
+          "type": "String",
+          "isBody": true
+        }
+      ]
+    },
+    {
+      "name": "FormDefinition",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [
+          "bpmn:UserTask"
+        ]
+      },
+      "properties": [
+        {
+          "name": "formKey",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "CalledDecision",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [
+          "bpmn:BusinessRuleTask"
+        ]
+      },
+      "properties": [
+        {
+          "name": "decisionId",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "resultVariable",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "AssignmentDefinition",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [
+          "bpmn:UserTask"
+        ]
+      },
+      "properties": [
+        {
+          "name": "assignee",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "candidateGroups",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "Properties",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "properties",
+          "type": "Property",
+          "isMany": true
+        }
+      ],
+      "meta": {
+        "allowedIn": [
+          "zeebe:PropertiesHolder"
+        ]
+      }
+    },
+    {
+      "name": "Property",
+      "properties": [
+        {
+          "name": "name",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "isAttr": true
+        }
+      ],
+      "meta": {
+        "allowedIn": [
+          "zeebe:PropertiesHolder"
+        ]
+      }
+    },
+    {
+      "name": "PropertiesHolder",
+      "isAbstract": true,
+      "extends": [
+        "bpmn:FlowNode"
+      ]
+    },
+    {
+      "name": "TemplateSupported",
+      "isAbstract": true,
+      "extends": [
+        "bpmn:Collaboration",
+        "bpmn:Process",
+        "bpmn:FlowElement"
+      ],
+      "properties": [
+        {
+          "name": "modelerTemplate",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "modelerTemplateVersion",
+          "isAttr": true,
+          "type": "Integer"
+        },
+        {
+          "name": "modelerTemplateIcon",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    }
+  ]
+}

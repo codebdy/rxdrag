@@ -1,0 +1,113 @@
+{
+  "componentName": "Dialog",
+  "x-controller": {
+    "id": "eu2MFGfi",
+    "enable": true,
+    "name": "设置对话框"
+  },
+  "slots": {
+    "title": {
+      "componentName": "DialogTitle",
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Text",
+          "props": {
+            "value": "游戏设置"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    },
+    "footer": {
+      "componentName": "DialogFooter",
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Button",
+          "props": {
+            "type": "default",
+            "title": "取消"
+          },
+          "x-controller": {
+            "id": "OfONgEFW",
+            "enable": true,
+            "name": "取消按钮"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Button",
+          "props": {
+            "type": "primary",
+            "title": "确认"
+          },
+          "x-controller": {
+            "id": "sghItTwt",
+            "enable": true,
+            "name": "确认按钮"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    }
+  },
+  "children": [
+    {
+      "componentName": "Form",
+      "props": {
+        "colon": false,
+        "labelCol": {
+          "offset": 6
+        }
+      },
+      "x-controller": {
+        "id": "CF2PN88a",
+        "enable": true,
+        "name": "表单"
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "地鼠数量"
+          },
+          "locked": false,
+          "x-data": {
+            "name": "count"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "InputNumber",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "时间间隔"
+          },
+          "locked": false,
+          "x-data": {
+            "name": "interval"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "InputNumber",
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

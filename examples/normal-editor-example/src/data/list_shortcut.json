@@ -103,16 +103,9 @@
                             {
                               "componentName": "Input",
                               "props": {},
-                              "x-field": {
+                              "x-data": {
                                 "name": "keywords",
-                                "params": {},
-                                "reactionMeta": {
-                                  "display": {},
-                                  "pattern": {},
-                                  "hidden": {},
-                                  "disabled": {},
-                                  "readonly": {}
-                                }
+                                "params": {}
                               },
                               "x-controller": {
                                 "id": "67ba7358-b919-4234-8ae9-b0a0d666d3c3",
@@ -606,7 +599,7 @@
                               },
                               {
                                 "id": "72d45eb8-388c-4110-8ba2-d6ef98f98845",
-                                "label": "合并",
+                                "label": "组合",
                                 "type": "Activity",
                                 "activityName": "system.merge",
                                 "inPorts": [
@@ -979,7 +972,7 @@
                               },
                               {
                                 "id": "526e0bc6-d6f5-4af6-a051-63e94784e1ae",
-                                "label": "合并",
+                                "label": "组合",
                                 "type": "Activity",
                                 "activityName": "system.merge",
                                 "inPorts": [
@@ -1281,15 +1274,6 @@
                         "url": "/api/users",
                         "entityName": "User"
                       },
-                      "x-field": {
-                        "reactionMeta": {
-                          "display": {},
-                          "pattern": {},
-                          "hidden": {},
-                          "disabled": {},
-                          "readonly": {}
-                        }
-                      },
                       "bordered": false,
                       "slots": {},
                       "children": [
@@ -1298,18 +1282,8 @@
                           "props": {
                             "title": "名称"
                           },
-                          "x-field": {
-                            "name": "name",
-                            "params": {
-                              "withBind": true
-                            },
-                            "reactionMeta": {
-                              "display": {},
-                              "pattern": {},
-                              "hidden": {},
-                              "disabled": {},
-                              "readonly": {}
-                            }
+                          "x-data": {
+                            "name": "name"
                           },
                           "slots": {},
                           "children": []
@@ -1319,18 +1293,8 @@
                           "props": {
                             "title": "登录名称"
                           },
-                          "x-field": {
-                            "name": "login_name",
-                            "params": {
-                              "withBind": true
-                            },
-                            "reactionMeta": {
-                              "display": {},
-                              "pattern": {},
-                              "hidden": {},
-                              "disabled": {},
-                              "readonly": {}
-                            }
+                          "x-data": {
+                            "name": "login_name"
                           },
                           "slots": {},
                           "children": []
@@ -1356,7 +1320,7 @@
                               "slots": {},
                               "children": [
                                 {
-                                  "componentName": "Dialog",
+                                  "componentName": "DialogGroup",
                                   "props": {},
                                   "x-controller": {
                                     "id": "c62dc46f-3820-40a5-afc9-00c5f87a0bfc",
@@ -1373,33 +1337,14 @@
                                             "label": "登录名"
                                           },
                                           "locked": false,
-                                          "x-field": {
-                                            "name": "login_name",
-                                            "reactionMeta": {
-                                              "display": {},
-                                              "pattern": {},
-                                              "hidden": {},
-                                              "disabled": {},
-                                              "readonly": {}
-                                            }
+                                          "x-data": {
+                                            "name": "login_name"
                                           },
                                           "slots": {},
                                           "children": [
                                             {
                                               "componentName": "Input",
                                               "props": {},
-                                              "x-field": {
-                                                "params": {
-                                                  "withBind": true
-                                                },
-                                                "reactionMeta": {
-                                                  "display": {},
-                                                  "pattern": {},
-                                                  "hidden": {},
-                                                  "disabled": {},
-                                                  "readonly": {}
-                                                }
-                                              },
                                               "slots": {},
                                               "children": []
                                             }
@@ -1411,33 +1356,14 @@
                                             "label": "用户名"
                                           },
                                           "locked": false,
-                                          "x-field": {
-                                            "name": "name",
-                                            "reactionMeta": {
-                                              "display": {},
-                                              "pattern": {},
-                                              "hidden": {},
-                                              "disabled": {},
-                                              "readonly": {}
-                                            }
+                                          "x-data": {
+                                            "name": "name"
                                           },
                                           "slots": {},
                                           "children": [
                                             {
                                               "componentName": "Input",
                                               "props": {},
-                                              "x-field": {
-                                                "params": {
-                                                  "withBind": true
-                                                },
-                                                "reactionMeta": {
-                                                  "display": {},
-                                                  "pattern": {},
-                                                  "hidden": {},
-                                                  "disabled": {},
-                                                  "readonly": {}
-                                                }
-                                              },
                                               "slots": {},
                                               "children": []
                                             }

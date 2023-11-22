@@ -1,11 +1,11 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { rightAdIcon } from "./icon";
 import { rightAdLocales, rightAdResourceLocales } from "./locales";
 import { rightAdSchema } from "./schema";
 import { RightAd } from "../../../components";
 
 const name = "RightAd"
-export const RightAdMaterial: IComponentMaterial = {
+export const RightAdMaterial: IMaterial = {
   componentName: name,
   component: RightAd,
   designer: RightAd,

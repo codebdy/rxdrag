@@ -1,0 +1,158 @@
+{
+  "componentName": "Dialog",
+  "x-controller": {
+    "id": "palKh10y",
+    "enable": true,
+    "name": "编辑对话"
+  },
+  "slots": {
+    "footer": {
+      "componentName": "DialogFooter",
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Button",
+          "props": {
+            "type": "default",
+            "title": "取消"
+          },
+          "x-controller": {
+            "id": "XlxrxRmt",
+            "enable": true,
+            "name": "取消按钮"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Button",
+          "props": {
+            "type": "primary",
+            "title": "确定"
+          },
+          "x-controller": {
+            "id": "-gnwSjWM",
+            "enable": true,
+            "name": "确定按钮"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    },
+    "title": {
+      "componentName": "DialogTitle",
+      "x-controller": {
+        "id": "NPZ1t3-E",
+        "enable": false,
+        "name": "对话框标题"
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Text",
+          "props": {
+            "value": "编辑用户"
+          },
+          "x-controller": {
+            "id": "MkFfELRK",
+            "enable": true,
+            "name": "对话框标题"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    }
+  },
+  "children": [
+    {
+      "componentName": "Form",
+      "props": {
+        "colon": false,
+        "labelCol": {
+          "span": 6
+        }
+      },
+      "x-data": {
+        "type": "form",
+        "modelMetaId": "QksZdA-8",
+        "modelType": "Entity",
+        "validateRules": null
+      },
+      "x-controller": {
+        "id": "nepX8Hq4",
+        "enable": true,
+        "name": "用户表单"
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "FormItem",
+          "x-data": {
+            "type": "normal",
+            "label": "登录ID",
+            "modelMetaId": "PeprFClI",
+            "modelType": "Attribute",
+            "validateRules": null,
+            "name": "loginName"
+          },
+          "locked": false,
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "x-data": {
+            "type": "normal",
+            "label": "姓名",
+            "modelMetaId": "qYBQKdC1",
+            "modelType": "Attribute",
+            "validateRules": null,
+            "name": "name"
+          },
+          "locked": false,
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "x-data": {
+            "type": "normal",
+            "label": "所属部门",
+            "modelMetaId": "HxHeLzzC:CKUfLFkG",
+            "modelType": "Association",
+            "validateRules": null,
+            "name": "department"
+          },
+          "locked": false,
+          "slots": {},
+          "children": [
+            {
+              "componentName": "TreeSelect",
+              "x-controller": {
+                "id": "mQjZXV0D",
+                "enable": true,
+                "name": "部门下拉"
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

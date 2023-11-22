@@ -2,7 +2,6 @@ import { memo } from "react"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
 import { ComponentRender } from "@rxdrag/react-runner"
 import schema from "./data.json"
-import { controllerFactories } from "./controlles"
 import { usePredefinedComponents } from "./usePredefinedComponents"
 
 export const RuntimeExample = memo((
@@ -13,7 +12,7 @@ export const RuntimeExample = memo((
       <VirtualForm>
         <ComponentRender
           components={components}
-          controllerFactories={controllerFactories}
+          //controllerFactories={controllerFactories}
           schema={schema}
         />
       </VirtualForm>

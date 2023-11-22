@@ -38,6 +38,7 @@ export interface IRxDragLocalesManager extends ILocalesManager {
   setLang(lang: string): void
   getResourceMessage(key: string): string | null
   getComponentMessage(componentName: string, key: string): string | null
+  getComponentSettingsMessage(componentName: string, key: string): string | null
   getSettersMessage(key: string): string | null
 
   registerResourceLocales(...locales: ILocales[]): void

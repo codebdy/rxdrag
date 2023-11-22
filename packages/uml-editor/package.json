@@ -1,0 +1,55 @@
+{
+  "name": "@rxdrag/uml-editor",
+  "version": "0.6.0",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "module": "dist/index.mjs",
+    "typings": "dist/index.d.ts",
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .ts,tsx",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.26",
+    "@types/lodash": "^4.14.191",
+    "eslint": "^7.32.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.1.0",
+    "@antv/x6": "^2.10.1",
+    "@antv/x6-plugin-dnd": "^2.0.5",
+    "@antv/x6-plugin-minimap": "^2.0.5",
+    "@antv/x6-plugin-selection": "^2.1.7",
+    "@antv/x6-plugin-transform": "^2.1.6",
+    "@antv/x6-react-shape": "2.1.2",
+    "@rxdrag/locales": "workspace:*",
+    "@rxdrag/react-locales": "workspace:*",
+    "@rxdrag/shared": "workspace:*",
+    "@rxdrag/react-shared": "workspace:*",
+    "@rxdrag/uml-schema": "workspace:*",
+    "@rxdrag/fieldy-yup-validation": "workspace:*",
+    "antd": "^5.10.0",
+    "classnames": "^2.3.2",
+    "lodash": "^4.17.21",
+    "react-monaco-editor": "^0.54.0",
+    "styled-components": "^5.3.9",
+    "recoil": "^0.7.4"
+  }
+}

@@ -13,11 +13,8 @@ export const constValueSchema: INodeSchema = {
       children: [
         {
           componentName: "ValueInput",
-          "x-field": {
+          "x-data": {
             name: `config.value`,
-            params: {
-              withBind: true,
-            }
           },
         }
       ]

@@ -8,14 +8,12 @@ import {
   LeftNavWidget,
   OutlineWidget,
   ThemeButton,
-  componentsIcon,
-  historyIcon,
-  outlineIcon,
 } from "@rxdrag/react-antd-shell"
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
 import { pages } from "./data"
-import { Logo, MenuButton, ResourceWidget, controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from "example-common"
+import { Logo, MenuButton, ResourceWidget, materials, setterLocales } from "example-common"
+import { componentsIcon, outlineIcon, historyIcon } from "@rxdrag/react-shared"
 
 export enum LeftNavType {
   pages = "pages",
@@ -31,7 +29,7 @@ export const NormalEditorExample = memo(() => {
     setActivedKey(key as LeftNavType)
   }, [])
 
-  const schemas = useMemo(() => {
+  const schema = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (pages as any)[pageId]
   }, [pageId])
@@ -42,14 +40,11 @@ export const NormalEditorExample = memo(() => {
 
   return (
     <RxEditorAntd
-      schemas={schemas}
+      schema={schema}
       canvasUrl="/canvas-render"
       previewUrl="/preview-render"
       themeMode='dark'
       minionOptions={{
-        materials: minionsMaterialCategories,
-        locales: minionsLocales,
-        controllers: controllerDefines,
       }}
       materials={materials}
       navPanel={
@@ -110,6 +105,7 @@ export const NormalEditorExample = memo(() => {
           onActive={handleActive}
         />
       }
+      setters={{  }}
     >
     </RxEditorAntd>
   )

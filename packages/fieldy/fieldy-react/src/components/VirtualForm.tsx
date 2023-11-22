@@ -4,24 +4,31 @@ import { FieldContext, FormContext } from "../contexts"
 import { useFieldy } from "../hooks"
 
 export const VirtualForm = (props: {
+  name?: string,
   initialValue?: FormValue | undefined,
   defaultValue?: FormValue | undefined,
   value?: FormValue | undefined,
   onValueChange?: (value?: FormValue | undefined) => void,
+  //表达式中用到的变量
+  expContext?: Record<string, unknown>,
   children?: React.ReactNode
 }) => {
-  const { initialValue, defaultValue, value, children, onValueChange } = props
+  const { name, initialValue, defaultValue, value, children, onValueChange, expContext } = props
   const [form, setForm] = useState<IForm>()
   const fieldy = useFieldy()
   useEffect(() => {
     if (fieldy) {
-      const form = fieldy.createForm()
+      const form = fieldy.createForm({ name },)
       setForm(form)
       return () => {
         fieldy.removeForm(form.name)
       }
     }
-  }, [fieldy])
+  }, [fieldy, name])
+
+  useEffect(() => {
+    form?.setExpContext(expContext)
+  }, [expContext, form])
 
   useEffect(() => {
     if (fieldy && form) {
@@ -43,15 +50,15 @@ export const VirtualForm = (props: {
 
   useEffect(() => {
     if (fieldy) {
-      const unsub = form?.onValueChange((value: FormValue | undefined) => {
+      const unsub = form?.onValueChange((val: FormValue | undefined) => {
         if (form.getModified()) {
-          onValueChange?.(value)
+          onValueChange?.(val)
         }
       })
       return unsub;
     }
 
-  }, [fieldy, form, onValueChange])
+  }, [fieldy, form, onValueChange, value])
 
   //form嵌套时要清空field树，添加一个FieldContext.Provider来完成
   return (

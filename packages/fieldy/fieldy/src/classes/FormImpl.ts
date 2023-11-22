@@ -1,21 +1,35 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { IValidationError } from "../interfaces";
-import { ErrorListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { IValidateSchema, IValidationError } from "../interfaces";
+import { ErrorListener, ExpContextChangeListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { FieldImpl, transformErrorsToFeedbacks } from "./FieldImpl";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 
 export class FormImpl implements IForm {
-  fields: {
-    [key: string]: IField | undefined
-  } = {}
+  expContextListeners: ExpContextChangeListener[] = []
+  fields: Record<string, IField> = {}
   validationSubscriber: ValidationSubscriber = new ValidationSubscriber()
+  //表达式中用到的变量
+  private expContext?: Record<string, unknown>
 
-  constructor(public fieldy: IFieldyEngine, public name: string) { }
+  constructor(
+    public fieldy: IFieldyEngine,
+    public name: string,
+  ) { }
 
-  reset(): void {
-    throw new Error("Method not implemented.");
+  getExpContext(): Record<string, unknown> | undefined {
+    return this.expContext
   }
 
+  setExpContext(expContext?: Record<string, unknown> | undefined): void {
+    this.expContext = expContext
+    for (const listener of this.expContextListeners) {
+      listener(this.expContext)
+    }
+  }
+
+  reset(): void {
+    this.fieldy.resetForm(this.name)
+  }
 
   getModified(): boolean {
     return this.fieldy.getFormState(this.name)?.modified || false
@@ -48,6 +62,10 @@ export class FormImpl implements IForm {
     return this.fields[path]
   }
 
+  queryField(pathExp: string): IField<IValidateSchema> | undefined {
+    throw new Error("Method not implemented.");
+  }
+
   registerField(fieldSchema: IFieldSchema): IField {
     const field = this.getField(fieldSchema.path)
     if (field) {
@@ -73,7 +91,8 @@ export class FormImpl implements IForm {
     if (field) {
       field.refCount = field.refCount - 1
       if (field.refCount <= 0) {
-        this.fieldy.removeFields(this.name, path)
+        field.destroy()
+        this.fieldy.removeField(this.name, path)
         delete this.fields[path]
       }
     }
@@ -139,7 +158,7 @@ export class FormImpl implements IForm {
     return this.fieldy.getFormState(this.name)?.fieldSchemas || []
   }
 
-  getRootFields() {
+  getRootFieldSchemas() {
     const fieldSchemas = this.fieldy.getFormState(this.name)?.fieldSchemas || []
     const children: IFieldSchema[] = []
     for (const child of fieldSchemas) {
@@ -148,6 +167,26 @@ export class FormImpl implements IForm {
       }
     }
     return children
+  }
+
+  getRootFields(): IField<IValidateSchema>[] {
+    const fields: IField<IValidateSchema>[] = []
+    const fieldStates = this.getRootFieldSchemas()
+    for (const fieldState of fieldStates) {
+      const field = this.getField(fieldState.path)
+      if (field) {
+        fields.push(field)
+      }
+    }
+    return fields
+  }
+
+  onExpContextChange(listener: ExpContextChangeListener): Unsubscribe {
+    this.expContextListeners.push(listener)
+
+    return () => {
+      this.expContextListeners.splice(this.expContextListeners.indexOf(listener), 1)
+    }
   }
 
 }

@@ -13,11 +13,8 @@ export const mergeSchema: INodeSchema = {
       children: [
         {
           componentName: "PortsInput",
-          "x-field": {
+          "x-data": {
             name: "inPorts",
-            params: {
-              withBind: true,
-            }
           },
           props: {
             title: "$configPorts",

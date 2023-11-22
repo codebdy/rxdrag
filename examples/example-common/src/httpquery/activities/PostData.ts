@@ -17,24 +17,24 @@ export class PostData extends AbstractActivity<IPostConfig> {
   }
 
   @Input()
-  inputHandler(data: unknown): void {
+  inputHandler(data: unknown, runContext?: object): void {
     GlobalRestful?.save({ ...this.config, url: this.config?.rootUrl, data }, {
-      onData: this.complateHandler,
-      onError: this.errorHandler,
-      onLoading: this.loadingHandler,
+      onData: (data: unknown) => this.complateHandler(data, runContext),
+      onError: (error?: Error) => this.errorHandler(error, runContext),
+      onLoading: (loading?: boolean) => this.loadingHandler(loading, runContext),
     })
   }
 
-  complateHandler = (data: unknown) => {
-    this.next(data, PostData.OUTPUT_NAME_DATA)
+  complateHandler = (data: unknown, runContext?: object) => {
+    this.next(data, runContext, PostData.OUTPUT_NAME_DATA)
   }
 
-  errorHandler = (error?: Error) => {
-    this.next(error, PostData.OUTPUT_NAME_ERROR)
+  errorHandler = (error?: Error, runContext?: object) => {
+    this.next(error, runContext, PostData.OUTPUT_NAME_ERROR)
   }
 
-  loadingHandler = (loading?: boolean) => {
-    this.next(loading, PostData.OUTPUT_NAME_POSTING)
+  loadingHandler = (loading?: boolean, runContext?: object) => {
+    this.next(loading, runContext, PostData.OUTPUT_NAME_POSTING)
   }
 
   destroy = () => {

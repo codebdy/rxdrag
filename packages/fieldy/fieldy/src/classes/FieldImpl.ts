@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { isStr } from "@rxdrag/shared";
-import { ErrorListener, FieldState, FormState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
-import { IValidationError } from "../interfaces";
+import { IValidateSchema, IValidationError } from "../interfaces";
 import { IFieldFeedback } from "../actions";
+import { getChildFields } from "../funcs/path";
 
 export function transformErrorsToFeedbacks(errors: IValidationError[], schemas: IFieldSchema[]): IFieldFeedback[] {
   const feedbacks: IFieldFeedback[] = []
@@ -26,12 +25,23 @@ export class FieldImpl implements IField {
   initiateExpressionChange = false;
   validationSubscriber: ValidationSubscriber = new ValidationSubscriber()
 
-  constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) {
-    if (this.meta?.reactionMeta) {
-      this.makeExpressions();
-      //初始化完成时，计算一次联动
-      //form.fieldy.subscribeToFormInitialized(form.name, this.handleFieldReaction)
-      form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
+  constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) { }
+
+  getSiblings(): IField<IValidateSchema>[] {
+    const fields: IField<IValidateSchema>[] = []
+    const fieldStates = getChildFields(this.fieldy.getFormState(this.form.name)?.fields || {}, this.basePath)
+    for (const fieldState of fieldStates) {
+      const field = this.form.getField(fieldState.basePath + "." + fieldState.name)
+      if (field) {
+        fields.push(field)
+      }
+    }
+    return fields
+  }
+
+  getParent(): IField<IValidateSchema> | undefined {
+    if (this.basePath) {
+      return this.form.getField(this.basePath)
     }
   }
 
@@ -44,6 +54,19 @@ export class FieldImpl implements IField {
 
     return undefined
   }
+
+  getSubFields(): IField<IValidateSchema>[] | undefined {
+    const fields: IField<IValidateSchema>[] = []
+    for (const schema of this.getSubFieldSchemas() || []) {
+      const field = this.form.getField(schema.path)
+      if (field) {
+        fields.push(field)
+      }
+    }
+
+    return fields
+  }
+
 
   getFieldSchema(): IFieldSchema {
     return this.fieldy.getFormState(this.form.name)?.fieldSchemas.find(schema => schema.path === this.path) || { path: this.path, ...this.meta }
@@ -61,7 +84,7 @@ export class FieldImpl implements IField {
     return this.fieldy.getFieldInitialValue(this.form.name, this.fieldPath)
   }
 
-  getState(): FieldState | undefined{
+  getState(): FieldState | undefined {
     return this.fieldy.getFieldState(this.form.name, this.fieldPath)
   }
   getValue() {
@@ -81,7 +104,8 @@ export class FieldImpl implements IField {
   }
 
   destroy(): void {
-    throw new Error("Method not implemented.");
+    // this.unsubValueChange?.()
+    // this.unsubValueChange?.()
   }
 
   setValue(value: unknown): void {
@@ -153,52 +177,5 @@ export class FieldImpl implements IField {
   }
   onValidateSuccess(listener: SuccessListener): Unsubscribe {
     return this.validationSubscriber.onValidateSuccess(listener)
-  }
-
-  private makeExpressions() {
-    if (this.meta?.reactionMeta) {
-      for (const key of Object.keys(this.meta.reactionMeta)) {
-        const exobj = this.meta.reactionMeta[key]
-        const expressionText = (exobj as { expression?: string })?.expression
-        if (expressionText) {
-          this.expressions.push(new PropExpression(this, key, expressionText))
-        } else if (isStr(exobj)) {
-          let expressionText = exobj.trim()
-          if (expressionText.startsWith("{{") && expressionText.endsWith("}}")) {
-            expressionText = expressionText.replace(/^\{\{/, "").replace(/\}\}$/, "");
-          }
-          if (expressionText) {
-            this.expressions.push(new PropExpression(this, key, expressionText))
-          }
-        }
-      }
-    }
-  }
-
-  /**
-   * 表单变化响应函数：处理联动
-   * @param form 
-   */
-  private handleFieldReaction = (form: FormState) => {
-    // if(!form.initialized){
-    //   return
-    // }
-    const updatedValues: { [key: string]: unknown } = {}
-    if (this.initiateExpressionChange) {
-      this.initiateExpressionChange = false;
-      return
-    }
-    for (const expression of this.expressions) {
-      const { value, changed } = expression.changedValue() || {}
-      if (changed) {
-        updatedValues[expression.propName] = value
-      }
-    }
-    if (Object.keys(updatedValues).length > 0) {
-      const oldFieldState = this.fieldy.getFieldState(this.form.name, this.fieldPath)
-      console.assert(oldFieldState, "FieldState is undefined!")
-      this.initiateExpressionChange = true;
-      oldFieldState && this.fieldy.setFieldState(this.form.name, { ...oldFieldState, ...updatedValues })
-    }
   }
 }

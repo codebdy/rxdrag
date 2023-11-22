@@ -1,0 +1,205 @@
+{
+  "componentName": "Page",
+  "x-controller": {
+    "id": "PAG2t2Ur",
+    "enable": true,
+    "name": "页面"
+  },
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Row",
+      "props": {
+        "gutter": 6,
+        "style": {
+          "marginTop": "16px",
+          "marginRight": "16px",
+          "marginBottom": "16px",
+          "marginLeft": "16px",
+          "paddingTop": "16px",
+          "paddingRight": "16px",
+          "paddingBottom": "16px",
+          "paddingLeft": "16px"
+        }
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "ArrayPanel",
+          "x-data": {
+            "type": "array",
+            "name": "container"
+          },
+          "x-controller": {
+            "id": "KiE-KrsA",
+            "enable": true,
+            "name": "数组容器",
+            "scopeType": "array"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Col",
+              "props": {
+                "span": 4,
+                "style": {
+                  "paddingTop": "16px",
+                  "paddingBottom": "16px"
+                }
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "primary",
+                    "title": "地鼠",
+                    "shape": "circle",
+                    "size": "large",
+                    "style": {
+                      "width": "80px",
+                      "height": "80px"
+                    }
+                  },
+                  "x-controller": {
+                    "id": "NpLxKVZs",
+                    "enable": true,
+                    "name": "地鼠"
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "componentName": "Row",
+      "props": {
+        "style": {
+          "marginLeft": "16px",
+          "marginRight": "16px",
+          "paddingRight": "16px",
+          "paddingLeft": "16px"
+        }
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Space",
+              "props": {},
+              "selfRender": true,
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "primary",
+                    "title": "开始",
+                    "size": "large"
+                  },
+                  "x-controller": {
+                    "id": "uQPenUqJ",
+                    "enable": true,
+                    "name": "开始按钮"
+                  },
+                  "slots": {},
+                  "children": []
+                },
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "default",
+                    "title": "结束",
+                    "size": "large"
+                  },
+                  "x-controller": {
+                    "id": "-V60Mne6",
+                    "enable": true,
+                    "name": "结束按钮"
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Text",
+              "props": {
+                "value": "分数："
+              },
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Text",
+              "props": {
+                "value": "-"
+              },
+              "x-controller": {
+                "id": "g1rEXDcH",
+                "enable": true,
+                "name": "分数"
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "设置",
+                "size": "large"
+              },
+              "x-controller": {
+                "id": "FfF5nHpb",
+                "enable": true,
+                "name": "设置按钮"
+              },
+              "slots": {
+                "icon": {
+                  "componentName": "IconView",
+                  "props": {
+                    "icon": {
+                      "iconKey": "SettingOutlined"
+                    }
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

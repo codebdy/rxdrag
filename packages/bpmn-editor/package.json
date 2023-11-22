@@ -1,0 +1,45 @@
+{
+  "name": "@rxdrag/bpmn-editor",
+  "version": "0.6.0",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "module": "dist/index.mjs",
+    "typings": "dist/index.d.ts",
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .ts,tsx",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.26",
+    "eslint": "^7.32.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.1.0",
+    "@rxdrag/locales": "workspace:*",
+    "@rxdrag/react-locales": "workspace:*",
+    "@rxdrag/shared": "workspace:*",
+    "@rxdrag/react-shared": "workspace:*",
+    "antd": "^5.10.0",
+    "bpmn-js": "^10.0.0",
+    "classnames": "^2.3.2",
+    "diagram-js-minimap": "^3.0.0",
+    "styled-components": "^5.3.9"
+  }
+}

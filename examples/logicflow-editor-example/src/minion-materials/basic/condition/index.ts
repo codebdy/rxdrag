@@ -1,8 +1,8 @@
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { conditionSchema } from "./schema";
 import { ReactNode } from "react";
 import { NodeType, IActivityMaterial } from "@rxdrag/minions-schema";
-import { ifIcon } from "../../icons";
+import { ifIcon } from "@rxdrag/react-shared";
 
 export const conditionMaterial: IActivityMaterial<ReactNode> = {
   icon: ifIcon,
@@ -12,19 +12,19 @@ export const conditionMaterial: IActivityMaterial<ReactNode> = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "input",
         label: "",//"$inputCondition",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "true",
         label: "$true",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: "false",
         label: "$false",
       },

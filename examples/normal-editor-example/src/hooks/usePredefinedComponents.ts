@@ -2,18 +2,16 @@ import { Root } from "@rxdrag/react-core";
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { isStr } from "@rxdrag/shared";
 import { useMemo } from "react";
-import { Field } from "@rxdrag/react-antd-components";
-import { materials, slots } from "example-common";
+import { materials } from "example-common";
 
+//本代码后期删掉
 export function usePredefinedComponents() {
   const coms = useMemo(() => {
     const designers: IReactComponents = {
       Root: Root,
-      Field: Field,
     }
     const components: IReactComponents = {
       Root: Root,
-      Field: Field,
     }
     for (const com of materials) {
       designers[com.componentName] = com.designer
@@ -28,11 +26,6 @@ export function usePredefinedComponents() {
           components[slot.componentName] = slot.component as ReactComponent
         }
       }
-    }
-
-    for (const com of slots) {
-      designers[com.componentName] = com.designer
-      components[com.componentName] = com.component
     }
 
     return { designers, components }

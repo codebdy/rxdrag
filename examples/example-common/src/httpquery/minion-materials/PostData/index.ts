@@ -1,10 +1,10 @@
 import { NodeType } from "@rxdrag/minions-schema";
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 import { IQueryActivityMaterial } from "../types";
-import { postDataIcon } from "../icons";
 import { postDataSchema } from "./schema";
 import { PostData } from "../../activities";
+import { postDataIcon } from "@rxdrag/react-shared";
 
 export const postDataMaterial: IQueryActivityMaterial = {
   activityName: PostData.NAME,
@@ -14,24 +14,24 @@ export const postDataMaterial: IQueryActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_INPUT_NAME,
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: PostData.OUTPUT_NAME_DATA,
         label: "$dataOut",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: PostData.OUTPUT_NAME_POSTING,
         label: "$posting",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: PostData.OUTPUT_NAME_ERROR,
         label: "$error",
       },

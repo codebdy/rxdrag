@@ -62,11 +62,7 @@
             {
               "componentName": "Input",
               "props": {},
-              "x-field": {
-                "params": {
-                  "withBind": true
-                },
-                "reactionMeta": {},
+              "x-data": {
                 "name": "test1"
               },
               "slots": {},
@@ -75,19 +71,7 @@
             {
               "componentName": "Input",
               "props": {},
-              "x-field": {
-                "params": {
-                  "withBind": true
-                },
-                "reactionMeta": {
-                  "display": {},
-                  "pattern": {},
-                  "hidden": {
-                    "expression": "$test1.value === \"1\""
-                  },
-                  "disabled": {},
-                  "readonly": {}
-                },
+              "x-data": {
                 "name": "test2"
               },
               "slots": {},

@@ -140,7 +140,7 @@
                       "props": {
                         "label": "年龄"
                       },
-                      "x-field": {
+                      "x-data": {
                         "type": "normal",
                         "name": "age",
                         "validateRules": {
@@ -169,7 +169,7 @@
                       "props": {
                         "label": "姓名"
                       },
-                      "x-field": {
+                      "x-data": {
                         "type": "normal",
                         "name": "name",
                         "validateRules": {

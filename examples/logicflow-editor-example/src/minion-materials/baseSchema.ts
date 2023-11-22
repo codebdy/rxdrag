@@ -6,11 +6,8 @@ export const labelSchema = {
   children: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "label",
-        params: {
-          withBind: true,
-        }
       },
     }
   ]
@@ -24,11 +21,8 @@ export const nameSchema = {
   children: [
     {
       componentName: "Input",
-      "x-field": {
+      "x-data": {
         name: "name",
-        params: {
-          withBind: true,
-        }
       },
     }
   ]

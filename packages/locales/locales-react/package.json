@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-locales",
-  "version": "0.3.0",
+  "version": "0.6.0",
   "type": "module",
   "module": "index.ts",
   "files": [
@@ -17,8 +17,8 @@
     "build": "vite build"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
     "eslint": "^7.32.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",

@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-antd-icons",
-  "version": "0.3.0",
+  "version": "0.6.0",
   "module": "index.ts",
   "files": [
     "dist"
@@ -16,8 +16,8 @@
     "build": "vite build"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
     "eslint": "^7.32.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
@@ -30,12 +30,12 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.8.0",
+    "@ant-design/icons": "^5.1.0",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/shared": "workspace:*",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "antd": "^5.6.2",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "antd": "^5.10.0",
     "styled-components": "^5.3.9"
   }
 }
