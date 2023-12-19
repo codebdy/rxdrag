@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/fieldy",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "author": "Water.Li",
   "type": "module",
   "module": "index.ts",
@@ -30,6 +30,6 @@
     "@rxdrag/tsconfig": "workspace:*"
   },
   "peerDependencies": {
-    "typescript": "4.x"
+    "typescript": "^5"
   }
 }

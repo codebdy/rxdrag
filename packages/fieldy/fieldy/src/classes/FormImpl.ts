@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { IValidateSchema, IValidationError } from "../interfaces";
-import { ErrorListener, ExpContextChangeListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, ExpContextChangeListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValidateResult, ValidateStatus, ValueChangeListener } from "../interfaces/fieldy";
 import { FieldImpl, transformErrorsToFeedbacks } from "./FieldImpl";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 
@@ -107,21 +107,34 @@ export class FormImpl implements IForm {
   setDefaultValue(value: FormValue | undefined): void {
     this.fieldy.setFormDefaultValue(this.name, value)
   }
-  validate(): void {
+  validate(): ValidateResult | undefined {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
       this.fieldy.validator.validateForm(this).then((value: unknown) => {
         this.validationSubscriber.emitSuccess(value)
+        return {
+          status: ValidateStatus.success,
+          value
+        }
       }).catch((errors: IValidationError[]) => {
         const fieldsSchemas = this.getFieldSchemas()
         this.fieldy.setValidationFeedbacks(this.name, transformErrorsToFeedbacks(errors, fieldsSchemas))
         this.validationSubscriber.emitFailed(errors)
+        return {
+          status: ValidateStatus.error,
+          errors
+        }
       }).finally(() => {
         this.validationSubscriber.emitEnd()
       })
     } else {
       console.error("Not set validator")
+      return {
+        status: ValidateStatus.error,
+        message: "Not set validator"
+      }
     }
+
   }
   onInit(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");

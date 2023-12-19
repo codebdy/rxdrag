@@ -1,4 +1,4 @@
-import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValidateResult, ValidateStatus, ValueChangeListener } from "../interfaces/fieldy";
 import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 import { IValidateSchema, IValidationError } from "../interfaces";
@@ -124,21 +124,33 @@ export class FieldImpl implements IField {
     this.fieldy.inputFieldValue(this.form.name, this.path, value)
   }
 
-  validate(): void {
+  validate(): ValidateResult | undefined {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
       this.fieldy.validator.validateField(this).then((value: unknown) => {
         this.validationSubscriber.emitSuccess(value)
+        return {
+          status: ValidateStatus.success,
+          value
+        }
       }).catch((errors: IValidationError[]) => {
         const fieldSchema = this.getFieldSchema()
         const subFields = this.getSubFieldSchemas()
         this.fieldy.setValidationFeedbacks(this.form.name, transformErrorsToFeedbacks(errors, [fieldSchema, ...subFields || []]))
         this.validationSubscriber.emitFailed(errors)
+        return {
+          status: ValidateStatus.error,
+          errors
+        }
       }).finally(() => {
         this.validationSubscriber.emitEnd()
       })
     } else {
       console.error("Not set validator")
+      return {
+        status: ValidateStatus.error,
+        message: "Not set validator"
+      }
     }
   }
 

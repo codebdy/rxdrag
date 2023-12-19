@@ -87,6 +87,18 @@ export interface FormValue {
   [key: string]: unknown
 }
 
+export enum ValidateStatus {
+  error = "error",
+  success = "success"
+}
+
+export interface ValidateResult {
+  status: ValidateStatus,
+  errors?: IValidationError[],
+  value?: FormValue | unknown,
+  message?: string,
+}
+
 export interface IValidationSubscriber {
   onValidateStart(listener: Listener): Unsubscribe
   onValidateEnd(listener: Listener): Unsubscribe
@@ -105,7 +117,7 @@ export interface IFormNode<T> extends IValidationSubscriber {
   setDefaultValue(value: T): void
   // mount(): void
   // unmount(): void
-  validate(): void
+  validate(): ValidateResult | undefined
   reset(): void
 
   onInit(listener: Listener): Unsubscribe

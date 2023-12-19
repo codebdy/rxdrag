@@ -24,7 +24,7 @@
     "react-router-dom": "^6.9.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
-    "typescript": "^4.9.4"
+    "typescript": "^5"
   },
   "peerDependencies": {
     "react": "^18.2.0",
