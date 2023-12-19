@@ -113,6 +113,7 @@ export class FormImpl implements IForm {
 
       try {
         const value = await this.fieldy.validator.validateForm(this)
+
         this.validationSubscriber.emitSuccess(value)
         return {
           status: ValidateStatus.success,

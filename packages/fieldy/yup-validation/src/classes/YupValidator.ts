@@ -1,6 +1,6 @@
 import { IField, IFieldSchema, IForm, IValidationError, IValidator } from "@rxdrag/fieldy";
 import { PredeinedValidators, YupType, IYupValidateSchema } from "../interfaces";
-import { object, string, boolean, number, ValidationError, Schema, mixed } from 'yup';
+import { object, ValidationError, Schema, mixed } from 'yup';
 import { predifinedValidators } from "../predefineds";
 
 export class YupValidator implements IValidator {
@@ -17,8 +17,7 @@ export class YupValidator implements IValidator {
         this.validateOneObject(field?.getValue(), field?.getSubFieldSchemas() || [])
       }
     }
-    const rootSchemas = form.getRootFields()
-    return this.validateOneObject(form.getValue(), rootSchemas)
+    return this.validateOneObject(form.getValue(), schemas)
   }
 
   validateField(field: IField<IYupValidateSchema>): Promise<unknown> {

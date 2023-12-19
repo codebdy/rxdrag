@@ -18,8 +18,7 @@ export const Field = (
   }
 ) => {
   const { name, value, initialValue, defaultValue, children, type, rules } = props
-  const fieldMeta = useCreateFieldSchema(name, type)
-  fieldMeta.validateRules = rules
+  const fieldMeta = useCreateFieldSchema(name, type, rules)
 
   return (
     <XField fieldMeta={fieldMeta} initialValue={initialValue} value={value} defaultValue={defaultValue}>
