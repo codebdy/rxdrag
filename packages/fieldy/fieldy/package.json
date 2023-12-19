@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/fieldy",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "author": "Water.Li",
   "type": "module",
   "module": "index.ts",

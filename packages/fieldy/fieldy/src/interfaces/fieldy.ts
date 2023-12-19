@@ -117,7 +117,7 @@ export interface IFormNode<T> extends IValidationSubscriber {
   setDefaultValue(value: T): void
   // mount(): void
   // unmount(): void
-  validate(): ValidateResult | undefined
+  validate(): Promise<ValidateResult>
   reset(): void
 
   onInit(listener: Listener): Unsubscribe

@@ -124,27 +124,28 @@ export class FieldImpl implements IField {
     this.fieldy.inputFieldValue(this.form.name, this.path, value)
   }
 
-  validate(): ValidateResult | undefined {
+  async validate() {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
-      this.fieldy.validator.validateField(this).then((value: unknown) => {
+      try{
+        const value = await this.fieldy.validator.validateField(this)
         this.validationSubscriber.emitSuccess(value)
         return {
           status: ValidateStatus.success,
           value
         }
-      }).catch((errors: IValidationError[]) => {
+      }catch(errors){
         const fieldSchema = this.getFieldSchema()
         const subFields = this.getSubFieldSchemas()
-        this.fieldy.setValidationFeedbacks(this.form.name, transformErrorsToFeedbacks(errors, [fieldSchema, ...subFields || []]))
-        this.validationSubscriber.emitFailed(errors)
+        this.fieldy.setValidationFeedbacks(this.form.name, transformErrorsToFeedbacks(errors as IValidationError[], [fieldSchema, ...subFields || []]))
+        this.validationSubscriber.emitFailed(errors as IValidationError[])
         return {
           status: ValidateStatus.error,
-          errors
+          errors:errors as IValidationError[]
         }
-      }).finally(() => {
+      }finally{
         this.validationSubscriber.emitEnd()
-      })
+      }
     } else {
       console.error("Not set validator")
       return {

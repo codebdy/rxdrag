@@ -107,26 +107,28 @@ export class FormImpl implements IForm {
   setDefaultValue(value: FormValue | undefined): void {
     this.fieldy.setFormDefaultValue(this.name, value)
   }
-  validate(): ValidateResult | undefined {
+  async validate() {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
-      this.fieldy.validator.validateForm(this).then((value: unknown) => {
+
+      try {
+        const value = await this.fieldy.validator.validateForm(this)
         this.validationSubscriber.emitSuccess(value)
         return {
           status: ValidateStatus.success,
           value
         }
-      }).catch((errors: IValidationError[]) => {
+      } catch (errors) {
         const fieldsSchemas = this.getFieldSchemas()
-        this.fieldy.setValidationFeedbacks(this.name, transformErrorsToFeedbacks(errors, fieldsSchemas))
-        this.validationSubscriber.emitFailed(errors)
+        this.fieldy.setValidationFeedbacks(this.name, transformErrorsToFeedbacks(errors as IValidationError[], fieldsSchemas))
+        this.validationSubscriber.emitFailed(errors as IValidationError[])
         return {
           status: ValidateStatus.error,
-          errors
+          errors: errors as IValidationError[]
         }
-      }).finally(() => {
+      } finally{
         this.validationSubscriber.emitEnd()
-      })
+      }
     } else {
       console.error("Not set validator")
       return {
