@@ -1,4 +1,4 @@
-import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValidateResult, ValidateStatus, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe,  ValidateStatus, ValueChangeListener } from "../interfaces/fieldy";
 import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 import { IValidateSchema, IValidationError } from "../interfaces";

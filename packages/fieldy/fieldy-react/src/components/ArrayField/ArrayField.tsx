@@ -1,9 +1,8 @@
 import React from "react"
-import { memo } from "react"
 import { Field } from "../Field"
 
 //动态增加字段用这个，否则不要碰它
-export const ArrayField = memo((
+export const ArrayField = (
   props: {
     name: string,
     value?: unknown[],
@@ -20,4 +19,4 @@ export const ArrayField = memo((
       </Field>
     </>
   )
-})
+}

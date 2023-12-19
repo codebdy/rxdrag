@@ -1,8 +1,8 @@
-import React, { memo } from "react"
+import React from "react"
 import { Field } from "../Field"
 
 //动态增加字段用这个，否则不要碰它
-export const ObjectField = memo((
+export const ObjectField = (
   props: {
     name: string | number,
     initialValue?: unknown,
@@ -18,4 +18,4 @@ export const ObjectField = memo((
       {children}
     </Field>
   )
-})
+}
