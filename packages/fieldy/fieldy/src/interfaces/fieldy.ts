@@ -77,8 +77,8 @@ export type FormState = {
   fieldSchemas: IFieldSchema[];
   //初始值
   initialValue?: FormValue | undefined;
-  //默认值
-  defaultValue?: FormValue | undefined;
+  //默认值，默认值各字段自己管理
+  //defaultValue?: FormValue | undefined;
   //当前值
   value?: FormValue | undefined;
 }
@@ -109,12 +109,12 @@ export interface IValidationSubscriber {
 export interface IFormNode<T> extends IValidationSubscriber {
   fieldy: IFieldyEngine
   getModified(): boolean
-  getDefaultValue(): T
+  //getDefaultValue(): T
   getInitialValue(): T
   getValue(): T
   setValue(value: T): void
   setInitialValue(value: T): void
-  setDefaultValue(value: T): void
+  //setDefaultValue(value: T): void
   // mount(): void
   // unmount(): void
   validate(): Promise<ValidateResult>
@@ -155,6 +155,7 @@ export interface IField<ValidateRules extends IValidateSchema = IValidateSchema>
   basePath?: string
   path: string
   inputValue(value: unknown): void
+  getDefaultValue(): unknown
   getFieldSchema(): IFieldSchema<ValidateRules>
   getSubFieldSchemas(): IFieldSchema<ValidateRules>[] | undefined
   getSubFields(): IField<ValidateRules>[] | undefined
@@ -175,7 +176,7 @@ export interface IFieldyEngine {
   //setFormFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
   //不触发change事件
   setFormInitialValue(name: string, value: FormValue | undefined): void
-  setFormDefaultValue(name: string, value: FormValue | undefined): void
+  //setFormDefaultValue(name: string, value: FormValue | undefined): void
   setFormValue(name: string, value: FormValue | undefined): void
   //setFormFlatValue(name: string, flatValues: FormValue): void
   addFields(name: string, ...fieldSchemas: IFieldSchema[]): void
@@ -199,7 +200,7 @@ export interface IFieldyEngine {
   getFieldDefaultValue(formName: string, fieldPath: string): unknown
   getFormValue(formName: string): FormValue | undefined
   getFormInitialValue(formName: string): FormValue | undefined
-  getFormDefaultValue(formName: string): FormValue | undefined
+  // getFormDefaultValue(formName: string): FormValue | undefined
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe
   subscribeToFormValuesChange(name: string, listener: FormValueChangeListener): Unsubscribe
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe

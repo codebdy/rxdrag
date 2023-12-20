@@ -20,7 +20,7 @@ export function useRegisterField(fieldMeta: IFieldMeta) {
         setField(field)
       }
       return () => {
-        for(const fieldSchema of fieldSchemas){
+        for (const fieldSchema of fieldSchemas) {
           form.unregisterField(fieldSchema.path)
         }
       }

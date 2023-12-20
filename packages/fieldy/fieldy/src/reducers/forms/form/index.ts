@@ -1,6 +1,5 @@
 
 import { FormState, FormValue, IAction } from "../../../interfaces/fieldy";
-import { defaultValueReduer } from "./defaultValue";
 import { fieldsReduer } from "./fields";
 import { fieldSchemasReduer } from "./fieldSchemas";
 import { initializedReduer } from "./initialized";
@@ -23,7 +22,7 @@ export function formReduce(state: FormState, action: IAction<unknown>): FormStat
     fields: fieldsReduer(state.fields, action),
     fieldSchemas: fieldSchemasReduer(state.fieldSchemas, action),
     initialValue: initialValueReduer(state.initialValue as FormValue | undefined, action, state),
-    defaultValue: defaultValueReduer(state.defaultValue as FormValue | undefined, action, state),
+    //defaultValue: defaultValueReduer(state.defaultValue as FormValue | undefined, action, state),
     value: valueReduer(state.value, action, state),
   }
 }

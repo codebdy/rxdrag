@@ -4,7 +4,12 @@ import { useFieldPath } from "../../../hooks/useFieldPath"
 import { FieldType } from "@rxdrag/fieldy"
 import { IYupValidateSchema } from "@rxdrag/fieldy-yup-validation"
 
-export function useCreateFieldSchema(name: string | number, type?: FieldType, rules?: IYupValidateSchema) {
+export function useCreateFieldSchema(
+  name: string | number,
+  type: FieldType | undefined,
+  defaultValue: unknown | undefined,
+  rules: IYupValidateSchema | undefined,
+) {
   const parentPath = useFieldPath() || ""
   const fieldPath = useMemo(() => {
     return parentPath ? parentPath + "." + name : name.toString()
@@ -17,9 +22,10 @@ export function useCreateFieldSchema(name: string | number, type?: FieldType, ru
       path: fieldPath,
       type: type,
       name,
+      defaultValue,
       validateRules: rules,
     }
-  }, [fieldPath, name, rules, type])
+  }, [defaultValue, fieldPath, name, rules, type])
 
   return fieldSchema
 }

@@ -18,10 +18,10 @@ export const Field = (
   }
 ) => {
   const { name, value, initialValue, defaultValue, children, type, rules } = props
-  const fieldMeta = useCreateFieldSchema(name, type, rules)
+  const fieldMeta = useCreateFieldSchema(name, type, defaultValue, rules)
 
   return (
-    <XField fieldMeta={fieldMeta} initialValue={initialValue} value={value} defaultValue={defaultValue}>
+    <XField fieldMeta={fieldMeta} initialValue={initialValue} value={value}>
       {children}
     </XField>
   )

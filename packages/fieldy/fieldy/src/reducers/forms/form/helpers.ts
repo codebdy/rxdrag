@@ -24,9 +24,9 @@ export class FormHelper {
     return this.doGetValueByPath(this.formState.value, path);
   }
 
-  getDefaultValueByPath(path: string): unknown {
-    return this.doGetValueByPath(this.formState.defaultValue, path);
-  }
+  // getDefaultValueByPath(path: string): unknown {
+  //   return this.doGetValueByPath(this.formState.defaultValue, path);
+  // }
 
   getInitialValueByPath(path: string): unknown {
     return this.doGetValueByPath(this.formState.initialValue, path);

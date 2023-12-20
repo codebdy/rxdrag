@@ -11,7 +11,7 @@ const getPath = (parentPath: string, name: string) => {
 }
 
 function parseSchemas(fieldMeta: IFieldMeta, parentPath: string) {
-  const arr = (fieldMeta.name)?.split(".") || []
+  const arr = (fieldMeta.name as string)?.split(".") || []
   let currentPath = parentPath
   const schemas: IFieldSchema[] = []
   for (let i = 0; i < arr.length; i++) {

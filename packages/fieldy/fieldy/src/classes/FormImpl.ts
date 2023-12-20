@@ -43,9 +43,9 @@ export class FormImpl implements IForm {
     throw new Error("Method not implemented.");
   }
 
-  getDefaultValue(): FormValue | undefined {
-    return this.fieldy.getFormDefaultValue(this.name)
-  }
+  // getDefaultValue(): FormValue | undefined {
+  //   return this.fieldy.getFormDefaultValue(this.name)
+  // }
   getInitialValue() {
     return this.fieldy.getFormInitialValue(this.name)
   }
@@ -104,9 +104,9 @@ export class FormImpl implements IForm {
   setInitialValue(value: FormValue | undefined): void {
     this.fieldy.setFormInitialValue(this.name, value)
   }
-  setDefaultValue(value: FormValue | undefined): void {
-    this.fieldy.setFormDefaultValue(this.name, value)
-  }
+  // setDefaultValue(value: FormValue | undefined): void {
+  //   this.fieldy.setFormDefaultValue(this.name, value)
+  // }
   async validate() {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()

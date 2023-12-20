@@ -8,9 +8,9 @@ export const XField = memo((props: {
   children?: React.ReactNode,
   initialValue?: unknown,
   value?: unknown,
-  defaultValue?: unknown,
 }) => {
-  const { fieldMeta, initialValue, value, defaultValue, children } = props
+  const { fieldMeta, initialValue, value, children } = props
+  //defaultValue要在字段注册时附加，方式非受控组件的问题
   const field = useRegisterField(fieldMeta)
 
   useEffect(() => {
@@ -21,9 +21,9 @@ export const XField = memo((props: {
     value !== undefined && field?.setValue(value)
   }, [field, value])
 
-  useEffect(() => {
-    defaultValue !== undefined && field?.setDefaultValue(defaultValue)
-  }, [field, defaultValue])
+  // useEffect(() => {
+  //   defaultValue !== undefined && field?.setDefaultValue(defaultValue)
+  // }, [field, defaultValue])
 
   return (
     <FieldContext.Provider value={field}>
