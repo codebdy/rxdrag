@@ -1,7 +1,9 @@
 import { IField, IFieldSchema, IForm, IValidationError, IValidator } from "@rxdrag/fieldy";
 import { PredeinedValidators, YupType, IYupValidateSchema } from "../interfaces";
-import { object, ValidationError, Schema, mixed } from 'yup';
+import { object, ValidationError, Schema, mixed, date, boolean, number } from 'yup';
 import { predifinedValidators } from "../predefineds";
+import { string } from "yup";
+import { isStr } from "@rxdrag/shared"
 
 export class YupValidator implements IValidator {
   predefinedValidators = predifinedValidators
@@ -57,18 +59,19 @@ export class YupValidator implements IValidator {
 
   private parseRules(meta: IYupValidateSchema) {
     let schema: Schema = mixed()
-    if (meta.type?.value) {
-      const predefinedValidtor = this.predefinedValidators[meta.type?.value]
+    const typeValue = isStr(meta.type) ? meta.type : meta.type?.value
+    if (typeValue) {
+      const predefinedValidtor = this.predefinedValidators[typeValue]
       if (predefinedValidtor) {
-        schema = predefinedValidtor(meta.type.message)
-      } else if (meta.type?.value === YupType.string) {
-        throw new Error("未实现校验类型 string")
-      } else if (meta.type?.value === YupType.date) {
-        throw new Error("未实现校验类型 date")
-      } else if (meta.type?.value === YupType.boolean) {
-        throw new Error("未实现校验类型 boolean")
-      } else if (meta.type?.value === YupType.number) {
-        throw new Error("未实现校验类型 number")
+        schema = predefinedValidtor((meta.type as any)?.message||"Not define type error message")
+      } else if (typeValue === YupType.string) {
+        schema = string()
+      } else if (typeValue === YupType.date) {
+        schema = date()
+      } else if (typeValue === YupType.boolean) {
+        schema = boolean()
+      } else if (typeValue === YupType.number) {
+        schema = number()
       }
     }
 

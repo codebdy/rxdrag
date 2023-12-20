@@ -42,7 +42,7 @@ export type FieldState = {
   //自动生成id，用于组件key值
   id: string;
   //数组行数据是数字
-  name?: string | number;
+  name?: string | number | null;
   basePath?: string;
   path: string;
   initialized?: boolean;//字段是否已被初始化
@@ -161,6 +161,7 @@ export interface IField<ValidateRules extends IValidateSchema = IValidateSchema>
   getState(): FieldState | undefined
   getSiblings(): IField[]
   getParent(): IField | undefined
+  clearErrors(): void
   destroy(): void
 }
 
@@ -187,6 +188,7 @@ export interface IFieldyEngine {
   setFieldValue(formName: string, fieldPath: string, value: unknown): void
   inputFieldValue(formName: string, fieldPath: string, value: unknown): void
   setFieldState(formName: string, fieldState: FieldState): void
+  clearFieldErrors(formName: string, fieldPath: string): void
 
   //监测
   getForm(name: string): IForm | undefined

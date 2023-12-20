@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPayload, REMOVE_FORM, REMOVE_FORM_FIELD, SetFieldValuePayload, SET_FIELD_INITIAL_VALUE, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALIZED_FLAG, SET_FORM_DEFAULT_VALUE, SET_FIELD_DEFAULT_VALUE, INPUT_FIELD_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload, IFieldFeedback, RESET_FORM } from "../actions";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPayload, REMOVE_FORM, REMOVE_FORM_FIELD, SetFieldValuePayload, SET_FIELD_INITIAL_VALUE, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALIZED_FLAG, SET_FORM_DEFAULT_VALUE, SET_FIELD_DEFAULT_VALUE, INPUT_FIELD_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload, IFieldFeedback, RESET_FORM, CLEAR_FIELD_ERRORS } from "../actions";
 import { FieldChangeListener, FieldState, FieldValueChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Unsubscribe } from "../interfaces/fieldy";
 import { reduce, State } from "../reducers";
 import { FormImpl } from "./FormImpl";
@@ -248,6 +248,19 @@ export class FieldyEngineImpl implements IFieldyEngine {
     )
   }
 
+  clearFieldErrors(formName: string, fieldPath: string): void {
+    const payload: SetFieldValuePayload = {
+      formName,
+      path: fieldPath,
+    }
+
+    this.dispatch(
+      {
+        type: CLEAR_FIELD_ERRORS,
+        payload: payload,
+      }
+    )
+  }
 
   getFormValue(formName: string): FormValue | undefined {
     return this.store.getState().forms[formName]?.value

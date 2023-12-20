@@ -17,6 +17,6 @@ export const SET_FIELD_VALUE = "fieldy/SET_FIELD_VALUE"
 export const INPUT_FIELD_VALUE = "fieldy/INPUT_FIELD_VALUE"
 export const SET_FIELD_DEFAULT_VALUE = "fieldy/SET_FIELD_DEFAULT_VALUE"
 export const SET_FIELD_STATE = "fieldy/SET_FIELD_STATE"
-//export const SET_FIELD_ERRORS = "fieldy/SET_FIELD_ERRORS"
+export const CLEAR_FIELD_ERRORS = "fieldy/CLEAR_FIELD_ERRORS"
 
 //export const SET_MULTI_FIELD_VALUES = "fieldy/SET_MULTI_FIELD_VALUES"

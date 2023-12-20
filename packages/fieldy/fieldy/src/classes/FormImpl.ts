@@ -110,17 +110,16 @@ export class FormImpl implements IForm {
   async validate() {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
-
+      const fieldsSchemas = this.getFieldSchemas()
       try {
         const value = await this.fieldy.validator.validateForm(this)
-
+        this.fieldy.setValidationFeedbacks(this.name, transformErrorsToFeedbacks([], fieldsSchemas))
         this.validationSubscriber.emitSuccess(value)
         return {
           status: ValidateStatus.success,
           value
         }
       } catch (errors) {
-        const fieldsSchemas = this.getFieldSchemas()
         this.fieldy.setValidationFeedbacks(this.name, transformErrorsToFeedbacks(errors as IValidationError[], fieldsSchemas))
         this.validationSubscriber.emitFailed(errors as IValidationError[])
         return {

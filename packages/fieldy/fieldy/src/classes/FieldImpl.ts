@@ -1,4 +1,4 @@
-import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe,  ValidateStatus, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValidateStatus, ValueChangeListener } from "../interfaces/fieldy";
 import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 import { IValidateSchema, IValidationError } from "../interfaces";
@@ -103,6 +103,10 @@ export class FieldImpl implements IField {
     return this.fieldy.getFieldState(this.form.name, this.fieldPath)?.basePath
   }
 
+  clearErrors(): void {
+    this.fieldy.clearFieldErrors(this.form.name, this.fieldPath)
+  }
+
   destroy(): void {
     // this.unsubValueChange?.()
     // this.unsubValueChange?.()
@@ -127,23 +131,24 @@ export class FieldImpl implements IField {
   async validate() {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
-      try{
+      const fieldSchema = this.getFieldSchema()
+      const subFields = this.getSubFieldSchemas()
+      try {
         const value = await this.fieldy.validator.validateField(this)
+        //this.fieldy.setValidationFeedbacks(this.form.name, transformErrorsToFeedbacks([], [fieldSchema, ...subFields || []]))        
         this.validationSubscriber.emitSuccess(value)
         return {
           status: ValidateStatus.success,
           value
         }
-      }catch(errors){
-        const fieldSchema = this.getFieldSchema()
-        const subFields = this.getSubFieldSchemas()
+      } catch (errors) {
         this.fieldy.setValidationFeedbacks(this.form.name, transformErrorsToFeedbacks(errors as IValidationError[], [fieldSchema, ...subFields || []]))
         this.validationSubscriber.emitFailed(errors as IValidationError[])
         return {
           status: ValidateStatus.error,
-          errors:errors as IValidationError[]
+          errors: errors as IValidationError[]
         }
-      }finally{
+      } finally {
         this.validationSubscriber.emitEnd()
       }
     } else {

@@ -100,7 +100,7 @@ export type YupRules = YupSchema | YupArray | YupDate | YupNumber | YupString
 
 export interface IYupValidateSchema extends IValidateSchema {
   //类型，引用预定义的规则，比如email， url等。
-  type?: IYupConfig<string | YupType>,
+  type?: IYupConfig<string | YupType> | string,
   rules?: YupRules
 }
 
