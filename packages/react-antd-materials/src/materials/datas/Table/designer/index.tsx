@@ -2,9 +2,9 @@ import { IFieldMeta } from "@rxdrag/fieldy";
 import { TableProps } from "@rxdrag/react-antd-components";
 import { useNode, useTreeNodes, ComponentDesignerView } from "@rxdrag/react-core";
 import { Table } from "antd";
-import { forwardRef, memo, useMemo } from "react"
+import { Ref, forwardRef, memo, useMemo } from "react"
 
-export const TableDesigner = memo(forwardRef<HTMLDivElement>((
+export const TableDesigner = memo(forwardRef<any | undefined>((
   props: TableProps,
   ref
 ) => {
@@ -43,6 +43,7 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
 
   return (
     <Table
+      id="ttt"
       ref={ref}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       columns={columns as any}

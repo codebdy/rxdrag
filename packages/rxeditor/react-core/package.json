@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-core",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "module": "index.ts",
   "files": [
     "dist"

@@ -1,5 +1,5 @@
 import { Table } from "@rxdrag/react-antd-components";
-import { IMaterial } from "@rxdrag/react-core";
+import { IMaterial, forwardRefById } from "@rxdrag/react-core";
 import { FooterMaterial } from "../../common/Footer";
 import { HeaderMaterial } from "../../common/Header";
 import { TableSummaryMaterial } from "../TableSummary";
@@ -12,7 +12,7 @@ const name = "Table"
 export const TableMaterial: IMaterial = {
   componentName: name,
   component: Table,
-  designer: TableDesigner,
+  designer: forwardRefById(TableDesigner),
   designerLocales: locales,
   propsSchema: materialSchema,
   designerProps: {
