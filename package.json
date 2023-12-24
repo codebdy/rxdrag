@@ -23,7 +23,7 @@
     "changeset-tag-and-publish": "pnpm exec changeset publish"
   },
   "keywords": [],
-  "author": "Aaron Agarunov",
+  "author": "Water.Li",
   "dependencies": {
      "@vitejs/plugin-react-swc": "^3.0.0",
     "vite": "^4.0.0"
