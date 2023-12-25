@@ -18,7 +18,6 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const handleRef = useCallback((element: HTMLElement | undefined) => {
     for (const key of Object.keys(node?.rxProps || {})) {
       if (isHTMLElement(element) && !locked) {
-        console.log("===> handleRef", node?.meta?.componentName, element)
         element?.setAttribute(key, (node?.rxProps as any)[key])
       }
     }
