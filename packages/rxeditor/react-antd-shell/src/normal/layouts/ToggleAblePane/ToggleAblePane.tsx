@@ -25,10 +25,10 @@ const Container = styled.div`
     }
   }
   &.left{
-    border-right: solid 1px ${props => props.theme?.token.colorBorder};
+    border-right: solid 1px ${props => props.theme?.token?.colorBorder};
   }
   &.right{
-    border-left: solid 1px ${props => props.theme?.token.colorBorder};
+    border-left: solid 1px ${props => props.theme?.token?.colorBorder};
   }
 `
 

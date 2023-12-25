@@ -18,7 +18,7 @@ export function useGetGroupNodeConfig(token: IThemeToken) {
       shape: 'group-node',
       x: nodeMeta.x6Node?.x || 340,
       y: nodeMeta.x6Node?.y || 240,
-      stroke: token.colorBorder,
+      stroke: token?.colorBorder,
       width: nodeMeta.x6Node?.width || GroupSize.width,
       height: nodeMeta.x6Node?.height || GroupSize.height,
       label: nodeMeta.label || "Group",

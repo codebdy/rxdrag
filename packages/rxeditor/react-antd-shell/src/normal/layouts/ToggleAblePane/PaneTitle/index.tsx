@@ -14,8 +14,8 @@ const Contianer = styled.div`
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  border-color: ${props => props.theme?.token.colorBorder};
-  color: ${props => props.theme?.token.colorText};
+  border-color: ${props => props.theme?.token?.colorBorder};
+  color: ${props => props.theme?.token?.colorText};
 `
 
 export const PaneTitle = memo((

@@ -7,7 +7,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: 40px;
-  border-bottom: ${props=>props.theme?.token.colorBorder} solid 1px;
+  border-bottom: ${props=>props.theme?.token?.colorBorder} solid 1px;
 `
 
 export const CanvasToolbar = memo((

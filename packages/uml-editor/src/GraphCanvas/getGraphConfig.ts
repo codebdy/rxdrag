@@ -31,11 +31,11 @@ export const getGraphConfig = (token: GlobalToken): Partial<Options.Manual> => {
       type: 'doubleMesh',
       args: [
         {
-          color: token.colorBorder, // 主网格线颜色
+          color: token?.colorBorder, // 主网格线颜色
           thickness: 1,     // 主网格线宽度
         },
         {
-          color: token.colorBorderSecondary, // 次网格线颜色
+          color: token?.colorBorderSecondary, // 次网格线颜色
           thickness: 1,     // 次网格线宽度
           factor: 4,        // 主次网格线间隔
         },

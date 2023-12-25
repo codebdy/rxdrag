@@ -13,9 +13,9 @@ const Container = styled.div`
   top: calc(50% - 15px);
   font-size: 10px;
   border: solid 1px;
-  border-color: ${props => props?.theme?.token.colorBorder};
-  background-color: ${props => props?.theme?.token.colorBgBase};
-  color: ${props => props?.theme?.token.colorText};
+  border-color: ${props => props?.theme?.token?.colorBorder};
+  background-color: ${props => props?.theme?.token?.colorBgBase};
+  color: ${props => props?.theme?.token?.colorText};
   &.left-style {
     right: -15px;
     border-radius: 0 5px 5px 0;

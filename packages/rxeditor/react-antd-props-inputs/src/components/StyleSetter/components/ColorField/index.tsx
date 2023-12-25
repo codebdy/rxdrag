@@ -26,7 +26,7 @@ export const ColorField = (props:any) => {
     width: token.sizeMD,
     height: token.sizeMD,
     borderRadius: token.borderRadiusSM,
-    border: `1px solid ${token.colorBorder}`,
+    border: `1px solid ${token?.colorBorder}`,
     backgroundColor: bgColor
   };
 

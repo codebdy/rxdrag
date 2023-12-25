@@ -7,7 +7,7 @@ const StyledBox= styled.div`
   align-items: center;
   justify-content: space-between;
   height: 48px;
-  border-bottom: ${props=>props.theme?.token.colorBorder} solid 1px;
+  border-bottom: ${props=>props.theme?.token?.colorBorder} solid 1px;
 `
 
 export const Topbar = memo((

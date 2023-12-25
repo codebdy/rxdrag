@@ -49,7 +49,7 @@ export const ColorInput: React.FC<IColorInputProps> = (props) => {
               className={'color-tips'}
               style={{
                 backgroundColor: color,
-                border:`${token.colorBorder} solid 1px`
+                border:`${token?.colorBorder} solid 1px`
               }}
             ></div>
           </Popover>
