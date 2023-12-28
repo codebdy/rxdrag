@@ -1,7 +1,6 @@
 import { readPackageJSON } from 'pkg-types';
 import { defineConfig, mergeConfig, type UserConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import { configVisualizerConfig } from '../plugins/visualizer';
 
 interface DefineOptions {
   overrides?: UserConfig;
