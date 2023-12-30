@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-shared",
-  "version": "0.6.0",
+  "version": "0.6.3",
   "module": "index.ts",
   "files": [
     "dist"
@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "@rxdrag/schema": "workspace:*",
-    "@rxdrag/shared": "workspace:*",
-    "monaco-editor": "^0.44.0"
+    "@rxdrag/shared": "workspace:*"
   }
 }

@@ -1,5 +1,5 @@
 import { memo } from "react"
-import Editor from 'react-monaco-editor';
+import MonacoEditor from '@monaco-editor/react';
 import { useThemeMode, useDocument } from "../hooks";
 
 export const JsonView = memo(() => {
@@ -8,7 +8,7 @@ export const JsonView = memo(() => {
   const jsonStr = JSON.stringify(doc?.getSchemaTree() || {}, null, 2)
 
   return (
-    <Editor
+    <MonacoEditor
       height="100%"
       language="json"
       theme={themeMode === "dark" ? "vs-dark" : "vs-light"}
