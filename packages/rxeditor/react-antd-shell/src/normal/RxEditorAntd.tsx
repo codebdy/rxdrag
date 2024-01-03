@@ -1,5 +1,5 @@
 import { memo } from "react"
-import { IMaterial, IMinionOptions } from "@rxdrag/react-core"
+import { IMaterial } from "@rxdrag/react-core"
 import { Antd5EditorInnerProps, RxEditorAntdInner } from "./RxEditorAntdInner"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { ISetterComponents } from "@rxdrag/core"
@@ -10,7 +10,7 @@ import "./style.css"
 export type Antd5EditorProps = Antd5EditorInnerProps & {
   themeMode?: "dark" | "light",
   //逻辑编排配置项
-  minionOptions?: IMinionOptions,
+  //minionOptions?: IMinionOptions,
   materials?: IMaterial[],
   setters?: ISetterComponents<ReactComponent>,
   canvasUrl: string,
@@ -18,11 +18,11 @@ export type Antd5EditorProps = Antd5EditorInnerProps & {
 }
 
 export const RxEditorAntd = memo((props: Antd5EditorProps) => {
-  const { themeMode, minionOptions, materials, setters, canvasUrl,  previewUrl, ...rest } = props;
+  const { themeMode,  materials, setters, canvasUrl,  previewUrl, ...rest } = props;
 
   return (
     <DesignerScope
-      minionOptions={minionOptions}
+      //minionOptions={minionOptions}
       themeMode={themeMode}
       materials={materials}
       setters={setters}
