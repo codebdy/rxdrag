@@ -3,7 +3,7 @@ import { ID, IRect } from "./types"
 
 export interface IShellPane {
 	id: ID
-	getRootElement(): HTMLElement
+	getRootElement(): HTMLElement | null
 	getElements(id: ID): HTMLElement[] | null
 	//顶层容器的区域，主要为了iframe换算坐标
 	getDocumentBodyRect(): IRect | null
