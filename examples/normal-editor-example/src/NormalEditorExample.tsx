@@ -44,8 +44,6 @@ export const NormalEditorExample = memo(() => {
       canvasUrl="/canvas-render"
       previewUrl="/preview-render"
       themeMode='dark'
-      minionOptions={{
-      }}
       materials={materials}
       navPanel={
         <>
