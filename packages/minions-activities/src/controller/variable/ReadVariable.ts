@@ -1,7 +1,7 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IVariableContext } from "../../interfaces";
 import { Activity, Input } from "@rxdrag/minions-runtime";
 import { IVariableConfig, VirableActivity } from "../VirableActivity";
+import { IVariableContext } from "@rxdrag/minions-runtime-react";
 
 @Activity(ReadVariable.NAME)
 export class ReadVariable extends VirableActivity {

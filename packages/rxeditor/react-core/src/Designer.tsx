@@ -15,7 +15,7 @@ import { ISetterComponents } from "@rxdrag/core";
 import { Fieldy } from "@rxdrag/react-fieldy";
 import { ComponentDesignersRoot } from "./ComponentDesignersRoot";
 import { ILocales } from "@rxdrag/locales";
-import { PreviewComponentsContext } from "@rxdrag/react-runner";
+//import { PreviewComponentsContext } from "@rxdrag/react-runner";
 
 export enum LayoutType {
   Liquid = "liquid",
@@ -108,9 +108,9 @@ export const Designer = memo((props: DesignerProps) => {
             <ComponentDesignersRoot components={designers}>
               {
                 //Preivew的时候用的组件，主要针对无Iframe画布
-                <PreviewComponentsContext.Provider value={components}>
-                  {engine && children}
-                </PreviewComponentsContext.Provider>
+                //<PreviewComponentsContext.Provider value={components}>
+                engine && children
+                //</ComponentDesignersRoot></PreviewComponentsContext.Provider>
               }
             </ComponentDesignersRoot>
           </DesignerEngineContext.Provider>

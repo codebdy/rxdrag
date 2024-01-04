@@ -1,6 +1,6 @@
 import { AbstractActivity } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
-import { IController, IReactContext } from "../interfaces"
+import { IController, IReactContext } from "@rxdrag/minions-runtime-react"
 
 export interface IControllerConfig {
   controllerId?: string

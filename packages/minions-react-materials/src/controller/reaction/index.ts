@@ -1,8 +1,9 @@
-import { IControllerMeta, IReactionConfig, Reaction } from "@rxdrag/minions-runtime-react";
+import { IControllerMeta} from "@rxdrag/minions-runtime-react";
 import { NodeType } from "@rxdrag/minions-schema";
 import { IRxDragActivityMaterial, LogicflowContextParam } from "../../interfaces";
 import { getControllerComponentInfo } from "../utils";
 import { methodIcon } from "@rxdrag/react-shared";
+import { IReactionConfig, Reaction } from "@rxdrag/minions-activities";
 
 export const reactionMaterial: IRxDragActivityMaterial<IReactionConfig, LogicflowContextParam> = {
   activityName: Reaction.NAME,

@@ -1,9 +1,9 @@
 import { createId } from "@rxdrag/shared";
 import { routeToSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
-import { RouteTo } from "@rxdrag/minions-runtime-react";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { routeIcon } from "@rxdrag/react-shared";
+import { RouteTo } from "@rxdrag/minions-activities";
 
 export const routeToMaterial: IRxDragActivityMaterial = {
   icon: routeIcon,

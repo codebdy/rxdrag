@@ -1,10 +1,11 @@
 import { NodeType } from "@rxdrag/minions-schema";
 import { propSchema } from "./schema"
 import { createId } from "@rxdrag/shared";
-import { IControllerMeta, IPropConfig, SetProp } from "@rxdrag/minions-runtime-react";
+import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { IRxDragActivityMaterial, LogicflowContextParam } from "../../interfaces";
 import { getControllerComponentInfo } from "../utils";
 import { setPropIcon } from "@rxdrag/react-shared";
+import { IPropConfig, SetProp } from "@rxdrag/minions-activities";
 
 export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, LogicflowContextParam> = {
   label: "$setProp",

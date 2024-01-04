@@ -19,6 +19,7 @@
   "dependencies": {
     "@rxdrag/minions-runtime": "workspace:*",
     "@rxdrag/minions-schema": "workspace:*",
+    "@rxdrag/minions-runtime-react": "workspace:*",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

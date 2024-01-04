@@ -1,7 +1,7 @@
 import { Activity } from "@rxdrag/minions-runtime";
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IReactContext, UnListener } from "../../interfaces";
 import { ControllerActivity, IControllerConfig } from "../ControllerActivity";
+import { UnListener, IReactContext } from "@rxdrag/minions-runtime-react";
 
 export interface IEventConfig extends IControllerConfig {
   name?: string,
@@ -10,7 +10,7 @@ export interface IEventConfig extends IControllerConfig {
 @Activity(EventActivity.NAME)
 export class EventActivity extends ControllerActivity<IEventConfig> {
   public static NAME = "system-react.event"
-  config?: IEventConfig;
+  declare config?: IEventConfig;
   unsub?: UnListener
 
   constructor(meta: INodeDefine<IEventConfig>, context: IReactContext) {

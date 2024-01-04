@@ -1,8 +1,9 @@
 import { Activity, DynamicInput } from "@rxdrag/minions-runtime";
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IReactContext } from "../../interfaces";
 import { ControllerActivity, IControllerConfig } from "../ControllerActivity";
-import { isFn } from "@rxdrag/shared";
+import { isFunction } from "lodash";
+import { IReactContext } from "@rxdrag/minions-runtime-react";
+
 
 export interface IReactionConfig extends IControllerConfig {
   name?: string
@@ -19,7 +20,7 @@ export class Reaction extends ControllerActivity<IReactionConfig> {
   @DynamicInput
   inputHandler = (inputName: string, inputValue: unknown, runContext?: object) => {
     const reaction = this.context?.reactions?.[inputName]
-    if (isFn(reaction)) {
+    if (isFunction(reaction)) {
       const newValue = reaction(this.controller, inputValue)
       this.next(newValue === undefined ? inputValue : newValue, runContext)
     } else {

@@ -1,8 +1,8 @@
 
 import { Activity, Input } from "@rxdrag/minions-runtime";
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IReactContext } from "../../interfaces";
 import { ControllerActivity, IControllerConfig } from "../ControllerActivity";
+import { IReactContext } from "@rxdrag/minions-runtime-react";
 
 export interface IPropConfig extends IControllerConfig {
   prop?: string

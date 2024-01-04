@@ -1,8 +1,8 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IReactContext } from "../../interfaces";
 import { ControllerActivity } from "../ControllerActivity";
 import { Activity, Input } from "@rxdrag/minions-runtime";
 import { IPropConfig } from "./SetProp";
+import { IReactContext } from "@rxdrag/minions-runtime-react";
 
 @Activity(ReadProp.NAME)
 export class ReadProp extends ControllerActivity<IPropConfig> {

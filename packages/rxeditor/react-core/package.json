@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-core",
-  "version": "0.6.9",
+  "version": "0.6.10",
   "module": "index.ts",
   "files": [
     "dist"
@@ -38,8 +38,6 @@
     "@rxdrag/core": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",
-    "@rxdrag/minions-runtime-react": "workspace:*",
-    "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/react-runner": "workspace:*",

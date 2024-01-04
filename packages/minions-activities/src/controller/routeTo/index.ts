@@ -1,6 +1,6 @@
 import { Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime"
+import { IReactContext } from "@rxdrag/minions-runtime-react";
 import { INodeDefine } from "@rxdrag/minions-schema"
-import { IReactContext } from "../../interfaces";
 
 export interface IRouteToConfig {
   url?: string,
