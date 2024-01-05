@@ -15,6 +15,9 @@ export interface INodeMeta<
 
   //props的表达式
   exprs?: Record<string, string | null>;
+
+  //子节点是文本的情况
+  childrenText?: string;
 }
 
 export interface INodeSchema<Field = unknown, NodeController = unknown>
