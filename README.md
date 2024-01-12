@@ -21,6 +21,6 @@ To work on Rxdrag web apps, from the root,
 ### QQ群：957619750  
 
 ### 微信群:  
-<img src="https://github.com/rxdrag/rxeditor/blob/master/doc/images/wechatgroup0104.jpg?raw=true" style="width:300px">
+<img src="https://github.com/rxdrag/rxeditor/blob/master/doc/images/wechatgroup0112.jpg?raw=true" style="width:300px">
 
 In `apps/core/vite.config.ts`, configure your local API URL and the target API URL in the `server.proxy` object.
