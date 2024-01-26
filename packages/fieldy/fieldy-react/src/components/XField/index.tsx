@@ -28,7 +28,7 @@ export const XField = memo((props: {
   return (
     <FieldContext.Provider value={field}>
       {
-        field && children
+        children
       }
     </FieldContext.Provider>
   )

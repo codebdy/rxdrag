@@ -95,6 +95,7 @@ export interface IDocument {
   remove(sourceId: ID): void
   clone(sourceId: ID): void
   changeNodeMeta(id: ID, newMeta: INodeMeta): void
+  clearChanged(): void
   removeSlot(id: ID, name: string): void
   addSlot(id: ID, name: string): void
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

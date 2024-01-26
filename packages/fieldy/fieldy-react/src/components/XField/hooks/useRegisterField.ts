@@ -12,6 +12,7 @@ export function useRegisterField(fieldMeta: IFieldMeta) {
   // fragment的field集合也同样处理
   const fieldSchemas = useFieldSchemas(fieldMeta, parentPath)
 
+  // 注册field，此处容易重新创建field，导致field的值丢失，一定要注意依赖
   useEffect(() => {
     if (form && fieldSchemas?.length) {
       for (let i = 0; i < fieldSchemas.length; i++) {
@@ -25,7 +26,7 @@ export function useRegisterField(fieldMeta: IFieldMeta) {
         }
       }
     }
-  }, [fieldMeta, fieldSchemas, form])
+  }, [fieldMeta.name, form, fieldSchemas])
 
   return field
 }

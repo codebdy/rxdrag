@@ -8,6 +8,7 @@ export class IFrameCanvasImpl implements IShellPane {
   constructor(
     engine: IDesignerEngine,
     private iframe: HTMLIFrameElement,
+    //document id
     public id: ID,
     private driverFactories: IDriverFactory[]
   ) {

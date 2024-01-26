@@ -75,7 +75,8 @@ export type RecoverSnapshotPayload = DocumentActionPayload & {
   snapshot: ISnapshot;
 };
 
-export type ChangeMetaPayloads = {
+export type ChangeMetaPayloads = DocumentActionPayload & {
   id: ID;
   meta: INodeMeta;
 };
+

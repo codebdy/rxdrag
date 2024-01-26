@@ -8,6 +8,7 @@ import { canvasWidth } from "./canvasWidth";
 import { canvasWidthLimits } from "./canvasWidthLimits";
 import { viewType } from "./viewType";
 import { documentTitle } from "./documentTitle";
+import { changed } from "./changed";
 
 export type DocumentState = {
 	title?: string,
@@ -40,6 +41,7 @@ export function documentReduce(
 		...state,
 		title: documentTitle(state.title, action),
 		selectionMode: selectionMode(state.selectionMode, action),
+		changed: changed(state.changed, action),
 		rootId: rootId(state.rootId, action),
 		history: history(state.history, action),
 		snapshotIndex: snapShotIndex(state.snapshotIndex, action),

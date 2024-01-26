@@ -86,6 +86,7 @@ export class ActivedOutlineImpl implements IPlugin {
     const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
     const containerRect = canvas?.getDocumentBodyRect()
     const rect = shell.getNodeRect(id)
+
     if (node?.parentId && elements && containerRect && rect) {
       const htmlDiv = document.createElement('div')
       htmlDiv.style.boxSizing = "border-box"

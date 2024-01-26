@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IFieldSchema } from "@rxdrag/fieldy"
 import { IFieldMeta } from "@rxdrag/fieldy";
 
@@ -37,11 +37,13 @@ function parseSchemas(fieldMeta: IFieldMeta, parentPath: string) {
 
 export function useFieldSchemas(fieldMeta: IFieldMeta, parentPath: string) {
   const [fieldSchemas, setFieldSchemas] = useState<IFieldSchema[]>()
+  const fieldMetaRef = useRef(fieldMeta)
+  fieldMetaRef.current = fieldMeta
 
   useEffect(() => {
-    const schemas = parseSchemas(fieldMeta, parentPath)
+    const schemas = parseSchemas(fieldMetaRef.current, parentPath)
     setFieldSchemas(schemas)
-  }, [fieldMeta, fieldMeta.name, parentPath])
+  }, [fieldMeta.name, parentPath])
 
   return fieldSchemas
 }

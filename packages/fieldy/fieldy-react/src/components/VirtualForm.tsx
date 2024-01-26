@@ -1,9 +1,9 @@
 import { FormValue, IForm } from "@rxdrag/fieldy"
-import React, { useEffect, useState } from "react"
+import React, { memo, useEffect, useState } from "react"
 import { FieldContext, FormContext } from "../contexts"
 import { useFieldy } from "../hooks"
 
-export const VirtualForm = (props: {
+export const VirtualForm = memo((props: {
   name?: string,
   initialValue?: FormValue | undefined,
   value?: FormValue | undefined,
@@ -63,8 +63,8 @@ export const VirtualForm = (props: {
   return (
     <FieldContext.Provider value={undefined}>
       <FormContext.Provider value={form}>
-        {form && children}
+        {children}
       </FormContext.Provider>
     </FieldContext.Provider>
   )
-}
+})

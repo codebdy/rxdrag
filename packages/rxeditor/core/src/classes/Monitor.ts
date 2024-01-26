@@ -25,6 +25,7 @@ import {
 	ThemeModeListener,
 	Unsubscribe,
 	DocumentTitleListener,
+	DocumentChangedListener,
 } from '../interfaces/index'
 import type { State } from '../reducers/index'
 import { DragOverState } from '../reducers/dragOver'
@@ -74,6 +75,7 @@ export class Monitor implements IMonitor {
 		this.store = store
 		this.doSubscribeToNodeChanged(this.nodeChangeHandler.handleNodeChange)
 	}
+
 
 	getAllNodes(): ITreeNode<unknown, unknown>[] {
 		const state = this.getState()
@@ -456,6 +458,22 @@ export class Monitor implements IMonitor {
 		return this.store.subscribe(handleChange)
 	}
 
+	subscribeToDocumentChanged(documentId: string, listener: DocumentChangedListener): Unsubscribe {
+		invariant(typeof listener === 'function', 'listener must be a function.')
+
+		let previousState = this.store.getState().documentsById[documentId]?.changed
+		const handleChange = () => {
+			const nextState = this.store.getState().documentsById[documentId]?.changed
+			if (nextState === previousState) {
+				return
+			}
+
+			previousState = nextState
+			listener(nextState || false)
+		}
+		return this.store.subscribe(handleChange)
+	}
+
 	subscribeToDocumentsChange(listener: Listener): Unsubscribe {
 		invariant(typeof listener === 'function', 'listener must be a function.')
 
@@ -477,7 +495,7 @@ export class Monitor implements IMonitor {
 		return state.draggingResource
 	}
 
-	
+
 	getDraggingNodes(): DraggingNodesState | undefined {
 		const state = this.store.getState()
 		return state.draggingNodes
